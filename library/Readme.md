@@ -38,11 +38,14 @@ clang-12 -S -emit-llvm lib.c -o lib.ll
 ```
 clang-12 -S -emit-llvm lib_wasm.c -o lib_wasm.ll
 ```
-### Final Step 5 Move these files to llvmlinker directory where we will link with other libraries into a single module
+### Step 5 Move these lib.ll to llvmlinker directory where we will link with other libraries into a single module
 ```
-mv lib.ll lib_wasm.ll ../llvmlinker/
+mv lib.ll ../llvmlinker/
 ```
-
+### Final Step 6 Move lib_wasm.ll to wasm_readable_definitions directory where we will link with other libraries into a single module
+```
+mv lib_wasm.ll ../wasm_readable_definitions/
+```
 
 ## Help
 
