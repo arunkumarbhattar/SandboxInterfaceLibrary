@@ -1,6 +1,4 @@
-# Project Title
-
-Simple overview of use/purpose.
+#This is where you define the TAINTED(DIRTY) code
 
 ## Description
 
