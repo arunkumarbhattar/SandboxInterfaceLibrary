@@ -1,28 +1,28 @@
-#This is where you define the TAINTED(DIRTY) code
+# This is where you define the TAINTED(DIRTY) code
 
 ## Description
-
-An in-depth paragraph about your project and overview of use.
+* Tainted Functions must be defined and compiled to wasm-readable definitions externally. 
+* These wasm-readable definitions are the only definitions that the RLBOX WASM-SBX toolkit understands to communicate to 
+  when there is a call to a tainted function
 
 ## Getting Started
 
-### Dependencies
+### Step 1 DEFINE \_TAINTED functions
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* Functions that are marked \_Tainted must be defined here.
+* Functions whose callers are tainted are also inferred to be \_Tainted. 
+* Hence, even they must be defined here
 
-### Installing
+### Step 2 COMPILE \_TAINTED functions
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* execute make.
+* The makefile will give you a nice lib.wasm file.
 
-### Executing program
+### Step 3 CONVERT LIB.WASM to human-readable lib_wasm.c and .h
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+* Execute wasm2c -o lib_wasm.c lib.wasm
+* This will generate for you lib_wasm.c and lib_wasm.h
+
 
 ## Help
 
