@@ -15,13 +15,33 @@
 
 ### Step 2 COMPILE \_TAINTED functions
 
-* execute make.
+* execute 
+```
+make.
+```
 * The makefile will give you a nice lib.wasm file.
 
 ### Step 3 CONVERT LIB.WASM to human-readable lib_wasm.c and .h
 
-* Execute wasm2c -o lib_wasm.c lib.wasm
+* Execute 
+```
+wasm2c -o lib_wasm.c lib.wasm
+```
 * This will generate for you lib_wasm.c and lib_wasm.h
+
+### Step 4 Generate LLVM .LL IR files for a.) lib.c and b.) lib_wasm.c 
+* Execute
+```
+clang-12 -S -emit-llvm lib.c -o lib.ll
+```
+* Execute 
+```
+clang-12 -S -emit-llvm lib_wasm.c -o lib_wasm.ll
+```
+### Final Step 5 Move these files to llvmlinker directory where we will link with other libraries into a single module
+```
+mv lib.ll lib_wasm.ll ../llvmlinker/
+```
 
 
 ## Help
