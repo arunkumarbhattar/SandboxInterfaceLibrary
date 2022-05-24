@@ -1,7 +1,0 @@
-add_test( [==[sandbox glue tests rlbox_wasm2c_sandbox]==] /home/arun/Desktop/rlbox_wasm2c_sandbox/build/test_rlbox_glue [==[sandbox glue tests rlbox_wasm2c_sandbox]==]  )
-set_tests_properties( [==[sandbox glue tests rlbox_wasm2c_sandbox]==] PROPERTIES WORKING_DIRECTORY /home/arun/Desktop/rlbox_wasm2c_sandbox/build)
-add_test( [==[wasm sandbox tests rlbox_wasm2c_sandbox]==] /home/arun/Desktop/rlbox_wasm2c_sandbox/build/test_rlbox_glue [==[wasm sandbox tests rlbox_wasm2c_sandbox]==]  )
-set_tests_properties( [==[wasm sandbox tests rlbox_wasm2c_sandbox]==] PROPERTIES WORKING_DIRECTORY /home/arun/Desktop/rlbox_wasm2c_sandbox/build)
-add_test( [==[wasm sandbox fallible create rlbox_wasm2c_sandbox]==] /home/arun/Desktop/rlbox_wasm2c_sandbox/build/test_rlbox_glue [==[wasm sandbox fallible create rlbox_wasm2c_sandbox]==]  )
-set_tests_properties( [==[wasm sandbox fallible create rlbox_wasm2c_sandbox]==] PROPERTIES WORKING_DIRECTORY /home/arun/Desktop/rlbox_wasm2c_sandbox/build)
-set( test_rlbox_glue_TESTS [==[sandbox glue tests rlbox_wasm2c_sandbox]==] [==[wasm sandbox tests rlbox_wasm2c_sandbox]==] [==[wasm sandbox fallible create rlbox_wasm2c_sandbox]==])
