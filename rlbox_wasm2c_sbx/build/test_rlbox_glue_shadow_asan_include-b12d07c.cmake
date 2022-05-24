@@ -1,0 +1,5 @@
+if(EXISTS "/home/arun/Desktop/rlbox_wasm2c_sandbox/build/test_rlbox_glue_shadow_asan_tests-b12d07c.cmake")
+  include("/home/arun/Desktop/rlbox_wasm2c_sandbox/build/test_rlbox_glue_shadow_asan_tests-b12d07c.cmake")
+else()
+  add_test(test_rlbox_glue_shadow_asan_NOT_BUILT-b12d07c test_rlbox_glue_shadow_asan_NOT_BUILT-b12d07c)
+endif()

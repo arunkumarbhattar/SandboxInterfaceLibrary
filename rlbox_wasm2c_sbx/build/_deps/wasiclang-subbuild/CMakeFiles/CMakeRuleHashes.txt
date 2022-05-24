@@ -1,0 +1,11 @@
+# Hashes of file build rules.
+40d6e43394a69912816cf5051d3d765d CMakeFiles/wasiclang-populate
+bdf389055d3ce0026b324a194a6e9612 CMakeFiles/wasiclang-populate-complete
+89499ebb2a7fdd71ec8e3d5f53e272e3 wasiclang-populate-prefix/src/wasiclang-populate-stamp/wasiclang-populate-build
+afcc38ee7830e6a1fee56be49021485f wasiclang-populate-prefix/src/wasiclang-populate-stamp/wasiclang-populate-configure
+ba591b7355271c68dc4098bfaf74dbf9 wasiclang-populate-prefix/src/wasiclang-populate-stamp/wasiclang-populate-download
+3c684a83002318a1687d782bd18215e8 wasiclang-populate-prefix/src/wasiclang-populate-stamp/wasiclang-populate-install
+82253f3c2ba70bddf39424d0af669b4d wasiclang-populate-prefix/src/wasiclang-populate-stamp/wasiclang-populate-mkdir
+7901b0e42a204a90a5da62c529c83625 wasiclang-populate-prefix/src/wasiclang-populate-stamp/wasiclang-populate-patch
+3b74811e21fee3a918ffe9634999dd29 wasiclang-populate-prefix/src/wasiclang-populate-stamp/wasiclang-populate-test
+fd5fe7d3a5e4713555a6f0f7dd3fbfd5 wasiclang-populate-prefix/src/wasiclang-populate-stamp/wasiclang-populate-update
