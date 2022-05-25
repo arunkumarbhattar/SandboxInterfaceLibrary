@@ -1,4 +1,4 @@
-#include "./library/lib.h"
+#include "../library/lib.h"
 #include <assert.h>
 #include <stdlib.h>
 #include <iostream>
@@ -9,7 +9,7 @@
 
 #ifndef USE_NOOP
     // Configure RLBox for wasm sandbox
-    #include "lib_wasm.h"
+    #include "../wasm_readable_definitions/lib_wasm.h"
     #define RLBOX_USE_STATIC_CALLS() rlbox_wasm2c_sandbox_lookup_symbol
     #include "rlbox_wasm2c_sandbox.hpp"
     using sandbox_type_t = rlbox::rlbox_wasm2c_sandbox;
