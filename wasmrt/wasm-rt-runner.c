@@ -93,7 +93,6 @@ char* get_info_func_name(char const* wasm_module_name) {
 typedef wasm2c_sandbox_funcs_t (*get_info_func_t)();
 typedef void (*wasm2c_start_func_t)(void* sbx);
 
-/*
 int main(int argc, char const* argv[]) {
   if (argc < 2) {
     printf(
@@ -102,7 +101,7 @@ int main(int argc, char const* argv[]) {
         argv[0]);
     exit(1);
   }
-*/
+
   char const* wasm2c_module_path = argv[1];
   char const* wasm_module_name = "";
 
