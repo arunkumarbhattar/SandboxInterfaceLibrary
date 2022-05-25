@@ -1,46 +1,20 @@
-# This is where you define the TAINTED(DIRTY) code
+# This is where you compile the wasm readable definitions of your \_Tainted functions to .ll files
 
 ## Description
-* Tainted Functions must be defined and compiled to wasm-readable definitions externally. 
-* These wasm-readable definitions are the only definitions that the RLBOX WASM-SBX toolkit understands to communicate to 
-  when there is a call to a tainted function
+* Symbols for WASM-Readable definitions of tainted functions along with other wasm-std symbols are defined in the lib_wasm.c file 
+* RLBOX toolkit will make use of these definitions to execute \_Tainted Functions 
+* These wasm-readable definitions shall be used by the RLBOX WASM-SBX toolkit to communicate/execute a call to a tainted function.
 
 ## Getting Started
 
-### Step 1 DEFINE \_TAINTED functions
+### Step 1 Generate LLVM IR .LL files for a.) lib_wasm.c
+```
+clang-12 -S -emit-llvm lib_wasm.c -o lib_wasm.ll
+```
 
-* Functions that are marked \_Tainted must be defined here.
-* Functions whose callers are tainted are also inferred to be \_Tainted. 
-* Hence, even they must be defined here
-
-### Step 2 COMPILE \_TAINTED functions
-
-* execute 
+### Step 2 Move lib_wasm.ll to llvmlinker directory where we this LLVM IR file will link with other .LL files into a single module
 ```
-make.
-```
-* The makefile will give you a nice lib.wasm file.
-
-### Step 3 CONVERT LIB.WASM to human-readable lib_wasm.c and .h
-
-* Execute 
-```
-wasm2c -o lib_wasm.c lib.wasm
-```
-* This will generate for you lib_wasm.c and lib_wasm.h
-
-### Step 4 Generate LLVM .LL IR files for a.) lib.c and b.) lib_wasm.c 
-* Execute
-```
-clang-12 -S -emit-llvm lib.c -o lib.ll
-```
-### Step 5 Move these lib.ll to llvmlinker directory where we will link with other libraries into a single module
-```
-mv lib.ll ../llvmlinker/
-```
-### Final Step 6 Move lib_wasm.c, lib_wasm.h to wasm_readable_definitions directory where we will link with other libraries into a single module
-```
-mv lib_wasm.c lib_wasm.h ../wasm_readable_definitions/
+mv lib_wasm.ll ../llvmlinker/
 ```
 
 ## Help
