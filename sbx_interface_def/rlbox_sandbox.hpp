@@ -1058,11 +1058,11 @@ public:
     template INTERNAL_get_sandbox_function_ptr<decltype(func_name)>(           \
       sandbox_lookup_symbol_helper(RLBOX_USE_STATIC_CALLS(), func_name))
 
-#else
-
 #  define invoke_sandbox_function(func_name, ...)                              \
     template INTERNAL_invoke_with_func_name<decltype(func_name)>(              \
       #func_name, ##__VA_ARGS__)
+
+#else
 
 #  define get_sandbox_function_address(func_name)                              \
     template INTERNAL_get_sandbox_function_name<decltype(func_name)>(#func_name)

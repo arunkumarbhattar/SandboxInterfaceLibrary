@@ -1117,12 +1117,14 @@ entry:
   ret i32 %call3
 }
 
-declare dso_local nonnull align 8 dereferenceable(8) %"class.std::basic_ostream"* @_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc(%"class.std::basic_ostream"* nonnull align 8 dereferenceable(8), i8*) #1
+; Function Attrs: tainted
+declare dso_local nonnull align 8 dereferenceable(8) %"class.std::basic_ostream"* @_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc(%"class.std::basic_ostream"* nonnull align 8 dereferenceable(8), i8*) #5
 
-declare dso_local nonnull align 8 dereferenceable(8) %"class.std::basic_ostream"* @_ZNSolsEj(%"class.std::basic_ostream"* nonnull dereferenceable(8), i32) #1
+; Function Attrs: tainted
+declare dso_local nonnull align 8 dereferenceable(8) %"class.std::basic_ostream"* @_ZNSolsEj(%"class.std::basic_ostream"* nonnull dereferenceable(8), i32) #5
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define dso_local void @_Z15get_image_bytesPc(i8* %input_stream) #5 {
+define dso_local void @_Z15get_image_bytesPc(i8* %input_stream) #6 {
 entry:
   %input_stream.addr = alloca i8*, align 8
   store i8* %input_stream, i8** %input_stream.addr, align 8
@@ -1130,7 +1132,7 @@ entry:
 }
 
 ; Function Attrs: noinline norecurse optnone uwtable mustprogress
-define dso_local i32 @main(i32 %argc, i8** %argv) #6 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define dso_local i32 @main(i32 %argc, i8** %argv) #7 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %retval = alloca i32, align 4
   %argc.addr = alloca i32, align 4
@@ -1578,7 +1580,7 @@ eh.resume:                                        ; preds = %lpad
 }
 
 ; Function Attrs: noinline optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEEC2Ev(%"class.rlbox::rlbox_sandbox"* nonnull dereferenceable(3136) %this) unnamed_addr #7 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEEC2Ev(%"class.rlbox::rlbox_sandbox"* nonnull dereferenceable(3136) %this) unnamed_addr #8 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_sandbox"*, align 8
   %exn.slot = alloca i8*, align 8
@@ -1695,7 +1697,7 @@ eh.resume:                                        ; preds = %lpad
 declare dso_local i32 @__gxx_personality_v0(...)
 
 ; Function Attrs: nobuiltin allocsize(0)
-declare dso_local nonnull i8* @_Znam(i64) #8
+declare dso_local nonnull i8* @_Znam(i64) #9
 
 ; Function Attrs: noinline optnone uwtable mustprogress
 define linkonce_odr dso_local i8* @_ZN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEE17malloc_in_sandboxIcEENS_7taintedIPT_S1_EEj(%"class.rlbox::rlbox_sandbox"* nonnull dereferenceable(3136) %this, i32 %count) #4 comdat align 2 {
@@ -1833,7 +1835,7 @@ entry:
 }
 
 ; Function Attrs: argmemonly nofree nosync nounwind willreturn
-declare void @llvm.memcpy.p0i8.p0i8.i64(i8* noalias nocapture writeonly, i8* noalias nocapture readonly, i64, i1 immarg) #9
+declare void @llvm.memcpy.p0i8.p0i8.i64(i8* noalias nocapture writeonly, i8* noalias nocapture readonly, i64, i1 immarg) #10
 
 ; Function Attrs: nounwind
 declare dso_local i32 @sprintf(i8*, i8*, ...) #2
@@ -1893,7 +1895,7 @@ entry:
 }
 
 ; Function Attrs: noinline optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox7taintedIjNS_20rlbox_wasm2c_sandboxEEC2ERKNS_16tainted_volatileIjS1_EE(%"class.rlbox::tainted"* nonnull dereferenceable(4) %this, %"class.rlbox::tainted_volatile.28"* nonnull align 4 dereferenceable(4) %p) unnamed_addr #7 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox7taintedIjNS_20rlbox_wasm2c_sandboxEEC2ERKNS_16tainted_volatileIjS1_EE(%"class.rlbox::tainted"* nonnull dereferenceable(4) %this, %"class.rlbox::tainted_volatile.28"* nonnull align 4 dereferenceable(4) %p) unnamed_addr #8 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted"*, align 8
   %p.addr = alloca %"class.rlbox::tainted_volatile.28"*, align 8
@@ -2040,11 +2042,10 @@ entry:
 
 declare dso_local nonnull align 8 dereferenceable(8) %"class.std::basic_ostream"* @_ZNSolsEPFRSoS_E(%"class.std::basic_ostream"* nonnull dereferenceable(8), %"class.std::basic_ostream"* (%"class.std::basic_ostream"*)*) #1
 
-; Function Attrs: tainted
-declare dso_local nonnull align 8 dereferenceable(8) %"class.std::basic_ostream"* @_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%"class.std::basic_ostream"* nonnull align 8 dereferenceable(8)) #10
+declare dso_local nonnull align 8 dereferenceable(8) %"class.std::basic_ostream"* @_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_(%"class.std::basic_ostream"* nonnull align 8 dereferenceable(8)) #1
 
-; Function Attrs: noinline optnone tainted uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZN5rlbox17tainted_base_implINS_7taintedEjNS_20rlbox_wasm2c_sandboxEE23unverified_safe_becauseILm19EEEDaRAT__Kc(%"class.rlbox::tainted_base_impl"* nonnull dereferenceable(1) %this, [19 x i8]* nonnull align 1 dereferenceable(19) %reason) #11 comdat align 2 {
+; Function Attrs: noinline optnone uwtable mustprogress
+define linkonce_odr dso_local i32 @_ZN5rlbox17tainted_base_implINS_7taintedEjNS_20rlbox_wasm2c_sandboxEE23unverified_safe_becauseILm19EEEDaRAT__Kc(%"class.rlbox::tainted_base_impl"* nonnull dereferenceable(1) %this, [19 x i8]* nonnull align 1 dereferenceable(19) %reason) #4 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl"*, align 8
   %reason.addr = alloca [19 x i8]*, align 8
@@ -2166,7 +2167,7 @@ return:                                           ; preds = %if.end, %if.then
 }
 
 ; Function Attrs: nobuiltin nounwind
-declare dso_local void @_ZdaPv(i8*) #12
+declare dso_local void @_ZdaPv(i8*) #11
 
 ; Function Attrs: noinline optnone uwtable mustprogress
 define linkonce_odr dso_local void @_ZN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEE15free_in_sandboxIcEEvNS_7taintedIPT_S1_EE(%"class.rlbox::rlbox_sandbox"* nonnull dereferenceable(3136) %this, i8* %ptr.coerce) #4 comdat align 2 {
@@ -2282,7 +2283,7 @@ eh.resume:                                        ; preds = %lpad
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEED2Ev(%"class.rlbox::rlbox_sandbox"* nonnull dereferenceable(3136) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEED2Ev(%"class.rlbox::rlbox_sandbox"* nonnull dereferenceable(3136) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_sandbox"*, align 8
   store %"class.rlbox::rlbox_sandbox"* %this, %"class.rlbox::rlbox_sandbox"** %this.addr, align 8
@@ -2316,7 +2317,7 @@ init.end:                                         ; preds = %init.check, %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt6vectorIPvSaIS0_EEC2Ev(%"class.std::vector"* nonnull dereferenceable(24) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt6vectorIPvSaIS0_EEC2Ev(%"class.std::vector"* nonnull dereferenceable(24) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::vector"*, align 8
   store %"class.std::vector"* %this, %"class.std::vector"** %this.addr, align 8
@@ -2327,7 +2328,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt6vectorIPvSaIS0_EED2Ev(%"class.std::vector"* nonnull dereferenceable(24) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt6vectorIPvSaIS0_EED2Ev(%"class.std::vector"* nonnull dereferenceable(24) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::vector"*, align 8
   %exn.slot = alloca i8*, align 8
@@ -2372,7 +2373,7 @@ terminate.handler:                                ; preds = %lpad
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) %"class.rlbox::tainted"* @_ZNK5rlbox17tainted_base_implINS_7taintedEjNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) %"class.rlbox::tainted"* @_ZNK5rlbox17tainted_base_implINS_7taintedEjNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl"*, align 8
   store %"class.rlbox::tainted_base_impl"* %this, %"class.rlbox::tainted_base_impl"** %this.addr, align 8
@@ -2382,7 +2383,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZNK5rlbox7taintedIjNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted"* nonnull dereferenceable(4) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZNK5rlbox7taintedIjNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted"* nonnull dereferenceable(4) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted"*, align 8
   store %"class.rlbox::tainted"* %this, %"class.rlbox::tainted"** %this.addr, align 8
@@ -2393,7 +2394,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define internal i32 @"_ZZ22image_parsing_progressRN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEEENS_7taintedIjS1_EEENK3$_0clEj"(%class.anon* nonnull dereferenceable(1) %this, i32 %value) #5 align 2 {
+define internal i32 @"_ZZ22image_parsing_progressRN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEEENS_7taintedIjS1_EEENK3$_0clEj"(%class.anon* nonnull dereferenceable(1) %this, i32 %value) #6 align 2 {
 entry:
   %this.addr = alloca %class.anon*, align 8
   %value.addr = alloca i32, align 4
@@ -2429,10 +2430,10 @@ cond.end:                                         ; preds = %3, %cond.true
 }
 
 ; Function Attrs: noreturn nounwind
-declare dso_local void @__assert_fail(i8*, i8*, i32, i8*) #14
+declare dso_local void @__assert_fail(i8*, i8*, i32, i8*) #13
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox20rlbox_wasm2c_sandboxC2Ev(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox20rlbox_wasm2c_sandboxC2Ev(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_wasm2c_sandbox"*, align 8
   store %"class.rlbox::rlbox_wasm2c_sandbox"* %this, %"class.rlbox::rlbox_wasm2c_sandbox"** %this.addr, align 8
@@ -2507,7 +2508,7 @@ arrayinit.end18:                                  ; preds = %arrayinit.body14
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt18shared_timed_mutexC2Ev(%"class.std::shared_timed_mutex"* nonnull dereferenceable(56) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt18shared_timed_mutexC2Ev(%"class.std::shared_timed_mutex"* nonnull dereferenceable(56) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::shared_timed_mutex"*, align 8
   store %"class.std::shared_timed_mutex"* %this, %"class.std::shared_timed_mutex"** %this.addr, align 8
@@ -2518,7 +2519,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvSt4lessIS5_ESaISt4pairIKS5_S6_EEEC2Ev(%"class.std::map.8"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvSt4lessIS5_ESaISt4pairIKS5_S6_EEEC2Ev(%"class.std::map.8"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::map.8"*, align 8
   store %"class.std::map.8"* %this, %"class.std::map.8"** %this.addr, align 8
@@ -2529,7 +2530,7 @@ entry:
 }
 
 ; Function Attrs: noinline optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox15app_pointer_mapIjEC2Ev(%"class.rlbox::app_pointer_map"* nonnull dereferenceable(112) %this) unnamed_addr #7 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZN5rlbox15app_pointer_mapIjEC2Ev(%"class.rlbox::app_pointer_map"* nonnull dereferenceable(112) %this) unnamed_addr #8 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.rlbox::app_pointer_map"*, align 8
   %ref.tmp = alloca i32, align 4
@@ -2571,7 +2572,7 @@ eh.resume:                                        ; preds = %lpad
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt6atomicIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEEC2ES4_(%"struct.std::atomic"* nonnull dereferenceable(4) %this, i32 %__i) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt6atomicIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEEC2ES4_(%"struct.std::atomic"* nonnull dereferenceable(4) %this, i32 %__i) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::atomic"*, align 8
   %__i.addr = alloca i32, align 4
@@ -2585,7 +2586,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt5mutexC2Ev(%"class.std::mutex"* nonnull dereferenceable(40) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt5mutexC2Ev(%"class.std::mutex"* nonnull dereferenceable(40) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::mutex"*, align 8
   store %"class.std::mutex"* %this, %"class.std::mutex"** %this.addr, align 8
@@ -2596,7 +2597,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvSt4lessIS5_ESaISt4pairIKS5_S6_EEED2Ev(%"class.std::map.8"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvSt4lessIS5_ESaISt4pairIKS5_S6_EEED2Ev(%"class.std::map.8"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::map.8"*, align 8
   store %"class.std::map.8"* %this, %"class.std::map.8"** %this.addr, align 8
@@ -2607,7 +2608,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox20rlbox_wasm2c_sandboxD2Ev(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox20rlbox_wasm2c_sandboxD2Ev(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_wasm2c_sandbox"*, align 8
   store %"class.rlbox::rlbox_wasm2c_sandbox"* %this, %"class.rlbox::rlbox_wasm2c_sandbox"** %this.addr, align 8
@@ -2620,7 +2621,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt3mapIPKvjSt4lessIS1_ESaISt4pairIKS1_jEEEC2Ev(%"class.std::map"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt3mapIPKvjSt4lessIS1_ESaISt4pairIKS1_jEEEC2Ev(%"class.std::map"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::map"*, align 8
   store %"class.std::map"* %this, %"class.std::map"** %this.addr, align 8
@@ -2631,7 +2632,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt3mapIjPKvSt4lessIjESaISt4pairIKjS1_EEEC2Ev(%"class.std::map.0"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt3mapIjPKvSt4lessIjESaISt4pairIKjS1_EEEC2Ev(%"class.std::map.0"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::map.0"*, align 8
   store %"class.std::map.0"* %this, %"class.std::map.0"** %this.addr, align 8
@@ -2642,7 +2643,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EEC2Ev(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EEC2Ev(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree"*, align 8
   store %"class.std::_Rb_tree"* %this, %"class.std::_Rb_tree"** %this.addr, align 8
@@ -2653,7 +2654,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE13_Rb_tree_implIS8_Lb1EEC2Ev(%"struct.std::_Rb_tree<const void *, std::pair<const void *const, unsigned int>, std::_Select1st<std::pair<const void *const, unsigned int>>, std::less<const void *>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE13_Rb_tree_implIS8_Lb1EEC2Ev(%"struct.std::_Rb_tree<const void *, std::pair<const void *const, unsigned int>, std::_Select1st<std::pair<const void *const, unsigned int>>, std::less<const void *>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree<const void *, std::pair<const void *const, unsigned int>, std::_Select1st<std::pair<const void *const, unsigned int>>, std::less<const void *>>::_Rb_tree_impl"*, align 8
   store %"struct.std::_Rb_tree<const void *, std::pair<const void *const, unsigned int>, std::_Select1st<std::pair<const void *const, unsigned int>>, std::less<const void *>>::_Rb_tree_impl"* %this, %"struct.std::_Rb_tree<const void *, std::pair<const void *const, unsigned int>, std::_Select1st<std::pair<const void *const, unsigned int>>, std::less<const void *>>::_Rb_tree_impl"** %this.addr, align 8
@@ -2670,7 +2671,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKPKvjEEEC2Ev(%"class.std::allocator"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKPKvjEEEC2Ev(%"class.std::allocator"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::allocator"*, align 8
   store %"class.std::allocator"* %this, %"class.std::allocator"** %this.addr, align 8
@@ -2681,7 +2682,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt20_Rb_tree_key_compareISt4lessIPKvEEC2Ev(%"struct.std::_Rb_tree_key_compare"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt20_Rb_tree_key_compareISt4lessIPKvEEC2Ev(%"struct.std::_Rb_tree_key_compare"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_key_compare"*, align 8
   store %"struct.std::_Rb_tree_key_compare"* %this, %"struct.std::_Rb_tree_key_compare"** %this.addr, align 8
@@ -2691,7 +2692,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt15_Rb_tree_headerC2Ev(%"struct.std::_Rb_tree_header"* nonnull dereferenceable(40) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt15_Rb_tree_headerC2Ev(%"struct.std::_Rb_tree_header"* nonnull dereferenceable(40) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_header"*, align 8
   store %"struct.std::_Rb_tree_header"* %this, %"struct.std::_Rb_tree_header"** %this.addr, align 8
@@ -2715,7 +2716,7 @@ terminate.lpad:                                   ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKPKvjEEEC2Ev(%"class.__gnu_cxx::new_allocator"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKPKvjEEEC2Ev(%"class.__gnu_cxx::new_allocator"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator"*, align 8
   store %"class.__gnu_cxx::new_allocator"* %this, %"class.__gnu_cxx::new_allocator"** %this.addr, align 8
@@ -2724,7 +2725,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt15_Rb_tree_header8_M_resetEv(%"struct.std::_Rb_tree_header"* nonnull dereferenceable(40) %this) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt15_Rb_tree_header8_M_resetEv(%"struct.std::_Rb_tree_header"* nonnull dereferenceable(40) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_header"*, align 8
   store %"struct.std::_Rb_tree_header"* %this, %"struct.std::_Rb_tree_header"** %this.addr, align 8
@@ -2746,7 +2747,7 @@ entry:
 }
 
 ; Function Attrs: noinline noreturn nounwind
-define linkonce_odr hidden void @__clang_call_terminate(i8* %0) #15 comdat {
+define linkonce_odr hidden void @__clang_call_terminate(i8* %0) #14 comdat {
   %2 = call i8* @__cxa_begin_catch(i8* %0) #3
   call void @_ZSt9terminatev() #24
   unreachable
@@ -2757,7 +2758,7 @@ declare dso_local i8* @__cxa_begin_catch(i8*)
 declare dso_local void @_ZSt9terminatev()
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EEC2Ev(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EEC2Ev(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.1"*, align 8
   store %"class.std::_Rb_tree.1"* %this, %"class.std::_Rb_tree.1"** %this.addr, align 8
@@ -2768,7 +2769,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE13_Rb_tree_implIS8_Lb1EEC2Ev(%"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, const void *>, std::_Select1st<std::pair<const unsigned int, const void *>>, std::less<unsigned int>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE13_Rb_tree_implIS8_Lb1EEC2Ev(%"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, const void *>, std::_Select1st<std::pair<const unsigned int, const void *>>, std::less<unsigned int>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, const void *>, std::_Select1st<std::pair<const unsigned int, const void *>>, std::less<unsigned int>>::_Rb_tree_impl"*, align 8
   store %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, const void *>, std::_Select1st<std::pair<const unsigned int, const void *>>, std::less<unsigned int>>::_Rb_tree_impl"* %this, %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, const void *>, std::_Select1st<std::pair<const unsigned int, const void *>>, std::less<unsigned int>>::_Rb_tree_impl"** %this.addr, align 8
@@ -2785,7 +2786,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKjPKvEEEC2Ev(%"class.std::allocator.2"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKjPKvEEEC2Ev(%"class.std::allocator.2"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::allocator.2"*, align 8
   store %"class.std::allocator.2"* %this, %"class.std::allocator.2"** %this.addr, align 8
@@ -2796,7 +2797,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt20_Rb_tree_key_compareISt4lessIjEEC2Ev(%"struct.std::_Rb_tree_key_compare.5"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt20_Rb_tree_key_compareISt4lessIjEEC2Ev(%"struct.std::_Rb_tree_key_compare.5"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_key_compare.5"*, align 8
   store %"struct.std::_Rb_tree_key_compare.5"* %this, %"struct.std::_Rb_tree_key_compare.5"** %this.addr, align 8
@@ -2806,7 +2807,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPKvEEEC2Ev(%"class.__gnu_cxx::new_allocator.3"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPKvEEEC2Ev(%"class.__gnu_cxx::new_allocator.3"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.3"*, align 8
   store %"class.__gnu_cxx::new_allocator.3"* %this, %"class.__gnu_cxx::new_allocator.3"** %this.addr, align 8
@@ -2815,7 +2816,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt22__shared_mutex_pthreadC2Ev(%"class.std::__shared_mutex_pthread"* nonnull dereferenceable(56) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt22__shared_mutex_pthreadC2Ev(%"class.std::__shared_mutex_pthread"* nonnull dereferenceable(56) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::__shared_mutex_pthread"*, align 8
   store %"class.std::__shared_mutex_pthread"* %this, %"class.std::__shared_mutex_pthread"** %this.addr, align 8
@@ -2838,10 +2839,10 @@ entry:
 }
 
 ; Function Attrs: argmemonly nofree nosync nounwind willreturn writeonly
-declare void @llvm.memset.p0i8.i64(i8* nocapture writeonly, i8, i64, i1 immarg) #16
+declare void @llvm.memset.p0i8.i64(i8* nocapture writeonly, i8, i64, i1 immarg) #15
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EEC2Ev(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EEC2Ev(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.9"*, align 8
   store %"class.std::_Rb_tree.9"* %this, %"class.std::_Rb_tree.9"** %this.addr, align 8
@@ -2852,7 +2853,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE13_Rb_tree_implISD_Lb1EEC2Ev(%"struct.std::_Rb_tree<std::__cxx11::basic_string<char>, std::pair<const std::__cxx11::basic_string<char>, void *>, std::_Select1st<std::pair<const std::__cxx11::basic_string<char>, void *>>, std::less<std::__cxx11::basic_string<char>>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE13_Rb_tree_implISD_Lb1EEC2Ev(%"struct.std::_Rb_tree<std::__cxx11::basic_string<char>, std::pair<const std::__cxx11::basic_string<char>, void *>, std::_Select1st<std::pair<const std::__cxx11::basic_string<char>, void *>>, std::less<std::__cxx11::basic_string<char>>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree<std::__cxx11::basic_string<char>, std::pair<const std::__cxx11::basic_string<char>, void *>, std::_Select1st<std::pair<const std::__cxx11::basic_string<char>, void *>>, std::less<std::__cxx11::basic_string<char>>>::_Rb_tree_impl"*, align 8
   store %"struct.std::_Rb_tree<std::__cxx11::basic_string<char>, std::pair<const std::__cxx11::basic_string<char>, void *>, std::_Select1st<std::pair<const std::__cxx11::basic_string<char>, void *>>, std::less<std::__cxx11::basic_string<char>>>::_Rb_tree_impl"* %this, %"struct.std::_Rb_tree<std::__cxx11::basic_string<char>, std::pair<const std::__cxx11::basic_string<char>, void *>, std::_Select1st<std::pair<const std::__cxx11::basic_string<char>, void *>>, std::less<std::__cxx11::basic_string<char>>>::_Rb_tree_impl"** %this.addr, align 8
@@ -2869,7 +2870,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEEC2Ev(%"class.std::allocator.10"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEEC2Ev(%"class.std::allocator.10"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::allocator.10"*, align 8
   store %"class.std::allocator.10"* %this, %"class.std::allocator.10"** %this.addr, align 8
@@ -2880,7 +2881,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt20_Rb_tree_key_compareISt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEEC2Ev(%"struct.std::_Rb_tree_key_compare.13"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt20_Rb_tree_key_compareISt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEEC2Ev(%"struct.std::_Rb_tree_key_compare.13"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_key_compare.13"*, align 8
   store %"struct.std::_Rb_tree_key_compare.13"* %this, %"struct.std::_Rb_tree_key_compare.13"** %this.addr, align 8
@@ -2890,7 +2891,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEEC2Ev(%"class.__gnu_cxx::new_allocator.11"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEEC2Ev(%"class.__gnu_cxx::new_allocator.11"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.11"*, align 8
   store %"class.__gnu_cxx::new_allocator.11"* %this, %"class.__gnu_cxx::new_allocator.11"** %this.addr, align 8
@@ -2899,7 +2900,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt3mapIjPvSt4lessIjESaISt4pairIKjS0_EEEC2Ev(%"class.std::map.16"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt3mapIjPvSt4lessIjESaISt4pairIKjS0_EEEC2Ev(%"class.std::map.16"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::map.16"*, align 8
   store %"class.std::map.16"* %this, %"class.std::map.16"** %this.addr, align 8
@@ -2952,7 +2953,7 @@ if.then:                                          ; preds = %lor.end
   call void @_ZNSt23_Rb_tree_const_iteratorISt4pairIKjPvEEC2ERKSt17_Rb_tree_iteratorIS3_E(%"struct.std::_Rb_tree_const_iterator"* nonnull dereferenceable(8) %agg.tmp, %"struct.std::_Rb_tree_iterator"* nonnull align 8 dereferenceable(8) %__i) #3
   %3 = load i32*, i32** %__k.addr, align 8
   %call10 = call nonnull align 4 dereferenceable(4) i32* @_ZSt4moveIRjEONSt16remove_referenceIT_E4typeEOS2_(i32* nonnull align 4 dereferenceable(4) %3) #3
-  call void @_ZSt16forward_as_tupleIJjEESt5tupleIJDpOT_EES3_(%"class.std::tuple"*  align 8 %ref.tmp9, i32* nonnull align 4 dereferenceable(4) %call10) #3
+  call void @_ZSt16forward_as_tupleIJjEESt5tupleIJDpOT_EES3_(%"class.std::tuple"* align 8 %ref.tmp9, i32* nonnull align 4 dereferenceable(4) %call10) #3
   %coerce.dive12 = getelementptr inbounds %"struct.std::_Rb_tree_const_iterator", %"struct.std::_Rb_tree_const_iterator"* %agg.tmp, i32 0, i32 0
   %4 = load %"struct.std::_Rb_tree_node_base"*, %"struct.std::_Rb_tree_node_base"** %coerce.dive12, align 8
   %call13 = call %"struct.std::_Rb_tree_node_base"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJOjEESE_IJEEEEESt17_Rb_tree_iteratorIS3_ESt23_Rb_tree_const_iteratorIS3_EDpOT_(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %_M_t, %"struct.std::_Rb_tree_node_base"* %4, %"struct.std::piecewise_construct_t"* nonnull align 1 dereferenceable(1) @_ZSt19piecewise_construct, %"class.std::tuple"* nonnull align 8 dereferenceable(8) %ref.tmp9, %"class.std::tuple.36"* nonnull align 1 dereferenceable(1) %ref.tmp11)
@@ -2970,7 +2971,7 @@ if.end:                                           ; preds = %if.then, %lor.end
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt3mapIjPvSt4lessIjESaISt4pairIKjS0_EEED2Ev(%"class.std::map.16"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt3mapIjPvSt4lessIjESaISt4pairIKjS0_EEED2Ev(%"class.std::map.16"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::map.16"*, align 8
   store %"class.std::map.16"* %this, %"class.std::map.16"** %this.addr, align 8
@@ -2981,7 +2982,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EEC2Ev(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EEC2Ev(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   store %"class.std::_Rb_tree.17"* %this, %"class.std::_Rb_tree.17"** %this.addr, align 8
@@ -2992,7 +2993,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE13_Rb_tree_implIS7_Lb1EEC2Ev(%"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, void *>, std::_Select1st<std::pair<const unsigned int, void *>>, std::less<unsigned int>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE13_Rb_tree_implIS7_Lb1EEC2Ev(%"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, void *>, std::_Select1st<std::pair<const unsigned int, void *>>, std::less<unsigned int>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, void *>, std::_Select1st<std::pair<const unsigned int, void *>>, std::less<unsigned int>>::_Rb_tree_impl"*, align 8
   store %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, void *>, std::_Select1st<std::pair<const unsigned int, void *>>, std::less<unsigned int>>::_Rb_tree_impl"* %this, %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, void *>, std::_Select1st<std::pair<const unsigned int, void *>>, std::less<unsigned int>>::_Rb_tree_impl"** %this.addr, align 8
@@ -3009,7 +3010,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKjPvEEEC2Ev(%"class.std::allocator.18"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKjPvEEEC2Ev(%"class.std::allocator.18"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::allocator.18"*, align 8
   store %"class.std::allocator.18"* %this, %"class.std::allocator.18"** %this.addr, align 8
@@ -3020,7 +3021,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPvEEEC2Ev(%"class.__gnu_cxx::new_allocator.19"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPvEEEC2Ev(%"class.__gnu_cxx::new_allocator.19"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.19"*, align 8
   store %"class.__gnu_cxx::new_allocator.19"* %this, %"class.__gnu_cxx::new_allocator.19"** %this.addr, align 8
@@ -3048,7 +3049,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZSteqRKSt17_Rb_tree_iteratorISt4pairIKjPvEES6_(%"struct.std::_Rb_tree_iterator"* nonnull align 8 dereferenceable(8) %__x, %"struct.std::_Rb_tree_iterator"* nonnull align 8 dereferenceable(8) %__y) #5 comdat {
+define linkonce_odr dso_local zeroext i1 @_ZSteqRKSt17_Rb_tree_iteratorISt4pairIKjPvEES6_(%"struct.std::_Rb_tree_iterator"* nonnull align 8 dereferenceable(8) %__x, %"struct.std::_Rb_tree_iterator"* nonnull align 8 dereferenceable(8) %__y) #6 comdat {
 entry:
   %__x.addr = alloca %"struct.std::_Rb_tree_iterator"*, align 8
   %__y.addr = alloca %"struct.std::_Rb_tree_iterator"*, align 8
@@ -3065,7 +3066,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node_base"* @_ZNSt3mapIjPvSt4lessIjESaISt4pairIKjS0_EEE3endEv(%"class.std::map.16"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node_base"* @_ZNSt3mapIjPvSt4lessIjESaISt4pairIKjS0_EEE3endEv(%"class.std::map.16"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %retval = alloca %"struct.std::_Rb_tree_iterator", align 8
   %this.addr = alloca %"class.std::map.16"*, align 8
@@ -3093,7 +3094,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZNKSt4lessIjEclERKjS2_(%"struct.std::less.6"* nonnull dereferenceable(1) %this, i32* nonnull align 4 dereferenceable(4) %__x, i32* nonnull align 4 dereferenceable(4) %__y) #5 comdat align 2 {
+define linkonce_odr dso_local zeroext i1 @_ZNKSt4lessIjEclERKjS2_(%"struct.std::less.6"* nonnull dereferenceable(1) %this, i32* nonnull align 4 dereferenceable(4) %__x, i32* nonnull align 4 dereferenceable(4) %__y) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::less.6"*, align 8
   %__x.addr = alloca i32*, align 8
@@ -3111,7 +3112,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(16) %"struct.std::pair"* @_ZNKSt17_Rb_tree_iteratorISt4pairIKjPvEEdeEv(%"struct.std::_Rb_tree_iterator"* nonnull dereferenceable(8) %this) #5 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(16) %"struct.std::pair"* @_ZNKSt17_Rb_tree_iteratorISt4pairIKjPvEEdeEv(%"struct.std::_Rb_tree_iterator"* nonnull dereferenceable(8) %this) #6 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_iterator"*, align 8
   store %"struct.std::_Rb_tree_iterator"* %this, %"struct.std::_Rb_tree_iterator"** %this.addr, align 8
@@ -3268,7 +3269,7 @@ unreachable:                                      ; preds = %catch
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt23_Rb_tree_const_iteratorISt4pairIKjPvEEC2ERKSt17_Rb_tree_iteratorIS3_E(%"struct.std::_Rb_tree_const_iterator"* nonnull dereferenceable(8) %this, %"struct.std::_Rb_tree_iterator"* nonnull align 8 dereferenceable(8) %__it) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt23_Rb_tree_const_iteratorISt4pairIKjPvEEC2ERKSt17_Rb_tree_iteratorIS3_E(%"struct.std::_Rb_tree_const_iterator"* nonnull dereferenceable(8) %this, %"struct.std::_Rb_tree_iterator"* nonnull align 8 dereferenceable(8) %__it) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_const_iterator"*, align 8
   %__it.addr = alloca %"struct.std::_Rb_tree_iterator"*, align 8
@@ -3284,7 +3285,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZSt16forward_as_tupleIJjEESt5tupleIJDpOT_EES3_(%"class.std::tuple"*  align 8 %agg.result, i32* nonnull align 4 dereferenceable(4) %__args) #5 comdat personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZSt16forward_as_tupleIJjEESt5tupleIJDpOT_EES3_(%"class.std::tuple"*  align 8 %agg.result, i32* nonnull align 4 dereferenceable(4) %__args) #6 comdat personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %result.ptr = alloca i8*, align 8
   %__args.addr = alloca i32*, align 8
@@ -3308,7 +3309,7 @@ terminate.lpad:                                   ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt4moveIRjEONSt16remove_referenceIT_E4typeEOS2_(i32* nonnull align 4 dereferenceable(4) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt4moveIRjEONSt16remove_referenceIT_E4typeEOS2_(i32* nonnull align 4 dereferenceable(4) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i32*, align 8
   store i32* %__t, i32** %__t.addr, align 8
@@ -3395,7 +3396,7 @@ while.end:                                        ; preds = %while.cond
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE8_M_beginEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE8_M_beginEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   store %"class.std::_Rb_tree.17"* %this, %"class.std::_Rb_tree.17"** %this.addr, align 8
@@ -3412,7 +3413,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node_base"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE6_M_endEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node_base"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE6_M_endEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   store %"class.std::_Rb_tree.17"* %this, %"class.std::_Rb_tree.17"** %this.addr, align 8
@@ -3438,7 +3439,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE7_S_leftEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE7_S_leftEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #6 comdat align 2 {
 entry:
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"*, align 8
   store %"struct.std::_Rb_tree_node_base"* %__x, %"struct.std::_Rb_tree_node_base"** %__x.addr, align 8
@@ -3450,7 +3451,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE8_S_rightEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE8_S_rightEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #6 comdat align 2 {
 entry:
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"*, align 8
   store %"struct.std::_Rb_tree_node_base"* %__x, %"struct.std::_Rb_tree_node_base"** %__x.addr, align 8
@@ -3462,7 +3463,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt17_Rb_tree_iteratorISt4pairIKjPvEEC2EPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_iterator"* nonnull dereferenceable(8) %this, %"struct.std::_Rb_tree_node_base"* %__x) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt17_Rb_tree_iteratorISt4pairIKjPvEEC2EPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_iterator"* nonnull dereferenceable(8) %this, %"struct.std::_Rb_tree_node_base"* %__x) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_iterator"*, align 8
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"*, align 8
@@ -3476,7 +3477,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZNKSt10_Select1stISt4pairIKjPvEEclERKS3_(%"struct.std::_Select1st"* nonnull dereferenceable(1) %this, %"struct.std::pair"* nonnull align 8 dereferenceable(16) %__x) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZNKSt10_Select1stISt4pairIKjPvEEclERKS3_(%"struct.std::_Select1st"* nonnull dereferenceable(1) %this, %"struct.std::pair"* nonnull align 8 dereferenceable(16) %__x) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Select1st"*, align 8
   %__x.addr = alloca %"struct.std::pair"*, align 8
@@ -3489,7 +3490,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::pair"* @_ZNKSt13_Rb_tree_nodeISt4pairIKjPvEE9_M_valptrEv(%"struct.std::_Rb_tree_node"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::pair"* @_ZNKSt13_Rb_tree_nodeISt4pairIKjPvEE9_M_valptrEv(%"struct.std::_Rb_tree_node"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_node"*, align 8
   store %"struct.std::_Rb_tree_node"* %this, %"struct.std::_Rb_tree_node"** %this.addr, align 8
@@ -3500,7 +3501,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::pair"* @_ZNK9__gnu_cxx16__aligned_membufISt4pairIKjPvEE6_M_ptrEv(%"struct.__gnu_cxx::__aligned_membuf"* nonnull dereferenceable(16) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::pair"* @_ZNK9__gnu_cxx16__aligned_membufISt4pairIKjPvEE6_M_ptrEv(%"struct.__gnu_cxx::__aligned_membuf"* nonnull dereferenceable(16) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__aligned_membuf"*, align 8
   store %"struct.__gnu_cxx::__aligned_membuf"* %this, %"struct.__gnu_cxx::__aligned_membuf"** %this.addr, align 8
@@ -3511,7 +3512,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZNK9__gnu_cxx16__aligned_membufISt4pairIKjPvEE7_M_addrEv(%"struct.__gnu_cxx::__aligned_membuf"* nonnull dereferenceable(16) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZNK9__gnu_cxx16__aligned_membufISt4pairIKjPvEE7_M_addrEv(%"struct.__gnu_cxx::__aligned_membuf"* nonnull dereferenceable(16) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__aligned_membuf"*, align 8
   store %"struct.__gnu_cxx::__aligned_membuf"* %this, %"struct.__gnu_cxx::__aligned_membuf"** %this.addr, align 8
@@ -3522,7 +3523,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node_base"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE3endEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node_base"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE3endEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %retval = alloca %"struct.std::_Rb_tree_iterator", align 8
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
@@ -3540,7 +3541,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNKSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE8key_compEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNKSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE8key_compEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   store %"class.std::_Rb_tree.17"* %this, %"class.std::_Rb_tree.17"** %this.addr, align 8
@@ -3552,7 +3553,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::pair"* @_ZNSt13_Rb_tree_nodeISt4pairIKjPvEE9_M_valptrEv(%"struct.std::_Rb_tree_node"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::pair"* @_ZNSt13_Rb_tree_nodeISt4pairIKjPvEE9_M_valptrEv(%"struct.std::_Rb_tree_node"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_node"*, align 8
   store %"struct.std::_Rb_tree_node"* %this, %"struct.std::_Rb_tree_node"** %this.addr, align 8
@@ -3563,7 +3564,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::pair"* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKjPvEE6_M_ptrEv(%"struct.__gnu_cxx::__aligned_membuf"* nonnull dereferenceable(16) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::pair"* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKjPvEE6_M_ptrEv(%"struct.__gnu_cxx::__aligned_membuf"* nonnull dereferenceable(16) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__aligned_membuf"*, align 8
   store %"struct.__gnu_cxx::__aligned_membuf"* %this, %"struct.__gnu_cxx::__aligned_membuf"** %this.addr, align 8
@@ -3574,7 +3575,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKjPvEE7_M_addrEv(%"struct.__gnu_cxx::__aligned_membuf"* nonnull dereferenceable(16) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKjPvEE7_M_addrEv(%"struct.__gnu_cxx::__aligned_membuf"* nonnull dereferenceable(16) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__aligned_membuf"*, align 8
   store %"struct.__gnu_cxx::__aligned_membuf"* %this, %"struct.__gnu_cxx::__aligned_membuf"** %this.addr, align 8
@@ -3612,7 +3613,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"struct.std::piecewise_construct_t"* @_ZSt7forwardIRKSt21piecewise_construct_tEOT_RNSt16remove_referenceIS3_E4typeE(%"struct.std::piecewise_construct_t"* nonnull align 1 dereferenceable(1) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"struct.std::piecewise_construct_t"* @_ZSt7forwardIRKSt21piecewise_construct_tEOT_RNSt16remove_referenceIS3_E4typeE(%"struct.std::piecewise_construct_t"* nonnull align 1 dereferenceable(1) %__t) #6 comdat {
 entry:
   %__t.addr = alloca %"struct.std::piecewise_construct_t"*, align 8
   store %"struct.std::piecewise_construct_t"* %__t, %"struct.std::piecewise_construct_t"** %__t.addr, align 8
@@ -3621,7 +3622,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.std::tuple"* @_ZSt7forwardISt5tupleIJOjEEEOT_RNSt16remove_referenceIS3_E4typeE(%"class.std::tuple"* nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.std::tuple"* @_ZSt7forwardISt5tupleIJOjEEEOT_RNSt16remove_referenceIS3_E4typeE(%"class.std::tuple"* nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca %"class.std::tuple"*, align 8
   store %"class.std::tuple"* %__t, %"class.std::tuple"** %__t.addr, align 8
@@ -3630,7 +3631,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::tuple.36"* @_ZSt7forwardISt5tupleIJEEEOT_RNSt16remove_referenceIS2_E4typeE(%"class.std::tuple.36"* nonnull align 1 dereferenceable(1) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::tuple.36"* @_ZSt7forwardISt5tupleIJEEEOT_RNSt16remove_referenceIS2_E4typeE(%"class.std::tuple.36"* nonnull align 1 dereferenceable(1) %__t) #6 comdat {
 entry:
   %__t.addr = alloca %"class.std::tuple.36"*, align 8
   store %"class.std::tuple.36"* %__t, %"class.std::tuple.36"** %__t.addr, align 8
@@ -3922,7 +3923,7 @@ lor.end:                                          ; preds = %lor.rhs, %lor.lhs.f
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE12_M_drop_nodeEPSt13_Rb_tree_nodeIS3_E(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE12_M_drop_nodeEPSt13_Rb_tree_nodeIS3_E(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node"* %__p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node"*, align 8
@@ -3941,7 +3942,7 @@ declare dso_local void @__cxa_rethrow()
 declare dso_local void @__cxa_end_catch()
 
 ; Function Attrs: cold noreturn nounwind
-declare void @llvm.trap() #17
+declare void @llvm.trap() #16
 
 ; Function Attrs: noinline optnone uwtable mustprogress
 define linkonce_odr dso_local %"struct.std::_Rb_tree_node"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE11_M_get_nodeEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #4 comdat align 2 {
@@ -4055,7 +4056,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator.18"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE21_M_get_Node_allocatorEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator.18"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE21_M_get_Node_allocatorEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   store %"class.std::_Rb_tree.17"* %this, %"class.std::_Rb_tree.17"** %this.addr, align 8
@@ -4093,7 +4094,7 @@ if.end:                                           ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZNK9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPvEEE8max_sizeEv(%"class.__gnu_cxx::new_allocator.19"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZNK9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPvEEE8max_sizeEv(%"class.__gnu_cxx::new_allocator.19"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.19"*, align 8
   store %"class.__gnu_cxx::new_allocator.19"* %this, %"class.__gnu_cxx::new_allocator.19"** %this.addr, align 8
@@ -4102,10 +4103,10 @@ entry:
 }
 
 ; Function Attrs: noreturn
-declare dso_local void @_ZSt17__throw_bad_allocv() #18
+declare dso_local void @_ZSt17__throw_bad_allocv() #17
 
 ; Function Attrs: nobuiltin allocsize(0)
-declare dso_local nonnull i8* @_Znwm(i64) #8
+declare dso_local nonnull i8* @_Znwm(i64) #9
 
 ; Function Attrs: noinline optnone uwtable mustprogress
 define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaISt13_Rb_tree_nodeISt4pairIKjPvEEEE9constructIS4_JRKSt21piecewise_construct_tSt5tupleIJOjEESC_IJEEEEEvRS6_PT_DpOT0_(%"class.std::allocator.18"* nonnull align 1 dereferenceable(1) %__a, %"struct.std::pair"* %__p, %"struct.std::piecewise_construct_t"* nonnull align 1 dereferenceable(1) %__args, %"class.std::tuple"* nonnull align 8 dereferenceable(8) %__args1, %"class.std::tuple.36"* nonnull align 1 dereferenceable(1) %__args3) #4 comdat align 2 {
@@ -4134,7 +4135,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS3_E(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node"* %__p) #5 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS3_E(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node"* %__p) #6 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node"*, align 8
@@ -4189,7 +4190,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt5tupleIJOjEEC2EOS1_(%"class.std::tuple"* nonnull dereferenceable(8) %this, %"class.std::tuple"* nonnull align 8 dereferenceable(8) %0) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt5tupleIJOjEEC2EOS1_(%"class.std::tuple"* nonnull dereferenceable(8) %this, %"class.std::tuple"* nonnull align 8 dereferenceable(8) %0) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::tuple"*, align 8
   %.addr = alloca %"class.std::tuple"*, align 8
@@ -4204,7 +4205,7 @@ entry:
 }
 
 ; Function Attrs: noinline optnone uwtable
-define linkonce_odr dso_local void @_ZNSt4pairIKjPvEC2IJOjEJEEESt21piecewise_construct_tSt5tupleIJDpT_EES6_IJDpT0_EE(%"struct.std::pair"* nonnull dereferenceable(16) %this, %"class.std::tuple"* %__first) unnamed_addr #7 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt4pairIKjPvEC2IJOjEJEEESt21piecewise_construct_tSt5tupleIJDpT_EES6_IJDpT0_EE(%"struct.std::pair"* nonnull dereferenceable(16) %this, %"class.std::tuple"* %__first) unnamed_addr #8 comdat align 2 {
 entry:
   %0 = alloca %"struct.std::piecewise_construct_t", align 1
   %__second = alloca %"class.std::tuple.36", align 1
@@ -4218,7 +4219,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt11_Tuple_implILm0EJOjEEC2EOS1_(%"struct.std::_Tuple_impl"* nonnull dereferenceable(8) %this, %"struct.std::_Tuple_impl"* nonnull align 8 dereferenceable(8) %__in) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt11_Tuple_implILm0EJOjEEC2EOS1_(%"struct.std::_Tuple_impl"* nonnull dereferenceable(8) %this, %"struct.std::_Tuple_impl"* nonnull align 8 dereferenceable(8) %__in) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"struct.std::_Tuple_impl"*, align 8
   %__in.addr = alloca %"struct.std::_Tuple_impl"*, align 8
@@ -4244,7 +4245,7 @@ terminate.lpad:                                   ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt7forwardIOjEOT_RNSt16remove_referenceIS1_E4typeE(i32* nonnull align 4 dereferenceable(4) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt7forwardIOjEOT_RNSt16remove_referenceIS1_E4typeE(i32* nonnull align 4 dereferenceable(4) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i32*, align 8
   store i32* %__t, i32** %__t.addr, align 8
@@ -4253,7 +4254,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZNSt11_Tuple_implILm0EJOjEE7_M_headERS1_(%"struct.std::_Tuple_impl"* nonnull align 8 dereferenceable(8) %__t) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZNSt11_Tuple_implILm0EJOjEE7_M_headERS1_(%"struct.std::_Tuple_impl"* nonnull align 8 dereferenceable(8) %__t) #6 comdat align 2 {
 entry:
   %__t.addr = alloca %"struct.std::_Tuple_impl"*, align 8
   store %"struct.std::_Tuple_impl"* %__t, %"struct.std::_Tuple_impl"** %__t.addr, align 8
@@ -4264,7 +4265,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt10_Head_baseILm0EOjLb0EEC2IjEEOT_(%"struct.std::_Head_base"* nonnull dereferenceable(8) %this, i32* nonnull align 4 dereferenceable(4) %__h) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt10_Head_baseILm0EOjLb0EEC2IjEEOT_(%"struct.std::_Head_base"* nonnull dereferenceable(8) %this, i32* nonnull align 4 dereferenceable(4) %__h) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Head_base"*, align 8
   %__h.addr = alloca i32*, align 8
@@ -4279,7 +4280,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZNSt10_Head_baseILm0EOjLb0EE7_M_headERS1_(%"struct.std::_Head_base"* nonnull align 8 dereferenceable(8) %__b) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZNSt10_Head_baseILm0EOjLb0EE7_M_headERS1_(%"struct.std::_Head_base"* nonnull align 8 dereferenceable(8) %__b) #6 comdat align 2 {
 entry:
   %__b.addr = alloca %"struct.std::_Head_base"*, align 8
   store %"struct.std::_Head_base"* %__b, %"struct.std::_Head_base"** %__b.addr, align 8
@@ -4290,7 +4291,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt7forwardIjEOT_RNSt16remove_referenceIS0_E4typeE(i32* nonnull align 4 dereferenceable(4) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt7forwardIjEOT_RNSt16remove_referenceIS0_E4typeE(i32* nonnull align 4 dereferenceable(4) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i32*, align 8
   store i32* %__t, i32** %__t.addr, align 8
@@ -4299,7 +4300,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt4pairIKjPvEC2IJOjEJLm0EEJEJEEERSt5tupleIJDpT_EERS5_IJDpT1_EESt12_Index_tupleIJXspT0_EEESE_IJXspT2_EEE(%"struct.std::pair"* nonnull dereferenceable(16) %this, %"class.std::tuple"* nonnull align 8 dereferenceable(8) %__tuple1, %"class.std::tuple.36"* nonnull align 1 dereferenceable(1) %__tuple2) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt4pairIKjPvEC2IJOjEJLm0EEJEJEEERSt5tupleIJDpT_EERS5_IJDpT1_EESt12_Index_tupleIJXspT0_EEESE_IJXspT2_EEE(%"struct.std::pair"* nonnull dereferenceable(16) %this, %"class.std::tuple"* nonnull align 8 dereferenceable(8) %__tuple1, %"class.std::tuple.36"* nonnull align 1 dereferenceable(1) %__tuple2) unnamed_addr #12 comdat align 2 {
 entry:
   %0 = alloca %"struct.std::_Index_tuple", align 1
   %1 = alloca %"struct.std::_Index_tuple.40", align 1
@@ -4323,7 +4324,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt3getILm0EJOjEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS5_(%"class.std::tuple"* nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt3getILm0EJOjEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS5_(%"class.std::tuple"* nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca %"class.std::tuple"*, align 8
   store %"class.std::tuple"* %__t, %"class.std::tuple"** %__t.addr, align 8
@@ -4334,7 +4335,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt12__get_helperILm0EOjJEERT0_RSt11_Tuple_implIXT_EJS1_DpT1_EE(%"struct.std::_Tuple_impl"* nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt12__get_helperILm0EOjJEERT0_RSt11_Tuple_implIXT_EJS1_DpT1_EE(%"struct.std::_Tuple_impl"* nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca %"struct.std::_Tuple_impl"*, align 8
   store %"struct.std::_Tuple_impl"* %__t, %"struct.std::_Tuple_impl"** %__t.addr, align 8
@@ -4361,7 +4362,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPvEEE10deallocateEPS6_m(%"class.__gnu_cxx::new_allocator.19"* nonnull dereferenceable(1) %this, %"struct.std::_Rb_tree_node"* %__p, i64 %0) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPvEEE10deallocateEPS6_m(%"class.__gnu_cxx::new_allocator.19"* nonnull dereferenceable(1) %this, %"struct.std::_Rb_tree_node"* %__p, i64 %0) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.19"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node"*, align 8
@@ -4377,10 +4378,10 @@ entry:
 }
 
 ; Function Attrs: nobuiltin nounwind
-declare dso_local void @_ZdlPv(i8*) #12
+declare dso_local void @_ZdlPv(i8*) #11
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node_base"* @_ZNKSt23_Rb_tree_const_iteratorISt4pairIKjPvEE13_M_const_castEv(%"struct.std::_Rb_tree_const_iterator"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node_base"* @_ZNKSt23_Rb_tree_const_iteratorISt4pairIKjPvEE13_M_const_castEv(%"struct.std::_Rb_tree_const_iterator"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %retval = alloca %"struct.std::_Rb_tree_iterator", align 8
   %this.addr = alloca %"struct.std::_Rb_tree_const_iterator"*, align 8
@@ -4395,7 +4396,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZNKSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE4sizeEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZNKSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE4sizeEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   store %"class.std::_Rb_tree.17"* %this, %"class.std::_Rb_tree.17"** %this.addr, align 8
@@ -4421,7 +4422,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_node_base"** @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE12_M_rightmostEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_node_base"** @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE12_M_rightmostEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   store %"class.std::_Rb_tree.17"* %this, %"class.std::_Rb_tree.17"** %this.addr, align 8
@@ -4436,7 +4437,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt4pairIPSt18_Rb_tree_node_baseS1_EC2IRS1_Lb1EEERKS1_OT_(%"struct.std::pair.37"* nonnull dereferenceable(16) %this, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__x, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__y) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt4pairIPSt18_Rb_tree_node_baseS1_EC2IRS1_Lb1EEERKS1_OT_(%"struct.std::pair.37"* nonnull dereferenceable(16) %this, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__x, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__y) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::pair.37"*, align 8
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"**, align 8
@@ -4572,7 +4573,7 @@ return:                                           ; preds = %if.end18, %if.then1
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_node_base"** @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE11_M_leftmostEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_node_base"** @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE11_M_leftmostEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   store %"class.std::_Rb_tree.17"* %this, %"class.std::_Rb_tree.17"** %this.addr, align 8
@@ -4587,7 +4588,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt4pairIPSt18_Rb_tree_node_baseS1_EC2IRS1_S4_Lb1EEEOT_OT0_(%"struct.std::pair.37"* nonnull dereferenceable(16) %this, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__x, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__y) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt4pairIPSt18_Rb_tree_node_baseS1_EC2IRS1_S4_Lb1EEEOT_OT0_(%"struct.std::pair.37"* nonnull dereferenceable(16) %this, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__x, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__y) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::pair.37"*, align 8
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"**, align 8
@@ -4611,7 +4612,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_iterator"* @_ZNSt17_Rb_tree_iteratorISt4pairIKjPvEEmmEv(%"struct.std::_Rb_tree_iterator"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_iterator"* @_ZNSt17_Rb_tree_iteratorISt4pairIKjPvEEmmEv(%"struct.std::_Rb_tree_iterator"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_iterator"*, align 8
   store %"struct.std::_Rb_tree_iterator"* %this, %"struct.std::_Rb_tree_iterator"** %this.addr, align 8
@@ -4625,7 +4626,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_iterator"* @_ZNSt17_Rb_tree_iteratorISt4pairIKjPvEEppEv(%"struct.std::_Rb_tree_iterator"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_iterator"* @_ZNSt17_Rb_tree_iteratorISt4pairIKjPvEEppEv(%"struct.std::_Rb_tree_iterator"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_iterator"*, align 8
   store %"struct.std::_Rb_tree_iterator"* %this, %"struct.std::_Rb_tree_iterator"** %this.addr, align 8
@@ -4639,7 +4640,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt4pairIPSt18_Rb_tree_node_baseS1_EC2IRS1_Lb1EEEOT_RKS1_(%"struct.std::pair.37"* nonnull dereferenceable(16) %this, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__x, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__y) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt4pairIPSt18_Rb_tree_node_baseS1_EC2IRS1_Lb1EEEOT_RKS1_(%"struct.std::pair.37"* nonnull dereferenceable(16) %this, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__x, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__y) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::pair.37"*, align 8
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"**, align 8
@@ -4662,7 +4663,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_node_base"** @_ZSt7forwardIRPSt18_Rb_tree_node_baseEOT_RNSt16remove_referenceIS3_E4typeE(%"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_node_base"** @_ZSt7forwardIRPSt18_Rb_tree_node_baseEOT_RNSt16remove_referenceIS3_E4typeE(%"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca %"struct.std::_Rb_tree_node_base"**, align 8
   store %"struct.std::_Rb_tree_node_base"** %__t, %"struct.std::_Rb_tree_node_base"*** %__t.addr, align 8
@@ -4671,7 +4672,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node_base"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE5beginEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node_base"* @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE5beginEv(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %retval = alloca %"struct.std::_Rb_tree_iterator", align 8
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
@@ -4691,7 +4692,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt4pairIPSt18_Rb_tree_node_baseS1_EC2IRPSt13_Rb_tree_nodeIS_IKjPvEERS1_Lb1EEEOT_OT0_(%"struct.std::pair.37"* nonnull dereferenceable(16) %this, %"struct.std::_Rb_tree_node"** nonnull align 8 dereferenceable(8) %__x, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__y) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt4pairIPSt18_Rb_tree_node_baseS1_EC2IRPSt13_Rb_tree_nodeIS_IKjPvEERS1_Lb1EEEOT_OT0_(%"struct.std::pair.37"* nonnull dereferenceable(16) %this, %"struct.std::_Rb_tree_node"** nonnull align 8 dereferenceable(8) %__x, %"struct.std::_Rb_tree_node_base"** nonnull align 8 dereferenceable(8) %__y) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::pair.37"*, align 8
   %__x.addr = alloca %"struct.std::_Rb_tree_node"**, align 8
@@ -4716,7 +4717,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_node"** @_ZSt7forwardIRPSt13_Rb_tree_nodeISt4pairIKjPvEEEOT_RNSt16remove_referenceIS8_E4typeE(%"struct.std::_Rb_tree_node"** nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"struct.std::_Rb_tree_node"** @_ZSt7forwardIRPSt13_Rb_tree_nodeISt4pairIKjPvEEEOT_RNSt16remove_referenceIS8_E4typeE(%"struct.std::_Rb_tree_node"** nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca %"struct.std::_Rb_tree_node"**, align 8
   store %"struct.std::_Rb_tree_node"** %__t, %"struct.std::_Rb_tree_node"*** %__t.addr, align 8
@@ -4725,16 +4726,16 @@ entry:
 }
 
 ; Function Attrs: nounwind readonly
-declare dso_local %"struct.std::_Rb_tree_node_base"* @_ZSt18_Rb_tree_decrementPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"*) #19
+declare dso_local %"struct.std::_Rb_tree_node_base"* @_ZSt18_Rb_tree_decrementPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"*) #18
 
 ; Function Attrs: nounwind readonly
-declare dso_local %"struct.std::_Rb_tree_node_base"* @_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"*) #19
+declare dso_local %"struct.std::_Rb_tree_node_base"* @_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"*) #18
 
 ; Function Attrs: nounwind
 declare dso_local void @_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_(i1 zeroext, %"struct.std::_Rb_tree_node_base"*, %"struct.std::_Rb_tree_node_base"*, %"struct.std::_Rb_tree_node_base"* nonnull align 8 dereferenceable(32)) #2
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS3_E(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS3_E(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node"* %__p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node"*, align 8
@@ -4750,7 +4751,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaISt13_Rb_tree_nodeISt4pairIKjPvEEEE7destroyIS4_EEvRS6_PT_(%"class.std::allocator.18"* nonnull align 1 dereferenceable(1) %__a, %"struct.std::pair"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaISt13_Rb_tree_nodeISt4pairIKjPvEEEE7destroyIS4_EEvRS6_PT_(%"class.std::allocator.18"* nonnull align 1 dereferenceable(1) %__a, %"struct.std::pair"* %__p) #6 comdat align 2 {
 entry:
   %__a.addr = alloca %"class.std::allocator.18"*, align 8
   %__p.addr = alloca %"struct.std::pair"*, align 8
@@ -4764,7 +4765,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPvEEE7destroyIS5_EEvPT_(%"class.__gnu_cxx::new_allocator.19"* nonnull dereferenceable(1) %this, %"struct.std::pair"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPvEEE7destroyIS5_EEvPT_(%"class.__gnu_cxx::new_allocator.19"* nonnull dereferenceable(1) %this, %"struct.std::pair"* %__p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.19"*, align 8
   %__p.addr = alloca %"struct.std::pair"*, align 8
@@ -4776,7 +4777,7 @@ entry:
 }
 
 ; Function Attrs: noinline optnone uwtable
-define linkonce_odr dso_local void @_ZNSt5tupleIJOjEEC2IJjELb1EEEDpOT_(%"class.std::tuple"* nonnull dereferenceable(8) %this, i32* nonnull align 4 dereferenceable(4) %__elements) unnamed_addr #7 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt5tupleIJOjEEC2IJjELb1EEEDpOT_(%"class.std::tuple"* nonnull dereferenceable(8) %this, i32* nonnull align 4 dereferenceable(4) %__elements) unnamed_addr #8 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::tuple"*, align 8
   %__elements.addr = alloca i32*, align 8
@@ -4791,7 +4792,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt11_Tuple_implILm0EJOjEEC2IjEEOT_(%"struct.std::_Tuple_impl"* nonnull dereferenceable(8) %this, i32* nonnull align 4 dereferenceable(4) %__head) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt11_Tuple_implILm0EJOjEEC2IjEEOT_(%"struct.std::_Tuple_impl"* nonnull dereferenceable(8) %this, i32* nonnull align 4 dereferenceable(4) %__head) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Tuple_impl"*, align 8
   %__head.addr = alloca i32*, align 8
@@ -4806,7 +4807,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EED2Ev(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EED2Ev(%"class.std::_Rb_tree.17"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.17"*, align 8
   %exn.slot = alloca i8*, align 8
@@ -4875,7 +4876,7 @@ while.end:                                        ; preds = %while.cond
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE13_Rb_tree_implIS7_Lb1EED2Ev(%"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, void *>, std::_Select1st<std::pair<const unsigned int, void *>>, std::less<unsigned int>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPvESt10_Select1stIS3_ESt4lessIjESaIS3_EE13_Rb_tree_implIS7_Lb1EED2Ev(%"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, void *>, std::_Select1st<std::pair<const unsigned int, void *>>, std::less<unsigned int>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, void *>, std::_Select1st<std::pair<const unsigned int, void *>>, std::less<unsigned int>>::_Rb_tree_impl"*, align 8
   store %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, void *>, std::_Select1st<std::pair<const unsigned int, void *>>, std::less<unsigned int>>::_Rb_tree_impl"* %this, %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, void *>, std::_Select1st<std::pair<const unsigned int, void *>>, std::less<unsigned int>>::_Rb_tree_impl"** %this.addr, align 8
@@ -4886,7 +4887,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKjPvEEED2Ev(%"class.std::allocator.18"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKjPvEEED2Ev(%"class.std::allocator.18"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::allocator.18"*, align 8
   store %"class.std::allocator.18"* %this, %"class.std::allocator.18"** %this.addr, align 8
@@ -4897,7 +4898,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPvEEED2Ev(%"class.__gnu_cxx::new_allocator.19"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPvEEED2Ev(%"class.__gnu_cxx::new_allocator.19"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.19"*, align 8
   store %"class.__gnu_cxx::new_allocator.19"* %this, %"class.__gnu_cxx::new_allocator.19"** %this.addr, align 8
@@ -4906,7 +4907,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt12__mutex_baseC2Ev(%"class.std::__mutex_base"* nonnull dereferenceable(40) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt12__mutex_baseC2Ev(%"class.std::__mutex_base"* nonnull dereferenceable(40) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::__mutex_base"*, align 8
   store %"class.std::__mutex_base"* %this, %"class.std::__mutex_base"** %this.addr, align 8
@@ -4921,7 +4922,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EED2Ev(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EED2Ev(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.9"*, align 8
   %exn.slot = alloca i8*, align 8
@@ -4990,7 +4991,7 @@ while.end:                                        ; preds = %while.cond
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node.41"* @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_M_beginEv(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node.41"* @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_M_beginEv(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.9"*, align 8
   store %"class.std::_Rb_tree.9"* %this, %"class.std::_Rb_tree.9"** %this.addr, align 8
@@ -5007,7 +5008,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE13_Rb_tree_implISD_Lb1EED2Ev(%"struct.std::_Rb_tree<std::__cxx11::basic_string<char>, std::pair<const std::__cxx11::basic_string<char>, void *>, std::_Select1st<std::pair<const std::__cxx11::basic_string<char>, void *>>, std::less<std::__cxx11::basic_string<char>>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE13_Rb_tree_implISD_Lb1EED2Ev(%"struct.std::_Rb_tree<std::__cxx11::basic_string<char>, std::pair<const std::__cxx11::basic_string<char>, void *>, std::_Select1st<std::pair<const std::__cxx11::basic_string<char>, void *>>, std::less<std::__cxx11::basic_string<char>>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree<std::__cxx11::basic_string<char>, std::pair<const std::__cxx11::basic_string<char>, void *>, std::_Select1st<std::pair<const std::__cxx11::basic_string<char>, void *>>, std::less<std::__cxx11::basic_string<char>>>::_Rb_tree_impl"*, align 8
   store %"struct.std::_Rb_tree<std::__cxx11::basic_string<char>, std::pair<const std::__cxx11::basic_string<char>, void *>, std::_Select1st<std::pair<const std::__cxx11::basic_string<char>, void *>>, std::less<std::__cxx11::basic_string<char>>>::_Rb_tree_impl"* %this, %"struct.std::_Rb_tree<std::__cxx11::basic_string<char>, std::pair<const std::__cxx11::basic_string<char>, void *>, std::_Select1st<std::pair<const std::__cxx11::basic_string<char>, void *>>, std::less<std::__cxx11::basic_string<char>>>::_Rb_tree_impl"** %this.addr, align 8
@@ -5018,7 +5019,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node.41"* @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_S_rightEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node.41"* @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_S_rightEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #6 comdat align 2 {
 entry:
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"*, align 8
   store %"struct.std::_Rb_tree_node_base"* %__x, %"struct.std::_Rb_tree_node_base"** %__x.addr, align 8
@@ -5030,7 +5031,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node.41"* @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE7_S_leftEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node.41"* @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE7_S_leftEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #6 comdat align 2 {
 entry:
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"*, align 8
   store %"struct.std::_Rb_tree_node_base"* %__x, %"struct.std::_Rb_tree_node_base"** %__x.addr, align 8
@@ -5042,7 +5043,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE12_M_drop_nodeEPSt13_Rb_tree_nodeIS9_E(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.41"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE12_M_drop_nodeEPSt13_Rb_tree_nodeIS9_E(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.41"* %__p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.9"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.41"*, align 8
@@ -5057,7 +5058,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.41"* %__p) #5 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.41"* %__p) #6 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.9"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.41"*, align 8
@@ -5083,7 +5084,7 @@ terminate.lpad:                                   ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS9_E(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.41"* %__p) #5 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS9_E(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.41"* %__p) #6 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.9"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.41"*, align 8
@@ -5107,7 +5108,7 @@ terminate.lpad:                                   ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEEE7destroyISA_EEvRSC_PT_(%"class.std::allocator.10"* nonnull align 1 dereferenceable(1) %__a, %"struct.std::pair.43"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEEE7destroyISA_EEvRSC_PT_(%"class.std::allocator.10"* nonnull align 1 dereferenceable(1) %__a, %"struct.std::pair.43"* %__p) #6 comdat align 2 {
 entry:
   %__a.addr = alloca %"class.std::allocator.10"*, align 8
   %__p.addr = alloca %"struct.std::pair.43"*, align 8
@@ -5121,7 +5122,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator.10"* @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE21_M_get_Node_allocatorEv(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator.10"* @_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE21_M_get_Node_allocatorEv(%"class.std::_Rb_tree.9"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.9"*, align 8
   store %"class.std::_Rb_tree.9"* %this, %"class.std::_Rb_tree.9"** %this.addr, align 8
@@ -5132,7 +5133,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::pair.43"* @_ZNSt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEE9_M_valptrEv(%"struct.std::_Rb_tree_node.41"* nonnull dereferenceable(72) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::pair.43"* @_ZNSt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEE9_M_valptrEv(%"struct.std::_Rb_tree_node.41"* nonnull dereferenceable(72) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_node.41"*, align 8
   store %"struct.std::_Rb_tree_node.41"* %this, %"struct.std::_Rb_tree_node.41"** %this.addr, align 8
@@ -5143,7 +5144,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEE7destroyISB_EEvPT_(%"class.__gnu_cxx::new_allocator.11"* nonnull dereferenceable(1) %this, %"struct.std::pair.43"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEE7destroyISB_EEvPT_(%"class.__gnu_cxx::new_allocator.11"* nonnull dereferenceable(1) %this, %"struct.std::pair.43"* %__p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.11"*, align 8
   %__p.addr = alloca %"struct.std::pair.43"*, align 8
@@ -5156,7 +5157,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvED2Ev(%"struct.std::pair.43"* nonnull dereferenceable(40) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvED2Ev(%"struct.std::pair.43"* nonnull dereferenceable(40) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::pair.43"*, align 8
   store %"struct.std::pair.43"* %this, %"struct.std::pair.43"** %this.addr, align 8
@@ -5170,7 +5171,7 @@ entry:
 declare dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32)) unnamed_addr #2
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::pair.43"* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEE6_M_ptrEv(%"struct.__gnu_cxx::__aligned_membuf.42"* nonnull dereferenceable(40) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::pair.43"* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEE6_M_ptrEv(%"struct.__gnu_cxx::__aligned_membuf.42"* nonnull dereferenceable(40) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__aligned_membuf.42"*, align 8
   store %"struct.__gnu_cxx::__aligned_membuf.42"* %this, %"struct.__gnu_cxx::__aligned_membuf.42"** %this.addr, align 8
@@ -5181,7 +5182,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEE7_M_addrEv(%"struct.__gnu_cxx::__aligned_membuf.42"* nonnull dereferenceable(40) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEE7_M_addrEv(%"struct.__gnu_cxx::__aligned_membuf.42"* nonnull dereferenceable(40) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__aligned_membuf.42"*, align 8
   store %"struct.__gnu_cxx::__aligned_membuf.42"* %this, %"struct.__gnu_cxx::__aligned_membuf.42"** %this.addr, align 8
@@ -5209,7 +5210,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEE10deallocateEPSC_m(%"class.__gnu_cxx::new_allocator.11"* nonnull dereferenceable(1) %this, %"struct.std::_Rb_tree_node.41"* %__p, i64 %0) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEE10deallocateEPSC_m(%"class.__gnu_cxx::new_allocator.11"* nonnull dereferenceable(1) %this, %"struct.std::_Rb_tree_node.41"* %__p, i64 %0) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.11"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.41"*, align 8
@@ -5225,7 +5226,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEED2Ev(%"class.std::allocator.10"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEED2Ev(%"class.std::allocator.10"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::allocator.10"*, align 8
   store %"class.std::allocator.10"* %this, %"class.std::allocator.10"** %this.addr, align 8
@@ -5236,7 +5237,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEED2Ev(%"class.__gnu_cxx::new_allocator.11"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPvEEED2Ev(%"class.__gnu_cxx::new_allocator.11"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.11"*, align 8
   store %"class.__gnu_cxx::new_allocator.11"* %this, %"class.__gnu_cxx::new_allocator.11"** %this.addr, align 8
@@ -5245,7 +5246,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt3mapIjPKvSt4lessIjESaISt4pairIKjS1_EEED2Ev(%"class.std::map.0"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt3mapIjPKvSt4lessIjESaISt4pairIKjS1_EEED2Ev(%"class.std::map.0"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::map.0"*, align 8
   store %"class.std::map.0"* %this, %"class.std::map.0"** %this.addr, align 8
@@ -5256,7 +5257,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt3mapIPKvjSt4lessIS1_ESaISt4pairIKS1_jEEED2Ev(%"class.std::map"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt3mapIPKvjSt4lessIS1_ESaISt4pairIKS1_jEEED2Ev(%"class.std::map"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::map"*, align 8
   store %"class.std::map"* %this, %"class.std::map"** %this.addr, align 8
@@ -5267,7 +5268,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EED2Ev(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EED2Ev(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.1"*, align 8
   %exn.slot = alloca i8*, align 8
@@ -5336,7 +5337,7 @@ while.end:                                        ; preds = %while.cond
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node.49"* @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE8_M_beginEv(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node.49"* @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE8_M_beginEv(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.1"*, align 8
   store %"class.std::_Rb_tree.1"* %this, %"class.std::_Rb_tree.1"** %this.addr, align 8
@@ -5353,7 +5354,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE13_Rb_tree_implIS8_Lb1EED2Ev(%"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, const void *>, std::_Select1st<std::pair<const unsigned int, const void *>>, std::less<unsigned int>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE13_Rb_tree_implIS8_Lb1EED2Ev(%"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, const void *>, std::_Select1st<std::pair<const unsigned int, const void *>>, std::less<unsigned int>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, const void *>, std::_Select1st<std::pair<const unsigned int, const void *>>, std::less<unsigned int>>::_Rb_tree_impl"*, align 8
   store %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, const void *>, std::_Select1st<std::pair<const unsigned int, const void *>>, std::less<unsigned int>>::_Rb_tree_impl"* %this, %"struct.std::_Rb_tree<unsigned int, std::pair<const unsigned int, const void *>, std::_Select1st<std::pair<const unsigned int, const void *>>, std::less<unsigned int>>::_Rb_tree_impl"** %this.addr, align 8
@@ -5364,7 +5365,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node.49"* @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE8_S_rightEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node.49"* @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE8_S_rightEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #6 comdat align 2 {
 entry:
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"*, align 8
   store %"struct.std::_Rb_tree_node_base"* %__x, %"struct.std::_Rb_tree_node_base"** %__x.addr, align 8
@@ -5376,7 +5377,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node.49"* @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE7_S_leftEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node.49"* @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE7_S_leftEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #6 comdat align 2 {
 entry:
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"*, align 8
   store %"struct.std::_Rb_tree_node_base"* %__x, %"struct.std::_Rb_tree_node_base"** %__x.addr, align 8
@@ -5388,7 +5389,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE12_M_drop_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.49"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE12_M_drop_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.49"* %__p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.1"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.49"*, align 8
@@ -5403,7 +5404,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.49"* %__p) #5 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.49"* %__p) #6 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.1"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.49"*, align 8
@@ -5429,7 +5430,7 @@ terminate.lpad:                                   ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.49"* %__p) #5 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.49"* %__p) #6 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.1"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.49"*, align 8
@@ -5453,7 +5454,7 @@ terminate.lpad:                                   ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaISt13_Rb_tree_nodeISt4pairIKjPKvEEEE7destroyIS5_EEvRS7_PT_(%"class.std::allocator.2"* nonnull align 1 dereferenceable(1) %__a, %"struct.std::pair.51"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaISt13_Rb_tree_nodeISt4pairIKjPKvEEEE7destroyIS5_EEvRS7_PT_(%"class.std::allocator.2"* nonnull align 1 dereferenceable(1) %__a, %"struct.std::pair.51"* %__p) #6 comdat align 2 {
 entry:
   %__a.addr = alloca %"class.std::allocator.2"*, align 8
   %__p.addr = alloca %"struct.std::pair.51"*, align 8
@@ -5467,7 +5468,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator.2"* @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE21_M_get_Node_allocatorEv(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator.2"* @_ZNSt8_Rb_treeIjSt4pairIKjPKvESt10_Select1stIS4_ESt4lessIjESaIS4_EE21_M_get_Node_allocatorEv(%"class.std::_Rb_tree.1"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree.1"*, align 8
   store %"class.std::_Rb_tree.1"* %this, %"class.std::_Rb_tree.1"** %this.addr, align 8
@@ -5478,7 +5479,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::pair.51"* @_ZNSt13_Rb_tree_nodeISt4pairIKjPKvEE9_M_valptrEv(%"struct.std::_Rb_tree_node.49"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::pair.51"* @_ZNSt13_Rb_tree_nodeISt4pairIKjPKvEE9_M_valptrEv(%"struct.std::_Rb_tree_node.49"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_node.49"*, align 8
   store %"struct.std::_Rb_tree_node.49"* %this, %"struct.std::_Rb_tree_node.49"** %this.addr, align 8
@@ -5489,7 +5490,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPKvEEE7destroyIS6_EEvPT_(%"class.__gnu_cxx::new_allocator.3"* nonnull dereferenceable(1) %this, %"struct.std::pair.51"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPKvEEE7destroyIS6_EEvPT_(%"class.__gnu_cxx::new_allocator.3"* nonnull dereferenceable(1) %this, %"struct.std::pair.51"* %__p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.3"*, align 8
   %__p.addr = alloca %"struct.std::pair.51"*, align 8
@@ -5501,7 +5502,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::pair.51"* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKjPKvEE6_M_ptrEv(%"struct.__gnu_cxx::__aligned_membuf.50"* nonnull dereferenceable(16) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::pair.51"* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKjPKvEE6_M_ptrEv(%"struct.__gnu_cxx::__aligned_membuf.50"* nonnull dereferenceable(16) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__aligned_membuf.50"*, align 8
   store %"struct.__gnu_cxx::__aligned_membuf.50"* %this, %"struct.__gnu_cxx::__aligned_membuf.50"** %this.addr, align 8
@@ -5512,7 +5513,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKjPKvEE7_M_addrEv(%"struct.__gnu_cxx::__aligned_membuf.50"* nonnull dereferenceable(16) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKjPKvEE7_M_addrEv(%"struct.__gnu_cxx::__aligned_membuf.50"* nonnull dereferenceable(16) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__aligned_membuf.50"*, align 8
   store %"struct.__gnu_cxx::__aligned_membuf.50"* %this, %"struct.__gnu_cxx::__aligned_membuf.50"** %this.addr, align 8
@@ -5540,7 +5541,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPKvEEE10deallocateEPS7_m(%"class.__gnu_cxx::new_allocator.3"* nonnull dereferenceable(1) %this, %"struct.std::_Rb_tree_node.49"* %__p, i64 %0) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPKvEEE10deallocateEPS7_m(%"class.__gnu_cxx::new_allocator.3"* nonnull dereferenceable(1) %this, %"struct.std::_Rb_tree_node.49"* %__p, i64 %0) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.3"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.49"*, align 8
@@ -5556,7 +5557,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKjPKvEEED2Ev(%"class.std::allocator.2"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKjPKvEEED2Ev(%"class.std::allocator.2"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::allocator.2"*, align 8
   store %"class.std::allocator.2"* %this, %"class.std::allocator.2"** %this.addr, align 8
@@ -5567,7 +5568,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPKvEEED2Ev(%"class.__gnu_cxx::new_allocator.3"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjPKvEEED2Ev(%"class.__gnu_cxx::new_allocator.3"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.3"*, align 8
   store %"class.__gnu_cxx::new_allocator.3"* %this, %"class.__gnu_cxx::new_allocator.3"** %this.addr, align 8
@@ -5576,7 +5577,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EED2Ev(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EED2Ev(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree"*, align 8
   %exn.slot = alloca i8*, align 8
@@ -5645,7 +5646,7 @@ while.end:                                        ; preds = %while.cond
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node.54"* @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE8_M_beginEv(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node.54"* @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE8_M_beginEv(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree"*, align 8
   store %"class.std::_Rb_tree"* %this, %"class.std::_Rb_tree"** %this.addr, align 8
@@ -5662,7 +5663,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE13_Rb_tree_implIS8_Lb1EED2Ev(%"struct.std::_Rb_tree<const void *, std::pair<const void *const, unsigned int>, std::_Select1st<std::pair<const void *const, unsigned int>>, std::less<const void *>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE13_Rb_tree_implIS8_Lb1EED2Ev(%"struct.std::_Rb_tree<const void *, std::pair<const void *const, unsigned int>, std::_Select1st<std::pair<const void *const, unsigned int>>, std::less<const void *>>::_Rb_tree_impl"* nonnull dereferenceable(48) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree<const void *, std::pair<const void *const, unsigned int>, std::_Select1st<std::pair<const void *const, unsigned int>>, std::less<const void *>>::_Rb_tree_impl"*, align 8
   store %"struct.std::_Rb_tree<const void *, std::pair<const void *const, unsigned int>, std::_Select1st<std::pair<const void *const, unsigned int>>, std::less<const void *>>::_Rb_tree_impl"* %this, %"struct.std::_Rb_tree<const void *, std::pair<const void *const, unsigned int>, std::_Select1st<std::pair<const void *const, unsigned int>>, std::less<const void *>>::_Rb_tree_impl"** %this.addr, align 8
@@ -5673,7 +5674,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node.54"* @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE8_S_rightEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node.54"* @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE8_S_rightEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #6 comdat align 2 {
 entry:
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"*, align 8
   store %"struct.std::_Rb_tree_node_base"* %__x, %"struct.std::_Rb_tree_node_base"** %__x.addr, align 8
@@ -5685,7 +5686,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::_Rb_tree_node.54"* @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE7_S_leftEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::_Rb_tree_node.54"* @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE7_S_leftEPSt18_Rb_tree_node_base(%"struct.std::_Rb_tree_node_base"* %__x) #6 comdat align 2 {
 entry:
   %__x.addr = alloca %"struct.std::_Rb_tree_node_base"*, align 8
   store %"struct.std::_Rb_tree_node_base"* %__x, %"struct.std::_Rb_tree_node_base"** %__x.addr, align 8
@@ -5697,7 +5698,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE12_M_drop_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.54"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE12_M_drop_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.54"* %__p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.54"*, align 8
@@ -5712,7 +5713,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.54"* %__p) #5 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.54"* %__p) #6 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.54"*, align 8
@@ -5738,7 +5739,7 @@ terminate.lpad:                                   ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.54"* %__p) #5 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE11_M_put_nodeEPSt13_Rb_tree_nodeIS4_E(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this, %"struct.std::_Rb_tree_node.54"* %__p) #6 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.54"*, align 8
@@ -5762,7 +5763,7 @@ terminate.lpad:                                   ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaISt13_Rb_tree_nodeISt4pairIKPKvjEEEE7destroyIS5_EEvRS7_PT_(%"class.std::allocator"* nonnull align 1 dereferenceable(1) %__a, %"struct.std::pair.56"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaISt13_Rb_tree_nodeISt4pairIKPKvjEEEE7destroyIS5_EEvRS7_PT_(%"class.std::allocator"* nonnull align 1 dereferenceable(1) %__a, %"struct.std::pair.56"* %__p) #6 comdat align 2 {
 entry:
   %__a.addr = alloca %"class.std::allocator"*, align 8
   %__p.addr = alloca %"struct.std::pair.56"*, align 8
@@ -5776,7 +5777,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator"* @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE21_M_get_Node_allocatorEv(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator"* @_ZNSt8_Rb_treeIPKvSt4pairIKS1_jESt10_Select1stIS4_ESt4lessIS1_ESaIS4_EE21_M_get_Node_allocatorEv(%"class.std::_Rb_tree"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::_Rb_tree"*, align 8
   store %"class.std::_Rb_tree"* %this, %"class.std::_Rb_tree"** %this.addr, align 8
@@ -5787,7 +5788,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::pair.56"* @_ZNSt13_Rb_tree_nodeISt4pairIKPKvjEE9_M_valptrEv(%"struct.std::_Rb_tree_node.54"* nonnull dereferenceable(48) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::pair.56"* @_ZNSt13_Rb_tree_nodeISt4pairIKPKvjEE9_M_valptrEv(%"struct.std::_Rb_tree_node.54"* nonnull dereferenceable(48) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Rb_tree_node.54"*, align 8
   store %"struct.std::_Rb_tree_node.54"* %this, %"struct.std::_Rb_tree_node.54"** %this.addr, align 8
@@ -5798,7 +5799,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKPKvjEEE7destroyIS6_EEvPT_(%"class.__gnu_cxx::new_allocator"* nonnull dereferenceable(1) %this, %"struct.std::pair.56"* %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKPKvjEEE7destroyIS6_EEvPT_(%"class.__gnu_cxx::new_allocator"* nonnull dereferenceable(1) %this, %"struct.std::pair.56"* %__p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator"*, align 8
   %__p.addr = alloca %"struct.std::pair.56"*, align 8
@@ -5810,7 +5811,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"struct.std::pair.56"* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKPKvjEE6_M_ptrEv(%"struct.__gnu_cxx::__aligned_membuf.55"* nonnull dereferenceable(16) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %"struct.std::pair.56"* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKPKvjEE6_M_ptrEv(%"struct.__gnu_cxx::__aligned_membuf.55"* nonnull dereferenceable(16) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__aligned_membuf.55"*, align 8
   store %"struct.__gnu_cxx::__aligned_membuf.55"* %this, %"struct.__gnu_cxx::__aligned_membuf.55"** %this.addr, align 8
@@ -5821,7 +5822,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKPKvjEE7_M_addrEv(%"struct.__gnu_cxx::__aligned_membuf.55"* nonnull dereferenceable(16) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZN9__gnu_cxx16__aligned_membufISt4pairIKPKvjEE7_M_addrEv(%"struct.__gnu_cxx::__aligned_membuf.55"* nonnull dereferenceable(16) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__aligned_membuf.55"*, align 8
   store %"struct.__gnu_cxx::__aligned_membuf.55"* %this, %"struct.__gnu_cxx::__aligned_membuf.55"** %this.addr, align 8
@@ -5849,7 +5850,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKPKvjEEE10deallocateEPS7_m(%"class.__gnu_cxx::new_allocator"* nonnull dereferenceable(1) %this, %"struct.std::_Rb_tree_node.54"* %__p, i64 %0) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKPKvjEEE10deallocateEPS7_m(%"class.__gnu_cxx::new_allocator"* nonnull dereferenceable(1) %this, %"struct.std::_Rb_tree_node.54"* %__p, i64 %0) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator"*, align 8
   %__p.addr = alloca %"struct.std::_Rb_tree_node.54"*, align 8
@@ -5865,7 +5866,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKPKvjEEED2Ev(%"class.std::allocator"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSaISt13_Rb_tree_nodeISt4pairIKPKvjEEED2Ev(%"class.std::allocator"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::allocator"*, align 8
   store %"class.std::allocator"* %this, %"class.std::allocator"** %this.addr, align 8
@@ -5876,7 +5877,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKPKvjEEED2Ev(%"class.__gnu_cxx::new_allocator"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKPKvjEEED2Ev(%"class.__gnu_cxx::new_allocator"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator"*, align 8
   store %"class.__gnu_cxx::new_allocator"* %this, %"class.__gnu_cxx::new_allocator"** %this.addr, align 8
@@ -5885,7 +5886,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEE29check_invoke_param_type_is_okIRNS_7taintedIPcS1_EEEEvv(%"class.rlbox::rlbox_sandbox"* nonnull dereferenceable(3136) %this) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEE29check_invoke_param_type_is_okIRNS_7taintedIPcS1_EEEEvv(%"class.rlbox::rlbox_sandbox"* nonnull dereferenceable(3136) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_sandbox"*, align 8
   %cond1 = alloca i8, align 1
@@ -5926,7 +5927,7 @@ entry:
   store %"class.rlbox::rlbox_wasm2c_sandbox"* %this3, %"class.rlbox::rlbox_wasm2c_sandbox"** getelementptr inbounds (%"struct.rlbox::rlbox_wasm2c_sandbox_thread_data", %"struct.rlbox::rlbox_wasm2c_sandbox_thread_data"* @_ZN5rlbox20rlbox_wasm2c_sandbox11thread_dataE, i32 0, i32 0), align 8
   %1 = getelementptr inbounds %class.anon.59, %class.anon.59* %ref.tmp, i32 0, i32 0
   store %"class.rlbox::rlbox_wasm2c_sandbox"** %old_sandbox, %"class.rlbox::rlbox_wasm2c_sandbox"*** %1, align 8
-  call void @_ZN5rlbox6detail15make_scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS6_EFjjjEJjjEEEDaPT0_DpOT1_EUlvE_EENS0_10scope_exitIT_EEOSG_(%"class.rlbox::detail::scope_exit"*  align 8 %on_exit, %class.anon.59* nonnull align 8 dereferenceable(8) %ref.tmp)
+  call void @_ZN5rlbox6detail15make_scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS6_EFjjjEJjjEEEDaPT0_DpOT1_EUlvE_EENS0_10scope_exitIT_EEOSG_(%"class.rlbox::detail::scope_exit"* align 8 %on_exit, %class.anon.59* nonnull align 8 dereferenceable(8) %ref.tmp)
   store i64 0, i64* %alloc_length, align 8
   %arraydecay = getelementptr inbounds [1 x i32], [1 x i32]* %allocations_buff, i64 0, i64 0
   store i32* %arraydecay, i32** %allocations, align 8
@@ -6040,7 +6041,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %struct.ImageHeader** @_ZN5rlbox7taintedIP11ImageHeaderNS_20rlbox_wasm2c_sandboxEE17get_raw_value_refEv(%"class.rlbox::tainted.26"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %struct.ImageHeader** @_ZN5rlbox7taintedIP11ImageHeaderNS_20rlbox_wasm2c_sandboxEE17get_raw_value_refEv(%"class.rlbox::tainted.26"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.26"*, align 8
   store %"class.rlbox::tainted.26"* %this, %"class.rlbox::tainted.26"** %this.addr, align 8
@@ -6050,7 +6051,7 @@ entry:
 }
 
 ; Function Attrs: noinline optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN5rlbox6detail15make_scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS6_EFjjjEJjjEEEDaPT0_DpOT1_EUlvE_EENS0_10scope_exitIT_EEOSG_(%"class.rlbox::detail::scope_exit"*  align 8 %agg.result, %class.anon.59* nonnull align 8 dereferenceable(8) %exitFunction) #4 comdat {
+define linkonce_odr dso_local void @_ZN5rlbox6detail15make_scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS6_EFjjjEJjjEEEDaPT0_DpOT1_EUlvE_EENS0_10scope_exitIT_EEOSG_(%"class.rlbox::detail::scope_exit"* align 8 %agg.result, %class.anon.59* nonnull align 8 dereferenceable(8) %exitFunction) #4 comdat {
 entry:
   %result.ptr = alloca i8*, align 8
   %exitFunction.addr = alloca %class.anon.59*, align 8
@@ -6064,7 +6065,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS4_EFjjjEJjjEEEDaPT0_DpOT1_ENKUlT_E_clIjEENSt11conditionalIXsr3std8is_classIDtfp_EEE5valueEjSG_E4typeESC_(%class.anon.60* nonnull dereferenceable(16) %this, i32 %arg) #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS4_EFjjjEJjjEEEDaPT0_DpOT1_ENKUlT_E_clIjEENSt11conditionalIXsr3std8is_classIDtfp_EEE5valueEjSG_E4typeESC_(%class.anon.60* nonnull dereferenceable(16) %this, i32 %arg) #6 comdat align 2 {
 entry:
   %this.addr = alloca %class.anon.60*, align 8
   %arg.addr = alloca i32, align 4
@@ -6093,7 +6094,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS6_EFjjjEJjjEEEDaPT0_DpOT1_EUlvE_ED2Ev(%"class.rlbox::detail::scope_exit"* nonnull dereferenceable(9) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS6_EFjjjEJjjEEEDaPT0_DpOT1_EUlvE_ED2Ev(%"class.rlbox::detail::scope_exit"* nonnull dereferenceable(9) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.rlbox::detail::scope_exit"*, align 8
   store %"class.rlbox::detail::scope_exit"* %this, %"class.rlbox::detail::scope_exit"** %this.addr, align 8
@@ -6123,7 +6124,7 @@ terminate.lpad:                                   ; preds = %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %class.anon.59* @_ZSt4moveIRZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS5_EFjjjEJjjEEEDaPT0_DpOT1_EUlvE_EONSt16remove_referenceIT_E4typeEOSG_(%class.anon.59* nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %class.anon.59* @_ZSt4moveIRZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS5_EFjjjEJjjEEEDaPT0_DpOT1_EUlvE_EONSt16remove_referenceIT_E4typeEOSG_(%class.anon.59* nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca %class.anon.59*, align 8
   store %class.anon.59* %__t, %class.anon.59** %__t.addr, align 8
@@ -6132,7 +6133,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS6_EFjjjEJjjEEEDaPT0_DpOT1_EUlvE_EC2EOSE_(%"class.rlbox::detail::scope_exit"* nonnull dereferenceable(9) %this, %class.anon.59* nonnull align 8 dereferenceable(8) %cleanup) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS6_EFjjjEJjjEEEDaPT0_DpOT1_EUlvE_EC2EOSE_(%"class.rlbox::detail::scope_exit"* nonnull dereferenceable(9) %this, %class.anon.59* nonnull align 8 dereferenceable(8) %cleanup) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::detail::scope_exit"*, align 8
   %cleanup.addr = alloca %class.anon.59*, align 8
@@ -6248,7 +6249,7 @@ eh.resume:                                        ; preds = %lpad
 }
 
 ; Function Attrs: noinline optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN5rlbox6detail15make_scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_EUlvE_EENS0_10scope_exitIT_EEOSF_(%"class.rlbox::detail::scope_exit.61"*  align 8 %agg.result, %class.anon.62* nonnull align 8 dereferenceable(8) %exitFunction) #4 comdat {
+define linkonce_odr dso_local void @_ZN5rlbox6detail15make_scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_EUlvE_EENS0_10scope_exitIT_EEOSF_(%"class.rlbox::detail::scope_exit.61"* noalias align 8 %agg.result, %class.anon.62* nonnull align 8 dereferenceable(8) %exitFunction) #4 comdat {
 entry:
   %result.ptr = alloca i8*, align 8
   %exitFunction.addr = alloca %class.anon.62*, align 8
@@ -6262,7 +6263,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_ENKUlT_E_clIjEENSt11conditionalIXsr3std8is_classIDtfp_EEE5valueEjSF_E4typeESB_(%class.anon.64* nonnull dereferenceable(16) %this, i32 %arg) #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_ENKUlT_E_clIjEENSt11conditionalIXsr3std8is_classIDtfp_EEE5valueEjSF_E4typeESB_(%class.anon.64* nonnull dereferenceable(16) %this, i32 %arg) #6 comdat align 2 {
 entry:
   %this.addr = alloca %class.anon.64*, align 8
   %arg.addr = alloca i32, align 4
@@ -6276,7 +6277,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_EUlvE_ED2Ev(%"class.rlbox::detail::scope_exit.61"* nonnull dereferenceable(9) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_EUlvE_ED2Ev(%"class.rlbox::detail::scope_exit.61"* nonnull dereferenceable(9) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.rlbox::detail::scope_exit.61"*, align 8
   store %"class.rlbox::detail::scope_exit.61"* %this, %"class.rlbox::detail::scope_exit.61"** %this.addr, align 8
@@ -6306,7 +6307,7 @@ terminate.lpad:                                   ; preds = %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %class.anon.62* @_ZSt4moveIRZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_EUlvE_EONSt16remove_referenceIT_E4typeEOSF_(%class.anon.62* nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %class.anon.62* @_ZSt4moveIRZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_EUlvE_EONSt16remove_referenceIT_E4typeEOSF_(%class.anon.62* nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca %class.anon.62*, align 8
   store %class.anon.62* %__t, %class.anon.62** %__t.addr, align 8
@@ -6315,7 +6316,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_EUlvE_EC2EOSD_(%"class.rlbox::detail::scope_exit.61"* nonnull dereferenceable(9) %this, %class.anon.62* nonnull align 8 dereferenceable(8) %cleanup) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_EUlvE_EC2EOSD_(%"class.rlbox::detail::scope_exit.61"* nonnull dereferenceable(9) %this, %class.anon.62* nonnull align 8 dereferenceable(8) %cleanup) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::detail::scope_exit.61"*, align 8
   %cleanup.addr = alloca %class.anon.62*, align 8
@@ -6333,7 +6334,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_ENKUlvE_clEv(%class.anon.62* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFvPvEFvjEJRjEEEDaPT0_DpOT1_ENKUlvE_clEv(%class.anon.62* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %class.anon.62*, align 8
   store %class.anon.62* %this, %class.anon.62** %this.addr, align 8
@@ -6346,7 +6347,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS4_EFjjjEJjjEEEDaPT0_DpOT1_ENKUlvE_clEv(%class.anon.59* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFP11ImageHeaderPcS4_EFjjjEJjjEEEDaPT0_DpOT1_ENKUlvE_clEv(%class.anon.59* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %class.anon.59*, align 8
   store %class.anon.59* %this, %class.anon.59** %this.addr, align 8
@@ -6373,7 +6374,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.rlbox::tainted.24"* @_ZN5rlbox17tainted_base_implINS_7taintedEPcNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.25"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.rlbox::tainted.24"* @_ZN5rlbox17tainted_base_implINS_7taintedEPcNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.25"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl.25"*, align 8
   store %"class.rlbox::tainted_base_impl.25"* %this, %"class.rlbox::tainted_base_impl.25"** %this.addr, align 8
@@ -6464,7 +6465,7 @@ return:                                           ; preds = %if.end, %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZNK5rlbox20rlbox_wasm2c_sandbox26impl_get_sandboxed_pointerIPcEEjPKv(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this, i8* %p) #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZNK5rlbox20rlbox_wasm2c_sandbox26impl_get_sandboxed_pointerIPcEEjPKv(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this, i8* %p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_wasm2c_sandbox"*, align 8
   %p.addr = alloca i8*, align 8
@@ -6531,7 +6532,7 @@ return:                                           ; preds = %if.end, %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZNK5rlbox20rlbox_wasm2c_sandbox28impl_get_unsandboxed_pointerIP11ImageHeaderEEPvj(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this, i32 %p) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZNK5rlbox20rlbox_wasm2c_sandbox28impl_get_unsandboxed_pointerIP11ImageHeaderEEPvj(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this, i32 %p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_wasm2c_sandbox"*, align 8
   %p.addr = alloca i32, align 4
@@ -6563,7 +6564,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.rlbox::tainted.26"* @_ZNK5rlbox17tainted_base_implINS_7taintedEP11ImageHeaderNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.27"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.rlbox::tainted.26"* @_ZNK5rlbox17tainted_base_implINS_7taintedEP11ImageHeaderNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.27"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl.27"*, align 8
   store %"class.rlbox::tainted_base_impl.27"* %this, %"class.rlbox::tainted_base_impl.27"** %this.addr, align 8
@@ -6573,7 +6574,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %struct.ImageHeader* @_ZNK5rlbox7taintedIP11ImageHeaderNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.26"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local %struct.ImageHeader* @_ZNK5rlbox7taintedIP11ImageHeaderNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.26"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.26"*, align 8
   store %"class.rlbox::tainted.26"* %this, %"class.rlbox::tainted.26"** %this.addr, align 8
@@ -6584,7 +6585,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZN5rlbox6detail12unwrap_valueIRKiEEDaOT_(i32* nonnull align 4 dereferenceable(4) %rhs) #5 comdat {
+define linkonce_odr dso_local i32 @_ZN5rlbox6detail12unwrap_valueIRKiEEDaOT_(i32* nonnull align 4 dereferenceable(4) %rhs) #6 comdat {
 entry:
   %rhs.addr = alloca i32*, align 8
   store i32* %rhs, i32** %rhs.addr, align 8
@@ -6594,7 +6595,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox7taintedIbNS_20rlbox_wasm2c_sandboxEEC2IRbLPv0EEEOT_(%"class.rlbox::tainted.30"* nonnull dereferenceable(1) %this, i8* nonnull align 1 dereferenceable(1) %arg) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox7taintedIbNS_20rlbox_wasm2c_sandboxEEC2IRbLPv0EEEOT_(%"class.rlbox::tainted.30"* nonnull dereferenceable(1) %this, i8* nonnull align 1 dereferenceable(1) %arg) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.30"*, align 8
   %arg.addr = alloca i8*, align 8
@@ -6613,7 +6614,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) i8* @_ZSt7forwardIRbEOT_RNSt16remove_referenceIS1_E4typeE(i8* nonnull align 1 dereferenceable(1) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) i8* @_ZSt7forwardIRbEOT_RNSt16remove_referenceIS1_E4typeE(i8* nonnull align 1 dereferenceable(1) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i8*, align 8
   store i8* %__t, i8** %__t.addr, align 8
@@ -6633,7 +6634,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.rlbox::tainted.30"* @_ZN5rlbox17tainted_base_implINS_7taintedEbNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.31"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.rlbox::tainted.30"* @_ZN5rlbox17tainted_base_implINS_7taintedEbNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.31"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl.31"*, align 8
   store %"class.rlbox::tainted_base_impl.31"* %this, %"class.rlbox::tainted_base_impl.31"** %this.addr, align 8
@@ -6643,7 +6644,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZN5rlbox7taintedIbNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.30"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local zeroext i1 @_ZN5rlbox7taintedIbNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.30"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.30"*, align 8
   store %"class.rlbox::tainted.30"* %this, %"class.rlbox::tainted.30"** %this.addr, align 8
@@ -6653,7 +6654,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZNK5rlbox7taintedIbNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.30"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local zeroext i1 @_ZNK5rlbox7taintedIbNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.30"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.30"*, align 8
   store %"class.rlbox::tainted.30"* %this, %"class.rlbox::tainted.30"** %this.addr, align 8
@@ -6665,7 +6666,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define internal i32 @"_ZZ4mainENK3$_1clEj"(%class.anon.32* nonnull dereferenceable(1) %this, i32 %value) #5 align 2 {
+define internal i32 @"_ZZ4mainENK3$_1clEj"(%class.anon.32* nonnull dereferenceable(1) %this, i32 %value) #6 align 2 {
 entry:
   %this.addr = alloca %class.anon.32*, align 8
   %value.addr = alloca i32, align 4
@@ -6696,7 +6697,7 @@ cond.end:                                         ; preds = %2, %cond.true
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZN5rlbox6detail12unwrap_valueIRKNS_7taintedIjNS_20rlbox_wasm2c_sandboxEEEEEDaOT_(%"class.rlbox::tainted"* nonnull align 4 dereferenceable(4) %rhs) #5 comdat personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local i32 @_ZN5rlbox6detail12unwrap_valueIRKNS_7taintedIjNS_20rlbox_wasm2c_sandboxEEEEEDaOT_(%"class.rlbox::tainted"* nonnull align 4 dereferenceable(4) %rhs) #6 comdat personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %rhs.addr = alloca %"class.rlbox::tainted"*, align 8
   store %"class.rlbox::tainted"* %rhs, %"class.rlbox::tainted"** %rhs.addr, align 8
@@ -6741,7 +6742,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZNK5rlbox17tainted_base_implINS_7taintedEjNS_20rlbox_wasm2c_sandboxEE17UNSAFE_unverifiedEv(%"class.rlbox::tainted_base_impl"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZNK5rlbox17tainted_base_implINS_7taintedEjNS_20rlbox_wasm2c_sandboxEE17UNSAFE_unverifiedEv(%"class.rlbox::tainted_base_impl"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl"*, align 8
   store %"class.rlbox::tainted_base_impl"* %this, %"class.rlbox::tainted_base_impl"** %this.addr, align 8
@@ -6752,7 +6753,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt7forwardIRjEOT_RNSt16remove_referenceIS1_E4typeE(i32* nonnull align 4 dereferenceable(4) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt7forwardIRjEOT_RNSt16remove_referenceIS1_E4typeE(i32* nonnull align 4 dereferenceable(4) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i32*, align 8
   store i32* %__t, i32** %__t.addr, align 8
@@ -6761,7 +6762,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox7taintedIjNS_20rlbox_wasm2c_sandboxEEC2IRjLPv0EEEOT_(%"class.rlbox::tainted"* nonnull dereferenceable(4) %this, i32* nonnull align 4 dereferenceable(4) %arg) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox7taintedIjNS_20rlbox_wasm2c_sandboxEEC2IRjLPv0EEEOT_(%"class.rlbox::tainted"* nonnull dereferenceable(4) %this, i32* nonnull align 4 dereferenceable(4) %arg) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted"*, align 8
   %arg.addr = alloca i32*, align 8
@@ -6789,7 +6790,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) %"class.rlbox::tainted"* @_ZN5rlbox17tainted_base_implINS_7taintedEjNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) %"class.rlbox::tainted"* @_ZN5rlbox17tainted_base_implINS_7taintedEjNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl"*, align 8
   store %"class.rlbox::tainted_base_impl"* %this, %"class.rlbox::tainted_base_impl"** %this.addr, align 8
@@ -6799,7 +6800,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZN5rlbox7taintedIjNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted"* nonnull dereferenceable(4) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZN5rlbox7taintedIjNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted"* nonnull dereferenceable(4) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted"*, align 8
   store %"class.rlbox::tainted"* %this, %"class.rlbox::tainted"** %this.addr, align 8
@@ -6838,7 +6839,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.rlbox::tainted.24"* @_ZNK5rlbox17tainted_base_implINS_7taintedEPcNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.25"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.rlbox::tainted.24"* @_ZNK5rlbox17tainted_base_implINS_7taintedEPcNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.25"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl.25"*, align 8
   store %"class.rlbox::tainted_base_impl.25"* %this, %"class.rlbox::tainted_base_impl.25"** %this.addr, align 8
@@ -6848,7 +6849,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZNK5rlbox7taintedIPcNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.24"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZNK5rlbox7taintedIPcNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.24"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.24"*, align 8
   store %"class.rlbox::tainted.24"* %this, %"class.rlbox::tainted.24"** %this.addr, align 8
@@ -6859,7 +6860,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZN5rlbox6detail12unwrap_valueIRKDnEEDaOT_(i8** nonnull align 8 dereferenceable(8) %rhs) #5 comdat {
+define linkonce_odr dso_local i8* @_ZN5rlbox6detail12unwrap_valueIRKDnEEDaOT_(i8** nonnull align 8 dereferenceable(8) %rhs) #6 comdat {
 entry:
   %rhs.addr = alloca i8**, align 8
   store i8** %rhs, i8*** %rhs.addr, align 8
@@ -6868,7 +6869,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox7taintedIiNS_20rlbox_wasm2c_sandboxEEC2IRKiLPv0EEEOT_(%"class.rlbox::tainted.65"* nonnull dereferenceable(4) %this, i32* nonnull align 4 dereferenceable(4) %arg) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox7taintedIiNS_20rlbox_wasm2c_sandboxEEC2IRKiLPv0EEEOT_(%"class.rlbox::tainted.65"* nonnull dereferenceable(4) %this, i32* nonnull align 4 dereferenceable(4) %arg) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.65"*, align 8
   %arg.addr = alloca i32*, align 8
@@ -6915,7 +6916,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt7forwardIRKiEOT_RNSt16remove_referenceIS2_E4typeE(i32* nonnull align 4 dereferenceable(4) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZSt7forwardIRKiEOT_RNSt16remove_referenceIS2_E4typeE(i32* nonnull align 4 dereferenceable(4) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i32*, align 8
   store i32* %__t, i32** %__t.addr, align 8
@@ -6924,7 +6925,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) %"class.rlbox::tainted.65"* @_ZNK5rlbox17tainted_base_implINS_7taintedEiNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.66"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) %"class.rlbox::tainted.65"* @_ZNK5rlbox17tainted_base_implINS_7taintedEiNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.66"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl.66"*, align 8
   store %"class.rlbox::tainted_base_impl.66"* %this, %"class.rlbox::tainted_base_impl.66"** %this.addr, align 8
@@ -6934,7 +6935,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZNK5rlbox7taintedIiNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.65"* nonnull dereferenceable(4) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZNK5rlbox7taintedIiNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.65"* nonnull dereferenceable(4) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.65"*, align 8
   store %"class.rlbox::tainted.65"* %this, %"class.rlbox::tainted.65"** %this.addr, align 8
@@ -6956,7 +6957,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.rlbox::tainted_volatile.34"* @_ZN5rlbox17tainted_base_implINS_16tainted_volatileEcNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.35"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.rlbox::tainted_volatile.34"* @_ZN5rlbox17tainted_base_implINS_16tainted_volatileEcNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.35"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl.35"*, align 8
   store %"class.rlbox::tainted_base_impl.35"* %this, %"class.rlbox::tainted_base_impl.35"** %this.addr, align 8
@@ -7028,7 +7029,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN5rlbox6detail24convert_type_fundamentalIccEEvRT_RVKT0_(i8* nonnull align 1 dereferenceable(1) %to, i8* nonnull align 1 dereferenceable(1) %from) #5 comdat {
+define linkonce_odr dso_local void @_ZN5rlbox6detail24convert_type_fundamentalIccEEvRT_RVKT0_(i8* nonnull align 1 dereferenceable(1) %to, i8* nonnull align 1 dereferenceable(1) %from) #6 comdat {
 entry:
   %to.addr = alloca i8*, align 8
   %from.addr = alloca i8*, align 8
@@ -7054,7 +7055,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZNSt6atomicIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEE23compare_exchange_strongERS4_S4_St12memory_order(%"struct.std::atomic"* nonnull dereferenceable(4) %this, i32* nonnull align 4 dereferenceable(4) %__e, i32 %__i, i32 %__m) #5 comdat align 2 {
+define linkonce_odr dso_local zeroext i1 @_ZNSt6atomicIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEE23compare_exchange_strongERS4_S4_St12memory_order(%"struct.std::atomic"* nonnull dereferenceable(4) %this, i32* nonnull align 4 dereferenceable(4) %__e, i32 %__i, i32 %__m) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::atomic"*, align 8
   %__e.addr = alloca i32*, align 8
@@ -7098,7 +7099,7 @@ if.end:                                           ; preds = %entry
 }
 
 ; Function Attrs: noinline optnone uwtable
-define linkonce_odr dso_local void @_ZNSt11unique_lockISt18shared_timed_mutexEC2ERS0_(%"class.std::unique_lock"* nonnull dereferenceable(9) %this, %"class.std::shared_timed_mutex"* nonnull align 8 dereferenceable(56) %__m) unnamed_addr #7 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt11unique_lockISt18shared_timed_mutexEC2ERS0_(%"class.std::unique_lock"* nonnull dereferenceable(9) %this, %"class.std::shared_timed_mutex"* nonnull align 8 dereferenceable(56) %__m) unnamed_addr #8 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::unique_lock"*, align 8
   %__m.addr = alloca %"class.std::shared_timed_mutex"*, align 8
@@ -7157,7 +7158,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZNSt6vectorIPvSaIS0_EE5beginEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8** @_ZNSt6vectorIPvSaIS0_EE5beginEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #6 comdat align 2 {
 entry:
   %retval = alloca %"class.__gnu_cxx::__normal_iterator", align 8
   %this.addr = alloca %"class.std::vector"*, align 8
@@ -7174,7 +7175,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZNSt6vectorIPvSaIS0_EE3endEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8** @_ZNSt6vectorIPvSaIS0_EE3endEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #6 comdat align 2 {
 entry:
   %retval = alloca %"class.__gnu_cxx::__normal_iterator", align 8
   %this.addr = alloca %"class.std::vector"*, align 8
@@ -7191,7 +7192,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZN9__gnu_cxxneIPPvSt6vectorIS1_SaIS1_EEEEbRKNS_17__normal_iteratorIT_T0_EESB_(%"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %__lhs, %"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %__rhs) #5 comdat {
+define linkonce_odr dso_local zeroext i1 @_ZN9__gnu_cxxneIPPvSt6vectorIS1_SaIS1_EEEEbRKNS_17__normal_iteratorIT_T0_EESB_(%"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %__lhs, %"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %__rhs) #6 comdat {
 entry:
   %__lhs.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
   %__rhs.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
@@ -7241,7 +7242,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx17__normal_iteratorIPKPvSt6vectorIS1_SaIS1_EEEC2IPS1_EERKNS0_IT_NS_11__enable_ifIXsr3std10__are_sameISA_S9_EE7__valueES6_E6__typeEEE(%"class.__gnu_cxx::__normal_iterator.67"* nonnull dereferenceable(8) %this, %"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %__i) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx17__normal_iteratorIPKPvSt6vectorIS1_SaIS1_EEEC2IPS1_EERKNS0_IT_NS_11__enable_ifIXsr3std10__are_sameISA_S9_EE7__valueES6_E6__typeEEE(%"class.__gnu_cxx::__normal_iterator.67"* nonnull dereferenceable(8) %this, %"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %__i) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::__normal_iterator.67"*, align 8
   %__i.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
@@ -7257,7 +7258,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt11unique_lockISt18shared_timed_mutexED2Ev(%"class.std::unique_lock"* nonnull dereferenceable(9) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt11unique_lockISt18shared_timed_mutexED2Ev(%"class.std::unique_lock"* nonnull dereferenceable(9) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::unique_lock"*, align 8
   store %"class.std::unique_lock"* %this, %"class.std::unique_lock"** %this.addr, align 8
@@ -7286,7 +7287,7 @@ terminate.lpad:                                   ; preds = %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt6atomicIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEE5storeES4_St12memory_order(%"struct.std::atomic"* nonnull dereferenceable(4) %this, i32 %__i, i32 %__m) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt6atomicIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEE5storeES4_St12memory_order(%"struct.std::atomic"* nonnull dereferenceable(4) %this, i32 %__i, i32 %__m) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::atomic"*, align 8
   %__i.addr = alloca i32, align 4
@@ -7362,7 +7363,7 @@ if.end5:                                          ; preds = %if.then2, %if.end
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZNSt6atomicIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEE23compare_exchange_strongERS4_S4_St12memory_orderS7_(%"struct.std::atomic"* nonnull dereferenceable(4) %this, i32* nonnull align 4 dereferenceable(4) %__e, i32 %__i, i32 %__s, i32 %__f) #5 comdat align 2 {
+define linkonce_odr dso_local zeroext i1 @_ZNSt6atomicIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEE23compare_exchange_strongERS4_S4_St12memory_orderS7_(%"struct.std::atomic"* nonnull dereferenceable(4) %this, i32* nonnull align 4 dereferenceable(4) %__e, i32 %__i, i32 %__s, i32 %__f) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::atomic"*, align 8
   %__e.addr = alloca i32*, align 8
@@ -7593,7 +7594,7 @@ cmpxchg.continue37:                               ; preds = %cmpxchg.store_expec
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZSt23__cmpexch_failure_orderSt12memory_order(i32 %__m) #5 comdat personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local i32 @_ZSt23__cmpexch_failure_orderSt12memory_order(i32 %__m) #6 comdat personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %__m.addr = alloca i32, align 4
   store i32 %__m, i32* %__m.addr, align 4
@@ -7623,7 +7624,7 @@ terminate.lpad:                                   ; preds = %invoke.cont2, %invo
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32* @_ZSt11__addressofIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEEPT_RS5_(i32* nonnull align 4 dereferenceable(4) %__r) #5 comdat {
+define linkonce_odr dso_local i32* @_ZSt11__addressofIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEEPT_RS5_(i32* nonnull align 4 dereferenceable(4) %__r) #6 comdat {
 entry:
   %__r.addr = alloca i32*, align 8
   store i32* %__r, i32** %__r.addr, align 8
@@ -7632,7 +7633,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZStorSt12memory_orderSt23__memory_order_modifier(i32 %__m, i32 %__mod) #5 comdat {
+define linkonce_odr dso_local i32 @_ZStorSt12memory_orderSt23__memory_order_modifier(i32 %__m, i32 %__mod) #6 comdat {
 entry:
   %__m.addr = alloca i32, align 4
   %__mod.addr = alloca i32, align 4
@@ -7645,7 +7646,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZSt24__cmpexch_failure_order2St12memory_order(i32 %__m) #5 comdat {
+define linkonce_odr dso_local i32 @_ZSt24__cmpexch_failure_order2St12memory_order(i32 %__m) #6 comdat {
 entry:
   %__m.addr = alloca i32, align 4
   store i32 %__m, i32* %__m.addr, align 4
@@ -7678,7 +7679,7 @@ cond.end4:                                        ; preds = %cond.end, %cond.tru
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZStanSt12memory_orderSt23__memory_order_modifier(i32 %__m, i32 %__mod) #5 comdat {
+define linkonce_odr dso_local i32 @_ZStanSt12memory_orderSt23__memory_order_modifier(i32 %__m, i32 %__mod) #6 comdat {
 entry:
   %__m.addr = alloca i32, align 4
   %__mod.addr = alloca i32, align 4
@@ -7691,10 +7692,10 @@ entry:
 }
 
 ; Function Attrs: noreturn nounwind
-declare dso_local void @abort() #14
+declare dso_local void @abort() #13
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local %"class.std::shared_timed_mutex"* @_ZSt11__addressofISt18shared_timed_mutexEPT_RS1_(%"class.std::shared_timed_mutex"* nonnull align 8 dereferenceable(56) %__r) #5 comdat {
+define linkonce_odr dso_local %"class.std::shared_timed_mutex"* @_ZSt11__addressofISt18shared_timed_mutexEPT_RS1_(%"class.std::shared_timed_mutex"* nonnull align 8 dereferenceable(56) %__r) #6 comdat {
 entry:
   %__r.addr = alloca %"class.std::shared_timed_mutex"*, align 8
   store %"class.std::shared_timed_mutex"* %__r, %"class.std::shared_timed_mutex"** %__r.addr, align 8
@@ -7743,7 +7744,7 @@ if.end7:                                          ; preds = %if.end
 }
 
 ; Function Attrs: noreturn
-declare dso_local void @_ZSt20__throw_system_errori(i32) #18
+declare dso_local void @_ZSt20__throw_system_errori(i32) #17
 
 ; Function Attrs: noinline optnone uwtable mustprogress
 define linkonce_odr dso_local void @_ZNSt18shared_timed_mutex4lockEv(%"class.std::shared_timed_mutex"* nonnull dereferenceable(56) %this) #4 comdat align 2 {
@@ -7804,7 +7805,7 @@ return:                                           ; preds = %if.else, %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define internal i32 @_ZL18__gthread_active_pv() #5 {
+define internal i32 @_ZL18__gthread_active_pv() #6 {
 entry:
   ret i32 zext (i1 icmp ne (i8* bitcast (i32 (i32*, void (i8*)*)* @__pthread_key_create to i8*), i8* null) to i32)
 }
@@ -8057,7 +8058,7 @@ return:                                           ; preds = %sw.default, %if.the
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZSt19__iterator_categoryIN9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS2_SaIS2_EEEEENSt15iterator_traitsIT_E17iterator_categoryERKS9_(%"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %0) #5 comdat {
+define linkonce_odr dso_local void @_ZSt19__iterator_categoryIN9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS2_SaIS2_EEEEENSt15iterator_traitsIT_E17iterator_categoryERKS9_(%"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %0) #6 comdat {
 entry:
   %.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
   store %"class.__gnu_cxx::__normal_iterator"* %0, %"class.__gnu_cxx::__normal_iterator"** %.addr, align 8
@@ -8065,7 +8066,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZN9__gnu_cxxmiIPPvSt6vectorIS1_SaIS1_EEEENS_17__normal_iteratorIT_T0_E15difference_typeERKS9_SC_(%"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %__lhs, %"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %__rhs) #5 comdat {
+define linkonce_odr dso_local i64 @_ZN9__gnu_cxxmiIPPvSt6vectorIS1_SaIS1_EEEENS_17__normal_iteratorIT_T0_E15difference_typeERKS9_SC_(%"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %__lhs, %"class.__gnu_cxx::__normal_iterator"* nonnull align 8 dereferenceable(8) %__rhs) #6 comdat {
 entry:
   %__lhs.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
   %__rhs.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
@@ -8085,7 +8086,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZN9__gnu_cxx5__ops16_Iter_equals_valIKPN5rlbox13rlbox_sandboxINS2_20rlbox_wasm2c_sandboxEEEEclINS_17__normal_iteratorIPPvSt6vectorISB_SaISB_EEEEEEbT_(%"struct.__gnu_cxx::__ops::_Iter_equals_val"* nonnull dereferenceable(8) %this, i8** %__it.coerce) #5 comdat align 2 {
+define linkonce_odr dso_local zeroext i1 @_ZN9__gnu_cxx5__ops16_Iter_equals_valIKPN5rlbox13rlbox_sandboxINS2_20rlbox_wasm2c_sandboxEEEEclINS_17__normal_iteratorIPPvSt6vectorISB_SaISB_EEEEEEbT_(%"struct.__gnu_cxx::__ops::_Iter_equals_val"* nonnull dereferenceable(8) %this, i8** %__it.coerce) #6 comdat align 2 {
 entry:
   %__it = alloca %"class.__gnu_cxx::__normal_iterator", align 8
   %this.addr = alloca %"struct.__gnu_cxx::__ops::_Iter_equals_val"*, align 8
@@ -8104,7 +8105,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.__gnu_cxx::__normal_iterator"* @_ZN9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEEppEv(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.__gnu_cxx::__normal_iterator"* @_ZN9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEEppEv(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
   store %"class.__gnu_cxx::__normal_iterator"* %this, %"class.__gnu_cxx::__normal_iterator"** %this.addr, align 8
@@ -8117,7 +8118,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8*** @_ZNK9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEE4baseEv(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8*** @_ZNK9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEE4baseEv(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
   store %"class.__gnu_cxx::__normal_iterator"* %this, %"class.__gnu_cxx::__normal_iterator"** %this.addr, align 8
@@ -8127,7 +8128,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZNK9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEEdeEv(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZNK9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEEdeEv(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
   store %"class.__gnu_cxx::__normal_iterator"* %this, %"class.__gnu_cxx::__normal_iterator"** %this.addr, align 8
@@ -8138,7 +8139,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx5__ops16_Iter_equals_valIKPN5rlbox13rlbox_sandboxINS2_20rlbox_wasm2c_sandboxEEEEC2ERS7_(%"struct.__gnu_cxx::__ops::_Iter_equals_val"* nonnull dereferenceable(8) %this, %"class.rlbox::rlbox_sandbox"** nonnull align 8 dereferenceable(8) %__value) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx5__ops16_Iter_equals_valIKPN5rlbox13rlbox_sandboxINS2_20rlbox_wasm2c_sandboxEEEEC2ERS7_(%"struct.__gnu_cxx::__ops::_Iter_equals_val"* nonnull dereferenceable(8) %this, %"class.rlbox::rlbox_sandbox"** nonnull align 8 dereferenceable(8) %__value) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.__gnu_cxx::__ops::_Iter_equals_val"*, align 8
   %__value.addr = alloca %"class.rlbox::rlbox_sandbox"**, align 8
@@ -8152,7 +8153,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEEC2ERKS2_(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this, i8*** nonnull align 8 dereferenceable(8) %__i) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEEC2ERKS2_(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this, i8*** nonnull align 8 dereferenceable(8) %__i) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
   %__i.addr = alloca i8***, align 8
@@ -8238,7 +8239,7 @@ if.end:                                           ; preds = %if.then, %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZNK9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEEplEl(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this, i64 %__n) #5 comdat align 2 {
+define linkonce_odr dso_local i8** @_ZNK9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEEplEl(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this, i64 %__n) #6 comdat align 2 {
 entry:
   %retval = alloca %"class.__gnu_cxx::__normal_iterator", align 8
   %this.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
@@ -8259,7 +8260,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZN9__gnu_cxxmiIPKPvSt6vectorIS1_SaIS1_EEEENS_17__normal_iteratorIT_T0_E15difference_typeERKSA_SD_(%"class.__gnu_cxx::__normal_iterator.67"* nonnull align 8 dereferenceable(8) %__lhs, %"class.__gnu_cxx::__normal_iterator.67"* nonnull align 8 dereferenceable(8) %__rhs) #5 comdat {
+define linkonce_odr dso_local i64 @_ZN9__gnu_cxxmiIPKPvSt6vectorIS1_SaIS1_EEEENS_17__normal_iteratorIT_T0_E15difference_typeERKSA_SD_(%"class.__gnu_cxx::__normal_iterator.67"* nonnull align 8 dereferenceable(8) %__lhs, %"class.__gnu_cxx::__normal_iterator.67"* nonnull align 8 dereferenceable(8) %__rhs) #6 comdat {
 entry:
   %__lhs.addr = alloca %"class.__gnu_cxx::__normal_iterator.67"*, align 8
   %__rhs.addr = alloca %"class.__gnu_cxx::__normal_iterator.67"*, align 8
@@ -8279,7 +8280,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZNKSt6vectorIPvSaIS0_EE6cbeginEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8** @_ZNKSt6vectorIPvSaIS0_EE6cbeginEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #6 comdat align 2 {
 entry:
   %retval = alloca %"class.__gnu_cxx::__normal_iterator.67", align 8
   %this.addr = alloca %"class.std::vector"*, align 8
@@ -8347,7 +8348,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaIPvEE7destroyIS0_EEvRS1_PT_(%"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__a, i8** %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaIPvEE7destroyIS0_EEvRS1_PT_(%"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__a, i8** %__p) #6 comdat align 2 {
 entry:
   %__a.addr = alloca %"class.std::allocator.21"*, align 8
   %__p.addr = alloca i8**, align 8
@@ -8410,7 +8411,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZSt12__miter_baseIN9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS2_SaIS2_EEEEET_S8_(i8** %__it.coerce) #5 comdat {
+define linkonce_odr dso_local i8** @_ZSt12__miter_baseIN9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS2_SaIS2_EEEEET_S8_(i8** %__it.coerce) #6 comdat {
 entry:
   %retval = alloca %"class.__gnu_cxx::__normal_iterator", align 8
   %__it = alloca %"class.__gnu_cxx::__normal_iterator", align 8
@@ -8425,7 +8426,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZSt12__niter_wrapIN9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS2_SaIS2_EEEES3_ET_S8_T0_(i8** %__from.coerce, i8** %__res) #5 comdat {
+define linkonce_odr dso_local i8** @_ZSt12__niter_wrapIN9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS2_SaIS2_EEEES3_ET_S8_T0_(i8** %__from.coerce, i8** %__res) #6 comdat {
 entry:
   %retval = alloca %"class.__gnu_cxx::__normal_iterator", align 8
   %__from = alloca %"class.__gnu_cxx::__normal_iterator", align 8
@@ -8472,7 +8473,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZSt12__niter_baseIPPvSt6vectorIS0_SaIS0_EEET_N9__gnu_cxx17__normal_iteratorIS5_T0_EE(i8** %__it.coerce) #5 comdat {
+define linkonce_odr dso_local i8** @_ZSt12__niter_baseIPPvSt6vectorIS0_SaIS0_EEET_N9__gnu_cxx17__normal_iteratorIS5_T0_EE(i8** %__it.coerce) #6 comdat {
 entry:
   %__it = alloca %"class.__gnu_cxx::__normal_iterator", align 8
   %coerce.dive = getelementptr inbounds %"class.__gnu_cxx::__normal_iterator", %"class.__gnu_cxx::__normal_iterator"* %__it, i32 0, i32 0
@@ -8483,7 +8484,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZNSt11__copy_moveILb1ELb1ESt26random_access_iterator_tagE8__copy_mIPvEEPT_PKS4_S7_S5_(i8** %__first, i8** %__last, i8** %__result) #5 comdat align 2 {
+define linkonce_odr dso_local i8** @_ZNSt11__copy_moveILb1ELb1ESt26random_access_iterator_tagE8__copy_mIPvEEPT_PKS4_S7_S5_(i8** %__first, i8** %__last, i8** %__result) #6 comdat align 2 {
 entry:
   %__first.addr = alloca i8**, align 8
   %__last.addr = alloca i8**, align 8
@@ -8521,10 +8522,10 @@ if.end:                                           ; preds = %if.then, %entry
 }
 
 ; Function Attrs: argmemonly nofree nosync nounwind willreturn
-declare void @llvm.memmove.p0i8.p0i8.i64(i8* nocapture writeonly, i8* nocapture readonly, i64, i1 immarg) #9
+declare void @llvm.memmove.p0i8.p0i8.i64(i8* nocapture writeonly, i8* nocapture readonly, i64, i1 immarg) #10
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorIPvE7destroyIS1_EEvPT_(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this, i8** %__p) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorIPvE7destroyIS1_EEvPT_(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this, i8** %__p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.22"*, align 8
   %__p.addr = alloca i8**, align 8
@@ -8536,7 +8537,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8*** @_ZNK9__gnu_cxx17__normal_iteratorIPKPvSt6vectorIS1_SaIS1_EEE4baseEv(%"class.__gnu_cxx::__normal_iterator.67"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8*** @_ZNK9__gnu_cxx17__normal_iteratorIPKPvSt6vectorIS1_SaIS1_EEE4baseEv(%"class.__gnu_cxx::__normal_iterator.67"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::__normal_iterator.67"*, align 8
   store %"class.__gnu_cxx::__normal_iterator.67"* %this, %"class.__gnu_cxx::__normal_iterator.67"** %this.addr, align 8
@@ -8546,7 +8547,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx17__normal_iteratorIPKPvSt6vectorIS1_SaIS1_EEEC2ERKS3_(%"class.__gnu_cxx::__normal_iterator.67"* nonnull dereferenceable(8) %this, i8*** nonnull align 8 dereferenceable(8) %__i) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx17__normal_iteratorIPKPvSt6vectorIS1_SaIS1_EEEC2ERKS3_(%"class.__gnu_cxx::__normal_iterator.67"* nonnull dereferenceable(8) %this, i8*** nonnull align 8 dereferenceable(8) %__i) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::__normal_iterator.67"*, align 8
   %__i.addr = alloca i8***, align 8
@@ -8621,7 +8622,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define internal i32 @_ZStL23__glibcxx_rwlock_unlockP16pthread_rwlock_t(%union.pthread_rwlock_t* %__rwlock) #5 {
+define internal i32 @_ZStL23__glibcxx_rwlock_unlockP16pthread_rwlock_t(%union.pthread_rwlock_t* %__rwlock) #6 {
 entry:
   %retval = alloca i32, align 4
   %__rwlock.addr = alloca %union.pthread_rwlock_t*, align 8
@@ -8649,7 +8650,7 @@ return:                                           ; preds = %if.else, %if.then
 declare extern_weak dso_local i32 @pthread_rwlock_unlock(%union.pthread_rwlock_t*) #2
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox15app_pointer_mapIjED2Ev(%"class.rlbox::app_pointer_map"* nonnull dereferenceable(112) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox15app_pointer_mapIjED2Ev(%"class.rlbox::app_pointer_map"* nonnull dereferenceable(112) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::app_pointer_map"*, align 8
   store %"class.rlbox::app_pointer_map"* %this, %"class.rlbox::app_pointer_map"** %this.addr, align 8
@@ -8659,8 +8660,8 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline optnone tainted uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZN5rlbox20rlbox_wasm2c_sandbox19impl_create_sandboxEbmPKc(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this, i1 zeroext %infallible, i64 %override_max_heap_size, i8* %wasm_module_name) #11 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+; Function Attrs: noinline optnone uwtable mustprogress
+define linkonce_odr dso_local zeroext i1 @_ZN5rlbox20rlbox_wasm2c_sandbox19impl_create_sandboxEbmPKc(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this, i1 zeroext %infallible, i64 %override_max_heap_size, i8* %wasm_module_name) #4 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %retval = alloca i1, align 1
   %this.addr = alloca %"class.rlbox::rlbox_wasm2c_sandbox"*, align 8
@@ -9019,8 +9020,8 @@ eh.resume:                                        ; preds = %lpad8, %lpad
   resume { i8*, i32 } %lpad.val94
 }
 
-; Function Attrs: noinline optnone tainted uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt6vectorIPvSaIS0_EE9push_backEOS0_(%"class.std::vector"* nonnull dereferenceable(24) %this, i8** nonnull align 8 dereferenceable(8) %__x) #11 comdat align 2 {
+; Function Attrs: noinline optnone uwtable mustprogress
+define linkonce_odr dso_local void @_ZNSt6vectorIPvSaIS0_EE9push_backEOS0_(%"class.std::vector"* nonnull dereferenceable(24) %this, i8** nonnull align 8 dereferenceable(8) %__x) #4 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::vector"*, align 8
   %__x.addr = alloca i8**, align 8
@@ -9037,7 +9038,7 @@ entry:
 declare dso_local void @_ZNSaIcEC1Ev(%"class.std::allocator.46"* nonnull dereferenceable(1)) unnamed_addr #2
 
 ; Function Attrs: noinline optnone uwtable
-define linkonce_odr dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32) %this, i8* %__s, %"class.std::allocator.46"* nonnull align 1 dereferenceable(1) %__a) unnamed_addr #7 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2IS3_EEPKcRKS3_(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32) %this, i8* %__s, %"class.std::allocator.46"* nonnull align 1 dereferenceable(1) %__a) unnamed_addr #8 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.std::__cxx11::basic_string"*, align 8
   %__s.addr = alloca i8*, align 8
@@ -9101,10 +9102,11 @@ eh.resume:                                        ; preds = %lpad
 ; Function Attrs: nounwind
 declare dso_local void @_ZNSaIcED1Ev(%"class.std::allocator.46"* nonnull dereferenceable(1)) unnamed_addr #2
 
-; Function Attrs: nounwind tainted
-declare dso_local zeroext i1 @_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE5emptyEv(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32)) #20
+; Function Attrs: nounwind
+declare dso_local zeroext i1 @_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE5emptyEv(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32)) #2
 
-declare dso_local void @get_wasm2c_sandbox_info(%struct.wasm2c_sandbox_funcs_t*  align 8) #1
+; Function Attrs: tainted
+declare dso_local void @get_wasm2c_sandbox_info(%struct.wasm2c_sandbox_funcs_t* align 8) #5
 
 ; Function Attrs: noinline optnone uwtable mustprogress
 define linkonce_odr dso_local i64 @_ZN5rlbox20rlbox_wasm2c_sandbox35rlbox_wasm2c_get_adjusted_heap_sizeEm(i64 %heap_size) #4 comdat align 2 {
@@ -9154,7 +9156,7 @@ return:                                           ; preds = %if.end6, %if.then4,
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZN5rlbox20rlbox_wasm2c_sandbox32rlbox_wasm2c_get_heap_page_countEm(i64 %heap_size) #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZN5rlbox20rlbox_wasm2c_sandbox32rlbox_wasm2c_get_heap_page_countEm(i64 %heap_size) #6 comdat align 2 {
 entry:
   %heap_size.addr = alloca i64, align 8
   %pages = alloca i64, align 8
@@ -9167,7 +9169,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZNK5rlbox20rlbox_wasm2c_sandbox24impl_get_memory_locationEv(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZNK5rlbox20rlbox_wasm2c_sandbox24impl_get_memory_locationEv(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_wasm2c_sandbox"*, align 8
   store %"class.rlbox::rlbox_wasm2c_sandbox"* %this, %"class.rlbox::rlbox_wasm2c_sandbox"** %this.addr, align 8
@@ -9180,7 +9182,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZNSt14numeric_limitsIjE3maxEv() #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZNSt14numeric_limitsIjE3maxEv() #6 comdat align 2 {
 entry:
   ret i32 -1
 }
@@ -9239,7 +9241,7 @@ return:                                           ; preds = %if.end, %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_Alloc_hiderD2Ev(%"struct.std::__cxx11::basic_string<char>::_Alloc_hider"* nonnull dereferenceable(8) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_Alloc_hiderD2Ev(%"struct.std::__cxx11::basic_string<char>::_Alloc_hider"* nonnull dereferenceable(8) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::__cxx11::basic_string<char>::_Alloc_hider"*, align 8
   store %"struct.std::__cxx11::basic_string<char>::_Alloc_hider"* %this, %"struct.std::__cxx11::basic_string<char>::_Alloc_hider"** %this.addr, align 8
@@ -9379,7 +9381,7 @@ unreachable:                                      ; preds = %invoke.cont9
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZN9__gnu_cxx17__is_null_pointerIKcEEbPT_(i8* %__ptr) #5 comdat {
+define linkonce_odr dso_local zeroext i1 @_ZN9__gnu_cxx17__is_null_pointerIKcEEbPT_(i8* %__ptr) #6 comdat {
 entry:
   %__ptr.addr = alloca i8*, align 8
   store i8* %__ptr, i8** %__ptr.addr, align 8
@@ -9389,7 +9391,7 @@ entry:
 }
 
 ; Function Attrs: noreturn
-declare dso_local void @_ZSt19__throw_logic_errorPKc(i8*) #18
+declare dso_local void @_ZSt19__throw_logic_errorPKc(i8*) #17
 
 ; Function Attrs: noinline optnone uwtable mustprogress
 define linkonce_odr dso_local i64 @_ZSt8distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_(i8* %__first, i8* %__last) #4 comdat {
@@ -9414,19 +9416,19 @@ declare dso_local i8* @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_
 declare dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_capacityEm(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32), i64) #1
 
 ; Function Attrs: nounwind tainted
-declare dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE13_S_copy_charsEPcPKcS7_(i8*, i8*, i8*) #20
+declare dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE13_S_copy_charsEPcPKcS7_(i8*, i8*, i8*) #19
 
 ; Function Attrs: tainted
-declare dso_local i8* @_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_M_dataEv(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32)) #10
+declare dso_local i8* @_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_M_dataEv(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32)) #5
 
 ; Function Attrs: tainted
-declare dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_disposeEv(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32)) #10
+declare dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_disposeEv(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32)) #5
 
 ; Function Attrs: tainted
-declare dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE13_M_set_lengthEm(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32), i64) #10
+declare dso_local void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE13_M_set_lengthEm(%"class.std::__cxx11::basic_string"* nonnull dereferenceable(32), i64) #5
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_access_iterator_tag(i8* %__first, i8* %__last) #5 comdat {
+define linkonce_odr dso_local i64 @_ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_access_iterator_tag(i8* %__first, i8* %__last) #6 comdat {
 entry:
   %0 = alloca %"struct.std::random_access_iterator_tag", align 1
   %__first.addr = alloca i8*, align 8
@@ -9442,7 +9444,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZSt19__iterator_categoryIPKcENSt15iterator_traitsIT_E17iterator_categoryERKS3_(i8** nonnull align 8 dereferenceable(8) %0) #5 comdat {
+define linkonce_odr dso_local void @_ZSt19__iterator_categoryIPKcENSt15iterator_traitsIT_E17iterator_categoryERKS3_(i8** nonnull align 8 dereferenceable(8) %0) #6 comdat {
 entry:
   %.addr = alloca i8**, align 8
   store i8** %0, i8*** %.addr, align 8
@@ -9450,7 +9452,7 @@ entry:
 }
 
 ; Function Attrs: noinline optnone tainted uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZN9__gnu_cxx11char_traitsIcE6lengthEPKc(i8* %__p) #11 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZN9__gnu_cxx11char_traitsIcE6lengthEPKc(i8* %__p) #20 comdat align 2 {
 entry:
   %__p.addr = alloca i8*, align 8
   %__i = alloca i64, align 8
@@ -9503,7 +9505,7 @@ entry:
 declare dso_local void @_ZNSaIcED2Ev(%"class.std::allocator.46"* nonnull dereferenceable(1)) unnamed_addr #2
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZN5rlbox20rlbox_wasm2c_sandbox17next_power_of_twoEj(i32 %value) #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZN5rlbox20rlbox_wasm2c_sandbox17next_power_of_twoEj(i32 %value) #6 comdat align 2 {
 entry:
   %value.addr = alloca i32, align 4
   %power = alloca i64, align 8
@@ -9589,7 +9591,7 @@ if.end:                                           ; preds = %if.else, %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZSt4moveIRPvEONSt16remove_referenceIT_E4typeEOS3_(i8** nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZSt4moveIRPvEONSt16remove_referenceIT_E4typeEOS3_(i8** nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i8**, align 8
   store i8** %__t, i8*** %__t.addr, align 8
@@ -9598,7 +9600,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaIPvEE9constructIS0_JS0_EEEvRS1_PT_DpOT0_(%"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__a, i8** %__p, i8** nonnull align 8 dereferenceable(8) %__args) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt16allocator_traitsISaIPvEE9constructIS0_JS0_EEEvRS1_PT_DpOT0_(%"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__a, i8** %__p, i8** nonnull align 8 dereferenceable(8) %__args) #6 comdat align 2 {
 entry:
   %__a.addr = alloca %"class.std::allocator.21"*, align 8
   %__p.addr = alloca i8**, align 8
@@ -9616,7 +9618,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZSt7forwardIPvEOT_RNSt16remove_referenceIS1_E4typeE(i8** nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZSt7forwardIPvEOT_RNSt16remove_referenceIS1_E4typeE(i8** nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i8**, align 8
   store i8** %__t, i8*** %__t.addr, align 8
@@ -9733,7 +9735,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZNSt6vectorIPvSaIS0_EE4backEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZNSt6vectorIPvSaIS0_EE4backEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::vector"*, align 8
   %ref.tmp = alloca %"class.__gnu_cxx::__normal_iterator", align 8
@@ -9751,7 +9753,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorIPvE9constructIS1_JS1_EEEvPT_DpOT0_(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this, i8** %__p, i8** nonnull align 8 dereferenceable(8) %__args) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorIPvE9constructIS1_JS1_EEEvPT_DpOT0_(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this, i8** %__p, i8** nonnull align 8 dereferenceable(8) %__args) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.22"*, align 8
   %__p.addr = alloca i8**, align 8
@@ -9854,7 +9856,7 @@ cond.end:                                         ; preds = %cond.false, %cond.t
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZNSt6vectorIPvSaIS0_EE11_S_relocateEPS0_S3_S3_RS1_(i8** %__first, i8** %__last, i8** %__result, %"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__alloc) #5 comdat align 2 {
+define linkonce_odr dso_local i8** @_ZNSt6vectorIPvSaIS0_EE11_S_relocateEPS0_S3_S3_RS1_(i8** %__first, i8** %__last, i8** %__result, %"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__alloc) #6 comdat align 2 {
 entry:
   %__first.addr = alloca i8**, align 8
   %__last.addr = alloca i8**, align 8
@@ -9874,7 +9876,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator.21"* @_ZNSt12_Vector_baseIPvSaIS0_EE19_M_get_Tp_allocatorEv(%"struct.std::_Vector_base"* nonnull dereferenceable(24) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator.21"* @_ZNSt12_Vector_baseIPvSaIS0_EE19_M_get_Tp_allocatorEv(%"struct.std::_Vector_base"* nonnull dereferenceable(24) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Vector_base"*, align 8
   store %"struct.std::_Vector_base"* %this, %"struct.std::_Vector_base"** %this.addr, align 8
@@ -9911,7 +9913,7 @@ if.end:                                           ; preds = %if.then, %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZNKSt6vectorIPvSaIS0_EE8max_sizeEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZNKSt6vectorIPvSaIS0_EE8max_sizeEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::vector"*, align 8
   store %"class.std::vector"* %this, %"class.std::vector"** %this.addr, align 8
@@ -9923,7 +9925,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZNKSt6vectorIPvSaIS0_EE4sizeEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZNKSt6vectorIPvSaIS0_EE4sizeEv(%"class.std::vector"* nonnull dereferenceable(24) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::vector"*, align 8
   store %"class.std::vector"* %this, %"class.std::vector"** %this.addr, align 8
@@ -9946,10 +9948,10 @@ entry:
 }
 
 ; Function Attrs: noreturn
-declare dso_local void @_ZSt20__throw_length_errorPKc(i8*) #18
+declare dso_local void @_ZSt20__throw_length_errorPKc(i8*) #17
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i64* @_ZSt3maxImERKT_S2_S2_(i64* nonnull align 8 dereferenceable(8) %__a, i64* nonnull align 8 dereferenceable(8) %__b) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i64* @_ZSt3maxImERKT_S2_S2_(i64* nonnull align 8 dereferenceable(8) %__a, i64* nonnull align 8 dereferenceable(8) %__b) #6 comdat {
 entry:
   %retval = alloca i64*, align 8
   %__a.addr = alloca i64*, align 8
@@ -9979,7 +9981,7 @@ return:                                           ; preds = %if.end, %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZNSt6vectorIPvSaIS0_EE11_S_max_sizeERKS1_(%"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__a) #5 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local i64 @_ZNSt6vectorIPvSaIS0_EE11_S_max_sizeERKS1_(%"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__a) #6 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %__a.addr = alloca %"class.std::allocator.21"*, align 8
   %__diffmax = alloca i64, align 8
@@ -10005,7 +10007,7 @@ terminate.lpad:                                   ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator.21"* @_ZNKSt12_Vector_baseIPvSaIS0_EE19_M_get_Tp_allocatorEv(%"struct.std::_Vector_base"* nonnull dereferenceable(24) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 1 dereferenceable(1) %"class.std::allocator.21"* @_ZNKSt12_Vector_baseIPvSaIS0_EE19_M_get_Tp_allocatorEv(%"struct.std::_Vector_base"* nonnull dereferenceable(24) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Vector_base"*, align 8
   store %"struct.std::_Vector_base"* %this, %"struct.std::_Vector_base"** %this.addr, align 8
@@ -10016,7 +10018,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZNSt16allocator_traitsISaIPvEE8max_sizeERKS1_(%"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__a) #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZNSt16allocator_traitsISaIPvEE8max_sizeERKS1_(%"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__a) #6 comdat align 2 {
 entry:
   %__a.addr = alloca %"class.std::allocator.21"*, align 8
   store %"class.std::allocator.21"* %__a, %"class.std::allocator.21"** %__a.addr, align 8
@@ -10027,7 +10029,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i64* @_ZSt3minImERKT_S2_S2_(i64* nonnull align 8 dereferenceable(8) %__a, i64* nonnull align 8 dereferenceable(8) %__b) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i64* @_ZSt3minImERKT_S2_S2_(i64* nonnull align 8 dereferenceable(8) %__a, i64* nonnull align 8 dereferenceable(8) %__b) #6 comdat {
 entry:
   %retval = alloca i64*, align 8
   %__a.addr = alloca i64*, align 8
@@ -10057,7 +10059,7 @@ return:                                           ; preds = %if.end, %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZNK9__gnu_cxx13new_allocatorIPvE8max_sizeEv(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZNK9__gnu_cxx13new_allocatorIPvE8max_sizeEv(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.22"*, align 8
   store %"class.__gnu_cxx::new_allocator.22"* %this, %"class.__gnu_cxx::new_allocator.22"** %this.addr, align 8
@@ -10107,7 +10109,7 @@ if.end:                                           ; preds = %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZNSt6vectorIPvSaIS0_EE14_S_do_relocateEPS0_S3_S3_RS1_St17integral_constantIbLb1EE(i8** %__first, i8** %__last, i8** %__result, %"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__alloc) #5 comdat align 2 {
+define linkonce_odr dso_local i8** @_ZNSt6vectorIPvSaIS0_EE14_S_do_relocateEPS0_S3_S3_RS1_St17integral_constantIbLb1EE(i8** %__first, i8** %__last, i8** %__result, %"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__alloc) #6 comdat align 2 {
 entry:
   %0 = alloca %"struct.std::integral_constant", align 1
   %__first.addr = alloca i8**, align 8
@@ -10127,7 +10129,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZSt12__relocate_aIPPvS1_SaIS0_EET0_T_S4_S3_RT1_(i8** %__first, i8** %__last, i8** %__result, %"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__alloc) #5 comdat {
+define linkonce_odr dso_local i8** @_ZSt12__relocate_aIPPvS1_SaIS0_EET0_T_S4_S3_RT1_(i8** %__first, i8** %__last, i8** %__result, %"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %__alloc) #6 comdat {
 entry:
   %__first.addr = alloca i8**, align 8
   %__last.addr = alloca i8**, align 8
@@ -10149,7 +10151,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZSt14__relocate_a_1IPvS0_ENSt9enable_ifIXsr3std24__is_bitwise_relocatableIT_EE5valueEPS2_E4typeES3_S3_S3_RSaIT0_E(i8** %__first, i8** %__last, i8** %__result, %"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %0) #5 comdat {
+define linkonce_odr dso_local i8** @_ZSt14__relocate_a_1IPvS0_ENSt9enable_ifIXsr3std24__is_bitwise_relocatableIT_EE5valueEPS2_E4typeES3_S3_S3_RSaIT0_E(i8** %__first, i8** %__last, i8** %__result, %"class.std::allocator.21"* nonnull align 1 dereferenceable(1) %0) #6 comdat {
 entry:
   %__first.addr = alloca i8**, align 8
   %__last.addr = alloca i8**, align 8
@@ -10189,7 +10191,7 @@ if.end:                                           ; preds = %if.then, %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZSt12__niter_baseIPPvET_S2_(i8** %__it) #5 comdat {
+define linkonce_odr dso_local i8** @_ZSt12__niter_baseIPPvET_S2_(i8** %__it) #6 comdat {
 entry:
   %__it.addr = alloca i8**, align 8
   store i8** %__it, i8*** %__it.addr, align 8
@@ -10215,7 +10217,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorIPvE10deallocateEPS1_m(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this, i8** %__p, i64 %0) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorIPvE10deallocateEPS1_m(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this, i8** %__p, i64 %0) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.22"*, align 8
   %__p.addr = alloca i8**, align 8
@@ -10231,7 +10233,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8** @_ZNK9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEEmiEl(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this, i64 %__n) #5 comdat align 2 {
+define linkonce_odr dso_local i8** @_ZNK9__gnu_cxx17__normal_iteratorIPPvSt6vectorIS1_SaIS1_EEEmiEl(%"class.__gnu_cxx::__normal_iterator"* nonnull dereferenceable(8) %this, i64 %__n) #6 comdat align 2 {
 entry:
   %retval = alloca %"class.__gnu_cxx::__normal_iterator", align 8
   %this.addr = alloca %"class.__gnu_cxx::__normal_iterator"*, align 8
@@ -10253,7 +10255,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZNKSt6atomicIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEE4loadESt12memory_order(%"struct.std::atomic"* nonnull dereferenceable(4) %this, i32 %__m) #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZNKSt6atomicIN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEE4loadESt12memory_order(%"struct.std::atomic"* nonnull dereferenceable(4) %this, i32 %__m) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::atomic"*, align 8
   %__m.addr = alloca i32, align 4
@@ -10370,7 +10372,7 @@ return:                                           ; preds = %if.end, %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox7taintedIPcNS_20rlbox_wasm2c_sandboxEEC2ERKDn(%"class.rlbox::tainted.24"* nonnull dereferenceable(8) %this, i8** nonnull align 8 dereferenceable(8) %arg) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox7taintedIPcNS_20rlbox_wasm2c_sandboxEEC2ERKDn(%"class.rlbox::tainted.24"* nonnull dereferenceable(8) %this, i8** nonnull align 8 dereferenceable(8) %arg) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.24"*, align 8
   %arg.addr = alloca i8**, align 8
@@ -10432,7 +10434,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32* @_ZSt11__addressofIKN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEEPT_RS6_(i32* nonnull align 4 dereferenceable(4) %__r) #5 comdat {
+define linkonce_odr dso_local i32* @_ZSt11__addressofIKN5rlbox13rlbox_sandboxINS0_20rlbox_wasm2c_sandboxEE14Sandbox_StatusEEPT_RS6_(i32* nonnull align 4 dereferenceable(4) %__r) #6 comdat {
 entry:
   %__r.addr = alloca i32*, align 8
   store i32* %__r, i32** %__r.addr, align 8
@@ -10441,7 +10443,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZSt7forwardIDnEOT_RNSt16remove_referenceIS0_E4typeE(i8** nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZSt7forwardIDnEOT_RNSt16remove_referenceIS0_E4typeE(i8** nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i8**, align 8
   store i8** %__t, i8*** %__t.addr, align 8
@@ -10476,7 +10478,7 @@ entry:
   store %"class.rlbox::rlbox_wasm2c_sandbox"* %this1, %"class.rlbox::rlbox_wasm2c_sandbox"** getelementptr inbounds (%"struct.rlbox::rlbox_wasm2c_sandbox_thread_data", %"struct.rlbox::rlbox_wasm2c_sandbox_thread_data"* @_ZN5rlbox20rlbox_wasm2c_sandbox11thread_dataE, i32 0, i32 0), align 8
   %1 = getelementptr inbounds %class.anon.69, %class.anon.69* %ref.tmp, i32 0, i32 0
   store %"class.rlbox::rlbox_wasm2c_sandbox"** %old_sandbox, %"class.rlbox::rlbox_wasm2c_sandbox"*** %1, align 8
-  call void @_ZN5rlbox6detail15make_scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_EUlvE_EENS0_10scope_exitIT_EEOSE_(%"class.rlbox::detail::scope_exit.68"*  align 8 %on_exit, %class.anon.69* nonnull align 8 dereferenceable(8) %ref.tmp)
+  call void @_ZN5rlbox6detail15make_scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_EUlvE_EENS0_10scope_exitIT_EEOSE_(%"class.rlbox::detail::scope_exit.68"* align 8 %on_exit, %class.anon.69* nonnull align 8 dereferenceable(8) %ref.tmp)
   store i64 0, i64* %alloc_length, align 8
   %arraydecay = getelementptr inbounds [1 x i32], [1 x i32]* %allocations_buff, i64 0, i64 0
   store i32* %arraydecay, i32** %allocations, align 8
@@ -10550,7 +10552,7 @@ eh.resume:                                        ; preds = %lpad
 }
 
 ; Function Attrs: noinline optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN5rlbox6detail15make_scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_EUlvE_EENS0_10scope_exitIT_EEOSE_(%"class.rlbox::detail::scope_exit.68"*  align 8 %agg.result, %class.anon.69* nonnull align 8 dereferenceable(8) %exitFunction) #4 comdat {
+define linkonce_odr dso_local void @_ZN5rlbox6detail15make_scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_EUlvE_EENS0_10scope_exitIT_EEOSE_(%"class.rlbox::detail::scope_exit.68"* align 8 %agg.result, %class.anon.69* nonnull align 8 dereferenceable(8) %exitFunction) #4 comdat {
 entry:
   %result.ptr = alloca i8*, align 8
   %exitFunction.addr = alloca %class.anon.69*, align 8
@@ -10564,7 +10566,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_ENKUlT_E_clIjEENSt11conditionalIXsr3std8is_classIDtfp_EEE5valueEjSE_E4typeESA_(%class.anon.71* nonnull dereferenceable(16) %this, i32 %arg) #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_ENKUlT_E_clIjEENSt11conditionalIXsr3std8is_classIDtfp_EEE5valueEjSE_E4typeESA_(%class.anon.71* nonnull dereferenceable(16) %this, i32 %arg) #6 comdat align 2 {
 entry:
   %this.addr = alloca %class.anon.71*, align 8
   %arg.addr = alloca i32, align 4
@@ -10578,7 +10580,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_EUlvE_ED2Ev(%"class.rlbox::detail::scope_exit.68"* nonnull dereferenceable(9) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_EUlvE_ED2Ev(%"class.rlbox::detail::scope_exit.68"* nonnull dereferenceable(9) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"class.rlbox::detail::scope_exit.68"*, align 8
   store %"class.rlbox::detail::scope_exit.68"* %this, %"class.rlbox::detail::scope_exit.68"** %this.addr, align 8
@@ -10608,7 +10610,7 @@ terminate.lpad:                                   ; preds = %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %class.anon.69* @_ZSt4moveIRZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_EUlvE_EONSt16remove_referenceIT_E4typeEOSE_(%class.anon.69* nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %class.anon.69* @_ZSt4moveIRZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_EUlvE_EONSt16remove_referenceIT_E4typeEOSE_(%class.anon.69* nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca %class.anon.69*, align 8
   store %class.anon.69* %__t, %class.anon.69** %__t.addr, align 8
@@ -10617,7 +10619,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_EUlvE_EC2EOSC_(%"class.rlbox::detail::scope_exit.68"* nonnull dereferenceable(9) %this, %class.anon.69* nonnull align 8 dereferenceable(8) %cleanup) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox6detail10scope_exitIZNS_20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_EUlvE_EC2EOSC_(%"class.rlbox::detail::scope_exit.68"* nonnull dereferenceable(9) %this, %class.anon.69* nonnull align 8 dereferenceable(8) %cleanup) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::detail::scope_exit.68"*, align 8
   %cleanup.addr = alloca %class.anon.69*, align 8
@@ -10635,7 +10637,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_ENKUlvE_clEv(%class.anon.69* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZZN5rlbox20rlbox_wasm2c_sandbox25impl_invoke_with_func_ptrIFPvmEFjjEJjEEEDaPT0_DpOT1_ENKUlvE_clEv(%class.anon.69* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %class.anon.69*, align 8
   store %class.anon.69* %this, %class.anon.69** %this.addr, align 8
@@ -10648,7 +10650,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZNK5rlbox20rlbox_wasm2c_sandbox28impl_get_unsandboxed_pointerIPcEEPvj(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this, i32 %p) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZNK5rlbox20rlbox_wasm2c_sandbox28impl_get_unsandboxed_pointerIPcEEPvj(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this, i32 %p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_wasm2c_sandbox"*, align 8
   %p.addr = alloca i32, align 4
@@ -10700,7 +10702,7 @@ land.end:                                         ; preds = %land.rhs, %entry
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZN5rlbox20rlbox_wasm2c_sandbox21impl_get_total_memoryEv(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZN5rlbox20rlbox_wasm2c_sandbox21impl_get_total_memoryEv(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_wasm2c_sandbox"*, align 8
   store %"class.rlbox::rlbox_wasm2c_sandbox"* %this, %"class.rlbox::rlbox_wasm2c_sandbox"** %this.addr, align 8
@@ -10714,7 +10716,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local zeroext i1 @_ZN5rlbox20rlbox_wasm2c_sandbox23impl_is_in_same_sandboxEPKvS2_(i8* %p1, i8* %p2) #5 comdat align 2 {
+define linkonce_odr dso_local zeroext i1 @_ZN5rlbox20rlbox_wasm2c_sandbox23impl_is_in_same_sandboxEPKvS2_(i8* %p1, i8* %p2) #6 comdat align 2 {
 entry:
   %p1.addr = alloca i8*, align 8
   %p2.addr = alloca i8*, align 8
@@ -10740,13 +10742,13 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZNSt14numeric_limitsImE3maxEv() #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZNSt14numeric_limitsImE3maxEv() #6 comdat align 2 {
 entry:
   ret i64 -1
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZSt7forwardIRPcEOT_RNSt16remove_referenceIS2_E4typeE(i8** nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZSt7forwardIRPcEOT_RNSt16remove_referenceIS2_E4typeE(i8** nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i8**, align 8
   store i8** %__t, i8*** %__t.addr, align 8
@@ -10755,7 +10757,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox7taintedIPcNS_20rlbox_wasm2c_sandboxEEC2IS1_LPv0EEET_PKv(%"class.rlbox::tainted.24"* nonnull dereferenceable(8) %this, i8* %val, i8* %0) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox7taintedIPcNS_20rlbox_wasm2c_sandboxEEC2IS1_LPv0EEET_PKv(%"class.rlbox::tainted.24"* nonnull dereferenceable(8) %this, i8* %val, i8* %0) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.24"*, align 8
   %val.addr = alloca i8*, align 8
@@ -10772,7 +10774,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZN5rlbox6detail12unwrap_valueIRjEEDaOT_(i32* nonnull align 4 dereferenceable(4) %rhs) #5 comdat {
+define linkonce_odr dso_local i32 @_ZN5rlbox6detail12unwrap_valueIRjEEDaOT_(i32* nonnull align 4 dereferenceable(4) %rhs) #6 comdat {
 entry:
   %rhs.addr = alloca i32*, align 8
   store i32* %rhs, i32** %rhs.addr, align 8
@@ -10782,7 +10784,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i64 @_ZN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEE16get_total_memoryEv(%"class.rlbox::rlbox_sandbox"* nonnull dereferenceable(3136) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i64 @_ZN5rlbox13rlbox_sandboxINS_20rlbox_wasm2c_sandboxEE16get_total_memoryEv(%"class.rlbox::rlbox_sandbox"* nonnull dereferenceable(3136) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_sandbox"*, align 8
   store %"class.rlbox::rlbox_sandbox"* %this, %"class.rlbox::rlbox_sandbox"** %this.addr, align 8
@@ -10838,7 +10840,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZN5rlbox6detail12unwrap_valueIRPcEEDaOT_(i8** nonnull align 8 dereferenceable(8) %rhs) #5 comdat {
+define linkonce_odr dso_local i8* @_ZN5rlbox6detail12unwrap_valueIRPcEEDaOT_(i8** nonnull align 8 dereferenceable(8) %rhs) #6 comdat {
 entry:
   %rhs.addr = alloca i8**, align 8
   store i8** %rhs, i8*** %rhs.addr, align 8
@@ -10848,7 +10850,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZN5rlbox17tainted_base_implINS_7taintedEPcNS_20rlbox_wasm2c_sandboxEE17UNSAFE_unverifiedEv(%"class.rlbox::tainted_base_impl.25"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZN5rlbox17tainted_base_implINS_7taintedEPcNS_20rlbox_wasm2c_sandboxEE17UNSAFE_unverifiedEv(%"class.rlbox::tainted_base_impl.25"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl.25"*, align 8
   store %"class.rlbox::tainted_base_impl.25"* %this, %"class.rlbox::tainted_base_impl.25"** %this.addr, align 8
@@ -10859,7 +10861,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZN5rlbox7taintedIPcNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.24"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZN5rlbox7taintedIPcNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.24"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.24"*, align 8
   store %"class.rlbox::tainted.24"* %this, %"class.rlbox::tainted.24"** %this.addr, align 8
@@ -10869,7 +10871,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZNK5rlbox16tainted_volatileIjNS_20rlbox_wasm2c_sandboxEE21get_sandbox_value_refEv(%"class.rlbox::tainted_volatile.28"* nonnull dereferenceable(4) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZNK5rlbox16tainted_volatileIjNS_20rlbox_wasm2c_sandboxEE21get_sandbox_value_refEv(%"class.rlbox::tainted_volatile.28"* nonnull dereferenceable(4) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_volatile.28"*, align 8
   store %"class.rlbox::tainted_volatile.28"* %this, %"class.rlbox::tainted_volatile.28"** %this.addr, align 8
@@ -10896,7 +10898,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZN5rlbox7taintedIjNS_20rlbox_wasm2c_sandboxEE17get_raw_value_refEv(%"class.rlbox::tainted"* nonnull dereferenceable(4) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 4 dereferenceable(4) i32* @_ZN5rlbox7taintedIjNS_20rlbox_wasm2c_sandboxEE17get_raw_value_refEv(%"class.rlbox::tainted"* nonnull dereferenceable(4) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted"*, align 8
   store %"class.rlbox::tainted"* %this, %"class.rlbox::tainted"** %this.addr, align 8
@@ -10921,7 +10923,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZN5rlbox6detail24convert_type_fundamentalIjjEEvRT_RVKT0_(i32* nonnull align 4 dereferenceable(4) %to, i32* nonnull align 4 dereferenceable(4) %from) #5 comdat {
+define linkonce_odr dso_local void @_ZN5rlbox6detail24convert_type_fundamentalIjjEEvRT_RVKT0_(i32* nonnull align 4 dereferenceable(4) %to, i32* nonnull align 4 dereferenceable(4) %from) #6 comdat {
 entry:
   %to.addr = alloca i32*, align 8
   %from.addr = alloca i32*, align 8
@@ -10994,7 +10996,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZN5rlbox6detail12unwrap_valueIRNS_7taintedIjNS_20rlbox_wasm2c_sandboxEEEEEDaOT_(%"class.rlbox::tainted"* nonnull align 4 dereferenceable(4) %rhs) #5 comdat personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local i32 @_ZN5rlbox6detail12unwrap_valueIRNS_7taintedIjNS_20rlbox_wasm2c_sandboxEEEEEDaOT_(%"class.rlbox::tainted"* nonnull align 4 dereferenceable(4) %rhs) #6 comdat personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %rhs.addr = alloca %"class.rlbox::tainted"*, align 8
   store %"class.rlbox::tainted"* %rhs, %"class.rlbox::tainted"** %rhs.addr, align 8
@@ -11053,7 +11055,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE(i8** nonnull align 8 dereferenceable(8) %__t) #5 comdat {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) i8** @_ZSt7forwardIPcEOT_RNSt16remove_referenceIS1_E4typeE(i8** nonnull align 8 dereferenceable(8) %__t) #6 comdat {
 entry:
   %__t.addr = alloca i8**, align 8
   store i8** %__t, i8*** %__t.addr, align 8
@@ -11062,7 +11064,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN5rlbox7taintedIKPcNS_20rlbox_wasm2c_sandboxEEC2IS1_LPv0EEET_PKv(%"class.rlbox::tainted.72"* nonnull dereferenceable(8) %this, i8* %val, i8* %0) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN5rlbox7taintedIKPcNS_20rlbox_wasm2c_sandboxEEC2IS1_LPv0EEET_PKv(%"class.rlbox::tainted.72"* nonnull dereferenceable(8) %this, i8* %val, i8* %0) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.72"*, align 8
   %val.addr = alloca i8*, align 8
@@ -11097,7 +11099,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.rlbox::tainted.72"* @_ZNK5rlbox17tainted_base_implINS_7taintedEKPcNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.73"* nonnull dereferenceable(1) %this) #5 comdat align 2 {
+define linkonce_odr dso_local nonnull align 8 dereferenceable(8) %"class.rlbox::tainted.72"* @_ZNK5rlbox17tainted_base_implINS_7taintedEKPcNS_20rlbox_wasm2c_sandboxEE4implEv(%"class.rlbox::tainted_base_impl.73"* nonnull dereferenceable(1) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted_base_impl.73"*, align 8
   store %"class.rlbox::tainted_base_impl.73"* %this, %"class.rlbox::tainted_base_impl.73"** %this.addr, align 8
@@ -11107,7 +11109,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i8* @_ZNK5rlbox7taintedIKPcNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.72"* nonnull dereferenceable(8) %this) #5 comdat align 2 {
+define linkonce_odr dso_local i8* @_ZNK5rlbox7taintedIKPcNS_20rlbox_wasm2c_sandboxEE13get_raw_valueEv(%"class.rlbox::tainted.72"* nonnull dereferenceable(8) %this) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::tainted.72"*, align 8
   store %"class.rlbox::tainted.72"* %this, %"class.rlbox::tainted.72"** %this.addr, align 8
@@ -11200,7 +11202,7 @@ return:                                           ; preds = %if.end, %if.then
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local i32 @_ZNK5rlbox20rlbox_wasm2c_sandbox26impl_get_sandboxed_pointerIP11ImageHeaderEEjPKv(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this, i8* %p) #5 comdat align 2 {
+define linkonce_odr dso_local i32 @_ZNK5rlbox20rlbox_wasm2c_sandbox26impl_get_sandboxed_pointerIP11ImageHeaderEEjPKv(%"class.rlbox::rlbox_wasm2c_sandbox"* nonnull dereferenceable(2832) %this, i8* %p) #6 comdat align 2 {
 entry:
   %this.addr = alloca %"class.rlbox::rlbox_wasm2c_sandbox"*, align 8
   %p.addr = alloca i8*, align 8
@@ -11214,7 +11216,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt12_Vector_baseIPvSaIS0_EEC2Ev(%"struct.std::_Vector_base"* nonnull dereferenceable(24) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt12_Vector_baseIPvSaIS0_EEC2Ev(%"struct.std::_Vector_base"* nonnull dereferenceable(24) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Vector_base"*, align 8
   store %"struct.std::_Vector_base"* %this, %"struct.std::_Vector_base"** %this.addr, align 8
@@ -11225,7 +11227,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt12_Vector_baseIPvSaIS0_EE12_Vector_implC2Ev(%"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl"* nonnull dereferenceable(24) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt12_Vector_baseIPvSaIS0_EE12_Vector_implC2Ev(%"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl"* nonnull dereferenceable(24) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl"*, align 8
   store %"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl"* %this, %"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl"** %this.addr, align 8
@@ -11238,7 +11240,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSaIPvEC2Ev(%"class.std::allocator.21"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSaIPvEC2Ev(%"class.std::allocator.21"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::allocator.21"*, align 8
   store %"class.std::allocator.21"* %this, %"class.std::allocator.21"** %this.addr, align 8
@@ -11249,7 +11251,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt12_Vector_baseIPvSaIS0_EE17_Vector_impl_dataC2Ev(%"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl_data"* nonnull dereferenceable(24) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt12_Vector_baseIPvSaIS0_EE17_Vector_impl_dataC2Ev(%"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl_data"* nonnull dereferenceable(24) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl_data"*, align 8
   store %"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl_data"* %this, %"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl_data"** %this.addr, align 8
@@ -11264,7 +11266,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorIPvEC2Ev(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorIPvEC2Ev(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.22"*, align 8
   store %"class.__gnu_cxx::new_allocator.22"* %this, %"class.__gnu_cxx::new_allocator.22"** %this.addr, align 8
@@ -11288,7 +11290,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt12_Vector_baseIPvSaIS0_EED2Ev(%"struct.std::_Vector_base"* nonnull dereferenceable(24) %this) unnamed_addr #13 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
+define linkonce_odr dso_local void @_ZNSt12_Vector_baseIPvSaIS0_EED2Ev(%"struct.std::_Vector_base"* nonnull dereferenceable(24) %this) unnamed_addr #12 comdat align 2 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) {
 entry:
   %this.addr = alloca %"struct.std::_Vector_base"*, align 8
   %exn.slot = alloca i8*, align 8
@@ -11350,7 +11352,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable mustprogress
-define linkonce_odr dso_local void @_ZNSt12_Destroy_auxILb1EE9__destroyIPPvEEvT_S4_(i8** %0, i8** %1) #5 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt12_Destroy_auxILb1EE9__destroyIPPvEEvT_S4_(i8** %0, i8** %1) #6 comdat align 2 {
 entry:
   %.addr = alloca i8**, align 8
   %.addr1 = alloca i8**, align 8
@@ -11360,7 +11362,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSt12_Vector_baseIPvSaIS0_EE12_Vector_implD2Ev(%"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl"* nonnull dereferenceable(24) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSt12_Vector_baseIPvSaIS0_EE12_Vector_implD2Ev(%"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl"* nonnull dereferenceable(24) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl"*, align 8
   store %"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl"* %this, %"struct.std::_Vector_base<void *, std::allocator<void *>>::_Vector_impl"** %this.addr, align 8
@@ -11371,7 +11373,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZNSaIPvED2Ev(%"class.std::allocator.21"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZNSaIPvED2Ev(%"class.std::allocator.21"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.std::allocator.21"*, align 8
   store %"class.std::allocator.21"* %this, %"class.std::allocator.21"** %this.addr, align 8
@@ -11382,7 +11384,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorIPvED2Ev(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this) unnamed_addr #13 comdat align 2 {
+define linkonce_odr dso_local void @_ZN9__gnu_cxx13new_allocatorIPvED2Ev(%"class.__gnu_cxx::new_allocator.22"* nonnull dereferenceable(1) %this) unnamed_addr #12 comdat align 2 {
 entry:
   %this.addr = alloca %"class.__gnu_cxx::new_allocator.22"*, align 8
   store %"class.__gnu_cxx::new_allocator.22"* %this, %"class.__gnu_cxx::new_allocator.22"** %this.addr, align 8
@@ -11400,25 +11402,25 @@ entry:
 attributes #0 = { noinline uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #1 = { "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #2 = { nounwind "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #4 = { noinline optnone uwtable "noprogress"="ffalse" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #3 = { nounwind }
-attributes #5 = { noinline nounwind optnone uwtable "mustprogress"="true" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #6 = { noinline norecurse optnone uwtable "mustprogress" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #7 = { noinline optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #8 = { nobuiltin allocsize(0) "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #9 = { argmemonly nofree nosync nounwind willreturn }
-attributes #10 = {"disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #11 = { noinline optnone uwtable "mustprogress" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #12 = { nobuiltin nounwind "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #13 = { noinline nounwind optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #14 = { noreturn nounwind "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #15 = { noinline noreturn nounwind }
-attributes #16 = { argmemonly nofree nosync nounwind willreturn writeonly }
-attributes #17 = { cold noreturn nounwind }
-attributes #18 = { noreturn "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #19 = { nounwind readonly "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #20 = { nounwind "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #21 = { noinline nounwind optnone uwtable "mustprogress" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #4 = { noinline optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #5 = { "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #6 = { noinline nounwind optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #7 = { noinline norecurse optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #8 = { noinline optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #9 = { nobuiltin allocsize(0) "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #10 = { argmemonly nofree nosync nounwind willreturn }
+attributes #11 = { nobuiltin nounwind "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #12 = { noinline nounwind optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #13 = { noreturn nounwind "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #14 = { noinline noreturn nounwind }
+attributes #15 = { argmemonly nofree nosync nounwind willreturn writeonly }
+attributes #16 = { cold noreturn nounwind }
+attributes #17 = { noreturn "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #18 = { nounwind readonly "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #19 = { nounwind "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #20 = { noinline optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #21 = { noinline nounwind optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #22 = { builtin allocsize(0) }
 attributes #23 = { builtin nounwind }
 attributes #24 = { noreturn nounwind }
