@@ -1,21 +1,17 @@
-# This is where you generate the .ll files for all the WASM-RLBOX Functionality
+# This is where you generate the .ll files for your Sandbox Interface.cpp file
 
 ## Description
-* All the functions required for the functioning of WASM-RLBOX are defined here
+* All the Function Symbols interfacing the Sandbox shall be defined here 
 
 ## Getting Started
 
-### Step 1 Generate the .ll files for each of the wasm-\*.c files 
+### Step 1 Generate the .ll for your Sandbox interface file
 ```
-clang-12 -S -emit-llvm wasm-rt-impl.c
-clang-12 -S -emit-llvm wasm-rt-os-unix.c
-clang-12 -S -emit-llvm wasm-rt-runner.c
-clang-12 -S -emit-llvm wasm-rt-shadow.c
-clang-12 -S -emit-llvm wasm-rt-wasi.c
+clang-12 -std=c++17 -I../wasmrt/ -S -emit-llvm solution.cpp
 ```
 ### Step 2 Copy the generated .ll files to llvmlinker directory
 ```
-cp *.ll ../llvmlinker/
+cp solution.ll ../llvmlinker/
 ```
 ## Help
 
