@@ -1,21 +1,18 @@
-# This is where you generate the .ll files for all the WASM-RLBOX Functionality
+# This is where you finally link all the generated .ll files into a single module
 
 ## Description
-* All the functions required for the functioning of WASM-RLBOX are defined here
+* All the generated .ll files will be linked here 
 
 ## Getting Started
 
-### Step 1 Generate the .ll files for each of the wasm-\*.c files 
+### Step 1 Link all the generated .ll files -->  
 ```
-clang-12 -S -emit-llvm wasm-rt-impl.c
-clang-12 -S -emit-llvm wasm-rt-os-unix.c
-clang-12 -S -emit-llvm wasm-rt-runner.c
-clang-12 -S -emit-llvm wasm-rt-shadow.c
-clang-12 -S -emit-llvm wasm-rt-wasi.c
+llvm-link *.ll -o op.ll
+
 ```
-### Step 2 Copy the generated .ll files to llvmlinker directory
+### Step 2 Compile the generated op.ll file using clang (if you want to), but you are actually done in the above step. 
 ```
-cp *.ll ../llvmlinker/
+clang-12 -Wall -Wextra -Werror -lstdc++ -ldl -std=c++17 op.ll
 ```
 ## Help
 
