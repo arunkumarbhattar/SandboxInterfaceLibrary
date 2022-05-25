@@ -17,6 +17,6 @@
 #ifndef WASM_RT_IMPL_H_
 #define WASM_RT_IMPL_H_
 
-#include "wasm-rt.h"
+#include "../sbx_interface_def/wasm-rt.h"
 
 #endif  // WASM_RT_IMPL_H_

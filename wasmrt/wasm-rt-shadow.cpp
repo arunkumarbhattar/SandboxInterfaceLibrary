@@ -3,7 +3,7 @@
 #define WASM_CHECK_SHADOW_MEMORY
 #endif
 
-#include "wasm-rt.h"
+#include "../sbx_interface_def/wasm-rt.h"
 
 #include <assert.h>
 #include <inttypes.h>

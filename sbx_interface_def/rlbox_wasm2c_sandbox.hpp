@@ -244,6 +244,7 @@ public:
   using T_PointerType = uint32_t;
   using T_ShortType = int16_t;
 
+
 private:
   void* sandbox = nullptr;
   wasm2c_sandbox_funcs_t sandbox_info;
@@ -720,12 +721,15 @@ protected:
            (reinterpret_cast<uintptr_t>(p2) & heap_base_mask);
   }
 
+public:
   inline bool impl_is_pointer_in_sandbox_memory(const void* p)
   {
-    size_t length = impl_get_total_memory();
-    uintptr_t p_val = reinterpret_cast<uintptr_t>(p);
-    return p_val >= heap_base && p_val < (heap_base + length);
+            size_t length = impl_get_total_memory();
+            uintptr_t p_val = reinterpret_cast<uintptr_t>(p);
+            return p_val >= heap_base && p_val < (heap_base + length);
   }
+
+protected:
 
   inline bool impl_is_pointer_in_app_memory(const void* p)
   {

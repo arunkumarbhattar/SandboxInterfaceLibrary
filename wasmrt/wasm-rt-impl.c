@@ -15,7 +15,7 @@
  */
 
 #include "wasm-rt-os.h"
-#include "wasm-rt.h"
+#include "../sbx_interface_def/wasm-rt.h"
 
 #include <assert.h>
 #include <limits.h>

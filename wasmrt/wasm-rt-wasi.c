@@ -69,7 +69,7 @@ typedef SSIZE_T ssize_t;
 #endif
 
 #include "wasm-rt-impl.h"
-#include "wasm-rt.h"
+#include "../sbx_interface_def/wasm-rt.h"
 
 #if defined(__GNUC__)
 #define UNLIKELY(x) __builtin_expect(!!(x), 0)

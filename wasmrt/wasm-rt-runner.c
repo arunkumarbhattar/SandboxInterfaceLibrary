@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "wasm-rt.h"
+#include "../sbx_interface_def/wasm-rt.h"
 
 #if defined(_WIN32)
 // Ensure the min/max macro in the header doesn't collide with functions in
