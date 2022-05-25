@@ -10,14 +10,6 @@ target triple = "x86_64-unknown-linux-gnu"
 @.str.2 = private unnamed_addr constant [20 x i8] c"Post Crash Prints \0A\00", align 1
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i8* @t_malloc(i64 %size) #0 {
-entry:
-  %size.addr = alloca i64, align 8
-  store i64 %size, i64* %size.addr, align 8
-  ret i8* null
-}
-
-; Function Attrs: noinline nounwind optnone uwtable
 define dso_local %struct.ImageHeader* @parse_image_header(i8* %in, i8* %host_memory_leak) #0 {
 entry:
   %in.addr = alloca i8*, align 8

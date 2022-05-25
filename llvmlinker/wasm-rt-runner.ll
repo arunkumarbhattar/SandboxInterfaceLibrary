@@ -14,14 +14,6 @@ target triple = "x86_64-unknown-linux-gnu"
 @.str.6 = private unnamed_addr constant [11 x i8] c"w2c__start\00", align 1
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i8* @t_malloc(i64 %size) #0 {
-entry:
-  %size.addr = alloca i64, align 8
-  store i64 %size, i64* %size.addr, align 8
-  ret i8* null
-}
-
-; Function Attrs: noinline nounwind optnone uwtable
 define dso_local i8* @open_lib(i8* %wasm2c_module_path) #0 {
 entry:
   %wasm2c_module_path.addr = alloca i8*, align 8
@@ -139,104 +131,14 @@ declare dso_local i8* @strcpy(i8*, i8*) #1
 ; Function Attrs: nounwind
 declare dso_local i8* @strcat(i8*, i8*) #1
 
-; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i32 @main(i32 %argc, i8** %argv) #0 {
-entry:
-  %retval = alloca i32, align 4
-  %argc.addr = alloca i32, align 4
-  %argv.addr = alloca i8**, align 8
-  %wasm2c_module_path = alloca i8*, align 8
-  %wasm_module_name = alloca i8*, align 8
-  %library = alloca i8*, align 8
-  %info_func_name = alloca i8*, align 8
-  %get_info_func = alloca void (%struct.wasm2c_sandbox_funcs_t*, ...)*, align 8
-  %sandbox_info = alloca %struct.wasm2c_sandbox_funcs_t, align 8
-  %dont_override_heap_size = alloca i32, align 4
-  %sandbox = alloca i8*, align 8
-  %start_func = alloca void (i8*)*, align 8
-  store i32 0, i32* %retval, align 4
-  store i32 %argc, i32* %argc.addr, align 4
-  store i8** %argv, i8*** %argv.addr, align 8
-  %0 = load i32, i32* %argc.addr, align 4
-  %cmp = icmp slt i32 %0, 2
-  br i1 %cmp, label %if.then, label %if.end
-
-if.then:                                          ; preds = %entry
-  %1 = load i8**, i8*** %argv.addr, align 8
-  %arrayidx = getelementptr inbounds i8*, i8** %1, i64 0
-  %2 = load i8*, i8** %arrayidx, align 8
-  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([73 x i8], [73 x i8]* @.str.3, i64 0, i64 0), i8* %2)
-  call void @exit(i32 1) #7
-  unreachable
-
-if.end:                                           ; preds = %entry
-  %3 = load i8**, i8*** %argv.addr, align 8
-  %arrayidx1 = getelementptr inbounds i8*, i8** %3, i64 1
-  %4 = load i8*, i8** %arrayidx1, align 8
-  store i8* %4, i8** %wasm2c_module_path, align 8
-  store i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.4, i64 0, i64 0), i8** %wasm_module_name, align 8
-  %5 = load i32, i32* %argc.addr, align 4
-  %cmp2 = icmp sge i32 %5, 3
-  br i1 %cmp2, label %if.then3, label %if.end5
-
-if.then3:                                         ; preds = %if.end
-  %6 = load i8**, i8*** %argv.addr, align 8
-  %arrayidx4 = getelementptr inbounds i8*, i8** %6, i64 2
-  %7 = load i8*, i8** %arrayidx4, align 8
-  store i8* %7, i8** %wasm_module_name, align 8
-  br label %if.end5
-
-if.end5:                                          ; preds = %if.then3, %if.end
-  %8 = load i8*, i8** %wasm2c_module_path, align 8
-  %call6 = call i8* @open_lib(i8* %8)
-  store i8* %call6, i8** %library, align 8
-  %9 = load i8*, i8** %wasm_module_name, align 8
-  %call7 = call i8* @get_info_func_name(i8* %9)
-  store i8* %call7, i8** %info_func_name, align 8
-  %10 = load i8*, i8** %library, align 8
-  %11 = load i8*, i8** %info_func_name, align 8
-  %call8 = call i8* @symbol_lookup(i8* %10, i8* %11)
-  %12 = bitcast i8* %call8 to void (%struct.wasm2c_sandbox_funcs_t*, ...)*
-  store void (%struct.wasm2c_sandbox_funcs_t*, ...)* %12, void (%struct.wasm2c_sandbox_funcs_t*, ...)** %get_info_func, align 8
-  %13 = load void (%struct.wasm2c_sandbox_funcs_t*, ...)*, void (%struct.wasm2c_sandbox_funcs_t*, ...)** %get_info_func, align 8
-  call void (%struct.wasm2c_sandbox_funcs_t*, ...) %13(%struct.wasm2c_sandbox_funcs_t* sret(%struct.wasm2c_sandbox_funcs_t) align 8 %sandbox_info)
-  store i32 0, i32* %dont_override_heap_size, align 4
-  %create_wasm2c_sandbox = getelementptr inbounds %struct.wasm2c_sandbox_funcs_t, %struct.wasm2c_sandbox_funcs_t* %sandbox_info, i32 0, i32 1
-  %14 = load i8* (i32)*, i8* (i32)** %create_wasm2c_sandbox, align 8
-  %call9 = call i8* %14(i32 0)
-  store i8* %call9, i8** %sandbox, align 8
-  %15 = load i8*, i8** %sandbox, align 8
-  %tobool = icmp ne i8* %15, null
-  br i1 %tobool, label %if.end12, label %if.then10
-
-if.then10:                                        ; preds = %if.end5
-  %call11 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.5, i64 0, i64 0))
-  call void @exit(i32 1) #7
-  unreachable
-
-if.end12:                                         ; preds = %if.end5
-  %16 = load i8*, i8** %library, align 8
-  %call13 = call i8* @symbol_lookup(i8* %16, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.6, i64 0, i64 0))
-  %17 = bitcast i8* %call13 to void (i8*)*
-  store void (i8*)* %17, void (i8*)** %start_func, align 8
-  %18 = load void (i8*)*, void (i8*)** %start_func, align 8
-  %19 = load i8*, i8** %sandbox, align 8
-  call void %18(i8* %19)
-  %20 = load i8*, i8** %info_func_name, align 8
-  call void @free(i8* %20) #6
-  %21 = load i8*, i8** %library, align 8
-  call void @close_lib(i8* %21)
-  ret i32 0
-}
-
 ; Function Attrs: nounwind
 declare dso_local void @free(i8*) #1
 
 attributes #0 = { noinline nounwind optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #1 = { nounwind "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #2 = { "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #3 = { noreturn nounwind tainted "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #4 = { noinline nounwind optnone tainted uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #3 = { noreturn nounwind "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #4 = { noinline nounwind optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #5 = { nounwind readonly "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #6 = { nounwind }
 attributes #7 = { noreturn nounwind }
