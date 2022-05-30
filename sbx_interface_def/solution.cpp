@@ -10,7 +10,7 @@
 #define RLBOX_SINGLE_THREADED_INVOCATIONS
 // Configure RLBox for wasm sandbox
 #include "../wasm_readable_definitions/lib_wasm.h"
-
+#include "../library/lib.h"
 #include "rlbox_wasm2c_sandbox.hpp"
 using sandbox_type_t = rlbox::rlbox_wasm2c_sandbox;
 
@@ -25,7 +25,7 @@ public:
         sandbox.create_sandbox();
     }
 
-    void *sbx_malloc_in_sandbox(size_t size);
+    auto sbx_malloc_in_sandbox(size_t size);
 
     void sbx_free_in_sandbox(void* pointer);
 
@@ -35,15 +35,10 @@ public:
     template<typename T, typename... T_Args>
     auto sbx_execute_sandbox_function_internal(const char* func_name, T_Args&... params);
 
-    struct eeq{
-        int d ;
-        int* q;
-    };
 };
 
-void* SbxInterface::sbx_malloc_in_sandbox(size_t size) {
-    tainted<int*, sandbox_type_t> ret;
-    ret = sandbox.malloc_in_sandbox<int>(size);
+auto SbxInterface::sbx_malloc_in_sandbox(size_t size) {
+    auto ret = sandbox.malloc_in_sandbox<int>(size);
     auto temp_ret = detail::unwrap_value(ret);
     return temp_ret;
 }
@@ -64,10 +59,10 @@ template<typename T, typename... T_Args>
 auto SbxInterface::sbx_execute_sandbox_function_internal(const char* func_name, T_Args&... params)
 {
     std::vector<any> vec = {params...};
-    std::vector<any> tmp;
-
+    std::vector<rlbox::tainted<std::type_info const*, rlbox::rlbox_wasm2c_sandbox>> tmp;
     for (unsigned i = 0; i < vec.size(); ++i) {
         tainted<decltype(&vec[i].type()), sandbox_type_t> tnt_arg;
+        tnt_arg.data = std::any_cast<decltype(&vec[i].type())>(vec[i]);
         tmp.push_back(tnt_arg);
     }
     tainted<void*, sandbox_type_t > tmpp;
@@ -76,10 +71,15 @@ auto SbxInterface::sbx_execute_sandbox_function_internal(const char* func_name, 
 
 int main(){
     //here we test our APIs before deploying them -->
-    int *tmp;
-    tmp = static_cast<int *>(malloc(10 * sizeof(int)));
+    char *tmp;
+    char* tmp2;
+    tmp = static_cast<char *>(malloc(10 * sizeof(char)));
+    tmp2 = static_cast<char *>(malloc(10 * sizeof(char)));
     SbxInterface Sb;
-    Sb.sbx_execute_sandbox_function_internal<decltype(free)>("free", tmp);
+    //Sb.sbx_execute_sandbox_function_internal<decltype(parse_image_header)>("parse_image_header", tmp, tmp2);
+    tainted<char*, sandbox_type_t> tnt1;
+    tainted<char*, sandbox_type_t> tnt2;
+    auto header = sandbox_invoke(Sb.sandbox, parse_image_header, tnt1, tnt2);
     void* tempw;
     return 0;
 }
