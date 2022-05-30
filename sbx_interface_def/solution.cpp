@@ -41,6 +41,8 @@ public:
 
     template<typename T, typename... T_Args>
     auto sbx_execute_sandbox_function_internal(const char* func_name, T_Args&... params);
+
+    wasm2c_sandbox_t* release_rlbox_heap_space();
 };
 
 auto SbxInterface::sbx_malloc_in_sandbox(size_t size) {
@@ -75,6 +77,10 @@ auto SbxInterface::sbx_execute_sandbox_function_internal(const char* func_name, 
 }
 
 
+wasm2c_sandbox_t* SbxInterface::release_rlbox_heap_space()
+{
+    return this->sandbox.get_sandbox_impl()->sbb_nc;
+}
 // Define and load any structs needed by the application
 #define sandbox_fields_reflection_exampleapp_class_ImageHeader(f, g, ...)  \
   f(unsigned int, status_code, FIELD_NORMAL, ##__VA_ARGS__) g()            \
@@ -113,8 +119,8 @@ void image_parsing_progress(rlbox_sandbox<sandbox_type_t>& sandbox, tainted_img<
 int main(int argc, char const *argv[])
 {
     // create an rlbox sandbox
-    rlbox_sandbox<sandbox_type_t> sandbox;
-    sandbox.create_sandbox();
+    //rlbox_sandbox<sandbox_type_t> sandbox;
+    //sandbox.create_sandbox();
     SbxInterface Sb;
 
     // create a buffer for input bytes
@@ -128,7 +134,9 @@ int main(int argc, char const *argv[])
     // Create a buffer that will hold the input bytes inside the sandbox
     auto tainted_input_stream = Sb.sandbox.malloc_in_sandbox<char>(100);
     //auto tainted_input_stream_personal = (char*)Sb.sbx_malloc_in_sandbox(100*sizeof(char));
-    auto temppp = w2c_malloc(sandbox.get_sandbox_impl()->sbb_nc, 100*sizeof(int));
+    auto tmp = Sb.release_rlbox_heap_space();
+    auto temppp = w2c_malloc(tmp, 100*sizeof(int));
+
     auto tainted_input_stream_personal = reinterpret_cast<char*>(Sb.sandbox.get_sandbox_impl()->heap_base + temppp);
     auto non_tainted_memory = (char*) malloc(100*sizeof(char));
     bool is = Sb.isPointerToTaintedMem(tainted_input_stream_personal);
@@ -139,7 +147,7 @@ int main(int argc, char const *argv[])
         return 1;
     }
     // Copy the input bytes into the buffer inside the sandbox
-    rlbox::memcpy(sandbox, tainted_input_stream, input_stream, 100u);
+    rlbox::memcpy(Sb.sandbox, tainted_input_stream, input_stream, 100u);
     int detonation_codes = 100;
     char address[100];
     sprintf(address, "%" PRIuPTR, (uintptr_t)&detonation_codes);
@@ -149,9 +157,11 @@ int main(int argc, char const *argv[])
         std::cerr << "Error: " << PROGRAM_STATUS_MSG[MEMORY_ALLOC_ERR_MSG] << "\n";
         return 1;
     }
-    rlbox::memcpy(sandbox, tainted_address , address, 100u);
+    rlbox::memcpy(Sb.sandbox, tainted_address , address, 100u);
     //######################################LETS HIJACK THIS#############################################
-    auto header = sandbox_invoke(Sb.sandbox, parse_image_header, tainted_input_stream, tainted_address);
+    //auto header = sandbox_invoke(Sb.sandbox, parse_image_header, tainted_input_stream, tainted_address);
+    auto header_micracle = w2c_parse_image_header(tmp, 71424, 70896);
+    auto header = reinterpret_cast<ImageHeader *>(Sb.sandbox.get_sandbox_impl()->heap_base + header_micracle);
     // We make a copy of the tainted status_code in a local variable
     // This is good practice since we are reading it twice below
     // Making a copy will prevent time of check time of use style attacks
@@ -227,7 +237,7 @@ int main(int argc, char const *argv[])
     }
     std::cout << "\n";
 
-    Sb.sandbox.free_in_sandbox(header);
+    //Sb.sandbox.free_in_sandbox(header);
     /*
      * Uncomment this code to test use-after-free of sandbox memory
      *
@@ -240,7 +250,7 @@ int main(int argc, char const *argv[])
     Sb.sandbox.free_in_sandbox(tainted_output_stream);
 
     //cb_image_parsing_progress.unregister();
-    sandbox.destroy_sandbox();
+    Sb.sandbox.destroy_sandbox();
 
     return 0;
 }
