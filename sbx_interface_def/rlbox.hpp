@@ -878,6 +878,7 @@ class tainted : public tainted_base_impl<tainted, T, T_Sbx>
   KEEP_CLASSES_FRIENDLY
   KEEP_CAST_FRIENDLY
 
+public:
   // Classes recieve their own specialization
   static_assert(
     !std::is_class_v<T>,
@@ -892,7 +893,7 @@ class tainted : public tainted_base_impl<tainted, T, T_Sbx>
     detail::is_basic_type_v<T> || std::is_array_v<T>,
     "Tainted types only support fundamental, enum, pointer, array and struct "
     "types. Please file a bug if more support is needed.");
-  
+
   using T_ClassBase = tainted_base_impl<tainted, T, T_Sbx>;
   using T_AppType = tainted_detail::tainted_repr_t<T, T_Sbx>;
   using T_SandboxedType = tainted_detail::tainted_vol_repr_t<T, T_Sbx>;

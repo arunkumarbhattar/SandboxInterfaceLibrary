@@ -245,7 +245,7 @@ public:
   using T_ShortType = int16_t;
 
 
-private:
+public:
   void* sandbox = nullptr;
   wasm2c_sandbox_funcs_t sandbox_info;
 #if !defined(_MSC_VER)
@@ -258,6 +258,7 @@ __attribute__((weak))
 #endif
   uintptr_t heap_base;
   void* exec_env = 0;
+  wasm2c_sandbox_t * sbb_nc;
   void* malloc_index = 0;
   void* free_index = 0;
   size_t return_slot_size = 0;
@@ -576,6 +577,9 @@ protected:
 
     // cache these for performance
     exec_env = sandbox;
+    static wasm2c_sandbox_t *const sbb = static_cast<wasm2c_sandbox_t *const>(exec_env);
+    sbb_nc = sbb;
+
 #ifndef RLBOX_USE_STATIC_CALLS
     malloc_index = impl_lookup_symbol("malloc");
     free_index = impl_lookup_symbol("free");
@@ -729,7 +733,7 @@ public:
             return p_val >= heap_base && p_val < (heap_base + length);
   }
 
-protected:
+public:
 
   inline bool impl_is_pointer_in_app_memory(const void* p)
   {
