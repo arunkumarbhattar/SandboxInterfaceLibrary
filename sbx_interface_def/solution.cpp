@@ -131,10 +131,15 @@ int main(int argc, char const *argv[])
         return 1;
     }
 
-    // Create a buffer that will hold the input bytes inside the sandbox
-    auto tainted_input_stream = Sb.sandbox.malloc_in_sandbox<char>(100);
-    //auto tainted_input_stream_personal = (char*)Sb.sbx_malloc_in_sandbox(100*sizeof(char));
     auto tmp = Sb.release_rlbox_heap_space();
+
+    // Create a buffer that will hold the input bytes inside the sandbox
+    //auto tainted_input_stream = Sb.sandbox.malloc_in_sandbox<char>(100);
+    auto tainted_input_stream_number = w2c_malloc(tmp,100);
+    auto tainted_input_stream = reinterpret_cast<char*>(Sb.sandbox.get_sandbox_impl()->heap_base + tainted_input_stream_number);
+
+    //auto tainted_input_stream_personal = (char*)Sb.sbx_malloc_in_sandbox(100*sizeof(char));
+
     auto temppp = w2c_malloc(tmp, 100*sizeof(int));
 
     auto tainted_input_stream_personal = reinterpret_cast<char*>(Sb.sandbox.get_sandbox_impl()->heap_base + temppp);
@@ -147,20 +152,23 @@ int main(int argc, char const *argv[])
         return 1;
     }
     // Copy the input bytes into the buffer inside the sandbox
-    rlbox::memcpy(Sb.sandbox, tainted_input_stream, input_stream, 100u);
+    memcpy(tainted_input_stream, input_stream, 100u);
     int detonation_codes = 100;
     char address[100];
     sprintf(address, "%" PRIuPTR, (uintptr_t)&detonation_codes);
 
-    auto tainted_address = Sb.sandbox.malloc_in_sandbox<char>(100);
+   // auto tainted_address = Sb.sandbox.malloc_in_sandbox<char>(100);
+    auto tainted_address_number = w2c_malloc(tmp, 100);
+    auto tainted_address = reinterpret_cast<char*>(Sb.sandbox.get_sandbox_impl()->heap_base + tainted_address_number);
+
     if (!tainted_address) {
         std::cerr << "Error: " << PROGRAM_STATUS_MSG[MEMORY_ALLOC_ERR_MSG] << "\n";
         return 1;
     }
-    rlbox::memcpy(Sb.sandbox, tainted_address , address, 100u);
+    memcpy(tainted_address , address, 100u);
     //######################################LETS HIJACK THIS#############################################
     //auto header = sandbox_invoke(Sb.sandbox, parse_image_header, tainted_input_stream, tainted_address);
-    auto header_micracle = w2c_parse_image_header(tmp, 71424, 70896);
+    auto header_micracle = w2c_parse_image_header(tmp, tainted_input_stream_number, tainted_address_number);
     auto header = reinterpret_cast<ImageHeader *>(Sb.sandbox.get_sandbox_impl()->heap_base + header_micracle);
     // We make a copy of the tainted status_code in a local variable
     // This is good practice since we are reading it twice below
@@ -246,9 +254,10 @@ int main(int argc, char const *argv[])
     cout << "Post Freed Sandbox memory is operated opon to produce the value: "<<tainted_product_post_free.unverified_safe_because("Just a test case for use after free")<<" "<<endl;
     */
     delete[] input_stream;
-    Sb.sandbox.free_in_sandbox(tainted_input_stream);
+    //Sb.sandbox.free_in_sandbox(tainted_input_stream);
+    free(tainted_input_stream);
     Sb.sandbox.free_in_sandbox(tainted_output_stream);
-
+    //free(tainted_output_stream);
     //cb_image_parsing_progress.unregister();
     Sb.sandbox.destroy_sandbox();
 
