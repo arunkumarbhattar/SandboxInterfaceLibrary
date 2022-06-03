@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cinttypes>
 #include <any>
+#include <unordered_map>
 
 // Configure RLBox
 #define RLBOX_USE_STATIC_CALLS() rlbox_wasm2c_sandbox_lookup_symbol
@@ -29,58 +30,50 @@ using tainted_img = rlbox::tainted<T, sandbox_type_t>;
 
 class SbxInterface{
 public:
+
     rlbox_sandbox<sandbox_type_t> sandbox;
+    unordered_map<string,unsigned long> pointer_symbol_lookup;
     SbxInterface(){
         sandbox.create_sandbox();
     }
-    auto sbx_malloc_in_sandbox(size_t size);
-
-    void sbx_free_in_sandbox(void* pointer);
 
     bool isPointerToTaintedMem(void* pointer);
+    wasm2c_sandbox_t* fetch_sandbox_address();
+    unsigned int fetch_pointer_offset(char* pointer_name);
 
-    template<typename T, typename... T_Args>
-    auto sbx_execute_sandbox_function_internal(const char* func_name, T_Args&... params);
+    void update_pointer_offset(char *pointer_name, unsigned long offset);
 
-    wasm2c_sandbox_t* release_rlbox_heap_space();
+    unsigned long fetch_sandbox_heap_address();
 };
-
-auto SbxInterface::sbx_malloc_in_sandbox(size_t size) {
-    auto ret = sandbox.malloc_in_sandbox<int>(size);
-    auto temp_ret = detail::unwrap_value(ret);
-    return temp_ret;
-}
-
-void SbxInterface::sbx_free_in_sandbox(void *pointer) {
-    tainted<void*, sandbox_type_t> to_be_freed;
-    to_be_freed.assign_raw_pointer(sandbox,pointer);
-    sandbox.free_in_sandbox(to_be_freed);
-    return;
-}
 
 bool SbxInterface::isPointerToTaintedMem(void* pointer)
 {
     return sandbox.get_sandbox_impl()->impl_is_pointer_in_sandbox_memory(pointer);
 }
 
-template<typename T, typename... T_Args>
-auto SbxInterface::sbx_execute_sandbox_function_internal(const char* func_name, T_Args&... params)
-{
-    std::vector<any> vec = {params...};
-    std::vector<rlbox::tainted<std::type_info const*, rlbox::rlbox_wasm2c_sandbox>> tmp;
-    for (unsigned i = 0; i < vec.size(); ++i) {
-        tainted<decltype(&vec[i].type()), sandbox_type_t> tnt_arg;
-        tnt_arg.data = std::any_cast<decltype(&vec[i].type())>(vec[i]);
-        tmp.push_back(tnt_arg);
-    }
-    tainted<void*, sandbox_type_t > tmpp;
-}
-
-
-wasm2c_sandbox_t* SbxInterface::release_rlbox_heap_space()
+wasm2c_sandbox_t* SbxInterface::fetch_sandbox_address()
 {
     return this->sandbox.get_sandbox_impl()->sbb_nc;
 }
+
+unsigned int SbxInterface::fetch_pointer_offset(char* pointer_name)
+{
+    if(pointer_symbol_lookup.find(pointer_name) == pointer_symbol_lookup.end())
+        return 0;
+    else
+        return pointer_symbol_lookup[pointer_name];
+}
+
+void SbxInterface::update_pointer_offset(char* pointer_name, unsigned long offset)
+{
+    pointer_symbol_lookup[pointer_name] = offset;
+}
+
+unsigned long SbxInterface::fetch_sandbox_heap_address()
+{
+    return sandbox.get_sandbox_impl()->heap_base;
+}
+
 // Define and load any structs needed by the application
 #define sandbox_fields_reflection_exampleapp_class_ImageHeader(f, g, ...)  \
   f(unsigned int, status_code, FIELD_NORMAL, ##__VA_ARGS__) g()            \
@@ -131,7 +124,7 @@ int main(int argc, char const *argv[])
         return 1;
     }
 
-    auto tmp = Sb.release_rlbox_heap_space();
+    auto tmp = Sb.fetch_sandbox_address();
 
     // Create a buffer that will hold the input bytes inside the sandbox
     //auto tainted_input_stream = Sb.sandbox.malloc_in_sandbox<char>(100);
