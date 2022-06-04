@@ -1,0 +1,16 @@
+# ninja log v5
+1	1624	1654369133812521790	CMakeFiles/img_app_solution.dir/sbx_interface_def/solution.cpp.o	83e1fcce5019d4f1
+1	42	1653864266589715175	CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o	63fd322382619bf2
+1	81	1653864266629715326	CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o	dade417e834f9f3f
+1	35	1653864266581715145	CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o	aa8459b88b405d55
+1624	1693	1654369133880522233	img_app_solution	324c2c10e3d02c73
+36	41	1654368050785656079	libimg_lib.a	61686e288e31c7d5
+0	51	1653864266597715205	CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o	75fad30f0aae5c21
+0	678	1653863757979804551	CMakeFiles/SandboxInterfaceLibrary.dir/sbx_interface_def/solution.cpp.o	c18a7cad9b0293fd
+588	595	1654368051341658912	libimg_lib_wasm.a	d35234793721e966
+678	723	1653863758027804732	SandboxInterfaceLibrary	c38065e28debd2e
+1	588	1654368051333658871	CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o	c9d33dffd225c339
+1	36	1654368050781656059	CMakeFiles/img_lib.dir/library/lib.c.o	ca14424c26a61fba
+1	15	1653864266561715071	CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o	ae8c023ba78a8ed7
+0	1221	1654378235235486973	CMakeFiles/SBX_LIB.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o	db6b914f30f5c9b1
+1222	1283	1654378235299487293	SBX_LIB	227045b8a955f3a0

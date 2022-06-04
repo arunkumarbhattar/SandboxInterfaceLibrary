@@ -27,8 +27,8 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU
     add_link_options(-fsanitize=undefined)
 endif()
 
-add_executable(img_app_solution "${CMAKE_SOURCE_DIR}/sbx_interface_def/solution.cpp")
-target_include_directories(img_app_solution PUBLIC "${CMAKE_SOURCE_DIR}/rlbox/"
+add_executable(SBX_LIB "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_cpp_interface.cpp")
+target_include_directories(SBX_LIB PUBLIC "${CMAKE_SOURCE_DIR}/rlbox/"
         "${CMAKE_SOURCE_DIR}/rlbox/"
         "${CMAKE_SOURCE_DIR}/wasm_readable_definitions")
-target_link_libraries(img_app_solution img_lib img_lib_wasm)
+target_link_libraries(SBX_LIB img_lib img_lib_wasm)

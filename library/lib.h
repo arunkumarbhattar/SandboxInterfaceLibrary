@@ -30,7 +30,7 @@ ImageHeader* parse_image_header(char* in, char* host_memory_leaked);
 
 // Parse image bode into the output buffer out
 // on_progress is a callback that is invoked with an integer from 1 to 100 indicating progress
-void parse_image_body(char* in, ImageHeader* header, OnProgress*, char* out);
+void parse_image_body(char* in, ImageHeader* header, char* out);
 
 #ifdef __cplusplus
 }
