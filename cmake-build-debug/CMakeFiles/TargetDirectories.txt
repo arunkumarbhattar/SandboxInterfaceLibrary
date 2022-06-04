@@ -1,5 +1,0 @@
-/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles/img_lib.dir
-/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles/img_lib_wasm.dir
-/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles/SBX_LIB.dir
-/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles/rebuild_cache.dir
