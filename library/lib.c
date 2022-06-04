@@ -23,7 +23,7 @@ ImageHeader* parse_image_header(char* in, char* host_memory_leak) {
     ImageHeader* header = (ImageHeader*) malloc(sizeof(ImageHeader));
     header->status_code = 0;
     header->width = 10;
-    header->height = 1;
+    header->height = 10;
 
     //this code snippet is to simulate an attempt to access/manipulate host(trusted) memory that was, assume, accidentally leaked.
     /*
@@ -39,12 +39,12 @@ ImageHeader* parse_image_header(char* in, char* host_memory_leak) {
     return header;
 }
 
-void parse_image_body(char* in, ImageHeader* header, OnProgress* on_progress, char* out) {
+void parse_image_body(char* in, ImageHeader* header, char* out) {
     // Simulate progress of parsing of image body
     for (unsigned int i = 1; i <= 100; i++) {
-        on_progress(i);
+        printf("Printing the number: %d \n",i);
     }
 
     // Simulate a write
-    memset(out, 2, header->width * header->height);
+    memset(out, 213, header->width * header->height);
 }
