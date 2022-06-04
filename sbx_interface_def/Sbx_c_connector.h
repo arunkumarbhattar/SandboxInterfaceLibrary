@@ -6,7 +6,7 @@
 #define SIMPLE_LIBRARY_EXAMPLE_SBX_C_CONNECTOR_H
 
 //required by the definition for struct wasm2c_sandbox_t
-#include "lib_wasm.h"
+#include "../wasm_readable_definitions/lib_wasm.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

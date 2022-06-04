@@ -48,3 +48,10 @@ target_include_directories(SBX_CON_LIB PUBLIC "${CMAKE_SOURCE_DIR}/rlbox/"
         "${CMAKE_SOURCE_DIR}/rlbox/"
         "${CMAKE_SOURCE_DIR}/wasm_readable_definitions")
 target_link_libraries(SBX_CON_LIB img_lib img_lib_wasm)
+
+add_library(con_lib "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_c_connector.cpp" "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_cpp_interface.cpp")
+target_include_directories(con_lib PUBLIC "${CMAKE_SOURCE_DIR}/rlbox/"
+        "${CMAKE_SOURCE_DIR}/rlbox/"
+        "${CMAKE_SOURCE_DIR}/wasm_readable_definitions")
+add_executable(SIMPLE "${CMAKE_SOURCE_DIR}/sbx_interface_def/simple_main.c")
+target_link_libraries(SIMPLE con_lib img_lib img_lib_wasm)
