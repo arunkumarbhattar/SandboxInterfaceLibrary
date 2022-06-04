@@ -28,6 +28,26 @@ unsigned long SbxInterface::fetch_sandbox_heap_address()
     return sandbox.get_sandbox_impl()->heap_base;
 }
 
+void* SbxInterface::sbx_malloc(char* pointer_name, size_t size)
+{
+    unsigned int pointer_offset = w2c_malloc(fetch_sandbox_address(), size);
+    update_pointer_offset(pointer_name, pointer_offset);
+    return (void*)(fetch_sandbox_heap_address() + pointer_offset);
+}
+
+void SbxInterface::sbx_free(char* pointer_name)
+{
+    return w2c_free(fetch_sandbox_address(), fetch_pointer_offset(pointer_name));
+}
+
+void* SbxInterface::sbx_realloc(char* pointer_name, size_t size)
+{
+    unsigned int pointer_offset = w2c_realloc(fetch_sandbox_address(), fetch_pointer_offset(pointer_name), size);
+    update_pointer_offset(pointer_name, pointer_offset);
+    return (void*)(fetch_sandbox_heap_address() + pointer_offset);
+}
+
+
 // Uncomment the main function only if you want to test the Sbx Interface Functions -->
 /*
 int main(int argc, char const *argv[])

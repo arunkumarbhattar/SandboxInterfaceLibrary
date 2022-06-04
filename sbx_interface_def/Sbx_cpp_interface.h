@@ -57,6 +57,12 @@ public:
     void update_pointer_offset(char *pointer_name, unsigned long offset);
 
     unsigned long fetch_sandbox_heap_address();
+
+    void *sbx_malloc(char* pointer_name, size_t size);
+
+    void sbx_free(char *pointer_name);
+
+    void *sbx_realloc(char *pointer_name, size_t size);
 };
 
 #endif //SIMPLE_LIBRARY_EXAMPLE_SBX_CPP_INTERFACE_H

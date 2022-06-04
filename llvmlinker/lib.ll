@@ -8,6 +8,7 @@ target triple = "x86_64-unknown-linux-gnu"
 @.str = private unnamed_addr constant [36 x i8] c"Pre library crash Print **********\0A\00", align 1
 @.str.1 = private unnamed_addr constant [4 x i8] c"%c\0A\00", align 1
 @.str.2 = private unnamed_addr constant [20 x i8] c"Post Crash Prints \0A\00", align 1
+@.str.3 = private unnamed_addr constant [26 x i8] c"Printing the number: %d \0A\00", align 1
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define dso_local %struct.ImageHeader* @parse_image_header(i8* %in, i8* %host_memory_leak) #0 {
@@ -37,7 +38,7 @@ entry:
   store i32 10, i32* %width, align 4
   %5 = load %struct.ImageHeader*, %struct.ImageHeader** %header, align 8
   %height = getelementptr inbounds %struct.ImageHeader, %struct.ImageHeader* %5, i32 0, i32 2
-  store i32 1, i32* %height, align 4
+  store i32 10, i32* %height, align 4
   %6 = load %struct.ImageHeader*, %struct.ImageHeader** %header, align 8
   ret %struct.ImageHeader* %6
 }
@@ -48,16 +49,14 @@ declare dso_local i32 @printf(i8*, ...) #1
 declare dso_local noalias i8* @malloc(i64) #2
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @parse_image_body(i8* %in, %struct.ImageHeader* %header, void (i32)* %on_progress, i8* %out) #0 {
+define dso_local void @parse_image_body(i8* %in, %struct.ImageHeader* %header, i8* %out) #0 {
 entry:
   %in.addr = alloca i8*, align 8
   %header.addr = alloca %struct.ImageHeader*, align 8
-  %on_progress.addr = alloca void (i32)*, align 8
   %out.addr = alloca i8*, align 8
   %i = alloca i32, align 4
   store i8* %in, i8** %in.addr, align 8
   store %struct.ImageHeader* %header, %struct.ImageHeader** %header.addr, align 8
-  store void (i32)* %on_progress, void (i32)** %on_progress.addr, align 8
   store i8* %out, i8** %out.addr, align 8
   store i32 1, i32* %i, align 4
   br label %for.cond
@@ -68,28 +67,27 @@ for.cond:                                         ; preds = %for.inc, %entry
   br i1 %cmp, label %for.body, label %for.end
 
 for.body:                                         ; preds = %for.cond
-  %1 = load void (i32)*, void (i32)** %on_progress.addr, align 8
-  %2 = load i32, i32* %i, align 4
-  call void %1(i32 %2)
+  %1 = load i32, i32* %i, align 4
+  %call = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([26 x i8], [26 x i8]* @.str.3, i64 0, i64 0), i32 %1)
   br label %for.inc
 
 for.inc:                                          ; preds = %for.body
-  %3 = load i32, i32* %i, align 4
-  %inc = add i32 %3, 1
+  %2 = load i32, i32* %i, align 4
+  %inc = add i32 %2, 1
   store i32 %inc, i32* %i, align 4
   br label %for.cond, !llvm.loop !2
 
 for.end:                                          ; preds = %for.cond
-  %4 = load i8*, i8** %out.addr, align 8
-  %5 = load %struct.ImageHeader*, %struct.ImageHeader** %header.addr, align 8
-  %width = getelementptr inbounds %struct.ImageHeader, %struct.ImageHeader* %5, i32 0, i32 1
-  %6 = load i32, i32* %width, align 4
-  %7 = load %struct.ImageHeader*, %struct.ImageHeader** %header.addr, align 8
-  %height = getelementptr inbounds %struct.ImageHeader, %struct.ImageHeader* %7, i32 0, i32 2
-  %8 = load i32, i32* %height, align 4
-  %mul = mul i32 %6, %8
+  %3 = load i8*, i8** %out.addr, align 8
+  %4 = load %struct.ImageHeader*, %struct.ImageHeader** %header.addr, align 8
+  %width = getelementptr inbounds %struct.ImageHeader, %struct.ImageHeader* %4, i32 0, i32 1
+  %5 = load i32, i32* %width, align 4
+  %6 = load %struct.ImageHeader*, %struct.ImageHeader** %header.addr, align 8
+  %height = getelementptr inbounds %struct.ImageHeader, %struct.ImageHeader* %6, i32 0, i32 2
+  %7 = load i32, i32* %height, align 4
+  %mul = mul i32 %5, %7
   %conv = zext i32 %mul to i64
-  call void @llvm.memset.p0i8.i64(i8* align 1 %4, i8 2, i64 %conv, i1 false)
+  call void @llvm.memset.p0i8.i64(i8* align 1 %3, i8 -43, i64 %conv, i1 false)
   ret void
 }
 

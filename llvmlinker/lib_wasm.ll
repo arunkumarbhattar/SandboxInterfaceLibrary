@@ -3,7 +3,7 @@ source_filename = "lib_wasm.c"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
-%struct.wasm2c_sandbox_t = type { %struct.wasm_sandbox_wasi_data, %struct.wasm_rt_memory_t, i32, %struct.wasm_rt_table_t, %struct.wasm_func_type_t*, i32, [14 x i32], i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32 }
+%struct.wasm2c_sandbox_t = type { %struct.wasm_sandbox_wasi_data, %struct.wasm_rt_memory_t, i32, %struct.wasm_rt_table_t, %struct.wasm_func_type_t*, i32, [13 x i32], i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32 }
 %struct.wasm_sandbox_wasi_data = type { %struct.wasm_rt_memory_t*, i32, i32, [32 x [1 x %struct.__jmp_buf_tag]], i32, i8**, [32 x i32], i32, i8* }
 %struct.__jmp_buf_tag = type { [8 x i64], i32, %struct.__sigset_t }
 %struct.__sigset_t = type { [16 x i64] }
@@ -40,8 +40,8 @@ target triple = "x86_64-unknown-linux-gnu"
 @.str.24 = private unnamed_addr constant [10 x i8] c"w2c_frexp\00", align 1
 @.str.25 = private unnamed_addr constant [14 x i8] c"w2c___towrite\00", align 1
 @.str.26 = private unnamed_addr constant [14 x i8] c"w2c___fwritex\00", align 1
-@data_segment_data_0 = internal constant [2469 x i8] c"Pre library crash Print **********\0A\00%c\0A\00Post Crash Prints \0A\00\A8\0D\00\00Success\00Illegal byte sequence\00Domain error\00Result not representable\00Not a tty\00Permission denied\00Operation not permitted\00No such file or directory\00No such process\00File exists\00Value too large for data type\00No space left on device\00Out of memory\00Resource busy\00Interrupted system call\00Resource temporarily unavailable\00Invalid seek\00Cross-device link\00Read-only file system\00Directory not empty\00Connection reset by peer\00Operation timed out\00Connection refused\00Host is unreachable\00Address in use\00Broken pipe\00I/O error\00No such device or address\00No such device\00Not a directory\00Is a directory\00Text file busy\00Exec format error\00Invalid argument\00Argument list too long\00Symbolic link loop\00Filename too long\00Too many open files in system\00No file descriptors available\00Bad file descriptor\00No child process\00Bad address\00File too large\00Too many links\00No locks available\00Resource deadlock would occur\00State not recoverable\00Previous owner died\00Operation canceled\00Function not implemented\00No message of desired type\00Identifier removed\00Link has been severed\00Protocol error\00Bad message\00Not a socket\00Destination address required\00Message too large\00Protocol wrong type for socket\00Protocol not available\00Protocol not supported\00Not supported\00Address family not supported by protocol\00Address not available\00Network is down\00Network unreachable\00Connection reset by network\00Connection aborted\00No buffer space available\00Socket is connected\00Socket not connected\00Operation already in progress\00Operation in progress\00Stale file handle\00Quota exceeded\00Multihop attempted\00Capabilities insufficient\00\00\00u\02N\00\D6\01\E2\04\B9\04\18\01\8E\05\ED\02\16\04\F2\00\97\03\01\038\05\AF\01\82\01O\03/\04\1E\00\D4\05\A2\00\12\03\1E\03\C2\01\DE\03\08\00\AC\05\00\01d\02\F1\01e\054\02\8C\02\CF\02-\03L\04\E3\05\9F\02\F8\04\1C\05\08\05\B1\02K\05\15\02x\00R\02<\03\F1\03\E4\00\C3\03}\04\CC\00\AA\03y\05$\02n\01m\03\22\04\AB\04D\00\FB\01\AE\00\83\03`\00\E5\01\07\04\94\04^\04+\00X\019\01\92\00\C2\05\9B\01C\02F\01\F6\05\00\00 \0E\00\00-+   0X0x\00(null)\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\19\00\0A\00\19\19\19\00\00\00\00\05\00\00\00\00\00\00\09\00\00\00\00\0B\00\00\00\00\00\00\00\00\19\00\11\0A\19\19\19\03\0A\07\00\01\1B\09\0B\18\00\00\09\06\0B\00\00\0B\00\06\19\00\00\00\19\19\19\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0E\00\00\00\00\00\00\00\00\19\00\0A\0D\19\19\19\00\0D\00\00\02\00\09\0E\00\00\00\09\00\0E\00\00\0E\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0C\00\00\00\00\00\00\00\00\00\00\00\13\00\00\00\00\13\00\00\00\00\09\0C\00\00\00\00\00\0C\00\00\0C\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00\0F\00\00\00\04\0F\00\00\00\00\09\10\00\00\00\00\00\10\00\00\10\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\12\00\00\00\00\00\00\00\00\00\00\00\11\00\00\00\00\11\00\00\00\00\09\12\00\00\00\00\00\12\00\00\12\00\00\1A\00\00\00\1A\1A\1A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\1A\00\00\00\1A\1A\1A\00\00\00\00\00\00\09\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\14\00\00\00\00\00\00\00\00\00\00\00\17\00\00\00\00\17\00\00\00\00\09\14\00\00\00\00\00\14\00\00\14\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\16\00\00\00\00\00\00\00\00\00\00\00\15\00\00\00\00\15\00\00\00\00\09\16\00\00\00\00\00\16\00\00\16\00\00Support for formatting long double values is currently disabled.\0ATo enable it, add -lc-printscan-long-double to the link command.\0A\00\00\00\00\00\00\00\00\00\00\00\00\00\000123456789ABCDEF-0X+0X 0X-0x+0x 0x\00inf\00INF\00nan\00NAN\00.\00", align 16
-@data_segment_data_1 = internal constant [236 x i8] c"\05\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\03\00\00\00\A8\10\00\00\00\04\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\0A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\A8\0D\00\00\00\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\03\00\00\00\E0\14\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\00\00\00\00\FF\FF\FF\FF\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \0E\00\00", align 16
+@data_segment_data_0 = internal constant [2501 x i8] c"Pre library crash Print **********\0A\00%c\0A\00Post Crash Prints \0A\00Printing the number: %d \0A\00\00\00\C8\0D\00\00Success\00Illegal byte sequence\00Domain error\00Result not representable\00Not a tty\00Permission denied\00Operation not permitted\00No such file or directory\00No such process\00File exists\00Value too large for data type\00No space left on device\00Out of memory\00Resource busy\00Interrupted system call\00Resource temporarily unavailable\00Invalid seek\00Cross-device link\00Read-only file system\00Directory not empty\00Connection reset by peer\00Operation timed out\00Connection refused\00Host is unreachable\00Address in use\00Broken pipe\00I/O error\00No such device or address\00No such device\00Not a directory\00Is a directory\00Text file busy\00Exec format error\00Invalid argument\00Argument list too long\00Symbolic link loop\00Filename too long\00Too many open files in system\00No file descriptors available\00Bad file descriptor\00No child process\00Bad address\00File too large\00Too many links\00No locks available\00Resource deadlock would occur\00State not recoverable\00Previous owner died\00Operation canceled\00Function not implemented\00No message of desired type\00Identifier removed\00Link has been severed\00Protocol error\00Bad message\00Not a socket\00Destination address required\00Message too large\00Protocol wrong type for socket\00Protocol not available\00Protocol not supported\00Not supported\00Address family not supported by protocol\00Address not available\00Network is down\00Network unreachable\00Connection reset by network\00Connection aborted\00No buffer space available\00Socket is connected\00Socket not connected\00Operation already in progress\00Operation in progress\00Stale file handle\00Quota exceeded\00Multihop attempted\00Capabilities insufficient\00\00\00\00\00\00\00u\02N\00\D6\01\E2\04\B9\04\18\01\8E\05\ED\02\16\04\F2\00\97\03\01\038\05\AF\01\82\01O\03/\04\1E\00\D4\05\A2\00\12\03\1E\03\C2\01\DE\03\08\00\AC\05\00\01d\02\F1\01e\054\02\8C\02\CF\02-\03L\04\E3\05\9F\02\F8\04\1C\05\08\05\B1\02K\05\15\02x\00R\02<\03\F1\03\E4\00\C3\03}\04\CC\00\AA\03y\05$\02n\01m\03\22\04\AB\04D\00\FB\01\AE\00\83\03`\00\E5\01\07\04\94\04^\04+\00X\019\01\92\00\C2\05\9B\01C\02F\01\F6\05\00\00@\0E\00\00-+   0X0x\00(null)\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\19\00\0A\00\19\19\19\00\00\00\00\05\00\00\00\00\00\00\09\00\00\00\00\0B\00\00\00\00\00\00\00\00\19\00\11\0A\19\19\19\03\0A\07\00\01\1B\09\0B\18\00\00\09\06\0B\00\00\0B\00\06\19\00\00\00\19\19\19\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0E\00\00\00\00\00\00\00\00\19\00\0A\0D\19\19\19\00\0D\00\00\02\00\09\0E\00\00\00\09\00\0E\00\00\0E\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0C\00\00\00\00\00\00\00\00\00\00\00\13\00\00\00\00\13\00\00\00\00\09\0C\00\00\00\00\00\0C\00\00\0C\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00\0F\00\00\00\04\0F\00\00\00\00\09\10\00\00\00\00\00\10\00\00\10\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\12\00\00\00\00\00\00\00\00\00\00\00\11\00\00\00\00\11\00\00\00\00\09\12\00\00\00\00\00\12\00\00\12\00\00\1A\00\00\00\1A\1A\1A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\1A\00\00\00\1A\1A\1A\00\00\00\00\00\00\09\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\14\00\00\00\00\00\00\00\00\00\00\00\17\00\00\00\00\17\00\00\00\00\09\14\00\00\00\00\00\14\00\00\14\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\16\00\00\00\00\00\00\00\00\00\00\00\15\00\00\00\00\15\00\00\00\00\09\16\00\00\00\00\00\16\00\00\16\00\00Support for formatting long double values is currently disabled.\0ATo enable it, add -lc-printscan-long-double to the link command.\0A\00\00\00\00\00\00\00\00\00\00\00\00\00\000123456789ABCDEF-0X+0X 0X-0x+0x 0x\00inf\00INF\00nan\00NAN\00.\00", align 16
+@data_segment_data_1 = internal constant [236 x i8] c"\05\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\03\00\00\00\C8\10\00\00\00\04\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\0A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\C8\0D\00\00\00\00\00\00\05\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\03\00\00\00\00\15\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\00\00\00\00\FF\FF\FF\FF\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00@\0E\00\00", align 16
 @__const.init_func_types.param_ret_types = private unnamed_addr constant [4 x i32] [i32 0, i32 1, i32 0, i32 1], align 16
 @__const.init_func_types.param_ret_types.27 = private unnamed_addr constant [5 x i32] [i32 0, i32 1, i32 0, i32 0, i32 0], align 16
 @__const.init_func_types.param_ret_types.28 = private unnamed_addr constant [3 x i32] [i32 3, i32 0, i32 3], align 4
@@ -76,14 +76,6 @@ target triple = "x86_64-unknown-linux-gnu"
 @.str.57 = private unnamed_addr constant [17 x i8] c"w2c___table_base\00", align 1
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i8* @t_malloc(i64 %size) #0 {
-entry:
-  %size.addr = alloca i64, align 8
-  store i64 %size, i64* %size.addr, align 8
-  ret i8* null
-}
-
-; Function Attrs: noinline nounwind optnone uwtable
 define dso_local i32 @w2c_parse_image_header(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
@@ -113,7 +105,6 @@ entry:
   %w2c_l23 = alloca i32, align 4
   %w2c_l24 = alloca i32, align 4
   %w2c_l25 = alloca i32, align 4
-  %w2c_l26 = alloca i32, align 4
   %w2c_i0 = alloca i32, align 4
   %w2c_i1 = alloca i32, align 4
   store %struct.wasm2c_sandbox_t* %sbx, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
@@ -143,10 +134,9 @@ entry:
   store i32 0, i32* %w2c_l23, align 4
   store i32 0, i32* %w2c_l24, align 4
   store i32 0, i32* %w2c_l25, align 4
-  store i32 0, i32* %w2c_l26, align 4
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  %1 = load i32, i32* %w2c_g0, align 4
+  %1 = load i32, i32* %w2c_g0, align 8
   store i32 %1, i32* %w2c_i0, align 4
   %2 = load i32, i32* %w2c_i0, align 4
   store i32 %2, i32* %w2c_l2, align 4
@@ -168,7 +158,7 @@ entry:
   %10 = load i32, i32* %w2c_i0, align 4
   %11 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g01 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %11, i32 0, i32 7
-  store i32 %10, i32* %w2c_g01, align 4
+  store i32 %10, i32* %w2c_g01, align 8
   %12 = load i32, i32* %w2c_l4, align 4
   store i32 %12, i32* %w2c_i0, align 4
   %13 = load i32, i32* %w2c_p0.addr, align 4
@@ -303,143 +293,140 @@ entry:
   %71 = load i32, i32* %w2c_i1, align 4
   %call19 = call i32 @w2c_printf(%struct.wasm2c_sandbox_t* %69, i32 %70, i32 %71)
   store i32 %call19, i32* %w2c_i0, align 4
-  store i32 1, i32* %w2c_i0, align 4
+  store i32 10, i32* %w2c_i0, align 4
   %72 = load i32, i32* %w2c_i0, align 4
   store i32 %72, i32* %w2c_l16, align 4
-  store i32 10, i32* %w2c_i0, align 4
+  store i32 0, i32* %w2c_i0, align 4
   %73 = load i32, i32* %w2c_i0, align 4
   store i32 %73, i32* %w2c_l17, align 4
-  store i32 0, i32* %w2c_i0, align 4
+  store i32 12, i32* %w2c_i0, align 4
   %74 = load i32, i32* %w2c_i0, align 4
   store i32 %74, i32* %w2c_l18, align 4
-  store i32 12, i32* %w2c_i0, align 4
-  %75 = load i32, i32* %w2c_i0, align 4
-  store i32 %75, i32* %w2c_l19, align 4
-  %76 = load i32, i32* %w2c_l19, align 4
-  store i32 %76, i32* %w2c_i0, align 4
-  %77 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %78 = load i32, i32* %w2c_i0, align 4
-  %call20 = call i32 @w2c_malloc(%struct.wasm2c_sandbox_t* %77, i32 %78)
+  %75 = load i32, i32* %w2c_l18, align 4
+  store i32 %75, i32* %w2c_i0, align 4
+  %76 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %77 = load i32, i32* %w2c_i0, align 4
+  %call20 = call i32 @w2c_malloc(%struct.wasm2c_sandbox_t* %76, i32 %77)
   store i32 %call20, i32* %w2c_i0, align 4
-  %79 = load i32, i32* %w2c_i0, align 4
-  store i32 %79, i32* %w2c_l20, align 4
-  %80 = load i32, i32* %w2c_l4, align 4
-  store i32 %80, i32* %w2c_i0, align 4
-  %81 = load i32, i32* %w2c_l20, align 4
-  store i32 %81, i32* %w2c_i1, align 4
-  %82 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory21 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %82, i32 0, i32 1
-  %83 = load i32, i32* %w2c_i0, align 4
-  %conv22 = zext i32 %83 to i64
+  %78 = load i32, i32* %w2c_i0, align 4
+  store i32 %78, i32* %w2c_l19, align 4
+  %79 = load i32, i32* %w2c_l4, align 4
+  store i32 %79, i32* %w2c_i0, align 4
+  %80 = load i32, i32* %w2c_l19, align 4
+  store i32 %80, i32* %w2c_i1, align 4
+  %81 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory21 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %81, i32 0, i32 1
+  %82 = load i32, i32* %w2c_i0, align 4
+  %conv22 = zext i32 %82 to i64
   %add23 = add i64 %conv22, 16
-  %84 = load i32, i32* %w2c_i1, align 4
-  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory21, i64 %add23, i32 %84, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
-  %85 = load i32, i32* %w2c_l4, align 4
-  store i32 %85, i32* %w2c_i0, align 4
-  %86 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory24 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %86, i32 0, i32 1
-  %87 = load i32, i32* %w2c_i0, align 4
-  %conv25 = zext i32 %87 to i64
+  %83 = load i32, i32* %w2c_i1, align 4
+  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory21, i64 %add23, i32 %83, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
+  %84 = load i32, i32* %w2c_l4, align 4
+  store i32 %84, i32* %w2c_i0, align 4
+  %85 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory24 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %85, i32 0, i32 1
+  %86 = load i32, i32* %w2c_i0, align 4
+  %conv25 = zext i32 %86 to i64
   %add26 = add i64 %conv25, 16
   %call27 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory24, i64 %add26, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
   store i32 %call27, i32* %w2c_i0, align 4
-  %88 = load i32, i32* %w2c_i0, align 4
-  store i32 %88, i32* %w2c_l21, align 4
-  %89 = load i32, i32* %w2c_l21, align 4
-  store i32 %89, i32* %w2c_i0, align 4
-  %90 = load i32, i32* %w2c_l18, align 4
-  store i32 %90, i32* %w2c_i1, align 4
-  %91 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory28 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %91, i32 0, i32 1
-  %92 = load i32, i32* %w2c_i0, align 4
-  %conv29 = zext i32 %92 to i64
-  %93 = load i32, i32* %w2c_i1, align 4
-  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory28, i64 %conv29, i32 %93, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
-  %94 = load i32, i32* %w2c_l4, align 4
-  store i32 %94, i32* %w2c_i0, align 4
-  %95 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory30 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %95, i32 0, i32 1
-  %96 = load i32, i32* %w2c_i0, align 4
-  %conv31 = zext i32 %96 to i64
+  %87 = load i32, i32* %w2c_i0, align 4
+  store i32 %87, i32* %w2c_l20, align 4
+  %88 = load i32, i32* %w2c_l20, align 4
+  store i32 %88, i32* %w2c_i0, align 4
+  %89 = load i32, i32* %w2c_l17, align 4
+  store i32 %89, i32* %w2c_i1, align 4
+  %90 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory28 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %90, i32 0, i32 1
+  %91 = load i32, i32* %w2c_i0, align 4
+  %conv29 = zext i32 %91 to i64
+  %92 = load i32, i32* %w2c_i1, align 4
+  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory28, i64 %conv29, i32 %92, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
+  %93 = load i32, i32* %w2c_l4, align 4
+  store i32 %93, i32* %w2c_i0, align 4
+  %94 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory30 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %94, i32 0, i32 1
+  %95 = load i32, i32* %w2c_i0, align 4
+  %conv31 = zext i32 %95 to i64
   %add32 = add i64 %conv31, 16
   %call33 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory30, i64 %add32, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
   store i32 %call33, i32* %w2c_i0, align 4
-  %97 = load i32, i32* %w2c_i0, align 4
-  store i32 %97, i32* %w2c_l22, align 4
-  %98 = load i32, i32* %w2c_l22, align 4
-  store i32 %98, i32* %w2c_i0, align 4
-  %99 = load i32, i32* %w2c_l17, align 4
-  store i32 %99, i32* %w2c_i1, align 4
-  %100 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory34 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %100, i32 0, i32 1
-  %101 = load i32, i32* %w2c_i0, align 4
-  %conv35 = zext i32 %101 to i64
+  %96 = load i32, i32* %w2c_i0, align 4
+  store i32 %96, i32* %w2c_l21, align 4
+  %97 = load i32, i32* %w2c_l21, align 4
+  store i32 %97, i32* %w2c_i0, align 4
+  %98 = load i32, i32* %w2c_l16, align 4
+  store i32 %98, i32* %w2c_i1, align 4
+  %99 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory34 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %99, i32 0, i32 1
+  %100 = load i32, i32* %w2c_i0, align 4
+  %conv35 = zext i32 %100 to i64
   %add36 = add i64 %conv35, 4
-  %102 = load i32, i32* %w2c_i1, align 4
-  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory34, i64 %add36, i32 %102, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
-  %103 = load i32, i32* %w2c_l4, align 4
-  store i32 %103, i32* %w2c_i0, align 4
-  %104 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory37 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %104, i32 0, i32 1
-  %105 = load i32, i32* %w2c_i0, align 4
-  %conv38 = zext i32 %105 to i64
+  %101 = load i32, i32* %w2c_i1, align 4
+  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory34, i64 %add36, i32 %101, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
+  %102 = load i32, i32* %w2c_l4, align 4
+  store i32 %102, i32* %w2c_i0, align 4
+  %103 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory37 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %103, i32 0, i32 1
+  %104 = load i32, i32* %w2c_i0, align 4
+  %conv38 = zext i32 %104 to i64
   %add39 = add i64 %conv38, 16
   %call40 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory37, i64 %add39, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
   store i32 %call40, i32* %w2c_i0, align 4
-  %106 = load i32, i32* %w2c_i0, align 4
-  store i32 %106, i32* %w2c_l23, align 4
-  %107 = load i32, i32* %w2c_l23, align 4
-  store i32 %107, i32* %w2c_i0, align 4
-  %108 = load i32, i32* %w2c_l16, align 4
-  store i32 %108, i32* %w2c_i1, align 4
-  %109 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory41 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %109, i32 0, i32 1
-  %110 = load i32, i32* %w2c_i0, align 4
-  %conv42 = zext i32 %110 to i64
+  %105 = load i32, i32* %w2c_i0, align 4
+  store i32 %105, i32* %w2c_l22, align 4
+  %106 = load i32, i32* %w2c_l22, align 4
+  store i32 %106, i32* %w2c_i0, align 4
+  %107 = load i32, i32* %w2c_l16, align 4
+  store i32 %107, i32* %w2c_i1, align 4
+  %108 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory41 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %108, i32 0, i32 1
+  %109 = load i32, i32* %w2c_i0, align 4
+  %conv42 = zext i32 %109 to i64
   %add43 = add i64 %conv42, 8
-  %111 = load i32, i32* %w2c_i1, align 4
-  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory41, i64 %add43, i32 %111, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
-  %112 = load i32, i32* %w2c_l4, align 4
-  store i32 %112, i32* %w2c_i0, align 4
-  %113 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory44 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %113, i32 0, i32 1
-  %114 = load i32, i32* %w2c_i0, align 4
-  %conv45 = zext i32 %114 to i64
+  %110 = load i32, i32* %w2c_i1, align 4
+  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory41, i64 %add43, i32 %110, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
+  %111 = load i32, i32* %w2c_l4, align 4
+  store i32 %111, i32* %w2c_i0, align 4
+  %112 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory44 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %112, i32 0, i32 1
+  %113 = load i32, i32* %w2c_i0, align 4
+  %conv45 = zext i32 %113 to i64
   %add46 = add i64 %conv45, 16
   %call47 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory44, i64 %add46, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str, i64 0, i64 0))
   store i32 %call47, i32* %w2c_i0, align 4
+  %114 = load i32, i32* %w2c_i0, align 4
+  store i32 %114, i32* %w2c_l23, align 4
+  store i32 32, i32* %w2c_i0, align 4
   %115 = load i32, i32* %w2c_i0, align 4
   store i32 %115, i32* %w2c_l24, align 4
-  store i32 32, i32* %w2c_i0, align 4
-  %116 = load i32, i32* %w2c_i0, align 4
-  store i32 %116, i32* %w2c_l25, align 4
-  %117 = load i32, i32* %w2c_l4, align 4
-  store i32 %117, i32* %w2c_i0, align 4
-  %118 = load i32, i32* %w2c_l25, align 4
-  store i32 %118, i32* %w2c_i1, align 4
-  %119 = load i32, i32* %w2c_i1, align 4
-  %120 = load i32, i32* %w2c_i0, align 4
-  %add48 = add i32 %120, %119
+  %116 = load i32, i32* %w2c_l4, align 4
+  store i32 %116, i32* %w2c_i0, align 4
+  %117 = load i32, i32* %w2c_l24, align 4
+  store i32 %117, i32* %w2c_i1, align 4
+  %118 = load i32, i32* %w2c_i1, align 4
+  %119 = load i32, i32* %w2c_i0, align 4
+  %add48 = add i32 %119, %118
   store i32 %add48, i32* %w2c_i0, align 4
-  %121 = load i32, i32* %w2c_i0, align 4
-  store i32 %121, i32* %w2c_l26, align 4
-  %122 = load i32, i32* %w2c_l26, align 4
-  store i32 %122, i32* %w2c_i0, align 4
-  %123 = load i32, i32* %w2c_i0, align 4
-  %124 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_g049 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %124, i32 0, i32 7
-  store i32 %123, i32* %w2c_g049, align 4
-  %125 = load i32, i32* %w2c_l24, align 4
-  store i32 %125, i32* %w2c_i0, align 4
+  %120 = load i32, i32* %w2c_i0, align 4
+  store i32 %120, i32* %w2c_l25, align 4
+  %121 = load i32, i32* %w2c_l25, align 4
+  store i32 %121, i32* %w2c_i0, align 4
+  %122 = load i32, i32* %w2c_i0, align 4
+  %123 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_g049 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %123, i32 0, i32 7
+  store i32 %122, i32* %w2c_g049, align 8
+  %124 = load i32, i32* %w2c_l23, align 4
+  store i32 %124, i32* %w2c_i0, align 4
   br label %w2c_Bfunc
 
 w2c_Bfunc:                                        ; preds = %entry
-  %126 = load i32, i32* %w2c_i0, align 4
-  ret i32 %126
+  %125 = load i32, i32* %w2c_i0, align 4
+  ret i32 %125
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define internal void @i32_store(%struct.wasm_rt_memory_t* %mem, i64 %addr, i32 %value, i8* %func_name) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @i32_store(%struct.wasm_rt_memory_t* %mem, i64 %addr, i32 %value, i8* %func_name) #0 {
 entry:
   %mem.addr = alloca %struct.wasm_rt_memory_t*, align 8
   %addr.addr = alloca i64, align 8
@@ -478,7 +465,7 @@ entry:
   store i32 0, i32* %w2c_l2, align 4
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  %1 = load i32, i32* %w2c_g0, align 4
+  %1 = load i32, i32* %w2c_g0, align 8
   store i32 %1, i32* %w2c_i0, align 4
   store i32 16, i32* %w2c_i1, align 4
   %2 = load i32, i32* %w2c_i1, align 4
@@ -490,7 +477,7 @@ entry:
   %5 = load i32, i32* %w2c_i0, align 4
   %6 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g01 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %6, i32 0, i32 7
-  store i32 %5, i32* %w2c_g01, align 4
+  store i32 %5, i32* %w2c_g01, align 8
   %7 = load i32, i32* %w2c_l2, align 4
   store i32 %7, i32* %w2c_i0, align 4
   %8 = load i32, i32* %w2c_p1.addr, align 4
@@ -502,7 +489,7 @@ entry:
   %add = add i64 %conv, 12
   %11 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory, i64 %add, i32 %11, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.11, i64 0, i64 0))
-  store i32 3496, i32* %w2c_i0, align 4
+  store i32 3528, i32* %w2c_i0, align 4
   %12 = load i32, i32* %w2c_p0.addr, align 4
   store i32 %12, i32* %w2c_i1, align 4
   %13 = load i32, i32* %w2c_p1.addr, align 4
@@ -525,7 +512,7 @@ entry:
   %22 = load i32, i32* %w2c_i0, align 4
   %23 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g03 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %23, i32 0, i32 7
-  store i32 %22, i32* %w2c_g03, align 4
+  store i32 %22, i32* %w2c_g03, align 8
   %24 = load i32, i32* %w2c_p1.addr, align 4
   store i32 %24, i32* %w2c_i0, align 4
   %25 = load i32, i32* %w2c_i0, align 4
@@ -574,8 +561,8 @@ entry:
   ret i32 %conv
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define dso_local i32 @w2c_malloc(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @w2c_malloc(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %w2c_p0.addr = alloca i32, align 4
@@ -592,14 +579,14 @@ entry:
   ret i32 %3
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define dso_local void @w2c_parse_image_body(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1, i32 %w2c_p2, i32 %w2c_p3) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @w2c_parse_image_body(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1, i32 %w2c_p2) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %w2c_p0.addr = alloca i32, align 4
   %w2c_p1.addr = alloca i32, align 4
   %w2c_p2.addr = alloca i32, align 4
-  %w2c_p3.addr = alloca i32, align 4
+  %w2c_l3 = alloca i32, align 4
   %w2c_l4 = alloca i32, align 4
   %w2c_l5 = alloca i32, align 4
   %w2c_l6 = alloca i32, align 4
@@ -624,7 +611,6 @@ entry:
   %w2c_l25 = alloca i32, align 4
   %w2c_l26 = alloca i32, align 4
   %w2c_l27 = alloca i32, align 4
-  %w2c_l28 = alloca i32, align 4
   %w2c_i0 = alloca i32, align 4
   %w2c_i1 = alloca i32, align 4
   %w2c_i2 = alloca i32, align 4
@@ -632,7 +618,7 @@ entry:
   store i32 %w2c_p0, i32* %w2c_p0.addr, align 4
   store i32 %w2c_p1, i32* %w2c_p1.addr, align 4
   store i32 %w2c_p2, i32* %w2c_p2.addr, align 4
-  store i32 %w2c_p3, i32* %w2c_p3.addr, align 4
+  store i32 0, i32* %w2c_l3, align 4
   store i32 0, i32* %w2c_l4, align 4
   store i32 0, i32* %w2c_l5, align 4
   store i32 0, i32* %w2c_l6, align 4
@@ -657,36 +643,35 @@ entry:
   store i32 0, i32* %w2c_l25, align 4
   store i32 0, i32* %w2c_l26, align 4
   store i32 0, i32* %w2c_l27, align 4
-  store i32 0, i32* %w2c_l28, align 4
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  %1 = load i32, i32* %w2c_g0, align 4
+  %1 = load i32, i32* %w2c_g0, align 8
   store i32 %1, i32* %w2c_i0, align 4
   %2 = load i32, i32* %w2c_i0, align 4
-  store i32 %2, i32* %w2c_l4, align 4
+  store i32 %2, i32* %w2c_l3, align 4
   store i32 32, i32* %w2c_i0, align 4
   %3 = load i32, i32* %w2c_i0, align 4
-  store i32 %3, i32* %w2c_l5, align 4
-  %4 = load i32, i32* %w2c_l4, align 4
+  store i32 %3, i32* %w2c_l4, align 4
+  %4 = load i32, i32* %w2c_l3, align 4
   store i32 %4, i32* %w2c_i0, align 4
-  %5 = load i32, i32* %w2c_l5, align 4
+  %5 = load i32, i32* %w2c_l4, align 4
   store i32 %5, i32* %w2c_i1, align 4
   %6 = load i32, i32* %w2c_i1, align 4
   %7 = load i32, i32* %w2c_i0, align 4
   %sub = sub i32 %7, %6
   store i32 %sub, i32* %w2c_i0, align 4
   %8 = load i32, i32* %w2c_i0, align 4
-  store i32 %8, i32* %w2c_l6, align 4
-  %9 = load i32, i32* %w2c_l6, align 4
+  store i32 %8, i32* %w2c_l5, align 4
+  %9 = load i32, i32* %w2c_l5, align 4
   store i32 %9, i32* %w2c_i0, align 4
   %10 = load i32, i32* %w2c_i0, align 4
   %11 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g01 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %11, i32 0, i32 7
-  store i32 %10, i32* %w2c_g01, align 4
+  store i32 %10, i32* %w2c_g01, align 8
   store i32 1, i32* %w2c_i0, align 4
   %12 = load i32, i32* %w2c_i0, align 4
-  store i32 %12, i32* %w2c_l7, align 4
-  %13 = load i32, i32* %w2c_l6, align 4
+  store i32 %12, i32* %w2c_l6, align 4
+  %13 = load i32, i32* %w2c_l5, align 4
   store i32 %13, i32* %w2c_i0, align 4
   %14 = load i32, i32* %w2c_p0.addr, align 4
   store i32 %14, i32* %w2c_i1, align 4
@@ -697,7 +682,7 @@ entry:
   %add = add i64 %conv, 28
   %17 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory, i64 %add, i32 %17, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  %18 = load i32, i32* %w2c_l6, align 4
+  %18 = load i32, i32* %w2c_l5, align 4
   store i32 %18, i32* %w2c_i0, align 4
   %19 = load i32, i32* %w2c_p1.addr, align 4
   store i32 %19, i32* %w2c_i1, align 4
@@ -708,7 +693,7 @@ entry:
   %add4 = add i64 %conv3, 24
   %22 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2, i64 %add4, i32 %22, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  %23 = load i32, i32* %w2c_l6, align 4
+  %23 = load i32, i32* %w2c_l5, align 4
   store i32 %23, i32* %w2c_i0, align 4
   %24 = load i32, i32* %w2c_p2.addr, align 4
   store i32 %24, i32* %w2c_i1, align 4
@@ -719,9 +704,9 @@ entry:
   %add7 = add i64 %conv6, 20
   %27 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory5, i64 %add7, i32 %27, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  %28 = load i32, i32* %w2c_l6, align 4
+  %28 = load i32, i32* %w2c_l5, align 4
   store i32 %28, i32* %w2c_i0, align 4
-  %29 = load i32, i32* %w2c_p3.addr, align 4
+  %29 = load i32, i32* %w2c_l6, align 4
   store i32 %29, i32* %w2c_i1, align 4
   %30 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory8 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %30, i32 0, i32 1
@@ -730,327 +715,245 @@ entry:
   %add10 = add i64 %conv9, 16
   %32 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory8, i64 %add10, i32 %32, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  %33 = load i32, i32* %w2c_l6, align 4
-  store i32 %33, i32* %w2c_i0, align 4
-  %34 = load i32, i32* %w2c_l7, align 4
-  store i32 %34, i32* %w2c_i1, align 4
+  br label %w2c_L1
+
+w2c_L1:                                           ; preds = %if.end, %entry
+  store i32 100, i32* %w2c_i0, align 4
+  %33 = load i32, i32* %w2c_i0, align 4
+  store i32 %33, i32* %w2c_l7, align 4
+  %34 = load i32, i32* %w2c_l5, align 4
+  store i32 %34, i32* %w2c_i0, align 4
   %35 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory11 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %35, i32 0, i32 1
   %36 = load i32, i32* %w2c_i0, align 4
   %conv12 = zext i32 %36 to i64
-  %add13 = add i64 %conv12, 12
-  %37 = load i32, i32* %w2c_i1, align 4
-  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory11, i64 %add13, i32 %37, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  br label %w2c_L1
-
-w2c_L1:                                           ; preds = %if.end53, %entry
-  store i32 100, i32* %w2c_i0, align 4
-  %38 = load i32, i32* %w2c_i0, align 4
-  store i32 %38, i32* %w2c_l8, align 4
-  %39 = load i32, i32* %w2c_l6, align 4
-  store i32 %39, i32* %w2c_i0, align 4
-  %40 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory14 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %40, i32 0, i32 1
-  %41 = load i32, i32* %w2c_i0, align 4
-  %conv15 = zext i32 %41 to i64
-  %add16 = add i64 %conv15, 12
-  %call = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory14, i64 %add16, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
+  %add13 = add i64 %conv12, 16
+  %call = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory11, i64 %add13, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
   store i32 %call, i32* %w2c_i0, align 4
-  %42 = load i32, i32* %w2c_i0, align 4
-  store i32 %42, i32* %w2c_l9, align 4
-  %43 = load i32, i32* %w2c_l9, align 4
-  store i32 %43, i32* %w2c_i0, align 4
+  %37 = load i32, i32* %w2c_i0, align 4
+  store i32 %37, i32* %w2c_l8, align 4
+  %38 = load i32, i32* %w2c_l8, align 4
+  store i32 %38, i32* %w2c_i0, align 4
+  %39 = load i32, i32* %w2c_i0, align 4
+  store i32 %39, i32* %w2c_l9, align 4
+  %40 = load i32, i32* %w2c_l7, align 4
+  store i32 %40, i32* %w2c_i0, align 4
+  %41 = load i32, i32* %w2c_i0, align 4
+  store i32 %41, i32* %w2c_l10, align 4
+  %42 = load i32, i32* %w2c_l9, align 4
+  store i32 %42, i32* %w2c_i0, align 4
+  %43 = load i32, i32* %w2c_l10, align 4
+  store i32 %43, i32* %w2c_i1, align 4
   %44 = load i32, i32* %w2c_i0, align 4
-  store i32 %44, i32* %w2c_l10, align 4
-  %45 = load i32, i32* %w2c_l8, align 4
-  store i32 %45, i32* %w2c_i0, align 4
+  %45 = load i32, i32* %w2c_i1, align 4
+  %cmp = icmp ule i32 %44, %45
+  %conv14 = zext i1 %cmp to i32
+  store i32 %conv14, i32* %w2c_i0, align 4
   %46 = load i32, i32* %w2c_i0, align 4
   store i32 %46, i32* %w2c_l11, align 4
-  %47 = load i32, i32* %w2c_l10, align 4
-  store i32 %47, i32* %w2c_i0, align 4
-  %48 = load i32, i32* %w2c_l11, align 4
-  store i32 %48, i32* %w2c_i1, align 4
-  %49 = load i32, i32* %w2c_i0, align 4
-  %50 = load i32, i32* %w2c_i1, align 4
-  %cmp = icmp ule i32 %49, %50
-  %conv17 = zext i1 %cmp to i32
-  store i32 %conv17, i32* %w2c_i0, align 4
-  %51 = load i32, i32* %w2c_i0, align 4
-  store i32 %51, i32* %w2c_l12, align 4
   store i32 1, i32* %w2c_i0, align 4
+  %47 = load i32, i32* %w2c_i0, align 4
+  store i32 %47, i32* %w2c_l12, align 4
+  %48 = load i32, i32* %w2c_l11, align 4
+  store i32 %48, i32* %w2c_i0, align 4
+  %49 = load i32, i32* %w2c_l12, align 4
+  store i32 %49, i32* %w2c_i1, align 4
+  %50 = load i32, i32* %w2c_i1, align 4
+  %51 = load i32, i32* %w2c_i0, align 4
+  %and = and i32 %51, %50
+  store i32 %and, i32* %w2c_i0, align 4
   %52 = load i32, i32* %w2c_i0, align 4
   store i32 %52, i32* %w2c_l13, align 4
-  %53 = load i32, i32* %w2c_l12, align 4
+  %53 = load i32, i32* %w2c_l13, align 4
   store i32 %53, i32* %w2c_i0, align 4
-  %54 = load i32, i32* %w2c_l13, align 4
-  store i32 %54, i32* %w2c_i1, align 4
-  %55 = load i32, i32* %w2c_i1, align 4
-  %56 = load i32, i32* %w2c_i0, align 4
-  %and = and i32 %56, %55
-  store i32 %and, i32* %w2c_i0, align 4
-  %57 = load i32, i32* %w2c_i0, align 4
-  store i32 %57, i32* %w2c_l14, align 4
-  %58 = load i32, i32* %w2c_l14, align 4
-  store i32 %58, i32* %w2c_i0, align 4
-  %59 = load i32, i32* %w2c_i0, align 4
-  %tobool = icmp ne i32 %59, 0
+  %54 = load i32, i32* %w2c_i0, align 4
+  %tobool = icmp ne i32 %54, 0
   %lnot = xor i1 %tobool, true
   %lnot.ext = zext i1 %lnot to i32
   store i32 %lnot.ext, i32* %w2c_i0, align 4
-  %60 = load i32, i32* %w2c_i0, align 4
-  %tobool18 = icmp ne i32 %60, 0
-  br i1 %tobool18, label %if.then, label %if.end
+  %55 = load i32, i32* %w2c_i0, align 4
+  %tobool15 = icmp ne i32 %55, 0
+  br i1 %tobool15, label %if.then, label %if.end
 
 if.then:                                          ; preds = %w2c_L1
   br label %w2c_B0
 
 if.end:                                           ; preds = %w2c_L1
-  %61 = load i32, i32* %w2c_l6, align 4
-  store i32 %61, i32* %w2c_i0, align 4
+  %56 = load i32, i32* %w2c_l5, align 4
+  store i32 %56, i32* %w2c_i0, align 4
+  %57 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory16 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %57, i32 0, i32 1
+  %58 = load i32, i32* %w2c_i0, align 4
+  %conv17 = zext i32 %58 to i64
+  %add18 = add i64 %conv17, 16
+  %call19 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory16, i64 %add18, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
+  store i32 %call19, i32* %w2c_i0, align 4
+  %59 = load i32, i32* %w2c_i0, align 4
+  store i32 %59, i32* %w2c_l14, align 4
+  %60 = load i32, i32* %w2c_l5, align 4
+  store i32 %60, i32* %w2c_i0, align 4
+  %61 = load i32, i32* %w2c_l14, align 4
+  store i32 %61, i32* %w2c_i1, align 4
   %62 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory19 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %62, i32 0, i32 1
+  %w2c_memory20 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %62, i32 0, i32 1
   %63 = load i32, i32* %w2c_i0, align 4
-  %conv20 = zext i32 %63 to i64
-  %add21 = add i64 %conv20, 20
-  %call22 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory19, i64 %add21, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
+  %conv21 = zext i32 %63 to i64
+  %64 = load i32, i32* %w2c_i1, align 4
+  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory20, i64 %conv21, i32 %64, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
+  store i32 1084, i32* %w2c_i0, align 4
+  %65 = load i32, i32* %w2c_i0, align 4
+  store i32 %65, i32* %w2c_l15, align 4
+  %66 = load i32, i32* %w2c_l15, align 4
+  store i32 %66, i32* %w2c_i0, align 4
+  %67 = load i32, i32* %w2c_l5, align 4
+  store i32 %67, i32* %w2c_i1, align 4
+  %68 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %69 = load i32, i32* %w2c_i0, align 4
+  %70 = load i32, i32* %w2c_i1, align 4
+  %call22 = call i32 @w2c_printf(%struct.wasm2c_sandbox_t* %68, i32 %69, i32 %70)
   store i32 %call22, i32* %w2c_i0, align 4
-  %64 = load i32, i32* %w2c_i0, align 4
-  store i32 %64, i32* %w2c_l15, align 4
-  %65 = load i32, i32* %w2c_l6, align 4
-  store i32 %65, i32* %w2c_i0, align 4
-  %66 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory23 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %66, i32 0, i32 1
-  %67 = load i32, i32* %w2c_i0, align 4
-  %conv24 = zext i32 %67 to i64
-  %add25 = add i64 %conv24, 12
+  %71 = load i32, i32* %w2c_l5, align 4
+  store i32 %71, i32* %w2c_i0, align 4
+  %72 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory23 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %72, i32 0, i32 1
+  %73 = load i32, i32* %w2c_i0, align 4
+  %conv24 = zext i32 %73 to i64
+  %add25 = add i64 %conv24, 16
   %call26 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory23, i64 %add25, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
   store i32 %call26, i32* %w2c_i0, align 4
-  %68 = load i32, i32* %w2c_i0, align 4
-  store i32 %68, i32* %w2c_l16, align 4
-  %69 = load i32, i32* %w2c_l16, align 4
-  store i32 %69, i32* %w2c_i0, align 4
-  %70 = load i32, i32* %w2c_l15, align 4
-  store i32 %70, i32* %w2c_i1, align 4
-  %71 = load i32, i32* %w2c_i1, align 4
-  %72 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_T0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %72, i32 0, i32 3
-  %size = getelementptr inbounds %struct.wasm_rt_table_t, %struct.wasm_rt_table_t* %w2c_T0, i32 0, i32 2
-  %73 = load i32, i32* %size, align 4
-  %cmp27 = icmp ult i32 %71, %73
-  br i1 %cmp27, label %land.lhs.true, label %land.end
-
-land.lhs.true:                                    ; preds = %if.end
-  %74 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_T029 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %74, i32 0, i32 3
-  %data = getelementptr inbounds %struct.wasm_rt_table_t, %struct.wasm_rt_table_t* %w2c_T029, i32 0, i32 0
-  %75 = load %struct.wasm_rt_elem_t*, %struct.wasm_rt_elem_t** %data, align 8
-  %76 = load i32, i32* %w2c_i1, align 4
-  %idxprom = zext i32 %76 to i64
-  %arrayidx = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %75, i64 %idxprom
-  %func = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %arrayidx, i32 0, i32 2
-  %77 = load void ()*, void ()** %func, align 8
-  %tobool30 = icmp ne void ()* %77, null
-  br i1 %tobool30, label %land.rhs, label %land.end
-
-land.rhs:                                         ; preds = %land.lhs.true
-  %78 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_T031 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %78, i32 0, i32 3
-  %data32 = getelementptr inbounds %struct.wasm_rt_table_t, %struct.wasm_rt_table_t* %w2c_T031, i32 0, i32 0
-  %79 = load %struct.wasm_rt_elem_t*, %struct.wasm_rt_elem_t** %data32, align 8
-  %80 = load i32, i32* %w2c_i1, align 4
-  %idxprom33 = zext i32 %80 to i64
-  %arrayidx34 = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %79, i64 %idxprom33
-  %func_type = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %arrayidx34, i32 0, i32 1
-  %81 = load i32, i32* %func_type, align 4
-  %82 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %func_types = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %82, i32 0, i32 6
-  %arrayidx35 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types, i64 0, i64 0
-  %83 = load i32, i32* %arrayidx35, align 4
-  %cmp36 = icmp eq i32 %81, %83
-  br label %land.end
-
-land.end:                                         ; preds = %land.rhs, %land.lhs.true, %if.end
-  %84 = phi i1 [ false, %land.lhs.true ], [ false, %if.end ], [ %cmp36, %land.rhs ]
-  %lnot38 = xor i1 %84, true
-  %lnot40 = xor i1 %lnot38, true
-  %lnot.ext41 = zext i1 %lnot40 to i32
-  %conv42 = sext i32 %lnot.ext41 to i64
-  %tobool43 = icmp ne i64 %conv42, 0
-  br i1 %tobool43, label %if.then44, label %if.else
-
-if.then44:                                        ; preds = %land.end
-  %85 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_T045 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %85, i32 0, i32 3
-  %data46 = getelementptr inbounds %struct.wasm_rt_table_t, %struct.wasm_rt_table_t* %w2c_T045, i32 0, i32 0
-  %86 = load %struct.wasm_rt_elem_t*, %struct.wasm_rt_elem_t** %data46, align 8
-  %87 = load i32, i32* %w2c_i1, align 4
-  %idxprom47 = zext i32 %87 to i64
-  %arrayidx48 = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %86, i64 %idxprom47
-  %func49 = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %arrayidx48, i32 0, i32 2
-  %88 = load void ()*, void ()** %func49, align 8
-  %89 = bitcast void ()* %88 to void (%struct.wasm2c_sandbox_t*, i32)*
-  %90 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %91 = load i32, i32* %w2c_i0, align 4
-  call void %89(%struct.wasm2c_sandbox_t* %90, i32 %91)
-  br label %if.end53
-
-if.else:                                          ; preds = %land.end
-  %92 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_T050 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %92, i32 0, i32 3
-  %93 = load i32, i32* %w2c_i1, align 4
-  %94 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %func_types51 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %94, i32 0, i32 6
-  %arrayidx52 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types51, i64 0, i64 0
-  %95 = load i32, i32* %arrayidx52, align 4
-  call void @wasm_rt_callback_error_trap(%struct.wasm_rt_table_t* %w2c_T050, i32 %93, i32 %95) #10
-  unreachable
-
-if.end53:                                         ; preds = %if.then44
-  %96 = load i32, i32* %w2c_l6, align 4
-  store i32 %96, i32* %w2c_i0, align 4
-  %97 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory54 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %97, i32 0, i32 1
-  %98 = load i32, i32* %w2c_i0, align 4
-  %conv55 = zext i32 %98 to i64
-  %add56 = add i64 %conv55, 12
-  %call57 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory54, i64 %add56, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  store i32 %call57, i32* %w2c_i0, align 4
-  %99 = load i32, i32* %w2c_i0, align 4
-  store i32 %99, i32* %w2c_l17, align 4
+  %74 = load i32, i32* %w2c_i0, align 4
+  store i32 %74, i32* %w2c_l16, align 4
   store i32 1, i32* %w2c_i0, align 4
-  %100 = load i32, i32* %w2c_i0, align 4
-  store i32 %100, i32* %w2c_l18, align 4
-  %101 = load i32, i32* %w2c_l17, align 4
-  store i32 %101, i32* %w2c_i0, align 4
-  %102 = load i32, i32* %w2c_l18, align 4
-  store i32 %102, i32* %w2c_i1, align 4
-  %103 = load i32, i32* %w2c_i1, align 4
-  %104 = load i32, i32* %w2c_i0, align 4
-  %add58 = add i32 %104, %103
-  store i32 %add58, i32* %w2c_i0, align 4
-  %105 = load i32, i32* %w2c_i0, align 4
-  store i32 %105, i32* %w2c_l19, align 4
-  %106 = load i32, i32* %w2c_l6, align 4
-  store i32 %106, i32* %w2c_i0, align 4
-  %107 = load i32, i32* %w2c_l19, align 4
-  store i32 %107, i32* %w2c_i1, align 4
-  %108 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory59 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %108, i32 0, i32 1
-  %109 = load i32, i32* %w2c_i0, align 4
-  %conv60 = zext i32 %109 to i64
-  %add61 = add i64 %conv60, 12
-  %110 = load i32, i32* %w2c_i1, align 4
-  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory59, i64 %add61, i32 %110, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
+  %75 = load i32, i32* %w2c_i0, align 4
+  store i32 %75, i32* %w2c_l17, align 4
+  %76 = load i32, i32* %w2c_l16, align 4
+  store i32 %76, i32* %w2c_i0, align 4
+  %77 = load i32, i32* %w2c_l17, align 4
+  store i32 %77, i32* %w2c_i1, align 4
+  %78 = load i32, i32* %w2c_i1, align 4
+  %79 = load i32, i32* %w2c_i0, align 4
+  %add27 = add i32 %79, %78
+  store i32 %add27, i32* %w2c_i0, align 4
+  %80 = load i32, i32* %w2c_i0, align 4
+  store i32 %80, i32* %w2c_l18, align 4
+  %81 = load i32, i32* %w2c_l5, align 4
+  store i32 %81, i32* %w2c_i0, align 4
+  %82 = load i32, i32* %w2c_l18, align 4
+  store i32 %82, i32* %w2c_i1, align 4
+  %83 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory28 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %83, i32 0, i32 1
+  %84 = load i32, i32* %w2c_i0, align 4
+  %conv29 = zext i32 %84 to i64
+  %add30 = add i64 %conv29, 16
+  %85 = load i32, i32* %w2c_i1, align 4
+  call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory28, i64 %add30, i32 %85, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
   br label %w2c_L1
 
 w2c_B0:                                           ; preds = %if.then
-  %111 = load i32, i32* %w2c_l6, align 4
-  store i32 %111, i32* %w2c_i0, align 4
-  %112 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory62 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %112, i32 0, i32 1
-  %113 = load i32, i32* %w2c_i0, align 4
-  %conv63 = zext i32 %113 to i64
-  %add64 = add i64 %conv63, 16
-  %call65 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory62, i64 %add64, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  store i32 %call65, i32* %w2c_i0, align 4
-  %114 = load i32, i32* %w2c_i0, align 4
-  store i32 %114, i32* %w2c_l20, align 4
-  %115 = load i32, i32* %w2c_l6, align 4
-  store i32 %115, i32* %w2c_i0, align 4
-  %116 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory66 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %116, i32 0, i32 1
-  %117 = load i32, i32* %w2c_i0, align 4
-  %conv67 = zext i32 %117 to i64
-  %add68 = add i64 %conv67, 24
-  %call69 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory66, i64 %add68, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  store i32 %call69, i32* %w2c_i0, align 4
-  %118 = load i32, i32* %w2c_i0, align 4
-  store i32 %118, i32* %w2c_l21, align 4
-  %119 = load i32, i32* %w2c_l21, align 4
-  store i32 %119, i32* %w2c_i0, align 4
-  %120 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory70 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %120, i32 0, i32 1
-  %121 = load i32, i32* %w2c_i0, align 4
-  %conv71 = zext i32 %121 to i64
-  %add72 = add i64 %conv71, 4
-  %call73 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory70, i64 %add72, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  store i32 %call73, i32* %w2c_i0, align 4
-  %122 = load i32, i32* %w2c_i0, align 4
-  store i32 %122, i32* %w2c_l22, align 4
-  %123 = load i32, i32* %w2c_l6, align 4
-  store i32 %123, i32* %w2c_i0, align 4
-  %124 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory74 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %124, i32 0, i32 1
-  %125 = load i32, i32* %w2c_i0, align 4
-  %conv75 = zext i32 %125 to i64
-  %add76 = add i64 %conv75, 24
-  %call77 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory74, i64 %add76, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  store i32 %call77, i32* %w2c_i0, align 4
-  %126 = load i32, i32* %w2c_i0, align 4
-  store i32 %126, i32* %w2c_l23, align 4
-  %127 = load i32, i32* %w2c_l23, align 4
-  store i32 %127, i32* %w2c_i0, align 4
-  %128 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_memory78 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %128, i32 0, i32 1
-  %129 = load i32, i32* %w2c_i0, align 4
-  %conv79 = zext i32 %129 to i64
-  %add80 = add i64 %conv79, 8
-  %call81 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory78, i64 %add80, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
-  store i32 %call81, i32* %w2c_i0, align 4
-  %130 = load i32, i32* %w2c_i0, align 4
-  store i32 %130, i32* %w2c_l24, align 4
-  %131 = load i32, i32* %w2c_l22, align 4
-  store i32 %131, i32* %w2c_i0, align 4
-  %132 = load i32, i32* %w2c_l24, align 4
-  store i32 %132, i32* %w2c_i1, align 4
-  %133 = load i32, i32* %w2c_i1, align 4
-  %134 = load i32, i32* %w2c_i0, align 4
-  %mul = mul i32 %134, %133
+  %86 = load i32, i32* %w2c_l5, align 4
+  store i32 %86, i32* %w2c_i0, align 4
+  %87 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory31 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %87, i32 0, i32 1
+  %88 = load i32, i32* %w2c_i0, align 4
+  %conv32 = zext i32 %88 to i64
+  %add33 = add i64 %conv32, 20
+  %call34 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory31, i64 %add33, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
+  store i32 %call34, i32* %w2c_i0, align 4
+  %89 = load i32, i32* %w2c_i0, align 4
+  store i32 %89, i32* %w2c_l19, align 4
+  %90 = load i32, i32* %w2c_l5, align 4
+  store i32 %90, i32* %w2c_i0, align 4
+  %91 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory35 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %91, i32 0, i32 1
+  %92 = load i32, i32* %w2c_i0, align 4
+  %conv36 = zext i32 %92 to i64
+  %add37 = add i64 %conv36, 24
+  %call38 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory35, i64 %add37, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
+  store i32 %call38, i32* %w2c_i0, align 4
+  %93 = load i32, i32* %w2c_i0, align 4
+  store i32 %93, i32* %w2c_l20, align 4
+  %94 = load i32, i32* %w2c_l20, align 4
+  store i32 %94, i32* %w2c_i0, align 4
+  %95 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory39 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %95, i32 0, i32 1
+  %96 = load i32, i32* %w2c_i0, align 4
+  %conv40 = zext i32 %96 to i64
+  %add41 = add i64 %conv40, 4
+  %call42 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory39, i64 %add41, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
+  store i32 %call42, i32* %w2c_i0, align 4
+  %97 = load i32, i32* %w2c_i0, align 4
+  store i32 %97, i32* %w2c_l21, align 4
+  %98 = load i32, i32* %w2c_l5, align 4
+  store i32 %98, i32* %w2c_i0, align 4
+  %99 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory43 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %99, i32 0, i32 1
+  %100 = load i32, i32* %w2c_i0, align 4
+  %conv44 = zext i32 %100 to i64
+  %add45 = add i64 %conv44, 24
+  %call46 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory43, i64 %add45, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
+  store i32 %call46, i32* %w2c_i0, align 4
+  %101 = load i32, i32* %w2c_i0, align 4
+  store i32 %101, i32* %w2c_l22, align 4
+  %102 = load i32, i32* %w2c_l22, align 4
+  store i32 %102, i32* %w2c_i0, align 4
+  %103 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_memory47 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %103, i32 0, i32 1
+  %104 = load i32, i32* %w2c_i0, align 4
+  %conv48 = zext i32 %104 to i64
+  %add49 = add i64 %conv48, 8
+  %call50 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory47, i64 %add49, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i64 0, i64 0))
+  store i32 %call50, i32* %w2c_i0, align 4
+  %105 = load i32, i32* %w2c_i0, align 4
+  store i32 %105, i32* %w2c_l23, align 4
+  %106 = load i32, i32* %w2c_l21, align 4
+  store i32 %106, i32* %w2c_i0, align 4
+  %107 = load i32, i32* %w2c_l23, align 4
+  store i32 %107, i32* %w2c_i1, align 4
+  %108 = load i32, i32* %w2c_i1, align 4
+  %109 = load i32, i32* %w2c_i0, align 4
+  %mul = mul i32 %109, %108
   store i32 %mul, i32* %w2c_i0, align 4
-  %135 = load i32, i32* %w2c_i0, align 4
-  store i32 %135, i32* %w2c_l25, align 4
-  store i32 2, i32* %w2c_i0, align 4
-  %136 = load i32, i32* %w2c_i0, align 4
-  store i32 %136, i32* %w2c_l26, align 4
-  %137 = load i32, i32* %w2c_l20, align 4
-  store i32 %137, i32* %w2c_i0, align 4
-  %138 = load i32, i32* %w2c_l26, align 4
-  store i32 %138, i32* %w2c_i1, align 4
-  %139 = load i32, i32* %w2c_l25, align 4
-  store i32 %139, i32* %w2c_i2, align 4
-  %140 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %141 = load i32, i32* %w2c_i0, align 4
-  %142 = load i32, i32* %w2c_i1, align 4
-  %143 = load i32, i32* %w2c_i2, align 4
-  %call82 = call i32 @w2c_memset(%struct.wasm2c_sandbox_t* %140, i32 %141, i32 %142, i32 %143)
-  store i32 %call82, i32* %w2c_i0, align 4
+  %110 = load i32, i32* %w2c_i0, align 4
+  store i32 %110, i32* %w2c_l24, align 4
+  store i32 213, i32* %w2c_i0, align 4
+  %111 = load i32, i32* %w2c_i0, align 4
+  store i32 %111, i32* %w2c_l25, align 4
+  %112 = load i32, i32* %w2c_l19, align 4
+  store i32 %112, i32* %w2c_i0, align 4
+  %113 = load i32, i32* %w2c_l25, align 4
+  store i32 %113, i32* %w2c_i1, align 4
+  %114 = load i32, i32* %w2c_l24, align 4
+  store i32 %114, i32* %w2c_i2, align 4
+  %115 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %116 = load i32, i32* %w2c_i0, align 4
+  %117 = load i32, i32* %w2c_i1, align 4
+  %118 = load i32, i32* %w2c_i2, align 4
+  %call51 = call i32 @w2c_memset(%struct.wasm2c_sandbox_t* %115, i32 %116, i32 %117, i32 %118)
+  store i32 %call51, i32* %w2c_i0, align 4
   store i32 32, i32* %w2c_i0, align 4
-  %144 = load i32, i32* %w2c_i0, align 4
-  store i32 %144, i32* %w2c_l27, align 4
-  %145 = load i32, i32* %w2c_l6, align 4
-  store i32 %145, i32* %w2c_i0, align 4
-  %146 = load i32, i32* %w2c_l27, align 4
-  store i32 %146, i32* %w2c_i1, align 4
-  %147 = load i32, i32* %w2c_i1, align 4
-  %148 = load i32, i32* %w2c_i0, align 4
-  %add83 = add i32 %148, %147
-  store i32 %add83, i32* %w2c_i0, align 4
-  %149 = load i32, i32* %w2c_i0, align 4
-  store i32 %149, i32* %w2c_l28, align 4
-  %150 = load i32, i32* %w2c_l28, align 4
-  store i32 %150, i32* %w2c_i0, align 4
-  %151 = load i32, i32* %w2c_i0, align 4
-  %152 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %w2c_g084 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %152, i32 0, i32 7
-  store i32 %151, i32* %w2c_g084, align 4
+  %119 = load i32, i32* %w2c_i0, align 4
+  store i32 %119, i32* %w2c_l26, align 4
+  %120 = load i32, i32* %w2c_l5, align 4
+  store i32 %120, i32* %w2c_i0, align 4
+  %121 = load i32, i32* %w2c_l26, align 4
+  store i32 %121, i32* %w2c_i1, align 4
+  %122 = load i32, i32* %w2c_i1, align 4
+  %123 = load i32, i32* %w2c_i0, align 4
+  %add52 = add i32 %123, %122
+  store i32 %add52, i32* %w2c_i0, align 4
+  %124 = load i32, i32* %w2c_i0, align 4
+  store i32 %124, i32* %w2c_l27, align 4
+  %125 = load i32, i32* %w2c_l27, align 4
+  store i32 %125, i32* %w2c_i0, align 4
+  %126 = load i32, i32* %w2c_i0, align 4
+  %127 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
+  %w2c_g053 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %127, i32 0, i32 7
+  store i32 %126, i32* %w2c_g053, align 8
   br label %w2c_Bfunc
 
 w2c_Bfunc:                                        ; preds = %w2c_B0
   ret void
 }
-
-; Function Attrs: noreturn
-declare dso_local void @wasm_rt_callback_error_trap(%struct.wasm_rt_table_t*, i32, i32) #2
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define dso_local i32 @w2c_memset(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1, i32 %w2c_p2) #0 {
@@ -1682,8 +1585,8 @@ w2c_B0:                                           ; preds = %if.end121, %if.then
   ret i32 %248
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define dso_local i32 @w2c_dlmalloc(%struct.wasm2c_sandbox_t* %sbx, i32 %ptr_size) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @w2c_dlmalloc(%struct.wasm2c_sandbox_t* %sbx, i32 %ptr_size) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %ptr_size.addr = alloca i32, align 4
@@ -1736,7 +1639,7 @@ entry:
   store i32 0, i32* %w2c_l11, align 4
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  %1 = load i32, i32* %w2c_g0, align 4
+  %1 = load i32, i32* %w2c_g0, align 8
   store i32 %1, i32* %w2c_i0, align 4
   store i32 16, i32* %w2c_i1, align 4
   %2 = load i32, i32* %w2c_i1, align 4
@@ -1748,13 +1651,13 @@ entry:
   %5 = load i32, i32* %w2c_i0, align 4
   %6 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g01 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %6, i32 0, i32 7
-  store i32 %5, i32* %w2c_g01, align 4
+  store i32 %5, i32* %w2c_g01, align 8
   store i32 0, i32* %w2c_i0, align 4
   %7 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %7, i32 0, i32 1
   %8 = load i32, i32* %w2c_i0, align 4
   %conv = zext i32 %8 to i64
-  %add = add i64 %conv, 3768
+  %add = add i64 %conv, 3800
   %call = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory, i64 %add, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call, i32* %w2c_i0, align 4
   %9 = load i32, i32* %w2c_i0, align 4
@@ -1770,7 +1673,7 @@ if.end:                                           ; preds = %entry
   %11 = load i32, i32* %w2c_i0, align 4
   %call2 = call i32 @w2c_sbrk(%struct.wasm2c_sandbox_t* %10, i32 %11)
   store i32 %call2, i32* %w2c_i0, align 4
-  store i32 70880, i32* %w2c_i1, align 4
+  store i32 70912, i32* %w2c_i1, align 4
   %12 = load i32, i32* %w2c_i1, align 4
   %13 = load i32, i32* %w2c_i0, align 4
   %sub3 = sub i32 %13, %12
@@ -1799,7 +1702,7 @@ if.end7:                                          ; preds = %if.end
   %w2c_memory8 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %19, i32 0, i32 1
   %20 = load i32, i32* %w2c_i0, align 4
   %conv9 = zext i32 %20 to i64
-  %add10 = add i64 %conv9, 4216
+  %add10 = add i64 %conv9, 4248
   %call11 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory8, i64 %add10, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call11, i32* %w2c_i0, align 4
   %21 = load i32, i32* %w2c_i0, align 4
@@ -1818,7 +1721,7 @@ if.end14:                                         ; preds = %if.end7
   %w2c_memory15 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %23, i32 0, i32 1
   %24 = load i32, i32* %w2c_i0, align 4
   %conv16 = zext i32 %24 to i64
-  %add17 = add i64 %conv16, 4228
+  %add17 = add i64 %conv16, 4260
   %25 = load i64, i64* %w2c_j1, align 8
   call void @i64_store(%struct.wasm_rt_memory_t* %w2c_memory15, i64 %add17, i64 %25, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -1827,7 +1730,7 @@ if.end14:                                         ; preds = %if.end7
   %w2c_memory18 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %26, i32 0, i32 1
   %27 = load i32, i32* %w2c_i0, align 4
   %conv19 = zext i32 %27 to i64
-  %add20 = add i64 %conv19, 4220
+  %add20 = add i64 %conv19, 4252
   %28 = load i64, i64* %w2c_j1, align 8
   call void @i64_store(%struct.wasm_rt_memory_t* %w2c_memory18, i64 %add20, i64 %28, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -1854,7 +1757,7 @@ if.end14:                                         ; preds = %if.end7
   %w2c_memory22 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %37, i32 0, i32 1
   %38 = load i32, i32* %w2c_i0, align 4
   %conv23 = zext i32 %38 to i64
-  %add24 = add i64 %conv23, 4216
+  %add24 = add i64 %conv23, 4248
   %39 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory22, i64 %add24, i32 %39, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -1863,7 +1766,7 @@ if.end14:                                         ; preds = %if.end7
   %w2c_memory25 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %40, i32 0, i32 1
   %41 = load i32, i32* %w2c_i0, align 4
   %conv26 = zext i32 %41 to i64
-  %add27 = add i64 %conv26, 4236
+  %add27 = add i64 %conv26, 4268
   %42 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory25, i64 %add27, i32 %42, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -1872,7 +1775,7 @@ if.end14:                                         ; preds = %if.end7
   %w2c_memory28 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %43, i32 0, i32 1
   %44 = load i32, i32* %w2c_i0, align 4
   %conv29 = zext i32 %44 to i64
-  %add30 = add i64 %conv29, 4188
+  %add30 = add i64 %conv29, 4220
   %45 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory28, i64 %add30, i32 %45, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B1
@@ -1885,25 +1788,25 @@ w2c_B1:                                           ; preds = %if.end14, %if.then1
   %w2c_memory31 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %47, i32 0, i32 1
   %48 = load i32, i32* %w2c_i0, align 4
   %conv32 = zext i32 %48 to i64
-  %add33 = add i64 %conv32, 4196
+  %add33 = add i64 %conv32, 4228
   %49 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory31, i64 %add33, i32 %49, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
-  store i32 70880, i32* %w2c_i1, align 4
+  store i32 70912, i32* %w2c_i1, align 4
   %50 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory34 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %50, i32 0, i32 1
   %51 = load i32, i32* %w2c_i0, align 4
   %conv35 = zext i32 %51 to i64
-  %add36 = add i64 %conv35, 4192
+  %add36 = add i64 %conv35, 4224
   %52 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory34, i64 %add36, i32 %52, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
-  store i32 70880, i32* %w2c_i1, align 4
+  store i32 70912, i32* %w2c_i1, align 4
   %53 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory37 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %53, i32 0, i32 1
   %54 = load i32, i32* %w2c_i0, align 4
   %conv38 = zext i32 %54 to i64
-  %add39 = add i64 %conv38, 3760
+  %add39 = add i64 %conv38, 3792
   %55 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory37, i64 %add39, i32 %55, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -1913,7 +1816,7 @@ w2c_B1:                                           ; preds = %if.end14, %if.then1
   %w2c_memory40 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %57, i32 0, i32 1
   %58 = load i32, i32* %w2c_i0, align 4
   %conv41 = zext i32 %58 to i64
-  %add42 = add i64 %conv41, 3780
+  %add42 = add i64 %conv41, 3812
   %59 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory40, i64 %add42, i32 %59, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -1922,7 +1825,7 @@ w2c_B1:                                           ; preds = %if.end14, %if.then1
   %w2c_memory43 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %60, i32 0, i32 1
   %61 = load i32, i32* %w2c_i0, align 4
   %conv44 = zext i32 %61 to i64
-  %add45 = add i64 %conv44, 3776
+  %add45 = add i64 %conv44, 3808
   %62 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory43, i64 %add45, i32 %62, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_L2
@@ -1930,14 +1833,14 @@ w2c_B1:                                           ; preds = %if.end14, %if.then1
 w2c_L2:                                           ; preds = %if.then57, %w2c_B1
   %63 = load i32, i32* %w2c_l3, align 4
   store i32 %63, i32* %w2c_i0, align 4
-  store i32 3792, i32* %w2c_i1, align 4
+  store i32 3824, i32* %w2c_i1, align 4
   %64 = load i32, i32* %w2c_i1, align 4
   %65 = load i32, i32* %w2c_i0, align 4
   %add46 = add i32 %65, %64
   store i32 %add46, i32* %w2c_i0, align 4
   %66 = load i32, i32* %w2c_l3, align 4
   store i32 %66, i32* %w2c_i1, align 4
-  store i32 3784, i32* %w2c_i2, align 4
+  store i32 3816, i32* %w2c_i2, align 4
   %67 = load i32, i32* %w2c_i2, align 4
   %68 = load i32, i32* %w2c_i1, align 4
   %add47 = add i32 %68, %67
@@ -1952,7 +1855,7 @@ w2c_L2:                                           ; preds = %if.then57, %w2c_B1
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory48, i64 %conv49, i32 %72, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %73 = load i32, i32* %w2c_l3, align 4
   store i32 %73, i32* %w2c_i0, align 4
-  store i32 3796, i32* %w2c_i1, align 4
+  store i32 3828, i32* %w2c_i1, align 4
   %74 = load i32, i32* %w2c_i1, align 4
   %75 = load i32, i32* %w2c_i0, align 4
   %add50 = add i32 %75, %74
@@ -1989,7 +1892,7 @@ if.then57:                                        ; preds = %w2c_L2
 
 if.end58:                                         ; preds = %w2c_L2
   store i32 0, i32* %w2c_i0, align 4
-  store i32 70888, i32* %w2c_i1, align 4
+  store i32 70920, i32* %w2c_i1, align 4
   %87 = load i32, i32* %w2c_i1, align 4
   %88 = load i32, i32* %w2c_i0, align 4
   %sub59 = sub i32 %88, %87
@@ -2000,7 +1903,7 @@ if.end58:                                         ; preds = %w2c_L2
   %and60 = and i32 %90, %89
   store i32 %and60, i32* %w2c_i0, align 4
   store i32 0, i32* %w2c_i1, align 4
-  store i32 70888, i32* %w2c_i2, align 4
+  store i32 70920, i32* %w2c_i2, align 4
   store i32 15, i32* %w2c_i3, align 4
   %91 = load i32, i32* %w2c_i3, align 4
   %92 = load i32, i32* %w2c_i2, align 4
@@ -2023,7 +1926,7 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   store i32 %cond, i32* %w2c_i0, align 4
   %96 = load i32, i32* %w2c_i0, align 4
   store i32 %96, i32* %w2c_l3, align 4
-  store i32 70884, i32* %w2c_i1, align 4
+  store i32 70916, i32* %w2c_i1, align 4
   %97 = load i32, i32* %w2c_i1, align 4
   %98 = load i32, i32* %w2c_i0, align 4
   %add63 = add i32 %98, %97
@@ -2060,20 +1963,20 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   %w2c_memory68 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %111, i32 0, i32 1
   %112 = load i32, i32* %w2c_i1, align 4
   %conv69 = zext i32 %112 to i64
-  %add70 = add i64 %conv69, 4232
+  %add70 = add i64 %conv69, 4264
   %call71 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory68, i64 %add70, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call71, i32* %w2c_i1, align 4
   %113 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory72 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %113, i32 0, i32 1
   %114 = load i32, i32* %w2c_i0, align 4
   %conv73 = zext i32 %114 to i64
-  %add74 = add i64 %conv73, 3772
+  %add74 = add i64 %conv73, 3804
   %115 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory72, i64 %add74, i32 %115, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
   %116 = load i32, i32* %w2c_l3, align 4
   store i32 %116, i32* %w2c_i1, align 4
-  store i32 70880, i32* %w2c_i2, align 4
+  store i32 70912, i32* %w2c_i2, align 4
   %117 = load i32, i32* %w2c_i2, align 4
   %118 = load i32, i32* %w2c_i1, align 4
   %add75 = add i32 %118, %117
@@ -2082,7 +1985,7 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   %w2c_memory76 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %119, i32 0, i32 1
   %120 = load i32, i32* %w2c_i0, align 4
   %conv77 = zext i32 %120 to i64
-  %add78 = add i64 %conv77, 3768
+  %add78 = add i64 %conv77, 3800
   %121 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory76, i64 %add78, i32 %121, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -2092,12 +1995,12 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   %w2c_memory79 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %123, i32 0, i32 1
   %124 = load i32, i32* %w2c_i0, align 4
   %conv80 = zext i32 %124 to i64
-  %add81 = add i64 %conv80, 3756
+  %add81 = add i64 %conv80, 3788
   %125 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory79, i64 %add81, i32 %125, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %126 = load i32, i32* %w2c_l2, align 4
   store i32 %126, i32* %w2c_i0, align 4
-  store i32 70828, i32* %w2c_i1, align 4
+  store i32 70860, i32* %w2c_i1, align 4
   %127 = load i32, i32* %w2c_i1, align 4
   %128 = load i32, i32* %w2c_i0, align 4
   %add82 = add i32 %128, %127
@@ -2133,7 +2036,7 @@ if.end89:                                         ; preds = %w2c_B0
   %w2c_memory90 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %136, i32 0, i32 1
   %137 = load i32, i32* %w2c_i0, align 4
   %conv91 = zext i32 %137 to i64
-  %add92 = add i64 %conv91, 3744
+  %add92 = add i64 %conv91, 3776
   %call93 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory90, i64 %add92, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call93, i32* %w2c_i0, align 4
   %138 = load i32, i32* %w2c_i0, align 4
@@ -2237,7 +2140,7 @@ if.end110:                                        ; preds = %cond.end101
   store i32 %shl, i32* %w2c_i0, align 4
   %172 = load i32, i32* %w2c_i0, align 4
   store i32 %172, i32* %w2c_l6, align 4
-  store i32 3792, i32* %w2c_i1, align 4
+  store i32 3824, i32* %w2c_i1, align 4
   %173 = load i32, i32* %w2c_i1, align 4
   %174 = load i32, i32* %w2c_i0, align 4
   %add115 = add i32 %174, %173
@@ -2270,7 +2173,7 @@ if.end110:                                        ; preds = %cond.end101
   store i32 %184, i32* %w2c_p0.addr, align 4
   %185 = load i32, i32* %w2c_l6, align 4
   store i32 %185, i32* %w2c_i1, align 4
-  store i32 3784, i32* %w2c_i2, align 4
+  store i32 3816, i32* %w2c_i2, align 4
   %186 = load i32, i32* %w2c_i2, align 4
   %187 = load i32, i32* %w2c_i1, align 4
   %add124 = add i32 %187, %186
@@ -2316,7 +2219,7 @@ if.end129:                                        ; preds = %if.end110
   %w2c_memory138 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %200, i32 0, i32 1
   %201 = load i32, i32* %w2c_i0, align 4
   %conv139 = zext i32 %201 to i64
-  %add140 = add i64 %conv139, 3744
+  %add140 = add i64 %conv139, 3776
   %202 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory138, i64 %add140, i32 %202, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B16
@@ -2327,7 +2230,7 @@ w2c_B17:                                          ; preds = %if.then128
   %w2c_memory141 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %203, i32 0, i32 1
   %204 = load i32, i32* %w2c_i0, align 4
   %conv142 = zext i32 %204 to i64
-  %add143 = add i64 %conv142, 3760
+  %add143 = add i64 %conv142, 3792
   %call144 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory141, i64 %add143, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call144, i32* %w2c_i0, align 4
   %205 = load i32, i32* %w2c_p0.addr, align 4
@@ -2427,7 +2330,7 @@ w2c_B15:                                          ; preds = %if.then109
   %w2c_memory168 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %242, i32 0, i32 1
   %243 = load i32, i32* %w2c_i1, align 4
   %conv169 = zext i32 %243 to i64
-  %add170 = add i64 %conv169, 3752
+  %add170 = add i64 %conv169, 3784
   %call171 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory168, i64 %add170, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call171, i32* %w2c_i1, align 4
   %244 = load i32, i32* %w2c_i1, align 4
@@ -2662,7 +2565,7 @@ if.end182:                                        ; preds = %if.end176
   store i32 %shl224, i32* %w2c_i0, align 4
   %337 = load i32, i32* %w2c_i0, align 4
   store i32 %337, i32* %w2c_l6, align 4
-  store i32 3792, i32* %w2c_i1, align 4
+  store i32 3824, i32* %w2c_i1, align 4
   %338 = load i32, i32* %w2c_i1, align 4
   %339 = load i32, i32* %w2c_i0, align 4
   %add225 = add i32 %339, %338
@@ -2686,7 +2589,7 @@ if.end182:                                        ; preds = %if.end176
   store i32 %345, i32* %w2c_l3, align 4
   %346 = load i32, i32* %w2c_l6, align 4
   store i32 %346, i32* %w2c_i1, align 4
-  store i32 3784, i32* %w2c_i2, align 4
+  store i32 3816, i32* %w2c_i2, align 4
   %347 = load i32, i32* %w2c_i2, align 4
   %348 = load i32, i32* %w2c_i1, align 4
   %add233 = add i32 %348, %347
@@ -2734,7 +2637,7 @@ if.end238:                                        ; preds = %if.end182
   %w2c_memory247 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %362, i32 0, i32 1
   %363 = load i32, i32* %w2c_i0, align 4
   %conv248 = zext i32 %363 to i64
-  %add249 = add i64 %conv248, 3744
+  %add249 = add i64 %conv248, 3776
   %364 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory247, i64 %add249, i32 %364, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B19
@@ -2745,7 +2648,7 @@ w2c_B20:                                          ; preds = %if.then237
   %w2c_memory250 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %365, i32 0, i32 1
   %366 = load i32, i32* %w2c_i0, align 4
   %conv251 = zext i32 %366 to i64
-  %add252 = add i64 %conv251, 3760
+  %add252 = add i64 %conv251, 3792
   %call253 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory250, i64 %add252, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call253, i32* %w2c_i0, align 4
   %367 = load i32, i32* %w2c_l3, align 4
@@ -2892,7 +2795,7 @@ if.end283:                                        ; preds = %w2c_B19
   %425 = load i32, i32* %w2c_i0, align 4
   %shl287 = shl i32 %425, %and286
   store i32 %shl287, i32* %w2c_i0, align 4
-  store i32 3784, i32* %w2c_i1, align 4
+  store i32 3816, i32* %w2c_i1, align 4
   %426 = load i32, i32* %w2c_i1, align 4
   %427 = load i32, i32* %w2c_i0, align 4
   %add288 = add i32 %427, %426
@@ -2904,7 +2807,7 @@ if.end283:                                        ; preds = %w2c_B19
   %w2c_memory289 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %429, i32 0, i32 1
   %430 = load i32, i32* %w2c_i0, align 4
   %conv290 = zext i32 %430 to i64
-  %add291 = add i64 %conv290, 3764
+  %add291 = add i64 %conv290, 3796
   %call292 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory289, i64 %add291, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call292, i32* %w2c_i0, align 4
   %431 = load i32, i32* %w2c_i0, align 4
@@ -2946,7 +2849,7 @@ if.end298:                                        ; preds = %if.end283
   %w2c_memory300 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %444, i32 0, i32 1
   %445 = load i32, i32* %w2c_i0, align 4
   %conv301 = zext i32 %445 to i64
-  %add302 = add i64 %conv301, 3744
+  %add302 = add i64 %conv301, 3776
   %446 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory300, i64 %add302, i32 %446, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %447 = load i32, i32* %w2c_l2, align 4
@@ -3024,7 +2927,7 @@ w2c_B21:                                          ; preds = %w2c_B22, %if.then28
   %w2c_memory319 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %474, i32 0, i32 1
   %475 = load i32, i32* %w2c_i0, align 4
   %conv320 = zext i32 %475 to i64
-  %add321 = add i64 %conv320, 3764
+  %add321 = add i64 %conv320, 3796
   %476 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory319, i64 %add321, i32 %476, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -3034,7 +2937,7 @@ w2c_B21:                                          ; preds = %w2c_B22, %if.then28
   %w2c_memory322 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %478, i32 0, i32 1
   %479 = load i32, i32* %w2c_i0, align 4
   %conv323 = zext i32 %479 to i64
-  %add324 = add i64 %conv323, 3752
+  %add324 = add i64 %conv323, 3784
   %480 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory322, i64 %add324, i32 %480, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B3
@@ -3045,7 +2948,7 @@ w2c_B18:                                          ; preds = %if.then181
   %w2c_memory325 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %481, i32 0, i32 1
   %482 = load i32, i32* %w2c_i0, align 4
   %conv326 = zext i32 %482 to i64
-  %add327 = add i64 %conv326, 3748
+  %add327 = add i64 %conv326, 3780
   %call328 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory325, i64 %add327, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call328, i32* %w2c_i0, align 4
   %483 = load i32, i32* %w2c_i0, align 4
@@ -3227,7 +3130,7 @@ if.end334:                                        ; preds = %w2c_B18
   %555 = load i32, i32* %w2c_i0, align 4
   %shl369 = shl i32 %555, %and368
   store i32 %shl369, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %556 = load i32, i32* %w2c_i1, align 4
   %557 = load i32, i32* %w2c_i0, align 4
   %add370 = add i32 %557, %556
@@ -3441,7 +3344,7 @@ if.end427:                                        ; preds = %w2c_B24
   %w2c_memory428 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %624, i32 0, i32 1
   %625 = load i32, i32* %w2c_i0, align 4
   %conv429 = zext i32 %625 to i64
-  %add430 = add i64 %conv429, 3760
+  %add430 = add i64 %conv429, 3792
   %call431 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory428, i64 %add430, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call431, i32* %w2c_i0, align 4
   %626 = load i32, i32* %w2c_l6, align 4
@@ -3687,7 +3590,7 @@ if.end492:                                        ; preds = %w2c_B14
   %w2c_memory495 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %703, i32 0, i32 1
   %704 = load i32, i32* %w2c_i0, align 4
   %conv496 = zext i32 %704 to i64
-  %add497 = add i64 %conv496, 3748
+  %add497 = add i64 %conv496, 3780
   %call498 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory495, i64 %add497, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call498, i32* %w2c_i0, align 4
   %705 = load i32, i32* %w2c_i0, align 4
@@ -3913,7 +3816,7 @@ w2c_B31:                                          ; preds = %if.end517, %if.then
   %786 = load i32, i32* %w2c_i0, align 4
   %shl551 = shl i32 %786, %and550
   store i32 %shl551, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %787 = load i32, i32* %w2c_i1, align 4
   %788 = load i32, i32* %w2c_i0, align 4
   %add552 = add i32 %788, %787
@@ -4411,7 +4314,7 @@ if.end630:                                        ; preds = %if.end619
   %966 = load i32, i32* %w2c_i0, align 4
   %shl665 = shl i32 %966, %and664
   store i32 %shl665, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %967 = load i32, i32* %w2c_i1, align 4
   %968 = load i32, i32* %w2c_i0, align 4
   %add666 = add i32 %968, %967
@@ -4601,7 +4504,7 @@ if.end713:                                        ; preds = %w2c_B32
   %w2c_memory714 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1021, i32 0, i32 1
   %1022 = load i32, i32* %w2c_i1, align 4
   %conv715 = zext i32 %1022 to i64
-  %add716 = add i64 %conv715, 3752
+  %add716 = add i64 %conv715, 3784
   %call717 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory714, i64 %add716, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call717, i32* %w2c_i1, align 4
   %1023 = load i32, i32* %w2c_l2, align 4
@@ -4665,7 +4568,7 @@ if.end736:                                        ; preds = %if.end723
   %w2c_memory737 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1041, i32 0, i32 1
   %1042 = load i32, i32* %w2c_i0, align 4
   %conv738 = zext i32 %1042 to i64
-  %add739 = add i64 %conv738, 3760
+  %add739 = add i64 %conv738, 3792
   %call740 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory737, i64 %add739, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call740, i32* %w2c_i0, align 4
   %1043 = load i32, i32* %w2c_l8, align 4
@@ -4876,7 +4779,7 @@ w2c_B13:                                          ; preds = %if.then722, %if.the
   %w2c_memory797 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1108, i32 0, i32 1
   %1109 = load i32, i32* %w2c_i0, align 4
   %conv798 = zext i32 %1109 to i64
-  %add799 = add i64 %conv798, 3752
+  %add799 = add i64 %conv798, 3784
   %call800 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory797, i64 %add799, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call800, i32* %w2c_i0, align 4
   %1110 = load i32, i32* %w2c_i0, align 4
@@ -4901,7 +4804,7 @@ if.end805:                                        ; preds = %w2c_B13
   %w2c_memory806 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1115, i32 0, i32 1
   %1116 = load i32, i32* %w2c_i0, align 4
   %conv807 = zext i32 %1116 to i64
-  %add808 = add i64 %conv807, 3764
+  %add808 = add i64 %conv807, 3796
   %call809 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory806, i64 %add808, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call809, i32* %w2c_i0, align 4
   %1117 = load i32, i32* %w2c_i0, align 4
@@ -4961,7 +4864,7 @@ if.end815:                                        ; preds = %if.end805
   %w2c_memory821 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1138, i32 0, i32 1
   %1139 = load i32, i32* %w2c_i0, align 4
   %conv822 = zext i32 %1139 to i64
-  %add823 = add i64 %conv822, 3752
+  %add823 = add i64 %conv822, 3784
   %1140 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory821, i64 %add823, i32 %1140, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -4971,7 +4874,7 @@ if.end815:                                        ; preds = %if.end805
   %w2c_memory824 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1142, i32 0, i32 1
   %1143 = load i32, i32* %w2c_i0, align 4
   %conv825 = zext i32 %1143 to i64
-  %add826 = add i64 %conv825, 3764
+  %add826 = add i64 %conv825, 3796
   %1144 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory824, i64 %add826, i32 %1144, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %1145 = load i32, i32* %w2c_l4, align 4
@@ -5062,7 +4965,7 @@ w2c_B47:                                          ; preds = %if.then814
   %w2c_memory847 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1180, i32 0, i32 1
   %1181 = load i32, i32* %w2c_i0, align 4
   %conv848 = zext i32 %1181 to i64
-  %add849 = add i64 %conv848, 3764
+  %add849 = add i64 %conv848, 3796
   %1182 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory847, i64 %add849, i32 %1182, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -5071,7 +4974,7 @@ w2c_B47:                                          ; preds = %if.then814
   %w2c_memory850 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1183, i32 0, i32 1
   %1184 = load i32, i32* %w2c_i0, align 4
   %conv851 = zext i32 %1184 to i64
-  %add852 = add i64 %conv851, 3752
+  %add852 = add i64 %conv851, 3784
   %1185 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory850, i64 %add852, i32 %1185, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B46
@@ -5094,7 +4997,7 @@ w2c_B45:                                          ; preds = %if.then804
   %w2c_memory854 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1190, i32 0, i32 1
   %1191 = load i32, i32* %w2c_i0, align 4
   %conv855 = zext i32 %1191 to i64
-  %add856 = add i64 %conv855, 3756
+  %add856 = add i64 %conv855, 3788
   %call857 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory854, i64 %add856, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call857, i32* %w2c_i0, align 4
   %1192 = load i32, i32* %w2c_i0, align 4
@@ -5119,7 +5022,7 @@ if.end862:                                        ; preds = %w2c_B45
   %w2c_memory863 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1197, i32 0, i32 1
   %1198 = load i32, i32* %w2c_i0, align 4
   %conv864 = zext i32 %1198 to i64
-  %add865 = add i64 %conv864, 3768
+  %add865 = add i64 %conv864, 3800
   %call866 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory863, i64 %add865, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call866, i32* %w2c_i0, align 4
   %1199 = load i32, i32* %w2c_i0, align 4
@@ -5161,7 +5064,7 @@ if.end862:                                        ; preds = %w2c_B45
   %w2c_memory873 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1215, i32 0, i32 1
   %1216 = load i32, i32* %w2c_i0, align 4
   %conv874 = zext i32 %1216 to i64
-  %add875 = add i64 %conv874, 3756
+  %add875 = add i64 %conv874, 3788
   %1217 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory873, i64 %add875, i32 %1217, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -5171,7 +5074,7 @@ if.end862:                                        ; preds = %w2c_B45
   %w2c_memory876 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1219, i32 0, i32 1
   %1220 = load i32, i32* %w2c_i0, align 4
   %conv877 = zext i32 %1220 to i64
-  %add878 = add i64 %conv877, 3768
+  %add878 = add i64 %conv877, 3800
   %1221 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory876, i64 %add878, i32 %1221, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %1222 = load i32, i32* %w2c_l3, align 4
@@ -5207,7 +5110,7 @@ w2c_B48:                                          ; preds = %if.then861
   %w2c_memory884 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1233, i32 0, i32 1
   %1234 = load i32, i32* %w2c_i0, align 4
   %conv885 = zext i32 %1234 to i64
-  %add886 = add i64 %conv885, 4216
+  %add886 = add i64 %conv885, 4248
   %call887 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory884, i64 %add886, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call887, i32* %w2c_i0, align 4
   %1235 = load i32, i32* %w2c_i0, align 4
@@ -5228,7 +5131,7 @@ if.end893:                                        ; preds = %w2c_B48
   %w2c_memory894 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1237, i32 0, i32 1
   %1238 = load i32, i32* %w2c_i0, align 4
   %conv895 = zext i32 %1238 to i64
-  %add896 = add i64 %conv895, 4224
+  %add896 = add i64 %conv895, 4256
   %call897 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory894, i64 %add896, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call897, i32* %w2c_i0, align 4
   %1239 = load i32, i32* %w2c_i0, align 4
@@ -5242,7 +5145,7 @@ w2c_B50:                                          ; preds = %if.then892
   %w2c_memory898 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1240, i32 0, i32 1
   %1241 = load i32, i32* %w2c_i0, align 4
   %conv899 = zext i32 %1241 to i64
-  %add900 = add i64 %conv899, 4228
+  %add900 = add i64 %conv899, 4260
   %1242 = load i64, i64* %w2c_j1, align 8
   call void @i64_store(%struct.wasm_rt_memory_t* %w2c_memory898, i64 %add900, i64 %1242, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -5251,7 +5154,7 @@ w2c_B50:                                          ; preds = %if.then892
   %w2c_memory901 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1243, i32 0, i32 1
   %1244 = load i32, i32* %w2c_i0, align 4
   %conv902 = zext i32 %1244 to i64
-  %add903 = add i64 %conv902, 4220
+  %add903 = add i64 %conv902, 4252
   %1245 = load i64, i64* %w2c_j1, align 8
   call void @i64_store(%struct.wasm_rt_memory_t* %w2c_memory901, i64 %add903, i64 %1245, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -5276,7 +5179,7 @@ w2c_B50:                                          ; preds = %if.then892
   %w2c_memory907 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1253, i32 0, i32 1
   %1254 = load i32, i32* %w2c_i0, align 4
   %conv908 = zext i32 %1254 to i64
-  %add909 = add i64 %conv908, 4216
+  %add909 = add i64 %conv908, 4248
   %1255 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory907, i64 %add909, i32 %1255, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -5285,7 +5188,7 @@ w2c_B50:                                          ; preds = %if.then892
   %w2c_memory910 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1256, i32 0, i32 1
   %1257 = load i32, i32* %w2c_i0, align 4
   %conv911 = zext i32 %1257 to i64
-  %add912 = add i64 %conv911, 4236
+  %add912 = add i64 %conv911, 4268
   %1258 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory910, i64 %add912, i32 %1258, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -5294,7 +5197,7 @@ w2c_B50:                                          ; preds = %if.then892
   %w2c_memory913 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1259, i32 0, i32 1
   %1260 = load i32, i32* %w2c_i0, align 4
   %conv914 = zext i32 %1260 to i64
-  %add915 = add i64 %conv914, 4188
+  %add915 = add i64 %conv914, 4220
   %1261 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory913, i64 %add915, i32 %1261, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 65536, i32* %w2c_i0, align 4
@@ -5359,7 +5262,7 @@ if.end924:                                        ; preds = %w2c_B49
   %w2c_memory925 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1283, i32 0, i32 1
   %1284 = load i32, i32* %w2c_i0, align 4
   %conv926 = zext i32 %1284 to i64
-  %add927 = add i64 %conv926, 4240
+  %add927 = add i64 %conv926, 4272
   %1285 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory925, i64 %add927, i32 %1285, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B3
@@ -5370,7 +5273,7 @@ w2c_B51:                                          ; preds = %if.then923
   %w2c_memory928 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1286, i32 0, i32 1
   %1287 = load i32, i32* %w2c_i0, align 4
   %conv929 = zext i32 %1287 to i64
-  %add930 = add i64 %conv929, 4184
+  %add930 = add i64 %conv929, 4216
   %call931 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory928, i64 %add930, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call931, i32* %w2c_i0, align 4
   %1288 = load i32, i32* %w2c_i0, align 4
@@ -5393,7 +5296,7 @@ if.end937:                                        ; preds = %w2c_B51
   %w2c_memory938 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1291, i32 0, i32 1
   %1292 = load i32, i32* %w2c_i0, align 4
   %conv939 = zext i32 %1292 to i64
-  %add940 = add i64 %conv939, 4176
+  %add940 = add i64 %conv939, 4208
   %call941 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory938, i64 %add940, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call941, i32* %w2c_i0, align 4
   %1293 = load i32, i32* %w2c_i0, align 4
@@ -5450,7 +5353,7 @@ w2c_B53:                                          ; preds = %if.end952, %if.then
   %w2c_memory953 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1308, i32 0, i32 1
   %1309 = load i32, i32* %w2c_i0, align 4
   %conv954 = zext i32 %1309 to i64
-  %add955 = add i64 %conv954, 4240
+  %add955 = add i64 %conv954, 4272
   %1310 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory953, i64 %add955, i32 %1310, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B3
@@ -5461,7 +5364,7 @@ w2c_B52:                                          ; preds = %if.then951, %if.the
   %w2c_memory956 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1311, i32 0, i32 1
   %1312 = load i32, i32* %w2c_i0, align 4
   %conv957 = zext i32 %1312 to i64
-  %add958 = add i64 %conv957, 4188
+  %add958 = add i64 %conv957, 4220
   %call959 = call i32 @i32_load8_u(%struct.wasm_rt_memory_t* %w2c_memory956, i64 %add958, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call959, i32* %w2c_i0, align 4
   store i32 4, i32* %w2c_i1, align 4
@@ -5482,7 +5385,7 @@ if.end963:                                        ; preds = %w2c_B52
   %w2c_memory964 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1316, i32 0, i32 1
   %1317 = load i32, i32* %w2c_i0, align 4
   %conv965 = zext i32 %1317 to i64
-  %add966 = add i64 %conv965, 3768
+  %add966 = add i64 %conv965, 3800
   %call967 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory964, i64 %add966, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call967, i32* %w2c_i0, align 4
   %1318 = load i32, i32* %w2c_i0, align 4
@@ -5500,7 +5403,7 @@ if.then972:                                       ; preds = %if.end963
   br label %w2c_B56
 
 if.end973:                                        ; preds = %if.end963
-  store i32 4192, i32* %w2c_i0, align 4
+  store i32 4224, i32* %w2c_i0, align 4
   %1321 = load i32, i32* %w2c_i0, align 4
   store i32 %1321, i32* %w2c_l3, align 4
   br label %w2c_L57
@@ -5616,7 +5519,7 @@ if.end1004:                                       ; preds = %w2c_B56
   %w2c_memory1005 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1353, i32 0, i32 1
   %1354 = load i32, i32* %w2c_i0, align 4
   %conv1006 = zext i32 %1354 to i64
-  %add1007 = add i64 %conv1006, 4220
+  %add1007 = add i64 %conv1006, 4252
   %call1008 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1005, i64 %add1007, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1008, i32* %w2c_i0, align 4
   %1355 = load i32, i32* %w2c_i0, align 4
@@ -5721,7 +5624,7 @@ if.end1031:                                       ; preds = %if.end1026
   %w2c_memory1032 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1389, i32 0, i32 1
   %1390 = load i32, i32* %w2c_i0, align 4
   %conv1033 = zext i32 %1390 to i64
-  %add1034 = add i64 %conv1033, 4184
+  %add1034 = add i64 %conv1033, 4216
   %call1035 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1032, i64 %add1034, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1035, i32* %w2c_i0, align 4
   %1391 = load i32, i32* %w2c_i0, align 4
@@ -5744,7 +5647,7 @@ if.end1041:                                       ; preds = %if.end1031
   %w2c_memory1042 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1394, i32 0, i32 1
   %1395 = load i32, i32* %w2c_i0, align 4
   %conv1043 = zext i32 %1395 to i64
-  %add1044 = add i64 %conv1043, 4176
+  %add1044 = add i64 %conv1043, 4208
   %call1045 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1042, i64 %add1044, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1045, i32* %w2c_i0, align 4
   %1396 = load i32, i32* %w2c_i0, align 4
@@ -5948,7 +5851,7 @@ if.end1094:                                       ; preds = %if.end1089
   %w2c_memory1096 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1461, i32 0, i32 1
   %1462 = load i32, i32* %w2c_i1, align 4
   %conv1097 = zext i32 %1462 to i64
-  %add1098 = add i64 %conv1097, 4224
+  %add1098 = add i64 %conv1097, 4256
   %call1099 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1096, i64 %add1098, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1099, i32* %w2c_i1, align 4
   %1463 = load i32, i32* %w2c_i1, align 4
@@ -6102,7 +6005,7 @@ w2c_B9:                                           ; preds = %if.end1126, %if.end
   %w2c_memory1127 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1507, i32 0, i32 1
   %1508 = load i32, i32* %w2c_i1, align 4
   %conv1128 = zext i32 %1508 to i64
-  %add1129 = add i64 %conv1128, 4188
+  %add1129 = add i64 %conv1128, 4220
   %call1130 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1127, i64 %add1129, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1130, i32* %w2c_i1, align 4
   store i32 4, i32* %w2c_i2, align 4
@@ -6114,7 +6017,7 @@ w2c_B9:                                           ; preds = %if.end1126, %if.end
   %w2c_memory1132 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1511, i32 0, i32 1
   %1512 = load i32, i32* %w2c_i0, align 4
   %conv1133 = zext i32 %1512 to i64
-  %add1134 = add i64 %conv1133, 4188
+  %add1134 = add i64 %conv1133, 4220
   %1513 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1132, i64 %add1134, i32 %1513, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B8
@@ -6235,7 +6138,7 @@ w2c_B7:                                           ; preds = %if.end1163, %if.the
   %w2c_memory1164 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1547, i32 0, i32 1
   %1548 = load i32, i32* %w2c_i1, align 4
   %conv1165 = zext i32 %1548 to i64
-  %add1166 = add i64 %conv1165, 4176
+  %add1166 = add i64 %conv1165, 4208
   %call1167 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1164, i64 %add1166, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1167, i32* %w2c_i1, align 4
   %1549 = load i32, i32* %w2c_l5, align 4
@@ -6250,7 +6153,7 @@ w2c_B7:                                           ; preds = %if.end1163, %if.the
   %w2c_memory1169 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1553, i32 0, i32 1
   %1554 = load i32, i32* %w2c_i0, align 4
   %conv1170 = zext i32 %1554 to i64
-  %add1171 = add i64 %conv1170, 4176
+  %add1171 = add i64 %conv1170, 4208
   %1555 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1169, i64 %add1171, i32 %1555, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %1556 = load i32, i32* %w2c_l3, align 4
@@ -6260,7 +6163,7 @@ w2c_B7:                                           ; preds = %if.end1163, %if.the
   %w2c_memory1172 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1557, i32 0, i32 1
   %1558 = load i32, i32* %w2c_i1, align 4
   %conv1173 = zext i32 %1558 to i64
-  %add1174 = add i64 %conv1173, 4180
+  %add1174 = add i64 %conv1173, 4212
   %call1175 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1172, i64 %add1174, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1175, i32* %w2c_i1, align 4
   %1559 = load i32, i32* %w2c_i0, align 4
@@ -6283,7 +6186,7 @@ if.end1180:                                       ; preds = %w2c_B7
   %w2c_memory1181 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1563, i32 0, i32 1
   %1564 = load i32, i32* %w2c_i0, align 4
   %conv1182 = zext i32 %1564 to i64
-  %add1183 = add i64 %conv1182, 4180
+  %add1183 = add i64 %conv1182, 4212
   %1565 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1181, i64 %add1183, i32 %1565, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B64
@@ -6294,7 +6197,7 @@ w2c_B64:                                          ; preds = %if.end1180, %if.the
   %w2c_memory1184 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1566, i32 0, i32 1
   %1567 = load i32, i32* %w2c_i0, align 4
   %conv1185 = zext i32 %1567 to i64
-  %add1186 = add i64 %conv1185, 3768
+  %add1186 = add i64 %conv1185, 3800
   %call1187 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1184, i64 %add1186, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1187, i32* %w2c_i0, align 4
   %1568 = load i32, i32* %w2c_i0, align 4
@@ -6312,7 +6215,7 @@ if.then1192:                                      ; preds = %w2c_B64
   br label %w2c_B68
 
 if.end1193:                                       ; preds = %w2c_B64
-  store i32 4192, i32* %w2c_i0, align 4
+  store i32 4224, i32* %w2c_i0, align 4
   %1571 = load i32, i32* %w2c_i0, align 4
   store i32 %1571, i32* %w2c_l3, align 4
   br label %w2c_L69
@@ -6385,7 +6288,7 @@ w2c_B68:                                          ; preds = %if.then1192
   %w2c_memory1214 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1591, i32 0, i32 1
   %1592 = load i32, i32* %w2c_i0, align 4
   %conv1215 = zext i32 %1592 to i64
-  %add1216 = add i64 %conv1215, 3760
+  %add1216 = add i64 %conv1215, 3792
   %call1217 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1214, i64 %add1216, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1217, i32* %w2c_i0, align 4
   %1593 = load i32, i32* %w2c_i0, align 4
@@ -6430,7 +6333,7 @@ w2c_B71:                                          ; preds = %if.end1228, %if.the
   %w2c_memory1229 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1602, i32 0, i32 1
   %1603 = load i32, i32* %w2c_i0, align 4
   %conv1230 = zext i32 %1603 to i64
-  %add1231 = add i64 %conv1230, 3760
+  %add1231 = add i64 %conv1230, 3792
   %1604 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1229, i64 %add1231, i32 %1604, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B70
@@ -6446,7 +6349,7 @@ w2c_B70:                                          ; preds = %w2c_B71, %if.then12
   %w2c_memory1232 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1607, i32 0, i32 1
   %1608 = load i32, i32* %w2c_i0, align 4
   %conv1233 = zext i32 %1608 to i64
-  %add1234 = add i64 %conv1233, 4196
+  %add1234 = add i64 %conv1233, 4228
   %1609 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1232, i64 %add1234, i32 %1609, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -6456,7 +6359,7 @@ w2c_B70:                                          ; preds = %w2c_B71, %if.then12
   %w2c_memory1235 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1611, i32 0, i32 1
   %1612 = load i32, i32* %w2c_i0, align 4
   %conv1236 = zext i32 %1612 to i64
-  %add1237 = add i64 %conv1236, 4192
+  %add1237 = add i64 %conv1236, 4224
   %1613 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1235, i64 %add1237, i32 %1613, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -6465,7 +6368,7 @@ w2c_B70:                                          ; preds = %w2c_B71, %if.then12
   %w2c_memory1238 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1614, i32 0, i32 1
   %1615 = load i32, i32* %w2c_i0, align 4
   %conv1239 = zext i32 %1615 to i64
-  %add1240 = add i64 %conv1239, 3776
+  %add1240 = add i64 %conv1239, 3808
   %1616 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1238, i64 %add1240, i32 %1616, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -6474,14 +6377,14 @@ w2c_B70:                                          ; preds = %w2c_B71, %if.then12
   %w2c_memory1241 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1617, i32 0, i32 1
   %1618 = load i32, i32* %w2c_i1, align 4
   %conv1242 = zext i32 %1618 to i64
-  %add1243 = add i64 %conv1242, 4216
+  %add1243 = add i64 %conv1242, 4248
   %call1244 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1241, i64 %add1243, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1244, i32* %w2c_i1, align 4
   %1619 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory1245 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1619, i32 0, i32 1
   %1620 = load i32, i32* %w2c_i0, align 4
   %conv1246 = zext i32 %1620 to i64
-  %add1247 = add i64 %conv1246, 3780
+  %add1247 = add i64 %conv1246, 3812
   %1621 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1245, i64 %add1247, i32 %1621, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -6490,7 +6393,7 @@ w2c_B70:                                          ; preds = %w2c_B71, %if.then12
   %w2c_memory1248 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1622, i32 0, i32 1
   %1623 = load i32, i32* %w2c_i0, align 4
   %conv1249 = zext i32 %1623 to i64
-  %add1250 = add i64 %conv1249, 4204
+  %add1250 = add i64 %conv1249, 4236
   %1624 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1248, i64 %add1250, i32 %1624, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_L72
@@ -6498,14 +6401,14 @@ w2c_B70:                                          ; preds = %w2c_B71, %if.then12
 w2c_L72:                                          ; preds = %if.then1262, %w2c_B70
   %1625 = load i32, i32* %w2c_l3, align 4
   store i32 %1625, i32* %w2c_i0, align 4
-  store i32 3792, i32* %w2c_i1, align 4
+  store i32 3824, i32* %w2c_i1, align 4
   %1626 = load i32, i32* %w2c_i1, align 4
   %1627 = load i32, i32* %w2c_i0, align 4
   %add1251 = add i32 %1627, %1626
   store i32 %add1251, i32* %w2c_i0, align 4
   %1628 = load i32, i32* %w2c_l3, align 4
   store i32 %1628, i32* %w2c_i1, align 4
-  store i32 3784, i32* %w2c_i2, align 4
+  store i32 3816, i32* %w2c_i2, align 4
   %1629 = load i32, i32* %w2c_i2, align 4
   %1630 = load i32, i32* %w2c_i1, align 4
   %add1252 = add i32 %1630, %1629
@@ -6520,7 +6423,7 @@ w2c_L72:                                          ; preds = %if.then1262, %w2c_B
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1253, i64 %conv1254, i32 %1634, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %1635 = load i32, i32* %w2c_l3, align 4
   store i32 %1635, i32* %w2c_i0, align 4
-  store i32 3796, i32* %w2c_i1, align 4
+  store i32 3828, i32* %w2c_i1, align 4
   %1636 = load i32, i32* %w2c_i1, align 4
   %1637 = load i32, i32* %w2c_i0, align 4
   %add1255 = add i32 %1637, %1636
@@ -6641,14 +6544,14 @@ cond.end1271:                                     ; preds = %cond.false1270, %co
   %w2c_memory1280 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1680, i32 0, i32 1
   %1681 = load i32, i32* %w2c_i1, align 4
   %conv1281 = zext i32 %1681 to i64
-  %add1282 = add i64 %conv1281, 4232
+  %add1282 = add i64 %conv1281, 4264
   %call1283 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1280, i64 %add1282, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1283, i32* %w2c_i1, align 4
   %1682 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory1284 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1682, i32 0, i32 1
   %1683 = load i32, i32* %w2c_i0, align 4
   %conv1285 = zext i32 %1683 to i64
-  %add1286 = add i64 %conv1285, 3772
+  %add1286 = add i64 %conv1285, 3804
   %1684 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1284, i64 %add1286, i32 %1684, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -6658,7 +6561,7 @@ cond.end1271:                                     ; preds = %cond.false1270, %co
   %w2c_memory1287 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1686, i32 0, i32 1
   %1687 = load i32, i32* %w2c_i0, align 4
   %conv1288 = zext i32 %1687 to i64
-  %add1289 = add i64 %conv1288, 3756
+  %add1289 = add i64 %conv1288, 3788
   %1688 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1287, i64 %add1289, i32 %1688, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -6668,7 +6571,7 @@ cond.end1271:                                     ; preds = %cond.false1270, %co
   %w2c_memory1290 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1690, i32 0, i32 1
   %1691 = load i32, i32* %w2c_i0, align 4
   %conv1291 = zext i32 %1691 to i64
-  %add1292 = add i64 %conv1291, 3768
+  %add1292 = add i64 %conv1291, 3800
   %1692 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1290, i64 %add1292, i32 %1692, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %1693 = load i32, i32* %w2c_l6, align 4
@@ -6801,7 +6704,7 @@ cond.end1322:                                     ; preds = %cond.false1321, %co
   %w2c_memory1325 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1734, i32 0, i32 1
   %1735 = load i32, i32* %w2c_i1, align 4
   %conv1326 = zext i32 %1735 to i64
-  %add1327 = add i64 %conv1326, 3756
+  %add1327 = add i64 %conv1326, 3788
   %call1328 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1325, i64 %add1327, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1328, i32* %w2c_i1, align 4
   %1736 = load i32, i32* %w2c_l5, align 4
@@ -6855,14 +6758,14 @@ cond.end1322:                                     ; preds = %cond.false1321, %co
   %w2c_memory1339 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1757, i32 0, i32 1
   %1758 = load i32, i32* %w2c_i1, align 4
   %conv1340 = zext i32 %1758 to i64
-  %add1341 = add i64 %conv1340, 4232
+  %add1341 = add i64 %conv1340, 4264
   %call1342 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1339, i64 %add1341, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1342, i32* %w2c_i1, align 4
   %1759 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory1343 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1759, i32 0, i32 1
   %1760 = load i32, i32* %w2c_i0, align 4
   %conv1344 = zext i32 %1760 to i64
-  %add1345 = add i64 %conv1344, 3772
+  %add1345 = add i64 %conv1344, 3804
   %1761 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1343, i64 %add1345, i32 %1761, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -6872,7 +6775,7 @@ cond.end1322:                                     ; preds = %cond.false1321, %co
   %w2c_memory1346 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1763, i32 0, i32 1
   %1764 = load i32, i32* %w2c_i0, align 4
   %conv1347 = zext i32 %1764 to i64
-  %add1348 = add i64 %conv1347, 3756
+  %add1348 = add i64 %conv1347, 3788
   %1765 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1346, i64 %add1348, i32 %1765, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -6882,7 +6785,7 @@ cond.end1322:                                     ; preds = %cond.false1321, %co
   %w2c_memory1349 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1767, i32 0, i32 1
   %1768 = load i32, i32* %w2c_i0, align 4
   %conv1350 = zext i32 %1768 to i64
-  %add1351 = add i64 %conv1350, 3768
+  %add1351 = add i64 %conv1350, 3800
   %1769 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1349, i64 %add1351, i32 %1769, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %1770 = load i32, i32* %w2c_l4, align 4
@@ -6911,7 +6814,7 @@ w2c_B66:                                          ; preds = %if.then1313, %if.th
   %w2c_memory1356 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1778, i32 0, i32 1
   %1779 = load i32, i32* %w2c_i1, align 4
   %conv1357 = zext i32 %1779 to i64
-  %add1358 = add i64 %conv1357, 3760
+  %add1358 = add i64 %conv1357, 3792
   %call1359 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1356, i64 %add1358, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1359, i32* %w2c_i1, align 4
   %1780 = load i32, i32* %w2c_i1, align 4
@@ -6936,7 +6839,7 @@ if.end1364:                                       ; preds = %w2c_B66
   %w2c_memory1365 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1785, i32 0, i32 1
   %1786 = load i32, i32* %w2c_i0, align 4
   %conv1366 = zext i32 %1786 to i64
-  %add1367 = add i64 %conv1366, 3760
+  %add1367 = add i64 %conv1366, 3792
   %1787 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1365, i64 %add1367, i32 %1787, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %1788 = load i32, i32* %w2c_l6, align 4
@@ -6956,7 +6859,7 @@ w2c_B73:                                          ; preds = %if.end1364, %if.the
   store i32 %add1368, i32* %w2c_i0, align 4
   %1794 = load i32, i32* %w2c_i0, align 4
   store i32 %1794, i32* %w2c_p0.addr, align 4
-  store i32 4192, i32* %w2c_i0, align 4
+  store i32 4224, i32* %w2c_i0, align 4
   %1795 = load i32, i32* %w2c_i0, align 4
   store i32 %1795, i32* %w2c_l3, align 4
   br label %w2c_L81
@@ -7037,7 +6940,7 @@ if.end1394:                                       ; preds = %w2c_B80
   br label %w2c_B79
 
 w2c_B79:                                          ; preds = %if.end1394, %if.end1383
-  store i32 4192, i32* %w2c_i0, align 4
+  store i32 4224, i32* %w2c_i0, align 4
   %1815 = load i32, i32* %w2c_i0, align 4
   store i32 %1815, i32* %w2c_l3, align 4
   br label %w2c_L82
@@ -7309,7 +7212,7 @@ if.end1458:                                       ; preds = %cond.end1448
   %w2c_memory1459 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1912, i32 0, i32 1
   %1913 = load i32, i32* %w2c_i0, align 4
   %conv1460 = zext i32 %1913 to i64
-  %add1461 = add i64 %conv1460, 3768
+  %add1461 = add i64 %conv1460, 3800
   %1914 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1459, i64 %add1461, i32 %1914, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -7318,7 +7221,7 @@ if.end1458:                                       ; preds = %cond.end1448
   %w2c_memory1462 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1915, i32 0, i32 1
   %1916 = load i32, i32* %w2c_i1, align 4
   %conv1463 = zext i32 %1916 to i64
-  %add1464 = add i64 %conv1463, 3756
+  %add1464 = add i64 %conv1463, 3788
   %call1465 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1462, i64 %add1464, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1465, i32* %w2c_i1, align 4
   %1917 = load i32, i32* %w2c_l3, align 4
@@ -7333,7 +7236,7 @@ if.end1458:                                       ; preds = %cond.end1448
   %w2c_memory1467 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1921, i32 0, i32 1
   %1922 = load i32, i32* %w2c_i0, align 4
   %conv1468 = zext i32 %1922 to i64
-  %add1469 = add i64 %conv1468, 3756
+  %add1469 = add i64 %conv1468, 3788
   %1923 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1467, i64 %add1469, i32 %1923, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %1924 = load i32, i32* %w2c_p0.addr, align 4
@@ -7360,7 +7263,7 @@ w2c_B84:                                          ; preds = %if.then1457
   %w2c_memory1474 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1931, i32 0, i32 1
   %1932 = load i32, i32* %w2c_i0, align 4
   %conv1475 = zext i32 %1932 to i64
-  %add1476 = add i64 %conv1475, 3764
+  %add1476 = add i64 %conv1475, 3796
   %call1477 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1474, i64 %add1476, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1477, i32* %w2c_i0, align 4
   %1933 = load i32, i32* %w2c_l6, align 4
@@ -7385,7 +7288,7 @@ if.end1482:                                       ; preds = %w2c_B84
   %w2c_memory1483 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1938, i32 0, i32 1
   %1939 = load i32, i32* %w2c_i0, align 4
   %conv1484 = zext i32 %1939 to i64
-  %add1485 = add i64 %conv1484, 3764
+  %add1485 = add i64 %conv1484, 3796
   %1940 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1483, i64 %add1485, i32 %1940, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -7394,7 +7297,7 @@ if.end1482:                                       ; preds = %w2c_B84
   %w2c_memory1486 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1941, i32 0, i32 1
   %1942 = load i32, i32* %w2c_i1, align 4
   %conv1487 = zext i32 %1942 to i64
-  %add1488 = add i64 %conv1487, 3752
+  %add1488 = add i64 %conv1487, 3784
   %call1489 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1486, i64 %add1488, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1489, i32* %w2c_i1, align 4
   %1943 = load i32, i32* %w2c_l3, align 4
@@ -7409,7 +7312,7 @@ if.end1482:                                       ; preds = %w2c_B84
   %w2c_memory1491 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1947, i32 0, i32 1
   %1948 = load i32, i32* %w2c_i0, align 4
   %conv1492 = zext i32 %1948 to i64
-  %add1493 = add i64 %conv1492, 3752
+  %add1493 = add i64 %conv1492, 3784
   %1949 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1491, i64 %add1493, i32 %1949, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %1950 = load i32, i32* %w2c_p0.addr, align 4
@@ -7540,7 +7443,7 @@ if.end1516:                                       ; preds = %if.end1510
   %1995 = load i32, i32* %w2c_i1, align 4
   %shl1528 = shl i32 %1995, %and1527
   store i32 %shl1528, i32* %w2c_i1, align 4
-  store i32 3784, i32* %w2c_i2, align 4
+  store i32 3816, i32* %w2c_i2, align 4
   %1996 = load i32, i32* %w2c_i2, align 4
   %1997 = load i32, i32* %w2c_i1, align 4
   %add1529 = add i32 %1997, %1996
@@ -7595,7 +7498,7 @@ if.end1541:                                       ; preds = %w2c_B89
   %w2c_memory1542 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2011, i32 0, i32 1
   %2012 = load i32, i32* %w2c_i1, align 4
   %conv1543 = zext i32 %2012 to i64
-  %add1544 = add i64 %conv1543, 3744
+  %add1544 = add i64 %conv1543, 3776
   %call1545 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1542, i64 %add1544, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1545, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -7621,7 +7524,7 @@ if.end1541:                                       ; preds = %w2c_B89
   %w2c_memory1554 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2020, i32 0, i32 1
   %2021 = load i32, i32* %w2c_i0, align 4
   %conv1555 = zext i32 %2021 to i64
-  %add1556 = add i64 %conv1555, 3744
+  %add1556 = add i64 %conv1555, 3776
   %2022 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1554, i64 %add1556, i32 %2022, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B87
@@ -7950,7 +7853,7 @@ if.end1640:                                       ; preds = %w2c_B92
   %2127 = load i32, i32* %w2c_i0, align 4
   %shl1646 = shl i32 %2127, %and1645
   store i32 %shl1646, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %2128 = load i32, i32* %w2c_i1, align 4
   %2129 = load i32, i32* %w2c_i0, align 4
   %add1647 = add i32 %2129, %2128
@@ -8004,7 +7907,7 @@ if.end1660:                                       ; preds = %if.end1655
   %w2c_memory1661 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2144, i32 0, i32 1
   %2145 = load i32, i32* %w2c_i1, align 4
   %conv1662 = zext i32 %2145 to i64
-  %add1663 = add i64 %conv1662, 3748
+  %add1663 = add i64 %conv1662, 3780
   %call1664 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1661, i64 %add1663, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1664, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -8030,7 +7933,7 @@ if.end1660:                                       ; preds = %if.end1655
   %w2c_memory1673 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2153, i32 0, i32 1
   %2154 = load i32, i32* %w2c_i0, align 4
   %conv1674 = zext i32 %2154 to i64
-  %add1675 = add i64 %conv1674, 3748
+  %add1675 = add i64 %conv1674, 3780
   %2155 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1673, i64 %add1675, i32 %2155, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B87
@@ -8324,7 +8227,7 @@ if.end1752:                                       ; preds = %w2c_B86
   %2257 = load i32, i32* %w2c_i0, align 4
   %shl1756 = shl i32 %2257, %and1755
   store i32 %shl1756, i32* %w2c_i0, align 4
-  store i32 3784, i32* %w2c_i1, align 4
+  store i32 3816, i32* %w2c_i1, align 4
   %2258 = load i32, i32* %w2c_i1, align 4
   %2259 = load i32, i32* %w2c_i0, align 4
   %add1757 = add i32 %2259, %2258
@@ -8336,7 +8239,7 @@ if.end1752:                                       ; preds = %w2c_B86
   %w2c_memory1758 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2261, i32 0, i32 1
   %2262 = load i32, i32* %w2c_i0, align 4
   %conv1759 = zext i32 %2262 to i64
-  %add1760 = add i64 %conv1759, 3744
+  %add1760 = add i64 %conv1759, 3776
   %call1761 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1758, i64 %add1760, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1761, i32* %w2c_i0, align 4
   %2263 = load i32, i32* %w2c_i0, align 4
@@ -8376,7 +8279,7 @@ if.end1767:                                       ; preds = %if.end1752
   %w2c_memory1769 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2275, i32 0, i32 1
   %2276 = load i32, i32* %w2c_i0, align 4
   %conv1770 = zext i32 %2276 to i64
-  %add1771 = add i64 %conv1770, 3744
+  %add1771 = add i64 %conv1770, 3776
   %2277 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1769, i64 %add1771, i32 %2277, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %2278 = load i32, i32* %w2c_l3, align 4
@@ -8667,7 +8570,7 @@ w2c_B103:                                         ; preds = %if.end1800, %if.the
   %2387 = load i32, i32* %w2c_i0, align 4
   %shl1839 = shl i32 %2387, %and1838
   store i32 %shl1839, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %2388 = load i32, i32* %w2c_i1, align 4
   %2389 = load i32, i32* %w2c_i0, align 4
   %add1840 = add i32 %2389, %2388
@@ -8679,7 +8582,7 @@ w2c_B103:                                         ; preds = %if.end1800, %if.the
   %w2c_memory1841 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2391, i32 0, i32 1
   %2392 = load i32, i32* %w2c_i0, align 4
   %conv1842 = zext i32 %2392 to i64
-  %add1843 = add i64 %conv1842, 3748
+  %add1843 = add i64 %conv1842, 3780
   %call1844 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1841, i64 %add1843, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1844, i32* %w2c_i0, align 4
   %2393 = load i32, i32* %w2c_i0, align 4
@@ -8729,7 +8632,7 @@ if.end1850:                                       ; preds = %w2c_B103
   %w2c_memory1854 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2410, i32 0, i32 1
   %2411 = load i32, i32* %w2c_i0, align 4
   %conv1855 = zext i32 %2411 to i64
-  %add1856 = add i64 %conv1855, 3748
+  %add1856 = add i64 %conv1855, 3780
   %2412 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1854, i64 %add1856, i32 %2412, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %2413 = load i32, i32* %w2c_p0.addr, align 4
@@ -9155,14 +9058,14 @@ cond.end1952:                                     ; preds = %cond.false1951, %co
   %w2c_memory1957 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2569, i32 0, i32 1
   %2570 = load i32, i32* %w2c_i1, align 4
   %conv1958 = zext i32 %2570 to i64
-  %add1959 = add i64 %conv1958, 4232
+  %add1959 = add i64 %conv1958, 4264
   %call1960 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory1957, i64 %add1959, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call1960, i32* %w2c_i1, align 4
   %2571 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory1961 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2571, i32 0, i32 1
   %2572 = load i32, i32* %w2c_i0, align 4
   %conv1962 = zext i32 %2572 to i64
-  %add1963 = add i64 %conv1962, 3772
+  %add1963 = add i64 %conv1962, 3804
   %2573 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1961, i64 %add1963, i32 %2573, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -9172,7 +9075,7 @@ cond.end1952:                                     ; preds = %cond.false1951, %co
   %w2c_memory1964 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2575, i32 0, i32 1
   %2576 = load i32, i32* %w2c_i0, align 4
   %conv1965 = zext i32 %2576 to i64
-  %add1966 = add i64 %conv1965, 3756
+  %add1966 = add i64 %conv1965, 3788
   %2577 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1964, i64 %add1966, i32 %2577, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -9182,7 +9085,7 @@ cond.end1952:                                     ; preds = %cond.false1951, %co
   %w2c_memory1967 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2579, i32 0, i32 1
   %2580 = load i32, i32* %w2c_i0, align 4
   %conv1968 = zext i32 %2580 to i64
-  %add1969 = add i64 %conv1968, 3768
+  %add1969 = add i64 %conv1968, 3800
   %2581 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1967, i64 %add1969, i32 %2581, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %2582 = load i32, i32* %w2c_l8, align 4
@@ -9197,7 +9100,7 @@ cond.end1952:                                     ; preds = %cond.false1951, %co
   %w2c_memory1971 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2585, i32 0, i32 1
   %2586 = load i32, i32* %w2c_i1, align 4
   %conv1972 = zext i32 %2586 to i64
-  %add1973 = add i64 %conv1972, 4200
+  %add1973 = add i64 %conv1972, 4232
   %call1974 = call i64 @i64_load(%struct.wasm_rt_memory_t* %w2c_memory1971, i64 %add1973, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i64 %call1974, i64* %w2c_j1, align 8
   %2587 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
@@ -9213,7 +9116,7 @@ cond.end1952:                                     ; preds = %cond.false1951, %co
   %w2c_memory1977 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2591, i32 0, i32 1
   %2592 = load i32, i32* %w2c_i1, align 4
   %conv1978 = zext i32 %2592 to i64
-  %add1979 = add i64 %conv1978, 4192
+  %add1979 = add i64 %conv1978, 4224
   %call1980 = call i64 @i64_load(%struct.wasm_rt_memory_t* %w2c_memory1977, i64 %add1979, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i64 %call1980, i64* %w2c_j1, align 8
   %2593 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
@@ -9235,7 +9138,7 @@ cond.end1952:                                     ; preds = %cond.false1951, %co
   %w2c_memory1985 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2599, i32 0, i32 1
   %2600 = load i32, i32* %w2c_i0, align 4
   %conv1986 = zext i32 %2600 to i64
-  %add1987 = add i64 %conv1986, 4200
+  %add1987 = add i64 %conv1986, 4232
   %2601 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1985, i64 %add1987, i32 %2601, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -9245,7 +9148,7 @@ cond.end1952:                                     ; preds = %cond.false1951, %co
   %w2c_memory1988 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2603, i32 0, i32 1
   %2604 = load i32, i32* %w2c_i0, align 4
   %conv1989 = zext i32 %2604 to i64
-  %add1990 = add i64 %conv1989, 4196
+  %add1990 = add i64 %conv1989, 4228
   %2605 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1988, i64 %add1990, i32 %2605, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -9255,7 +9158,7 @@ cond.end1952:                                     ; preds = %cond.false1951, %co
   %w2c_memory1991 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2607, i32 0, i32 1
   %2608 = load i32, i32* %w2c_i0, align 4
   %conv1992 = zext i32 %2608 to i64
-  %add1993 = add i64 %conv1992, 4192
+  %add1993 = add i64 %conv1992, 4224
   %2609 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1991, i64 %add1993, i32 %2609, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -9264,7 +9167,7 @@ cond.end1952:                                     ; preds = %cond.false1951, %co
   %w2c_memory1994 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2610, i32 0, i32 1
   %2611 = load i32, i32* %w2c_i0, align 4
   %conv1995 = zext i32 %2611 to i64
-  %add1996 = add i64 %conv1995, 4204
+  %add1996 = add i64 %conv1995, 4236
   %2612 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1994, i64 %add1996, i32 %2612, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %2613 = load i32, i32* %w2c_l8, align 4
@@ -9418,7 +9321,7 @@ if.end2030:                                       ; preds = %if.end2010
   %2668 = load i32, i32* %w2c_i0, align 4
   %shl2034 = shl i32 %2668, %and2033
   store i32 %shl2034, i32* %w2c_i0, align 4
-  store i32 3784, i32* %w2c_i1, align 4
+  store i32 3816, i32* %w2c_i1, align 4
   %2669 = load i32, i32* %w2c_i1, align 4
   %2670 = load i32, i32* %w2c_i0, align 4
   %add2035 = add i32 %2670, %2669
@@ -9430,7 +9333,7 @@ if.end2030:                                       ; preds = %if.end2010
   %w2c_memory2036 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2672, i32 0, i32 1
   %2673 = load i32, i32* %w2c_i0, align 4
   %conv2037 = zext i32 %2673 to i64
-  %add2038 = add i64 %conv2037, 3744
+  %add2038 = add i64 %conv2037, 3776
   %call2039 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory2036, i64 %add2038, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call2039, i32* %w2c_i0, align 4
   %2674 = load i32, i32* %w2c_i0, align 4
@@ -9470,7 +9373,7 @@ if.end2045:                                       ; preds = %if.end2030
   %w2c_memory2047 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2686, i32 0, i32 1
   %2687 = load i32, i32* %w2c_i0, align 4
   %conv2048 = zext i32 %2687 to i64
-  %add2049 = add i64 %conv2048, 3744
+  %add2049 = add i64 %conv2048, 3776
   %2688 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2047, i64 %add2049, i32 %2688, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %2689 = load i32, i32* %w2c_l3, align 4
@@ -9765,7 +9668,7 @@ w2c_B110:                                         ; preds = %if.end2078, %if.the
   %2800 = load i32, i32* %w2c_i0, align 4
   %shl2117 = shl i32 %2800, %and2116
   store i32 %shl2117, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %2801 = load i32, i32* %w2c_i1, align 4
   %2802 = load i32, i32* %w2c_i0, align 4
   %add2118 = add i32 %2802, %2801
@@ -9777,7 +9680,7 @@ w2c_B110:                                         ; preds = %if.end2078, %if.the
   %w2c_memory2119 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2804, i32 0, i32 1
   %2805 = load i32, i32* %w2c_i0, align 4
   %conv2120 = zext i32 %2805 to i64
-  %add2121 = add i64 %conv2120, 3748
+  %add2121 = add i64 %conv2120, 3780
   %call2122 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory2119, i64 %add2121, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call2122, i32* %w2c_i0, align 4
   %2806 = load i32, i32* %w2c_i0, align 4
@@ -9827,7 +9730,7 @@ if.end2128:                                       ; preds = %w2c_B110
   %w2c_memory2132 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2823, i32 0, i32 1
   %2824 = load i32, i32* %w2c_i0, align 4
   %conv2133 = zext i32 %2824 to i64
-  %add2134 = add i64 %conv2133, 3748
+  %add2134 = add i64 %conv2133, 3780
   %2825 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2132, i64 %add2134, i32 %2825, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %2826 = load i32, i32* %w2c_l4, align 4
@@ -10223,7 +10126,7 @@ w2c_B65:                                          ; preds = %w2c_B74, %if.end218
   %w2c_memory2232 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2977, i32 0, i32 1
   %2978 = load i32, i32* %w2c_i0, align 4
   %conv2233 = zext i32 %2978 to i64
-  %add2234 = add i64 %conv2233, 3756
+  %add2234 = add i64 %conv2233, 3788
   %call2235 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory2232, i64 %add2234, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call2235, i32* %w2c_i0, align 4
   %2979 = load i32, i32* %w2c_i0, align 4
@@ -10248,7 +10151,7 @@ if.end2240:                                       ; preds = %w2c_B65
   %w2c_memory2241 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2984, i32 0, i32 1
   %2985 = load i32, i32* %w2c_i0, align 4
   %conv2242 = zext i32 %2985 to i64
-  %add2243 = add i64 %conv2242, 3768
+  %add2243 = add i64 %conv2242, 3800
   %call2244 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory2241, i64 %add2243, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call2244, i32* %w2c_i0, align 4
   %2986 = load i32, i32* %w2c_i0, align 4
@@ -10290,7 +10193,7 @@ if.end2240:                                       ; preds = %w2c_B65
   %w2c_memory2251 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3002, i32 0, i32 1
   %3003 = load i32, i32* %w2c_i0, align 4
   %conv2252 = zext i32 %3003 to i64
-  %add2253 = add i64 %conv2252, 3756
+  %add2253 = add i64 %conv2252, 3788
   %3004 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2251, i64 %add2253, i32 %3004, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -10300,7 +10203,7 @@ if.end2240:                                       ; preds = %w2c_B65
   %w2c_memory2254 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3006, i32 0, i32 1
   %3007 = load i32, i32* %w2c_i0, align 4
   %conv2255 = zext i32 %3007 to i64
-  %add2256 = add i64 %conv2255, 3768
+  %add2256 = add i64 %conv2255, 3800
   %3008 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2254, i64 %add2256, i32 %3008, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %3009 = load i32, i32* %w2c_l4, align 4
@@ -10340,7 +10243,7 @@ w2c_B6:                                           ; preds = %if.then2239, %if.th
   %w2c_memory2262 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3021, i32 0, i32 1
   %3022 = load i32, i32* %w2c_i0, align 4
   %conv2263 = zext i32 %3022 to i64
-  %add2264 = add i64 %conv2263, 4240
+  %add2264 = add i64 %conv2263, 4272
   %3023 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2262, i64 %add2264, i32 %3023, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B3
@@ -10380,7 +10283,7 @@ if.end2270:                                       ; preds = %w2c_B5
   %3033 = load i32, i32* %w2c_i1, align 4
   %shl2276 = shl i32 %3033, %and2275
   store i32 %shl2276, i32* %w2c_i1, align 4
-  store i32 4048, i32* %w2c_i2, align 4
+  store i32 4080, i32* %w2c_i2, align 4
   %3034 = load i32, i32* %w2c_i2, align 4
   %3035 = load i32, i32* %w2c_i1, align 4
   %add2277 = add i32 %3035, %3034
@@ -10454,7 +10357,7 @@ if.end2290:                                       ; preds = %if.end2285
   %w2c_memory2299 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3058, i32 0, i32 1
   %3059 = load i32, i32* %w2c_i0, align 4
   %conv2300 = zext i32 %3059 to i64
-  %add2301 = add i64 %conv2300, 3748
+  %add2301 = add i64 %conv2300, 3780
   %3060 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2299, i64 %add2301, i32 %3060, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B113
@@ -10804,7 +10707,7 @@ if.end2392:                                       ; preds = %w2c_B118
   %3184 = load i32, i32* %w2c_i0, align 4
   %shl2396 = shl i32 %3184, %and2395
   store i32 %shl2396, i32* %w2c_i0, align 4
-  store i32 3784, i32* %w2c_i1, align 4
+  store i32 3816, i32* %w2c_i1, align 4
   %3185 = load i32, i32* %w2c_i1, align 4
   %3186 = load i32, i32* %w2c_i0, align 4
   %add2397 = add i32 %3186, %3185
@@ -10816,7 +10719,7 @@ if.end2392:                                       ; preds = %w2c_B118
   %w2c_memory2398 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3188, i32 0, i32 1
   %3189 = load i32, i32* %w2c_i0, align 4
   %conv2399 = zext i32 %3189 to i64
-  %add2400 = add i64 %conv2399, 3744
+  %add2400 = add i64 %conv2399, 3776
   %call2401 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory2398, i64 %add2400, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call2401, i32* %w2c_i0, align 4
   %3190 = load i32, i32* %w2c_i0, align 4
@@ -10856,7 +10759,7 @@ if.end2407:                                       ; preds = %if.end2392
   %w2c_memory2409 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3202, i32 0, i32 1
   %3203 = load i32, i32* %w2c_i0, align 4
   %conv2410 = zext i32 %3203 to i64
-  %add2411 = add i64 %conv2410, 3744
+  %add2411 = add i64 %conv2410, 3776
   %3204 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2409, i64 %add2411, i32 %3204, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %3205 = load i32, i32* %w2c_l3, align 4
@@ -11145,7 +11048,7 @@ w2c_B122:                                         ; preds = %if.end2437, %if.the
   %3313 = load i32, i32* %w2c_i0, align 4
   %shl2476 = shl i32 %3313, %and2475
   store i32 %shl2476, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %3314 = load i32, i32* %w2c_i1, align 4
   %3315 = load i32, i32* %w2c_i0, align 4
   %add2477 = add i32 %3315, %3314
@@ -11199,7 +11102,7 @@ if.end2483:                                       ; preds = %w2c_B122
   %w2c_memory2487 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3334, i32 0, i32 1
   %3335 = load i32, i32* %w2c_i0, align 4
   %conv2488 = zext i32 %3335 to i64
-  %add2489 = add i64 %conv2488, 3748
+  %add2489 = add i64 %conv2488, 3780
   %3336 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2487, i64 %add2489, i32 %3336, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %3337 = load i32, i32* %w2c_l6, align 4
@@ -11544,7 +11447,7 @@ if.end2573:                                       ; preds = %w2c_B4
   %3463 = load i32, i32* %w2c_i1, align 4
   %shl2579 = shl i32 %3463, %and2578
   store i32 %shl2579, i32* %w2c_i1, align 4
-  store i32 4048, i32* %w2c_i2, align 4
+  store i32 4080, i32* %w2c_i2, align 4
   %3464 = load i32, i32* %w2c_i2, align 4
   %3465 = load i32, i32* %w2c_i1, align 4
   %add2580 = add i32 %3465, %3464
@@ -11616,7 +11519,7 @@ if.end2593:                                       ; preds = %if.end2588
   %w2c_memory2602 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3487, i32 0, i32 1
   %3488 = load i32, i32* %w2c_i0, align 4
   %conv2603 = zext i32 %3488 to i64
-  %add2604 = add i64 %conv2603, 3748
+  %add2604 = add i64 %conv2603, 3780
   %3489 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2602, i64 %add2604, i32 %3489, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B127
@@ -11965,7 +11868,7 @@ if.end2696:                                       ; preds = %w2c_B132
   %3612 = load i32, i32* %w2c_i0, align 4
   %shl2700 = shl i32 %3612, %and2699
   store i32 %shl2700, i32* %w2c_i0, align 4
-  store i32 3784, i32* %w2c_i1, align 4
+  store i32 3816, i32* %w2c_i1, align 4
   %3613 = load i32, i32* %w2c_i1, align 4
   %3614 = load i32, i32* %w2c_i0, align 4
   %add2701 = add i32 %3614, %3613
@@ -11977,7 +11880,7 @@ if.end2696:                                       ; preds = %w2c_B132
   %w2c_memory2702 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3616, i32 0, i32 1
   %3617 = load i32, i32* %w2c_i0, align 4
   %conv2703 = zext i32 %3617 to i64
-  %add2704 = add i64 %conv2703, 3764
+  %add2704 = add i64 %conv2703, 3796
   %call2705 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory2702, i64 %add2704, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 %call2705, i32* %w2c_i0, align 4
   %3618 = load i32, i32* %w2c_i0, align 4
@@ -12019,7 +11922,7 @@ if.end2711:                                       ; preds = %if.end2696
   %w2c_memory2713 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3631, i32 0, i32 1
   %3632 = load i32, i32* %w2c_i0, align 4
   %conv2714 = zext i32 %3632 to i64
-  %add2715 = add i64 %conv2714, 3744
+  %add2715 = add i64 %conv2714, 3776
   %3633 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2713, i64 %add2715, i32 %3633, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   %3634 = load i32, i32* %w2c_l2, align 4
@@ -12097,7 +12000,7 @@ w2c_B133:                                         ; preds = %w2c_B134, %if.then2
   %w2c_memory2732 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3661, i32 0, i32 1
   %3662 = load i32, i32* %w2c_i0, align 4
   %conv2733 = zext i32 %3662 to i64
-  %add2734 = add i64 %conv2733, 3764
+  %add2734 = add i64 %conv2733, 3796
   %3663 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2732, i64 %add2734, i32 %3663, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -12107,7 +12010,7 @@ w2c_B133:                                         ; preds = %w2c_B134, %if.then2
   %w2c_memory2735 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3665, i32 0, i32 1
   %3666 = load i32, i32* %w2c_i0, align 4
   %conv2736 = zext i32 %3666 to i64
-  %add2737 = add i64 %conv2736, 3752
+  %add2737 = add i64 %conv2736, 3784
   %3667 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory2735, i64 %add2737, i32 %3667, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.2, i64 0, i64 0))
   br label %w2c_B131
@@ -12135,7 +12038,7 @@ w2c_B3:                                           ; preds = %w2c_B131, %w2c_B117
   %3675 = load i32, i32* %w2c_i0, align 4
   %3676 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g02740 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3676, i32 0, i32 7
-  store i32 %3675, i32* %w2c_g02740, align 4
+  store i32 %3675, i32* %w2c_g02740, align 8
   %3677 = load i32, i32* %w2c_l3, align 4
   store i32 %3677, i32* %w2c_i0, align 4
   %3678 = load i32, i32* %w2c_i0, align 4
@@ -12241,7 +12144,7 @@ if.end14:                                         ; preds = %if.end7
   %w2c_memory15 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %23, i32 0, i32 1
   %24 = load i32, i32* %w2c_i0, align 4
   %conv16 = zext i32 %24 to i64
-  %add = add i64 %conv16, 4240
+  %add = add i64 %conv16, 4272
   %25 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory15, i64 %add, i32 %25, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.10, i64 0, i64 0))
   store i32 -1, i32* %w2c_i0, align 4
@@ -12269,8 +12172,8 @@ w2c_Bfunc:                                        ; preds = %w2c_B2, %if.end14, 
   ret i32 %30
 }
 
-; Function Attrs: noinline nounwind optnone uwtable
-define internal void @i64_store(%struct.wasm_rt_memory_t* %mem, i64 %addr, i64 %value, i8* %func_name) #0 {
+; Function Attrs: noinline nounwind optnone tainted uwtable
+define internal void @i64_store(%struct.wasm_rt_memory_t* %mem, i64 %addr, i64 %value, i8* %func_name) #1 {
 entry:
   %mem.addr = alloca %struct.wasm_rt_memory_t*, align 8
   %addr.addr = alloca i64, align 8
@@ -12330,8 +12233,8 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define dso_local void @w2c_dlfree(%struct.wasm2c_sandbox_t* %sbx, i32 %ptr) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @w2c_dlfree(%struct.wasm2c_sandbox_t* %sbx, i32 %ptr) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %ptr.addr = alloca i32, align 4
@@ -12480,7 +12383,7 @@ if.end14:                                         ; preds = %if.end7
   %w2c_memory18 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %36, i32 0, i32 1
   %37 = load i32, i32* %w2c_i1, align 4
   %conv19 = zext i32 %37 to i64
-  %add20 = add i64 %conv19, 3760
+  %add20 = add i64 %conv19, 3792
   %call21 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory18, i64 %add20, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call21, i32* %w2c_i1, align 4
   %38 = load i32, i32* %w2c_i1, align 4
@@ -12513,7 +12416,7 @@ if.end25:                                         ; preds = %if.end14
   %w2c_memory27 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %47, i32 0, i32 1
   %48 = load i32, i32* %w2c_i0, align 4
   %conv28 = zext i32 %48 to i64
-  %add29 = add i64 %conv28, 3764
+  %add29 = add i64 %conv28, 3796
   %call30 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory27, i64 %add29, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call30, i32* %w2c_i0, align 4
   %49 = load i32, i32* %w2c_l1, align 4
@@ -12585,7 +12488,7 @@ if.end40:                                         ; preds = %if.end35
   %70 = load i32, i32* %w2c_i1, align 4
   %shl = shl i32 %70, %and50
   store i32 %shl, i32* %w2c_i1, align 4
-  store i32 3784, i32* %w2c_i2, align 4
+  store i32 3816, i32* %w2c_i2, align 4
   %71 = load i32, i32* %w2c_i2, align 4
   %72 = load i32, i32* %w2c_i1, align 4
   %add51 = add i32 %72, %71
@@ -12640,7 +12543,7 @@ if.end63:                                         ; preds = %w2c_B4
   %w2c_memory64 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %86, i32 0, i32 1
   %87 = load i32, i32* %w2c_i1, align 4
   %conv65 = zext i32 %87 to i64
-  %add66 = add i64 %conv65, 3744
+  %add66 = add i64 %conv65, 3776
   %call67 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory64, i64 %add66, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call67, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -12666,7 +12569,7 @@ if.end63:                                         ; preds = %w2c_B4
   %w2c_memory75 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %95, i32 0, i32 1
   %96 = load i32, i32* %w2c_i0, align 4
   %conv76 = zext i32 %96 to i64
-  %add77 = add i64 %conv76, 3744
+  %add77 = add i64 %conv76, 3776
   %97 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory75, i64 %add77, i32 %97, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   br label %w2c_B1
@@ -12995,7 +12898,7 @@ if.end161:                                        ; preds = %w2c_B7
   %202 = load i32, i32* %w2c_i0, align 4
   %shl167 = shl i32 %202, %and166
   store i32 %shl167, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %203 = load i32, i32* %w2c_i1, align 4
   %204 = load i32, i32* %w2c_i0, align 4
   %add168 = add i32 %204, %203
@@ -13049,7 +12952,7 @@ if.end181:                                        ; preds = %if.end176
   %w2c_memory182 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %219, i32 0, i32 1
   %220 = load i32, i32* %w2c_i1, align 4
   %conv183 = zext i32 %220 to i64
-  %add184 = add i64 %conv183, 3748
+  %add184 = add i64 %conv183, 3780
   %call185 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory182, i64 %add184, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call185, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -13075,7 +12978,7 @@ if.end181:                                        ; preds = %if.end176
   %w2c_memory194 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %228, i32 0, i32 1
   %229 = load i32, i32* %w2c_i0, align 4
   %conv195 = zext i32 %229 to i64
-  %add196 = add i64 %conv195, 3748
+  %add196 = add i64 %conv195, 3780
   %230 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory194, i64 %add196, i32 %230, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   br label %w2c_B1
@@ -13312,7 +13215,7 @@ if.end257:                                        ; preds = %w2c_B2
   %w2c_memory262 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %306, i32 0, i32 1
   %307 = load i32, i32* %w2c_i0, align 4
   %conv263 = zext i32 %307 to i64
-  %add264 = add i64 %conv263, 3752
+  %add264 = add i64 %conv263, 3784
   %308 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory262, i64 %add264, i32 %308, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   %309 = load i32, i32* %w2c_l1, align 4
@@ -13416,7 +13319,7 @@ if.end291:                                        ; preds = %if.end287
   %w2c_memory292 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %341, i32 0, i32 1
   %342 = load i32, i32* %w2c_i0, align 4
   %conv293 = zext i32 %342 to i64
-  %add294 = add i64 %conv293, 3768
+  %add294 = add i64 %conv293, 3800
   %call295 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory292, i64 %add294, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call295, i32* %w2c_i0, align 4
   %343 = load i32, i32* %w2c_l3, align 4
@@ -13441,7 +13344,7 @@ if.end300:                                        ; preds = %if.end291
   %w2c_memory301 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %348, i32 0, i32 1
   %349 = load i32, i32* %w2c_i0, align 4
   %conv302 = zext i32 %349 to i64
-  %add303 = add i64 %conv302, 3768
+  %add303 = add i64 %conv302, 3800
   %350 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory301, i64 %add303, i32 %350, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -13450,7 +13353,7 @@ if.end300:                                        ; preds = %if.end291
   %w2c_memory304 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %351, i32 0, i32 1
   %352 = load i32, i32* %w2c_i1, align 4
   %conv305 = zext i32 %352 to i64
-  %add306 = add i64 %conv305, 3756
+  %add306 = add i64 %conv305, 3788
   %call307 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory304, i64 %add306, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call307, i32* %w2c_i1, align 4
   %353 = load i32, i32* %w2c_p0.addr, align 4
@@ -13465,7 +13368,7 @@ if.end300:                                        ; preds = %if.end291
   %w2c_memory309 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %357, i32 0, i32 1
   %358 = load i32, i32* %w2c_i0, align 4
   %conv310 = zext i32 %358 to i64
-  %add311 = add i64 %conv310, 3756
+  %add311 = add i64 %conv310, 3788
   %359 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory309, i64 %add311, i32 %359, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   %360 = load i32, i32* %w2c_l1, align 4
@@ -13491,7 +13394,7 @@ if.end300:                                        ; preds = %if.end291
   %w2c_memory316 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %368, i32 0, i32 1
   %369 = load i32, i32* %w2c_i1, align 4
   %conv317 = zext i32 %369 to i64
-  %add318 = add i64 %conv317, 3764
+  %add318 = add i64 %conv317, 3796
   %call319 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory316, i64 %add318, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call319, i32* %w2c_i1, align 4
   %370 = load i32, i32* %w2c_i0, align 4
@@ -13513,7 +13416,7 @@ if.end324:                                        ; preds = %if.end300
   %w2c_memory325 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %373, i32 0, i32 1
   %374 = load i32, i32* %w2c_i0, align 4
   %conv326 = zext i32 %374 to i64
-  %add327 = add i64 %conv326, 3752
+  %add327 = add i64 %conv326, 3784
   %375 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory325, i64 %add327, i32 %375, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -13522,7 +13425,7 @@ if.end324:                                        ; preds = %if.end300
   %w2c_memory328 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %376, i32 0, i32 1
   %377 = load i32, i32* %w2c_i0, align 4
   %conv329 = zext i32 %377 to i64
-  %add330 = add i64 %conv329, 3764
+  %add330 = add i64 %conv329, 3796
   %378 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory328, i64 %add330, i32 %378, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   br label %w2c_Bfunc
@@ -13533,7 +13436,7 @@ w2c_B17:                                          ; preds = %if.then299
   %w2c_memory331 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %379, i32 0, i32 1
   %380 = load i32, i32* %w2c_i0, align 4
   %conv332 = zext i32 %380 to i64
-  %add333 = add i64 %conv332, 3764
+  %add333 = add i64 %conv332, 3796
   %call334 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory331, i64 %add333, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call334, i32* %w2c_i0, align 4
   %381 = load i32, i32* %w2c_l3, align 4
@@ -13558,7 +13461,7 @@ if.end339:                                        ; preds = %w2c_B17
   %w2c_memory340 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %386, i32 0, i32 1
   %387 = load i32, i32* %w2c_i0, align 4
   %conv341 = zext i32 %387 to i64
-  %add342 = add i64 %conv341, 3764
+  %add342 = add i64 %conv341, 3796
   %388 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory340, i64 %add342, i32 %388, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -13567,7 +13470,7 @@ if.end339:                                        ; preds = %w2c_B17
   %w2c_memory343 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %389, i32 0, i32 1
   %390 = load i32, i32* %w2c_i1, align 4
   %conv344 = zext i32 %390 to i64
-  %add345 = add i64 %conv344, 3752
+  %add345 = add i64 %conv344, 3784
   %call346 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory343, i64 %add345, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call346, i32* %w2c_i1, align 4
   %391 = load i32, i32* %w2c_p0.addr, align 4
@@ -13582,7 +13485,7 @@ if.end339:                                        ; preds = %w2c_B17
   %w2c_memory348 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %395, i32 0, i32 1
   %396 = load i32, i32* %w2c_i0, align 4
   %conv349 = zext i32 %396 to i64
-  %add350 = add i64 %conv349, 3752
+  %add350 = add i64 %conv349, 3784
   %397 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory348, i64 %add350, i32 %397, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   %398 = load i32, i32* %w2c_l1, align 4
@@ -13689,7 +13592,7 @@ if.end364:                                        ; preds = %w2c_B18
   %437 = load i32, i32* %w2c_i1, align 4
   %shl376 = shl i32 %437, %and375
   store i32 %shl376, i32* %w2c_i1, align 4
-  store i32 3784, i32* %w2c_i2, align 4
+  store i32 3816, i32* %w2c_i2, align 4
   %438 = load i32, i32* %w2c_i2, align 4
   %439 = load i32, i32* %w2c_i1, align 4
   %add377 = add i32 %439, %438
@@ -13714,7 +13617,7 @@ if.end382:                                        ; preds = %if.end364
   %w2c_memory383 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %444, i32 0, i32 1
   %445 = load i32, i32* %w2c_i0, align 4
   %conv384 = zext i32 %445 to i64
-  %add385 = add i64 %conv384, 3760
+  %add385 = add i64 %conv384, 3792
   %call386 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory383, i64 %add385, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call386, i32* %w2c_i0, align 4
   %446 = load i32, i32* %w2c_l5, align 4
@@ -13750,7 +13653,7 @@ if.end393:                                        ; preds = %w2c_B21
   %w2c_memory394 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %454, i32 0, i32 1
   %455 = load i32, i32* %w2c_i1, align 4
   %conv395 = zext i32 %455 to i64
-  %add396 = add i64 %conv395, 3744
+  %add396 = add i64 %conv395, 3776
   %call397 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory394, i64 %add396, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call397, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -13776,7 +13679,7 @@ if.end393:                                        ; preds = %w2c_B21
   %w2c_memory406 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %463, i32 0, i32 1
   %464 = load i32, i32* %w2c_i0, align 4
   %conv407 = zext i32 %464 to i64
-  %add408 = add i64 %conv407, 3744
+  %add408 = add i64 %conv407, 3776
   %465 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory406, i64 %add408, i32 %465, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   br label %w2c_B19
@@ -13804,7 +13707,7 @@ if.end413:                                        ; preds = %w2c_B22
   %w2c_memory414 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %471, i32 0, i32 1
   %472 = load i32, i32* %w2c_i0, align 4
   %conv415 = zext i32 %472 to i64
-  %add416 = add i64 %conv415, 3760
+  %add416 = add i64 %conv415, 3792
   %call417 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory414, i64 %add416, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call417, i32* %w2c_i0, align 4
   %473 = load i32, i32* %w2c_l4, align 4
@@ -13884,7 +13787,7 @@ if.end438:                                        ; preds = %w2c_B20
   %w2c_memory439 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %498, i32 0, i32 1
   %499 = load i32, i32* %w2c_i0, align 4
   %conv440 = zext i32 %499 to i64
-  %add441 = add i64 %conv440, 3760
+  %add441 = add i64 %conv440, 3792
   %call442 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory439, i64 %add441, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call442, i32* %w2c_i0, align 4
   %500 = load i32, i32* %w2c_l3, align 4
@@ -14117,7 +14020,7 @@ if.end500:                                        ; preds = %w2c_B24
   %572 = load i32, i32* %w2c_i0, align 4
   %shl506 = shl i32 %572, %and505
   store i32 %shl506, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %573 = load i32, i32* %w2c_i1, align 4
   %574 = load i32, i32* %w2c_i0, align 4
   %add507 = add i32 %574, %573
@@ -14171,7 +14074,7 @@ if.end520:                                        ; preds = %if.end515
   %w2c_memory521 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %589, i32 0, i32 1
   %590 = load i32, i32* %w2c_i1, align 4
   %conv522 = zext i32 %590 to i64
-  %add523 = add i64 %conv522, 3748
+  %add523 = add i64 %conv522, 3780
   %call524 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory521, i64 %add523, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call524, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -14197,7 +14100,7 @@ if.end520:                                        ; preds = %if.end515
   %w2c_memory533 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %598, i32 0, i32 1
   %599 = load i32, i32* %w2c_i0, align 4
   %conv534 = zext i32 %599 to i64
-  %add535 = add i64 %conv534, 3748
+  %add535 = add i64 %conv534, 3780
   %600 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory533, i64 %add535, i32 %600, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   br label %w2c_B19
@@ -14420,7 +14323,7 @@ w2c_B19:                                          ; preds = %if.end584, %if.then
   %w2c_memory598 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %675, i32 0, i32 1
   %676 = load i32, i32* %w2c_i1, align 4
   %conv599 = zext i32 %676 to i64
-  %add600 = add i64 %conv599, 3764
+  %add600 = add i64 %conv599, 3796
   %call601 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory598, i64 %add600, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call601, i32* %w2c_i1, align 4
   %677 = load i32, i32* %w2c_i0, align 4
@@ -14443,7 +14346,7 @@ if.end606:                                        ; preds = %w2c_B19
   %w2c_memory607 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %681, i32 0, i32 1
   %682 = load i32, i32* %w2c_i0, align 4
   %conv608 = zext i32 %682 to i64
-  %add609 = add i64 %conv608, 3752
+  %add609 = add i64 %conv608, 3784
   %683 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory607, i64 %add609, i32 %683, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   br label %w2c_Bfunc
@@ -14532,7 +14435,7 @@ if.end625:                                        ; preds = %w2c_B15
   %715 = load i32, i32* %w2c_i0, align 4
   %shl629 = shl i32 %715, %and628
   store i32 %shl629, i32* %w2c_i0, align 4
-  store i32 3784, i32* %w2c_i1, align 4
+  store i32 3816, i32* %w2c_i1, align 4
   %716 = load i32, i32* %w2c_i1, align 4
   %717 = load i32, i32* %w2c_i0, align 4
   %add630 = add i32 %717, %716
@@ -14544,7 +14447,7 @@ if.end625:                                        ; preds = %w2c_B15
   %w2c_memory631 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %719, i32 0, i32 1
   %720 = load i32, i32* %w2c_i0, align 4
   %conv632 = zext i32 %720 to i64
-  %add633 = add i64 %conv632, 3744
+  %add633 = add i64 %conv632, 3776
   %call634 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory631, i64 %add633, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call634, i32* %w2c_i0, align 4
   %721 = load i32, i32* %w2c_i0, align 4
@@ -14584,7 +14487,7 @@ if.end640:                                        ; preds = %if.end625
   %w2c_memory642 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %733, i32 0, i32 1
   %734 = load i32, i32* %w2c_i0, align 4
   %conv643 = zext i32 %734 to i64
-  %add644 = add i64 %conv643, 3744
+  %add644 = add i64 %conv643, 3776
   %735 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory642, i64 %add644, i32 %735, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   %736 = load i32, i32* %w2c_p0.addr, align 4
@@ -14879,7 +14782,7 @@ w2c_B35:                                          ; preds = %if.end673, %if.then
   %847 = load i32, i32* %w2c_i0, align 4
   %shl712 = shl i32 %847, %and711
   store i32 %shl712, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %848 = load i32, i32* %w2c_i1, align 4
   %849 = load i32, i32* %w2c_i0, align 4
   %add713 = add i32 %849, %848
@@ -14891,7 +14794,7 @@ w2c_B35:                                          ; preds = %if.end673, %if.then
   %w2c_memory714 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %851, i32 0, i32 1
   %852 = load i32, i32* %w2c_i0, align 4
   %conv715 = zext i32 %852 to i64
-  %add716 = add i64 %conv715, 3748
+  %add716 = add i64 %conv715, 3780
   %call717 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory714, i64 %add716, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call717, i32* %w2c_i0, align 4
   %853 = load i32, i32* %w2c_i0, align 4
@@ -14941,7 +14844,7 @@ if.end723:                                        ; preds = %w2c_B35
   %w2c_memory727 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %870, i32 0, i32 1
   %871 = load i32, i32* %w2c_i0, align 4
   %conv728 = zext i32 %871 to i64
-  %add729 = add i64 %conv728, 3748
+  %add729 = add i64 %conv728, 3780
   %872 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory727, i64 %add729, i32 %872, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   %873 = load i32, i32* %w2c_l1, align 4
@@ -15258,7 +15161,7 @@ w2c_B36:                                          ; preds = %w2c_B38, %if.end776
   %w2c_memory807 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %992, i32 0, i32 1
   %993 = load i32, i32* %w2c_i1, align 4
   %conv808 = zext i32 %993 to i64
-  %add809 = add i64 %conv808, 3776
+  %add809 = add i64 %conv808, 3808
   %call810 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory807, i64 %add809, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   store i32 %call810, i32* %w2c_i1, align 4
   store i32 -1, i32* %w2c_i2, align 4
@@ -15272,7 +15175,7 @@ w2c_B36:                                          ; preds = %w2c_B38, %if.end776
   %w2c_memory812 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %997, i32 0, i32 1
   %998 = load i32, i32* %w2c_i0, align 4
   %conv813 = zext i32 %998 to i64
-  %add814 = add i64 %conv813, 3776
+  %add814 = add i64 %conv813, 3808
   %999 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory812, i64 %add814, i32 %999, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   %1000 = load i32, i32* %w2c_l1, align 4
@@ -15285,7 +15188,7 @@ if.then816:                                       ; preds = %w2c_B36
   br label %w2c_B0
 
 if.end817:                                        ; preds = %w2c_B36
-  store i32 4200, i32* %w2c_i0, align 4
+  store i32 4232, i32* %w2c_i0, align 4
   %1002 = load i32, i32* %w2c_i0, align 4
   store i32 %1002, i32* %w2c_l1, align 4
   br label %w2c_L40
@@ -15324,7 +15227,7 @@ if.end824:                                        ; preds = %w2c_L40
   %w2c_memory825 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1012, i32 0, i32 1
   %1013 = load i32, i32* %w2c_i0, align 4
   %conv826 = zext i32 %1013 to i64
-  %add827 = add i64 %conv826, 3776
+  %add827 = add i64 %conv826, 3808
   %1014 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory825, i64 %add827, i32 %1014, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.3, i64 0, i64 0))
   br label %w2c_B0
@@ -15336,8 +15239,8 @@ w2c_Bfunc:                                        ; preds = %w2c_B0, %w2c_B33, %
   ret void
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define dso_local i32 @w2c_calloc(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @w2c_calloc(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %w2c_p0.addr = alloca i32, align 4
@@ -15606,7 +15509,7 @@ if.end3:                                          ; preds = %w2c_B0
   %w2c_memory = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %9, i32 0, i32 1
   %10 = load i32, i32* %w2c_i0, align 4
   %conv4 = zext i32 %10 to i64
-  %add = add i64 %conv4, 4240
+  %add = add i64 %conv4, 4272
   %11 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory, i64 %add, i32 %11, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -15675,7 +15578,7 @@ w2c_B1:                                           ; preds = %if.then2
   %w2c_memory14 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %36, i32 0, i32 1
   %37 = load i32, i32* %w2c_i0, align 4
   %conv15 = zext i32 %37 to i64
-  %add16 = add i64 %conv15, 3760
+  %add16 = add i64 %conv15, 3792
   %call17 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory14, i64 %add16, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 %call17, i32* %w2c_i0, align 4
   %38 = load i32, i32* %w2c_i0, align 4
@@ -15814,7 +15717,7 @@ if.end44:                                         ; preds = %if.end39
   %w2c_memory45 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %77, i32 0, i32 1
   %78 = load i32, i32* %w2c_i1, align 4
   %conv46 = zext i32 %78 to i64
-  %add47 = add i64 %conv46, 4224
+  %add47 = add i64 %conv46, 4256
   %call48 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory45, i64 %add47, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 %call48, i32* %w2c_i1, align 4
   store i32 1, i32* %w2c_i2, align 4
@@ -15981,7 +15884,7 @@ w2c_B6:                                           ; preds = %if.then59
   %w2c_memory85 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %140, i32 0, i32 1
   %141 = load i32, i32* %w2c_i0, align 4
   %conv86 = zext i32 %141 to i64
-  %add87 = add i64 %conv86, 3768
+  %add87 = add i64 %conv86, 3800
   %call88 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory85, i64 %add87, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 %call88, i32* %w2c_i0, align 4
   %142 = load i32, i32* %w2c_l7, align 4
@@ -16004,7 +15907,7 @@ if.end93:                                         ; preds = %w2c_B6
   %w2c_memory94 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %146, i32 0, i32 1
   %147 = load i32, i32* %w2c_i0, align 4
   %conv95 = zext i32 %147 to i64
-  %add96 = add i64 %conv95, 3756
+  %add96 = add i64 %conv95, 3788
   %call97 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory94, i64 %add96, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 %call97, i32* %w2c_i0, align 4
   %148 = load i32, i32* %w2c_l9, align 4
@@ -16071,7 +15974,7 @@ if.end103:                                        ; preds = %if.end93
   %w2c_memory110 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %173, i32 0, i32 1
   %174 = load i32, i32* %w2c_i0, align 4
   %conv111 = zext i32 %174 to i64
-  %add112 = add i64 %conv111, 3768
+  %add112 = add i64 %conv111, 3800
   %175 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory110, i64 %add112, i32 %175, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -16089,7 +15992,7 @@ if.end103:                                        ; preds = %if.end93
   %w2c_memory114 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %181, i32 0, i32 1
   %182 = load i32, i32* %w2c_i0, align 4
   %conv115 = zext i32 %182 to i64
-  %add116 = add i64 %conv115, 3756
+  %add116 = add i64 %conv115, 3788
   %183 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory114, i64 %add116, i32 %183, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   %184 = load i32, i32* %w2c_p1.addr, align 4
@@ -16118,7 +16021,7 @@ w2c_B7:                                           ; preds = %if.then92
   %w2c_memory121 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %192, i32 0, i32 1
   %193 = load i32, i32* %w2c_i0, align 4
   %conv122 = zext i32 %193 to i64
-  %add123 = add i64 %conv122, 3764
+  %add123 = add i64 %conv122, 3796
   %call124 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory121, i64 %add123, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 %call124, i32* %w2c_i0, align 4
   %194 = load i32, i32* %w2c_l7, align 4
@@ -16141,7 +16044,7 @@ if.end129:                                        ; preds = %w2c_B7
   %w2c_memory130 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %198, i32 0, i32 1
   %199 = load i32, i32* %w2c_i0, align 4
   %conv131 = zext i32 %199 to i64
-  %add132 = add i64 %conv131, 3752
+  %add132 = add i64 %conv131, 3784
   %call133 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory130, i64 %add132, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 %call133, i32* %w2c_i0, align 4
   %200 = load i32, i32* %w2c_l9, align 4
@@ -16358,7 +16261,7 @@ w2c_B9:                                           ; preds = %w2c_B10, %if.end145
   %w2c_memory181 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %285, i32 0, i32 1
   %286 = load i32, i32* %w2c_i0, align 4
   %conv182 = zext i32 %286 to i64
-  %add183 = add i64 %conv182, 3764
+  %add183 = add i64 %conv182, 3796
   %287 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory181, i64 %add183, i32 %287, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -16368,7 +16271,7 @@ w2c_B9:                                           ; preds = %w2c_B10, %if.end145
   %w2c_memory184 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %289, i32 0, i32 1
   %290 = load i32, i32* %w2c_i0, align 4
   %conv185 = zext i32 %290 to i64
-  %add186 = add i64 %conv185, 3752
+  %add186 = add i64 %conv185, 3784
   %291 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory184, i64 %add186, i32 %291, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   %292 = load i32, i32* %w2c_p0.addr, align 4
@@ -16494,7 +16397,7 @@ if.end207:                                        ; preds = %if.end201
   %333 = load i32, i32* %w2c_i1, align 4
   %shl218 = shl i32 %333, %and217
   store i32 %shl218, i32* %w2c_i1, align 4
-  store i32 3784, i32* %w2c_i2, align 4
+  store i32 3816, i32* %w2c_i2, align 4
   %334 = load i32, i32* %w2c_i2, align 4
   %335 = load i32, i32* %w2c_i1, align 4
   %add219 = add i32 %335, %334
@@ -16549,7 +16452,7 @@ if.end231:                                        ; preds = %w2c_B13
   %w2c_memory232 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %349, i32 0, i32 1
   %350 = load i32, i32* %w2c_i1, align 4
   %conv233 = zext i32 %350 to i64
-  %add234 = add i64 %conv233, 3744
+  %add234 = add i64 %conv233, 3776
   %call235 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory232, i64 %add234, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 %call235, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -16575,7 +16478,7 @@ if.end231:                                        ; preds = %w2c_B13
   %w2c_memory244 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %358, i32 0, i32 1
   %359 = load i32, i32* %w2c_i0, align 4
   %conv245 = zext i32 %359 to i64
-  %add246 = add i64 %conv245, 3744
+  %add246 = add i64 %conv245, 3776
   %360 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory244, i64 %add246, i32 %360, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   br label %w2c_B11
@@ -16904,7 +16807,7 @@ if.end328:                                        ; preds = %w2c_B16
   %465 = load i32, i32* %w2c_i0, align 4
   %shl334 = shl i32 %465, %and333
   store i32 %shl334, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %466 = load i32, i32* %w2c_i1, align 4
   %467 = load i32, i32* %w2c_i0, align 4
   %add335 = add i32 %467, %466
@@ -16958,7 +16861,7 @@ if.end348:                                        ; preds = %if.end343
   %w2c_memory349 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %482, i32 0, i32 1
   %483 = load i32, i32* %w2c_i1, align 4
   %conv350 = zext i32 %483 to i64
-  %add351 = add i64 %conv350, 3748
+  %add351 = add i64 %conv350, 3780
   %call352 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory349, i64 %add351, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   store i32 %call352, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -16984,7 +16887,7 @@ if.end348:                                        ; preds = %if.end343
   %w2c_memory361 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %491, i32 0, i32 1
   %492 = load i32, i32* %w2c_i0, align 4
   %conv362 = zext i32 %492 to i64
-  %add363 = add i64 %conv362, 3748
+  %add363 = add i64 %conv362, 3780
   %493 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory361, i64 %add363, i32 %493, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.5, i64 0, i64 0))
   br label %w2c_B11
@@ -17568,7 +17471,7 @@ if.end6:                                          ; preds = %if.end
   %w2c_memory11 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %25, i32 0, i32 1
   %26 = load i32, i32* %w2c_i0, align 4
   %conv12 = zext i32 %26 to i64
-  %add13 = add i64 %conv12, 3764
+  %add13 = add i64 %conv12, 3796
   %call14 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory11, i64 %add13, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call14, i32* %w2c_i0, align 4
   %27 = load i32, i32* %w2c_p0.addr, align 4
@@ -17599,7 +17502,7 @@ if.end18:                                         ; preds = %if.end6
   %w2c_memory19 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %35, i32 0, i32 1
   %36 = load i32, i32* %w2c_i0, align 4
   %conv20 = zext i32 %36 to i64
-  %add21 = add i64 %conv20, 3760
+  %add21 = add i64 %conv20, 3792
   %call22 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory19, i64 %add21, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call22, i32* %w2c_i0, align 4
   %37 = load i32, i32* %w2c_i0, align 4
@@ -17658,7 +17561,7 @@ if.end27:                                         ; preds = %if.end18
   %55 = load i32, i32* %w2c_i1, align 4
   %shl = shl i32 %55, %and37
   store i32 %shl, i32* %w2c_i1, align 4
-  store i32 3784, i32* %w2c_i2, align 4
+  store i32 3816, i32* %w2c_i2, align 4
   %56 = load i32, i32* %w2c_i2, align 4
   %57 = load i32, i32* %w2c_i1, align 4
   %add38 = add i32 %57, %56
@@ -17713,7 +17616,7 @@ if.end50:                                         ; preds = %w2c_B4
   %w2c_memory51 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %71, i32 0, i32 1
   %72 = load i32, i32* %w2c_i1, align 4
   %conv52 = zext i32 %72 to i64
-  %add53 = add i64 %conv52, 3744
+  %add53 = add i64 %conv52, 3776
   %call54 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory51, i64 %add53, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call54, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -17739,7 +17642,7 @@ if.end50:                                         ; preds = %w2c_B4
   %w2c_memory62 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %80, i32 0, i32 1
   %81 = load i32, i32* %w2c_i0, align 4
   %conv63 = zext i32 %81 to i64
-  %add64 = add i64 %conv63, 3744
+  %add64 = add i64 %conv63, 3776
   %82 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory62, i64 %add64, i32 %82, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   br label %w2c_B1
@@ -18068,7 +17971,7 @@ if.end148:                                        ; preds = %w2c_B7
   %187 = load i32, i32* %w2c_i0, align 4
   %shl154 = shl i32 %187, %and153
   store i32 %shl154, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %188 = load i32, i32* %w2c_i1, align 4
   %189 = load i32, i32* %w2c_i0, align 4
   %add155 = add i32 %189, %188
@@ -18122,7 +18025,7 @@ if.end168:                                        ; preds = %if.end163
   %w2c_memory169 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %204, i32 0, i32 1
   %205 = load i32, i32* %w2c_i1, align 4
   %conv170 = zext i32 %205 to i64
-  %add171 = add i64 %conv170, 3748
+  %add171 = add i64 %conv170, 3780
   %call172 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory169, i64 %add171, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call172, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -18148,7 +18051,7 @@ if.end168:                                        ; preds = %if.end163
   %w2c_memory181 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %213, i32 0, i32 1
   %214 = load i32, i32* %w2c_i0, align 4
   %conv182 = zext i32 %214 to i64
-  %add183 = add i64 %conv182, 3748
+  %add183 = add i64 %conv182, 3780
   %215 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory181, i64 %add183, i32 %215, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   br label %w2c_B1
@@ -18385,7 +18288,7 @@ if.end244:                                        ; preds = %w2c_B2
   %w2c_memory249 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %291, i32 0, i32 1
   %292 = load i32, i32* %w2c_i0, align 4
   %conv250 = zext i32 %292 to i64
-  %add251 = add i64 %conv250, 3752
+  %add251 = add i64 %conv250, 3784
   %293 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory249, i64 %add251, i32 %293, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   %294 = load i32, i32* %w2c_l2, align 4
@@ -18446,7 +18349,7 @@ if.end265:                                        ; preds = %w2c_B1
   %w2c_memory266 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %313, i32 0, i32 1
   %314 = load i32, i32* %w2c_i0, align 4
   %conv267 = zext i32 %314 to i64
-  %add268 = add i64 %conv267, 3768
+  %add268 = add i64 %conv267, 3800
   %call269 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory266, i64 %add268, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call269, i32* %w2c_i0, align 4
   %315 = load i32, i32* %w2c_l2, align 4
@@ -18471,7 +18374,7 @@ if.end274:                                        ; preds = %if.end265
   %w2c_memory275 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %320, i32 0, i32 1
   %321 = load i32, i32* %w2c_i0, align 4
   %conv276 = zext i32 %321 to i64
-  %add277 = add i64 %conv276, 3768
+  %add277 = add i64 %conv276, 3800
   %322 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory275, i64 %add277, i32 %322, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -18480,7 +18383,7 @@ if.end274:                                        ; preds = %if.end265
   %w2c_memory278 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %323, i32 0, i32 1
   %324 = load i32, i32* %w2c_i1, align 4
   %conv279 = zext i32 %324 to i64
-  %add280 = add i64 %conv279, 3756
+  %add280 = add i64 %conv279, 3788
   %call281 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory278, i64 %add280, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call281, i32* %w2c_i1, align 4
   %325 = load i32, i32* %w2c_p1.addr, align 4
@@ -18495,7 +18398,7 @@ if.end274:                                        ; preds = %if.end265
   %w2c_memory283 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %329, i32 0, i32 1
   %330 = load i32, i32* %w2c_i0, align 4
   %conv284 = zext i32 %330 to i64
-  %add285 = add i64 %conv284, 3756
+  %add285 = add i64 %conv284, 3788
   %331 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory283, i64 %add285, i32 %331, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   %332 = load i32, i32* %w2c_p0.addr, align 4
@@ -18521,7 +18424,7 @@ if.end274:                                        ; preds = %if.end265
   %w2c_memory290 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %340, i32 0, i32 1
   %341 = load i32, i32* %w2c_i1, align 4
   %conv291 = zext i32 %341 to i64
-  %add292 = add i64 %conv291, 3764
+  %add292 = add i64 %conv291, 3796
   %call293 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory290, i64 %add292, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call293, i32* %w2c_i1, align 4
   %342 = load i32, i32* %w2c_i0, align 4
@@ -18543,7 +18446,7 @@ if.end298:                                        ; preds = %if.end274
   %w2c_memory299 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %345, i32 0, i32 1
   %346 = load i32, i32* %w2c_i0, align 4
   %conv300 = zext i32 %346 to i64
-  %add301 = add i64 %conv300, 3752
+  %add301 = add i64 %conv300, 3784
   %347 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory299, i64 %add301, i32 %347, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -18552,7 +18455,7 @@ if.end298:                                        ; preds = %if.end274
   %w2c_memory302 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %348, i32 0, i32 1
   %349 = load i32, i32* %w2c_i0, align 4
   %conv303 = zext i32 %349 to i64
-  %add304 = add i64 %conv303, 3764
+  %add304 = add i64 %conv303, 3796
   %350 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory302, i64 %add304, i32 %350, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   br label %w2c_Bfunc
@@ -18563,7 +18466,7 @@ w2c_B17:                                          ; preds = %if.then273
   %w2c_memory305 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %351, i32 0, i32 1
   %352 = load i32, i32* %w2c_i0, align 4
   %conv306 = zext i32 %352 to i64
-  %add307 = add i64 %conv306, 3764
+  %add307 = add i64 %conv306, 3796
   %call308 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory305, i64 %add307, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call308, i32* %w2c_i0, align 4
   %353 = load i32, i32* %w2c_l2, align 4
@@ -18588,7 +18491,7 @@ if.end313:                                        ; preds = %w2c_B17
   %w2c_memory314 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %358, i32 0, i32 1
   %359 = load i32, i32* %w2c_i0, align 4
   %conv315 = zext i32 %359 to i64
-  %add316 = add i64 %conv315, 3764
+  %add316 = add i64 %conv315, 3796
   %360 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory314, i64 %add316, i32 %360, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -18597,7 +18500,7 @@ if.end313:                                        ; preds = %w2c_B17
   %w2c_memory317 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %361, i32 0, i32 1
   %362 = load i32, i32* %w2c_i1, align 4
   %conv318 = zext i32 %362 to i64
-  %add319 = add i64 %conv318, 3752
+  %add319 = add i64 %conv318, 3784
   %call320 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory317, i64 %add319, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call320, i32* %w2c_i1, align 4
   %363 = load i32, i32* %w2c_p1.addr, align 4
@@ -18612,7 +18515,7 @@ if.end313:                                        ; preds = %w2c_B17
   %w2c_memory322 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %367, i32 0, i32 1
   %368 = load i32, i32* %w2c_i0, align 4
   %conv323 = zext i32 %368 to i64
-  %add324 = add i64 %conv323, 3752
+  %add324 = add i64 %conv323, 3784
   %369 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory322, i64 %add324, i32 %369, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   %370 = load i32, i32* %w2c_p0.addr, align 4
@@ -18655,7 +18558,7 @@ w2c_B18:                                          ; preds = %if.then312
   %w2c_memory332 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %385, i32 0, i32 1
   %386 = load i32, i32* %w2c_i0, align 4
   %conv333 = zext i32 %386 to i64
-  %add334 = add i64 %conv333, 3760
+  %add334 = add i64 %conv333, 3792
   %call335 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory332, i64 %add334, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call335, i32* %w2c_i0, align 4
   %387 = load i32, i32* %w2c_i0, align 4
@@ -18729,7 +18632,7 @@ if.end342:                                        ; preds = %w2c_B18
   %412 = load i32, i32* %w2c_i1, align 4
   %shl354 = shl i32 %412, %and353
   store i32 %shl354, i32* %w2c_i1, align 4
-  store i32 3784, i32* %w2c_i2, align 4
+  store i32 3816, i32* %w2c_i2, align 4
   %413 = load i32, i32* %w2c_i2, align 4
   %414 = load i32, i32* %w2c_i1, align 4
   %add355 = add i32 %414, %413
@@ -18784,7 +18687,7 @@ if.end367:                                        ; preds = %w2c_B21
   %w2c_memory368 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %428, i32 0, i32 1
   %429 = load i32, i32* %w2c_i1, align 4
   %conv369 = zext i32 %429 to i64
-  %add370 = add i64 %conv369, 3744
+  %add370 = add i64 %conv369, 3776
   %call371 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory368, i64 %add370, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call371, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -18810,7 +18713,7 @@ if.end367:                                        ; preds = %w2c_B21
   %w2c_memory380 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %437, i32 0, i32 1
   %438 = load i32, i32* %w2c_i0, align 4
   %conv381 = zext i32 %438 to i64
-  %add382 = add i64 %conv381, 3744
+  %add382 = add i64 %conv381, 3776
   %439 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory380, i64 %add382, i32 %439, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   br label %w2c_B19
@@ -19139,7 +19042,7 @@ if.end466:                                        ; preds = %w2c_B24
   %544 = load i32, i32* %w2c_i0, align 4
   %shl472 = shl i32 %544, %and471
   store i32 %shl472, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %545 = load i32, i32* %w2c_i1, align 4
   %546 = load i32, i32* %w2c_i0, align 4
   %add473 = add i32 %546, %545
@@ -19193,7 +19096,7 @@ if.end486:                                        ; preds = %if.end481
   %w2c_memory487 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %561, i32 0, i32 1
   %562 = load i32, i32* %w2c_i1, align 4
   %conv488 = zext i32 %562 to i64
-  %add489 = add i64 %conv488, 3748
+  %add489 = add i64 %conv488, 3780
   %call490 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory487, i64 %add489, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call490, i32* %w2c_i1, align 4
   store i32 -2, i32* %w2c_i2, align 4
@@ -19219,7 +19122,7 @@ if.end486:                                        ; preds = %if.end481
   %w2c_memory499 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %570, i32 0, i32 1
   %571 = load i32, i32* %w2c_i0, align 4
   %conv500 = zext i32 %571 to i64
-  %add501 = add i64 %conv500, 3748
+  %add501 = add i64 %conv500, 3780
   %572 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory499, i64 %add501, i32 %572, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   br label %w2c_B19
@@ -19442,7 +19345,7 @@ w2c_B19:                                          ; preds = %if.end550, %if.then
   %w2c_memory564 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %647, i32 0, i32 1
   %648 = load i32, i32* %w2c_i1, align 4
   %conv565 = zext i32 %648 to i64
-  %add566 = add i64 %conv565, 3764
+  %add566 = add i64 %conv565, 3796
   %call567 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory564, i64 %add566, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call567, i32* %w2c_i1, align 4
   %649 = load i32, i32* %w2c_i0, align 4
@@ -19465,7 +19368,7 @@ if.end572:                                        ; preds = %w2c_B19
   %w2c_memory573 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %653, i32 0, i32 1
   %654 = load i32, i32* %w2c_i0, align 4
   %conv574 = zext i32 %654 to i64
-  %add575 = add i64 %conv574, 3752
+  %add575 = add i64 %conv574, 3784
   %655 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory573, i64 %add575, i32 %655, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   br label %w2c_Bfunc
@@ -19554,7 +19457,7 @@ if.end591:                                        ; preds = %w2c_B15
   %687 = load i32, i32* %w2c_i0, align 4
   %shl595 = shl i32 %687, %and594
   store i32 %shl595, i32* %w2c_i0, align 4
-  store i32 3784, i32* %w2c_i1, align 4
+  store i32 3816, i32* %w2c_i1, align 4
   %688 = load i32, i32* %w2c_i1, align 4
   %689 = load i32, i32* %w2c_i0, align 4
   %add596 = add i32 %689, %688
@@ -19566,7 +19469,7 @@ if.end591:                                        ; preds = %w2c_B15
   %w2c_memory597 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %691, i32 0, i32 1
   %692 = load i32, i32* %w2c_i0, align 4
   %conv598 = zext i32 %692 to i64
-  %add599 = add i64 %conv598, 3744
+  %add599 = add i64 %conv598, 3776
   %call600 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory597, i64 %add599, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call600, i32* %w2c_i0, align 4
   %693 = load i32, i32* %w2c_i0, align 4
@@ -19606,7 +19509,7 @@ if.end606:                                        ; preds = %if.end591
   %w2c_memory608 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %705, i32 0, i32 1
   %706 = load i32, i32* %w2c_i0, align 4
   %conv609 = zext i32 %706 to i64
-  %add610 = add i64 %conv609, 3744
+  %add610 = add i64 %conv609, 3776
   %707 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory608, i64 %add610, i32 %707, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   %708 = load i32, i32* %w2c_p1.addr, align 4
@@ -19901,7 +19804,7 @@ w2c_B35:                                          ; preds = %if.end639, %if.then
   %819 = load i32, i32* %w2c_i0, align 4
   %shl678 = shl i32 %819, %and677
   store i32 %shl678, i32* %w2c_i0, align 4
-  store i32 4048, i32* %w2c_i1, align 4
+  store i32 4080, i32* %w2c_i1, align 4
   %820 = load i32, i32* %w2c_i1, align 4
   %821 = load i32, i32* %w2c_i0, align 4
   %add679 = add i32 %821, %820
@@ -19913,7 +19816,7 @@ w2c_B35:                                          ; preds = %if.end639, %if.then
   %w2c_memory680 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %823, i32 0, i32 1
   %824 = load i32, i32* %w2c_i0, align 4
   %conv681 = zext i32 %824 to i64
-  %add682 = add i64 %conv681, 3748
+  %add682 = add i64 %conv681, 3780
   %call683 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory680, i64 %add682, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   store i32 %call683, i32* %w2c_i0, align 4
   %825 = load i32, i32* %w2c_i0, align 4
@@ -19963,7 +19866,7 @@ if.end689:                                        ; preds = %w2c_B35
   %w2c_memory693 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %842, i32 0, i32 1
   %843 = load i32, i32* %w2c_i0, align 4
   %conv694 = zext i32 %843 to i64
-  %add695 = add i64 %conv694, 3748
+  %add695 = add i64 %conv694, 3780
   %844 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory693, i64 %add695, i32 %844, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0))
   %845 = load i32, i32* %w2c_p0.addr, align 4
@@ -22750,7 +22653,7 @@ w2c_Bfunc:                                        ; preds = %w2c_B0, %if.end21
 }
 
 ; Function Attrs: nofree nosync nounwind readnone speculatable willreturn
-declare i32 @llvm.ctpop.i32(i32) #3
+declare i32 @llvm.ctpop.i32(i32) #2
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define dso_local i32 @w2c_internal_memalign(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1) #0 {
@@ -22870,7 +22773,7 @@ if.end9:                                          ; preds = %w2c_B0
   %w2c_memory = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %27, i32 0, i32 1
   %28 = load i32, i32* %w2c_i0, align 4
   %conv10 = zext i32 %28 to i64
-  %add11 = add i64 %conv10, 4240
+  %add11 = add i64 %conv10, 4272
   %29 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory, i64 %add11, i32 %29, i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.8, i64 0, i64 0))
   store i32 0, i32* %w2c_i0, align 4
@@ -23608,7 +23511,7 @@ entry:
 }
 
 ; Function Attrs: noreturn
-declare dso_local void @wasm_rt_trap(i32) #2
+declare dso_local void @wasm_rt_trap(i32) #3
 
 declare dso_local i32 @wasm_rt_grow_memory(%struct.wasm_rt_memory_t*, i32) #4
 
@@ -23638,7 +23541,7 @@ entry:
   store i32 0, i32* %w2c_l5, align 4
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  %1 = load i32, i32* %w2c_g0, align 4
+  %1 = load i32, i32* %w2c_g0, align 8
   store i32 %1, i32* %w2c_i0, align 4
   store i32 208, i32* %w2c_i1, align 4
   %2 = load i32, i32* %w2c_i1, align 4
@@ -23650,7 +23553,7 @@ entry:
   %5 = load i32, i32* %w2c_i0, align 4
   %6 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g01 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %6, i32 0, i32 7
-  store i32 %5, i32* %w2c_g01, align 4
+  store i32 %5, i32* %w2c_g01, align 8
   %7 = load i32, i32* %w2c_l3, align 4
   store i32 %7, i32* %w2c_i0, align 4
   %8 = load i32, i32* %w2c_p2.addr, align 4
@@ -24066,7 +23969,7 @@ land.rhs:                                         ; preds = %land.lhs.true
   %156 = load i32, i32* %func_type, align 4
   %157 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %157, i32 0, i32 6
-  %arrayidx94 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types, i64 0, i64 1
+  %arrayidx94 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types, i64 0, i64 0
   %158 = load i32, i32* %arrayidx94, align 4
   %cmp95 = icmp eq i32 %156, %158
   br label %land.end
@@ -24105,7 +24008,7 @@ if.else:                                          ; preds = %land.end
   %170 = load i32, i32* %w2c_i3, align 4
   %171 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types111 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %171, i32 0, i32 6
-  %arrayidx112 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types111, i64 0, i64 1
+  %arrayidx112 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types111, i64 0, i64 0
   %172 = load i32, i32* %arrayidx112, align 4
   call void @wasm_rt_callback_error_trap(%struct.wasm_rt_table_t* %w2c_T0110, i32 %170, i32 %172) #10
   unreachable
@@ -24262,7 +24165,7 @@ w2c_B0:                                           ; preds = %cond.end143, %if.en
   %226 = load i32, i32* %w2c_i0, align 4
   %227 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0146 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %227, i32 0, i32 7
-  store i32 %226, i32* %w2c_g0146, align 4
+  store i32 %226, i32* %w2c_g0146, align 8
   %228 = load i32, i32* %w2c_p0.addr, align 4
   store i32 %228, i32* %w2c_i0, align 4
   %229 = load i32, i32* %w2c_i0, align 4
@@ -24440,7 +24343,7 @@ land.rhs:                                         ; preds = %land.lhs.true
   %46 = load i32, i32* %func_type, align 4
   %47 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %47, i32 0, i32 6
-  %arrayidx29 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types, i64 0, i64 1
+  %arrayidx29 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types, i64 0, i64 0
   %48 = load i32, i32* %arrayidx29, align 4
   %cmp30 = icmp eq i32 %46, %48
   br label %land.end
@@ -24479,7 +24382,7 @@ if.else:                                          ; preds = %land.end
   %60 = load i32, i32* %w2c_i3, align 4
   %61 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types43 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %61, i32 0, i32 6
-  %arrayidx44 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types43, i64 0, i64 1
+  %arrayidx44 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types43, i64 0, i64 0
   %62 = load i32, i32* %arrayidx44, align 4
   call void @wasm_rt_callback_error_trap(%struct.wasm_rt_table_t* %w2c_T042, i32 %60, i32 %62) #10
   unreachable
@@ -24674,7 +24577,7 @@ land.rhs88:                                       ; preds = %land.lhs.true81
   %127 = load i32, i32* %func_type93, align 4
   %128 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types94 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %128, i32 0, i32 6
-  %arrayidx95 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types94, i64 0, i64 1
+  %arrayidx95 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types94, i64 0, i64 0
   %129 = load i32, i32* %arrayidx95, align 4
   %cmp96 = icmp eq i32 %127, %129
   br label %land.end98
@@ -24713,7 +24616,7 @@ if.else112:                                       ; preds = %land.end98
   %141 = load i32, i32* %w2c_i3, align 4
   %142 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types114 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %142, i32 0, i32 6
-  %arrayidx115 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types114, i64 0, i64 1
+  %arrayidx115 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types114, i64 0, i64 0
   %143 = load i32, i32* %arrayidx115, align 4
   call void @wasm_rt_callback_error_trap(%struct.wasm_rt_table_t* %w2c_T0113, i32 %141, i32 %143) #10
   unreachable
@@ -25063,8 +24966,11 @@ w2c_Bfunc:                                        ; preds = %w2c_B0, %if.end
   ret i32 %55
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define dso_local i32 @w2c_strerror(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0) #1 {
+; Function Attrs: noreturn
+declare dso_local void @wasm_rt_callback_error_trap(%struct.wasm_rt_table_t*, i32, i32) #3
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @w2c_strerror(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %w2c_p0.addr = alloca i32, align 4
@@ -25081,7 +24987,7 @@ entry:
   %w2c_memory = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 1
   %1 = load i32, i32* %w2c_i0, align 4
   %conv = zext i32 %1 to i64
-  %add = add i64 %conv, 5328
+  %add = add i64 %conv, 5360
   %call = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory, i64 %add, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.13, i64 0, i64 0))
   store i32 %call, i32* %w2c_i0, align 4
   %2 = load i32, i32* %w2c_i0, align 4
@@ -25094,16 +25000,16 @@ if.then:                                          ; preds = %entry
   br label %w2c_B0
 
 if.end:                                           ; preds = %entry
-  store i32 5304, i32* %w2c_i0, align 4
+  store i32 5336, i32* %w2c_i0, align 4
   %4 = load i32, i32* %w2c_i0, align 4
   store i32 %4, i32* %w2c_l1, align 4
   store i32 0, i32* %w2c_i0, align 4
-  store i32 5304, i32* %w2c_i1, align 4
+  store i32 5336, i32* %w2c_i1, align 4
   %5 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory1 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %5, i32 0, i32 1
   %6 = load i32, i32* %w2c_i0, align 4
   %conv2 = zext i32 %6 to i64
-  %add3 = add i64 %conv2, 5328
+  %add3 = add i64 %conv2, 5360
   %7 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory1, i64 %add3, i32 %7, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.13, i64 0, i64 0))
   br label %w2c_B0
@@ -25141,7 +25047,7 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   %16 = load i32, i32* %w2c_i0, align 4
   %shl = shl i32 %16, %and
   store i32 %shl, i32* %w2c_i0, align 4
-  store i32 2640, i32* %w2c_i1, align 4
+  store i32 2672, i32* %w2c_i1, align 4
   %17 = load i32, i32* %w2c_i1, align 4
   %18 = load i32, i32* %w2c_i0, align 4
   %add6 = add i32 %18, %17
@@ -25152,7 +25058,7 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   %conv8 = zext i32 %20 to i64
   %call9 = call i32 @i32_load16_u(%struct.wasm_rt_memory_t* %w2c_memory7, i64 %conv8, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.13, i64 0, i64 0))
   store i32 %call9, i32* %w2c_i0, align 4
-  store i32 1088, i32* %w2c_i1, align 4
+  store i32 1116, i32* %w2c_i1, align 4
   %21 = load i32, i32* %w2c_i1, align 4
   %22 = load i32, i32* %w2c_i0, align 4
   %add10 = add i32 %22, %21
@@ -25197,8 +25103,8 @@ entry:
   ret i32 %conv
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define internal i32 @w2c___lctrans(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @w2c___lctrans(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %w2c_p0.addr = alloca i32, align 4
@@ -25221,8 +25127,8 @@ entry:
   ret i32 %5
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define dso_local i32 @w2c_writev(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1, i32 %w2c_p2) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @w2c_writev(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1, i32 %w2c_p2) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %w2c_p0.addr = alloca i32, align 4
@@ -25243,7 +25149,7 @@ entry:
   store i32 0, i32* %w2c_l4, align 4
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  %1 = load i32, i32* %w2c_g0, align 4
+  %1 = load i32, i32* %w2c_g0, align 8
   store i32 %1, i32* %w2c_i0, align 4
   store i32 16, i32* %w2c_i1, align 4
   %2 = load i32, i32* %w2c_i1, align 4
@@ -25255,7 +25161,7 @@ entry:
   %5 = load i32, i32* %w2c_i0, align 4
   %6 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g01 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %6, i32 0, i32 7
-  store i32 %5, i32* %w2c_g01, align 4
+  store i32 %5, i32* %w2c_g01, align 8
   store i32 -1, i32* %w2c_i0, align 4
   %7 = load i32, i32* %w2c_i0, align 4
   store i32 %7, i32* %w2c_l4, align 4
@@ -25281,7 +25187,7 @@ if.end:                                           ; preds = %entry
   %w2c_memory = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %12, i32 0, i32 1
   %13 = load i32, i32* %w2c_i0, align 4
   %conv2 = zext i32 %13 to i64
-  %add = add i64 %conv2, 4240
+  %add = add i64 %conv2, 4272
   %14 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory, i64 %add, i32 %14, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.14, i64 0, i64 0))
   br label %w2c_B0
@@ -25330,7 +25236,7 @@ if.end7:                                          ; preds = %w2c_B1
   %w2c_memory8 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %31, i32 0, i32 1
   %32 = load i32, i32* %w2c_i0, align 4
   %conv9 = zext i32 %32 to i64
-  %add10 = add i64 %conv9, 4240
+  %add10 = add i64 %conv9, 4272
   %33 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory8, i64 %add10, i32 %33, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.14, i64 0, i64 0))
   store i32 -1, i32* %w2c_i0, align 4
@@ -25363,7 +25269,7 @@ w2c_B0:                                           ; preds = %w2c_B2, %if.end7, %
   %42 = load i32, i32* %w2c_i0, align 4
   %43 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g016 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %43, i32 0, i32 7
-  store i32 %42, i32* %w2c_g016, align 4
+  store i32 %42, i32* %w2c_g016, align 8
   %44 = load i32, i32* %w2c_l4, align 4
   store i32 %44, i32* %w2c_i0, align 4
   %45 = load i32, i32* %w2c_i0, align 4
@@ -25835,7 +25741,7 @@ entry:
   store double 0.000000e+00, double* %w2c_l39, align 8
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  %1 = load i32, i32* %w2c_g0, align 4
+  %1 = load i32, i32* %w2c_g0, align 8
   store i32 %1, i32* %w2c_i0, align 4
   store i32 880, i32* %w2c_i1, align 4
   %2 = load i32, i32* %w2c_i1, align 4
@@ -25847,7 +25753,7 @@ entry:
   %5 = load i32, i32* %w2c_i0, align 4
   %6 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g01 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %6, i32 0, i32 7
-  store i32 %5, i32* %w2c_g01, align 4
+  store i32 %5, i32* %w2c_g01, align 8
   %7 = load i32, i32* %w2c_l5, align 4
   store i32 %7, i32* %w2c_i0, align 4
   store i32 55, i32* %w2c_i1, align 4
@@ -28046,7 +27952,7 @@ if.end463:                                        ; preds = %w2c_L52
   %734 = load i32, i32* %w2c_i0, align 4
   %add466 = add i32 %734, %733
   store i32 %add466, i32* %w2c_i0, align 4
-  store i32 2832, i32* %w2c_i1, align 4
+  store i32 2864, i32* %w2c_i1, align 4
   %735 = load i32, i32* %w2c_i1, align 4
   %736 = load i32, i32* %w2c_i0, align 4
   %add467 = add i32 %736, %735
@@ -28134,7 +28040,7 @@ w2c_B8:                                           ; preds = %if.end492, %if.then
   %w2c_memory493 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %756, i32 0, i32 1
   %757 = load i32, i32* %w2c_i0, align 4
   %conv494 = zext i32 %757 to i64
-  %add495 = add i64 %conv494, 4240
+  %add495 = add i64 %conv494, 4272
   %758 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory493, i64 %add495, i32 %758, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.16, i64 0, i64 0))
   br label %w2c_B1
@@ -28612,7 +28518,7 @@ w2c_B76:                                          ; preds = %sw.bb602
   store i32 0, i32* %w2c_i0, align 4
   %839 = load i32, i32* %w2c_i0, align 4
   store i32 %839, i32* %w2c_l30, align 4
-  store i32 2800, i32* %w2c_i0, align 4
+  store i32 2832, i32* %w2c_i0, align 4
   %840 = load i32, i32* %w2c_i0, align 4
   store i32 %840, i32* %w2c_l31, align 4
   %841 = load i32, i32* %w2c_l5, align 4
@@ -28871,7 +28777,7 @@ w2c_B73:                                          ; preds = %cond.end669, %sw.bb
   store i32 0, i32* %w2c_i0, align 4
   %914 = load i32, i32* %w2c_i0, align 4
   store i32 %914, i32* %w2c_l30, align 4
-  store i32 2800, i32* %w2c_i0, align 4
+  store i32 2832, i32* %w2c_i0, align 4
   %915 = load i32, i32* %w2c_i0, align 4
   store i32 %915, i32* %w2c_l31, align 4
   %916 = load i32, i32* %w2c_l5, align 4
@@ -28945,7 +28851,7 @@ w2c_L85:                                          ; preds = %if.then701, %w2c_B8
   %938 = load i32, i32* %w2c_i1, align 4
   %and688 = and i32 %938, %937
   store i32 %and688, i32* %w2c_i1, align 4
-  store i32 3440, i32* %w2c_i2, align 4
+  store i32 3472, i32* %w2c_i2, align 4
   %939 = load i32, i32* %w2c_i2, align 4
   %940 = load i32, i32* %w2c_i1, align 4
   %add689 = add i32 %940, %939
@@ -29042,7 +28948,7 @@ if.end719:                                        ; preds = %if.end709
   %and720 = and i32 %968, 31
   %shr721 = ashr i32 %967, %and720
   store i32 %shr721, i32* %w2c_i0, align 4
-  store i32 2800, i32* %w2c_i1, align 4
+  store i32 2832, i32* %w2c_i1, align 4
   %969 = load i32, i32* %w2c_i1, align 4
   %970 = load i32, i32* %w2c_i0, align 4
   %add722 = add i32 %970, %969
@@ -29150,7 +29056,7 @@ w2c_B86:                                          ; preds = %if.end745, %if.then
   store i32 0, i32* %w2c_i0, align 4
   %1003 = load i32, i32* %w2c_i0, align 4
   store i32 %1003, i32* %w2c_l30, align 4
-  store i32 2800, i32* %w2c_i0, align 4
+  store i32 2832, i32* %w2c_i0, align 4
   %1004 = load i32, i32* %w2c_i0, align 4
   store i32 %1004, i32* %w2c_l31, align 4
   %1005 = load i32, i32* %w2c_l23, align 4
@@ -29267,7 +29173,7 @@ if.end772:                                        ; preds = %w2c_B71
   store i32 1, i32* %w2c_i0, align 4
   %1041 = load i32, i32* %w2c_i0, align 4
   store i32 %1041, i32* %w2c_l30, align 4
-  store i32 2800, i32* %w2c_i0, align 4
+  store i32 2832, i32* %w2c_i0, align 4
   %1042 = load i32, i32* %w2c_i0, align 4
   store i32 %1042, i32* %w2c_l31, align 4
   br label %w2c_B70
@@ -29296,14 +29202,14 @@ if.end783:                                        ; preds = %w2c_B88
   store i32 1, i32* %w2c_i0, align 4
   %1048 = load i32, i32* %w2c_i0, align 4
   store i32 %1048, i32* %w2c_l30, align 4
-  store i32 2801, i32* %w2c_i0, align 4
+  store i32 2833, i32* %w2c_i0, align 4
   %1049 = load i32, i32* %w2c_i0, align 4
   store i32 %1049, i32* %w2c_l31, align 4
   br label %w2c_B70
 
 w2c_B89:                                          ; preds = %if.then782
-  store i32 2802, i32* %w2c_i0, align 4
-  store i32 2800, i32* %w2c_i1, align 4
+  store i32 2834, i32* %w2c_i0, align 4
+  store i32 2832, i32* %w2c_i1, align 4
   %1050 = load i32, i32* %w2c_l23, align 4
   store i32 %1050, i32* %w2c_i2, align 4
   store i32 1, i32* %w2c_i3, align 4
@@ -29763,7 +29669,7 @@ w2c_B68:                                          ; preds = %sw.bb584
   store i32 0, i32* %w2c_i0, align 4
   %1188 = load i32, i32* %w2c_i0, align 4
   store i32 %1188, i32* %w2c_l30, align 4
-  store i32 2800, i32* %w2c_i0, align 4
+  store i32 2832, i32* %w2c_i0, align 4
   %1189 = load i32, i32* %w2c_i0, align 4
   store i32 %1189, i32* %w2c_l31, align 4
   store i32 1, i32* %w2c_i0, align 4
@@ -29785,7 +29691,7 @@ w2c_B67:                                          ; preds = %sw.bb594
   %w2c_memory902 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1195, i32 0, i32 1
   %1196 = load i32, i32* %w2c_i0, align 4
   %conv903 = zext i32 %1196 to i64
-  %add904 = add i64 %conv903, 4240
+  %add904 = add i64 %conv903, 4272
   %call905 = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory902, i64 %add904, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.16, i64 0, i64 0))
   store i32 %call905, i32* %w2c_i0, align 4
   %1197 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
@@ -29808,7 +29714,7 @@ w2c_B66:                                          ; preds = %sw.bb600
   store i32 %call910, i32* %w2c_i0, align 4
   %1203 = load i32, i32* %w2c_i0, align 4
   store i32 %1203, i32* %w2c_l17, align 4
-  store i32 2810, i32* %w2c_i1, align 4
+  store i32 2842, i32* %w2c_i1, align 4
   %1204 = load i32, i32* %w2c_l17, align 4
   store i32 %1204, i32* %w2c_i2, align 4
   %1205 = load i32, i32* %w2c_i2, align 4
@@ -29877,7 +29783,7 @@ cond.end921:                                      ; preds = %cond.false920, %con
   store i32 %add924, i32* %w2c_i0, align 4
   %1225 = load i32, i32* %w2c_i0, align 4
   store i32 %1225, i32* %w2c_l17, align 4
-  store i32 2800, i32* %w2c_i0, align 4
+  store i32 2832, i32* %w2c_i0, align 4
   %1226 = load i32, i32* %w2c_i0, align 4
   store i32 %1226, i32* %w2c_l31, align 4
   %1227 = load i32, i32* %w2c_l21, align 4
@@ -30918,7 +30824,7 @@ if.end1184:                                       ; preds = %w2c_B110
   store i32 0, i32* %w2c_i0, align 4
   %1556 = load i32, i32* %w2c_i0, align 4
   store i32 %1556, i32* %w2c_l36, align 4
-  store i32 3456, i32* %w2c_i0, align 4
+  store i32 3488, i32* %w2c_i0, align 4
   %1557 = load i32, i32* %w2c_i0, align 4
   store i32 %1557, i32* %w2c_l37, align 4
   br label %w2c_B111
@@ -30950,14 +30856,14 @@ if.end1191:                                       ; preds = %w2c_B112
   store i32 0, i32* %w2c_i0, align 4
   %1564 = load i32, i32* %w2c_i0, align 4
   store i32 %1564, i32* %w2c_l36, align 4
-  store i32 3459, i32* %w2c_i0, align 4
+  store i32 3491, i32* %w2c_i0, align 4
   %1565 = load i32, i32* %w2c_i0, align 4
   store i32 %1565, i32* %w2c_l37, align 4
   br label %w2c_B111
 
 w2c_B113:                                         ; preds = %if.then1190
-  store i32 3462, i32* %w2c_i0, align 4
-  store i32 3457, i32* %w2c_i1, align 4
+  store i32 3494, i32* %w2c_i0, align 4
+  store i32 3489, i32* %w2c_i1, align 4
   %1566 = load i32, i32* %w2c_l23, align 4
   store i32 %1566, i32* %w2c_i2, align 4
   store i32 1, i32* %w2c_i3, align 4
@@ -31328,8 +31234,8 @@ if.then1279:                                      ; preds = %w2c_B119
   br label %w2c_B120
 
 if.end1280:                                       ; preds = %w2c_B119
-  store i32 3483, i32* %w2c_i0, align 4
-  store i32 3487, i32* %w2c_i1, align 4
+  store i32 3515, i32* %w2c_i0, align 4
+  store i32 3519, i32* %w2c_i1, align 4
   %1688 = load i32, i32* %w2c_l29, align 4
   store i32 %1688, i32* %w2c_i2, align 4
   store i32 32, i32* %w2c_i3, align 4
@@ -31354,8 +31260,8 @@ cond.false1284:                                   ; preds = %if.end1280
 cond.end1285:                                     ; preds = %cond.false1284, %cond.true1283
   %cond1286 = phi i32 [ %1693, %cond.true1283 ], [ %1694, %cond.false1284 ]
   store i32 %cond1286, i32* %w2c_i0, align 4
-  store i32 3475, i32* %w2c_i1, align 4
-  store i32 3479, i32* %w2c_i2, align 4
+  store i32 3507, i32* %w2c_i1, align 4
+  store i32 3511, i32* %w2c_i2, align 4
   %1695 = load i32, i32* %w2c_l17, align 4
   store i32 %1695, i32* %w2c_i3, align 4
   %1696 = load i32, i32* %w2c_i3, align 4
@@ -35935,7 +35841,7 @@ if.then2422:                                      ; preds = %if.end2416
   br label %w2c_B188
 
 if.end2423:                                       ; preds = %if.end2416
-  store i32 3491, i32* %w2c_i0, align 4
+  store i32 3523, i32* %w2c_i0, align 4
   store i32 1, i32* %w2c_i1, align 4
   %3162 = load i32, i32* %w2c_p0.addr, align 4
   store i32 %3162, i32* %w2c_i2, align 4
@@ -36535,7 +36441,7 @@ w2c_B59:                                          ; preds = %sw.default, %sw.bb6
   store i32 0, i32* %w2c_i0, align 4
   %3353 = load i32, i32* %w2c_i0, align 4
   store i32 %3353, i32* %w2c_l30, align 4
-  store i32 2800, i32* %w2c_i0, align 4
+  store i32 2832, i32* %w2c_i0, align 4
   %3354 = load i32, i32* %w2c_i0, align 4
   store i32 %3354, i32* %w2c_l31, align 4
   %3355 = load i32, i32* %w2c_l14, align 4
@@ -38118,7 +38024,7 @@ if.then2941:                                      ; preds = %w2c_B227
   br label %w2c_B223
 
 if.end2942:                                       ; preds = %w2c_B227
-  store i32 3491, i32* %w2c_i0, align 4
+  store i32 3523, i32* %w2c_i0, align 4
   store i32 1, i32* %w2c_i1, align 4
   %3877 = load i32, i32* %w2c_p0.addr, align 4
   store i32 %3877, i32* %w2c_i2, align 4
@@ -39385,7 +39291,7 @@ w2c_B244:                                         ; preds = %w2c_B245, %cond.end
   store i32 %4293, i32* %w2c_i0, align 4
   %4294 = load i32, i32* %w2c_l19, align 4
   store i32 %4294, i32* %w2c_i1, align 4
-  store i32 3440, i32* %w2c_i2, align 4
+  store i32 3472, i32* %w2c_i2, align 4
   %4295 = load i32, i32* %w2c_i2, align 4
   %4296 = load i32, i32* %w2c_i1, align 4
   %add3249 = add i32 %4296, %4295
@@ -40788,7 +40694,7 @@ w2c_B2:                                           ; preds = %if.end3584, %if.the
   %w2c_memory3585 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %4760, i32 0, i32 1
   %4761 = load i32, i32* %w2c_i0, align 4
   %conv3586 = zext i32 %4761 to i64
-  %add3587 = add i64 %conv3586, 4240
+  %add3587 = add i64 %conv3586, 4272
   %4762 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory3585, i64 %add3587, i32 %4762, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.16, i64 0, i64 0))
   br label %w2c_B1
@@ -40810,15 +40716,15 @@ w2c_B0:                                           ; preds = %w2c_B1, %if.end523,
   %4767 = load i32, i32* %w2c_i0, align 4
   %4768 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g03589 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %4768, i32 0, i32 7
-  store i32 %4767, i32* %w2c_g03589, align 4
+  store i32 %4767, i32* %w2c_g03589, align 8
   %4769 = load i32, i32* %w2c_l16, align 4
   store i32 %4769, i32* %w2c_i0, align 4
   %4770 = load i32, i32* %w2c_i0, align 4
   ret i32 %4770
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define internal i32 @w2c___fwritex(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1, i32 %w2c_p2) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @w2c___fwritex(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1, i32 %w2c_p2) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %w2c_p0.addr = alloca i32, align 4
@@ -40974,7 +40880,7 @@ land.rhs:                                         ; preds = %land.lhs.true
   %41 = load i32, i32* %func_type, align 4
   %42 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %42, i32 0, i32 6
-  %arrayidx29 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types, i64 0, i64 1
+  %arrayidx29 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types, i64 0, i64 0
   %43 = load i32, i32* %arrayidx29, align 4
   %cmp30 = icmp eq i32 %41, %43
   br label %land.end
@@ -41013,7 +40919,7 @@ if.else:                                          ; preds = %land.end
   %55 = load i32, i32* %w2c_i3, align 4
   %56 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types43 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %56, i32 0, i32 6
-  %arrayidx44 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types43, i64 0, i64 1
+  %arrayidx44 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types43, i64 0, i64 0
   %57 = load i32, i32* %arrayidx44, align 4
   call void @wasm_rt_callback_error_trap(%struct.wasm_rt_table_t* %w2c_T042, i32 %55, i32 %57) #10
   unreachable
@@ -41196,7 +41102,7 @@ land.rhs89:                                       ; preds = %land.lhs.true82
   %118 = load i32, i32* %func_type94, align 4
   %119 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types95 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %119, i32 0, i32 6
-  %arrayidx96 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types95, i64 0, i64 1
+  %arrayidx96 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types95, i64 0, i64 0
   %120 = load i32, i32* %arrayidx96, align 4
   %cmp97 = icmp eq i32 %118, %120
   br label %land.end99
@@ -41235,7 +41141,7 @@ if.else113:                                       ; preds = %land.end99
   %132 = load i32, i32* %w2c_i3, align 4
   %133 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types115 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %133, i32 0, i32 6
-  %arrayidx116 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types115, i64 0, i64 1
+  %arrayidx116 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types115, i64 0, i64 0
   %134 = load i32, i32* %arrayidx116, align 4
   call void @wasm_rt_callback_error_trap(%struct.wasm_rt_table_t* %w2c_T0114, i32 %132, i32 %134) #10
   unreachable
@@ -42407,8 +42313,8 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define dso_local i32 @w2c_wctomb(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @w2c_wctomb(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %w2c_p0.addr = alloca i32, align 4
@@ -42486,7 +42392,7 @@ entry:
 }
 
 ; Function Attrs: nofree nosync nounwind readnone speculatable willreturn
-declare double @llvm.fabs.f64(double) #3
+declare double @llvm.fabs.f64(double) #2
 
 ; Function Attrs: noinline nounwind optnone uwtable
 define dso_local double @w2c_frexp(%struct.wasm2c_sandbox_t* %sbx, double %w2c_p0, i32 %w2c_p1) #0 {
@@ -42737,8 +42643,8 @@ entry:
   ret i64 %conv
 }
 
-; Function Attrs: noinline nounwind optnone uwtable
-define internal i64 @i64_load16_u(%struct.wasm_rt_memory_t* %mem, i64 %addr, i8* %func_name) #0 {
+; Function Attrs: noinline nounwind optnone tainted uwtable
+define internal i64 @i64_load16_u(%struct.wasm_rt_memory_t* %mem, i64 %addr, i8* %func_name) #1 {
 entry:
   %mem.addr = alloca %struct.wasm_rt_memory_t*, align 8
   %addr.addr = alloca i64, align 8
@@ -42808,8 +42714,8 @@ entry:
   %w2c_i0 = alloca i32, align 4
   %w2c_i1 = alloca i32, align 4
   store %struct.wasm2c_sandbox_t* %sbx, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  store i32 3296, i32* %w2c_i0, align 4
-  store i32 3616, i32* %w2c_i1, align 4
+  store i32 3328, i32* %w2c_i0, align 4
+  store i32 3648, i32* %w2c_i1, align 4
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %1 = load i32, i32* %w2c_i0, align 4
   %2 = load i32, i32* %w2c_i1, align 4
@@ -42858,7 +42764,7 @@ w2c_B0:                                           ; preds = %if.then
   %w2c_memory = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %7, i32 0, i32 1
   %8 = load i32, i32* %w2c_i0, align 4
   %conv = zext i32 %8 to i64
-  %add = add i64 %conv, 4240
+  %add = add i64 %conv, 4272
   %9 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory, i64 %add, i32 %9, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.18, i64 0, i64 0))
   store i32 -1, i32* %w2c_i0, align 4
@@ -43299,8 +43205,8 @@ w2c_Bfunc:                                        ; preds = %w2c_B0, %if.end73
   ret i32 %123
 }
 
-; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i32 @w2c_dummy(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1) #0 {
+; Function Attrs: noinline nounwind optnone tainted uwtable
+define dso_local i32 @w2c_dummy(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1) #1 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %w2c_p0.addr = alloca i32, align 4
@@ -43384,7 +43290,7 @@ w2c_B1:                                           ; preds = %if.then3
   %w2c_memory6 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %13, i32 0, i32 1
   %14 = load i32, i32* %w2c_i0, align 4
   %conv7 = zext i32 %14 to i64
-  %add = add i64 %conv7, 5304
+  %add = add i64 %conv7, 5336
   %call = call i32 @i32_load(%struct.wasm_rt_memory_t* %w2c_memory6, i64 %add, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.23, i64 0, i64 0))
   store i32 %call, i32* %w2c_i0, align 4
   %15 = load i32, i32* %w2c_i0, align 4
@@ -43422,7 +43328,7 @@ if.end15:                                         ; preds = %if.end10
   %w2c_memory16 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %22, i32 0, i32 1
   %23 = load i32, i32* %w2c_i0, align 4
   %conv17 = zext i32 %23 to i64
-  %add18 = add i64 %conv17, 4240
+  %add18 = add i64 %conv17, 4272
   %24 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory16, i64 %add18, i32 %24, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.23, i64 0, i64 0))
   br label %w2c_B2
@@ -43744,7 +43650,7 @@ w2c_B8:                                           ; preds = %if.then66
   %w2c_memory92 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %137, i32 0, i32 1
   %138 = load i32, i32* %w2c_i0, align 4
   %conv93 = zext i32 %138 to i64
-  %add94 = add i64 %conv93, 4240
+  %add94 = add i64 %conv93, 4272
   %139 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory92, i64 %add94, i32 %139, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.23, i64 0, i64 0))
   br label %w2c_B2
@@ -43779,7 +43685,7 @@ entry:
 }
 
 ; Function Attrs: noinline nounwind optnone tainted uwtable
-define dso_local void @get_wasm2c_sandbox_info(%struct.wasm2c_sandbox_funcs_t*  align 8 %agg.result) #1 {
+define dso_local void @get_wasm2c_sandbox_info(%struct.wasm2c_sandbox_funcs_t* align 8 %agg.result) #1 {
 entry:
   %wasm_rt_sys_init = getelementptr inbounds %struct.wasm2c_sandbox_funcs_t, %struct.wasm2c_sandbox_funcs_t* %agg.result, i32 0, i32 0
   store void ()* bitcast (void (...)* @wasm_rt_sys_init to void ()*), void ()** %wasm_rt_sys_init, align 8
@@ -43801,8 +43707,8 @@ entry:
 ; Function Attrs: tainted
 declare dso_local void @wasm_rt_sys_init(...) #5
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define internal i8* @create_wasm2c_sandbox(i32 %max_wasm_pages) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i8* @create_wasm2c_sandbox(i32 %max_wasm_pages) #0 {
 entry:
   %retval = alloca i8*, align 8
   %max_wasm_pages.addr = alloca i32, align 4
@@ -43844,8 +43750,8 @@ return:                                           ; preds = %if.end, %if.then
   ret i8* %11
 }
 
-; Function Attrs: noinline nounwind optnone uwtable
-define internal void @destroy_wasm2c_sandbox(i8* %aSbx) #0 {
+; Function Attrs: noinline nounwind optnone tainted uwtable
+define internal void @destroy_wasm2c_sandbox(i8* %aSbx) #1 {
 entry:
   %aSbx.addr = alloca i8*, align 8
   %sbx = alloca %struct.wasm2c_sandbox_t*, align 8
@@ -43868,8 +43774,8 @@ entry:
   ret void
 }
 
-; Function Attrs: noinline nounwind optnone uwtable
-define internal i8* @lookup_wasm2c_nonfunc_export(i8* %sbx_ptr, i8* %name) #0 {
+; Function Attrs: noinline nounwind optnone tainted uwtable
+define internal i8* @lookup_wasm2c_nonfunc_export(i8* %sbx_ptr, i8* %name) #1 {
 entry:
   %retval = alloca i8*, align 8
   %sbx_ptr.addr = alloca i8*, align 8
@@ -44331,8 +44237,8 @@ declare void @llvm.memcpy.p0i8.p0i8.i64(i8* noalias nocapture writeonly, i8* noa
 ; Function Attrs: nounwind
 declare dso_local noalias i8* @calloc(i64, i64) #7
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define internal zeroext i1 @init_memory(%struct.wasm2c_sandbox_t* %sbx, i32 %max_wasm_pages_from_rt) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define internal zeroext i1 @init_memory(%struct.wasm2c_sandbox_t* %sbx, i32 %max_wasm_pages_from_rt) #0 {
 entry:
   %retval = alloca i1, align 1
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
@@ -44377,12 +44283,12 @@ if.end:                                           ; preds = %cond.end
   %data = getelementptr inbounds %struct.wasm_rt_memory_t, %struct.wasm_rt_memory_t* %w2c_memory1, i32 0, i32 0
   %6 = load i8*, i8** %data, align 8
   %arrayidx = getelementptr inbounds i8, i8* %6, i64 1024
-  call void @load_data(i8* %arrayidx, i8* getelementptr inbounds ([2469 x i8], [2469 x i8]* @data_segment_data_0, i64 0, i64 0), i64 2469)
+  call void @load_data(i8* %arrayidx, i8* getelementptr inbounds ([2501 x i8], [2501 x i8]* @data_segment_data_0, i64 0, i64 0), i64 2501)
   %7 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory2 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %7, i32 0, i32 1
   %data3 = getelementptr inbounds %struct.wasm_rt_memory_t, %struct.wasm_rt_memory_t* %w2c_memory2, i32 0, i32 0
   %8 = load i8*, i8** %data3, align 8
-  %arrayidx4 = getelementptr inbounds i8, i8* %8, i64 3496
+  %arrayidx4 = getelementptr inbounds i8, i8* %8, i64 3528
   call void @load_data(i8* %arrayidx4, i8* getelementptr inbounds ([236 x i8], [236 x i8]* @data_segment_data_1, i64 0, i64 0), i64 236)
   %9 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_memory5 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %9, i32 0, i32 1
@@ -44405,35 +44311,34 @@ declare dso_local void @free(i8*) #7
 define internal void @init_func_types(%struct.wasm2c_sandbox_t* %sbx) #0 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
-  %param_ret_types = alloca [1 x i32], align 4
+  %param_ret_types = alloca [4 x i32], align 16
   %param_ret_types1 = alloca [4 x i32], align 16
-  %param_ret_types8 = alloca [4 x i32], align 16
+  %param_ret_types8 = alloca [5 x i32], align 16
   %param_ret_types15 = alloca [5 x i32], align 16
-  %param_ret_types22 = alloca [5 x i32], align 16
-  %param_ret_types29 = alloca [2 x i32], align 4
-  %param_ret_types36 = alloca [3 x i32], align 4
-  %param_ret_types43 = alloca [1 x i32], align 4
-  %param_ret_types50 = alloca [4 x i32], align 16
+  %param_ret_types22 = alloca [2 x i32], align 4
+  %param_ret_types29 = alloca [3 x i32], align 4
+  %param_ret_types36 = alloca [1 x i32], align 4
+  %param_ret_types43 = alloca [3 x i32], align 4
+  %param_ret_types50 = alloca [1 x i32], align 4
   %param_ret_types57 = alloca [2 x i32], align 4
   %param_ret_types64 = alloca [1 x i32], align 4
   %param_ret_types71 = alloca [6 x i32], align 16
   %param_ret_types78 = alloca [3 x i32], align 4
-  %param_ret_types85 = alloca [3 x i32], align 4
   store %struct.wasm2c_sandbox_t* %sbx, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %0 = bitcast [1 x i32]* %param_ret_types to i8*
-  call void @llvm.memset.p0i8.i64(i8* align 4 %0, i8 0, i64 4, i1 false)
+  %0 = bitcast [4 x i32]* %param_ret_types to i8*
+  call void @llvm.memset.p0i8.i64(i8* align 16 %0, i8 0, i64 16, i1 false)
   %1 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_structs = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1, i32 0, i32 4
   %2 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_count = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2, i32 0, i32 5
-  %arraydecay = getelementptr inbounds [1 x i32], [1 x i32]* %param_ret_types, i64 0, i64 0
-  %call = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs, i32* %func_type_count, i32 1, i32 0, i32* %arraydecay)
+  %arraydecay = getelementptr inbounds [4 x i32], [4 x i32]* %param_ret_types, i64 0, i64 0
+  %call = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs, i32* %func_type_count, i32 3, i32 1, i32* %arraydecay)
   %3 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3, i32 0, i32 6
-  %arrayidx = getelementptr inbounds [14 x i32], [14 x i32]* %func_types, i64 0, i64 0
+  %arrayidx = getelementptr inbounds [13 x i32], [13 x i32]* %func_types, i64 0, i64 0
   store i32 %call, i32* %arrayidx, align 4
   %4 = bitcast [4 x i32]* %param_ret_types1 to i8*
-  call void @llvm.memset.p0i8.i64(i8* align 16 %4, i8 0, i64 16, i1 false)
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 16 %4, i8* align 16 bitcast ([4 x i32]* @__const.init_func_types.param_ret_types to i8*), i64 16, i1 false)
   %5 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_structs2 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %5, i32 0, i32 4
   %6 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
@@ -44442,22 +44347,22 @@ entry:
   %call5 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs2, i32* %func_type_count3, i32 3, i32 1, i32* %arraydecay4)
   %7 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types6 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %7, i32 0, i32 6
-  %arrayidx7 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types6, i64 0, i64 1
+  %arrayidx7 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types6, i64 0, i64 1
   store i32 %call5, i32* %arrayidx7, align 4
-  %8 = bitcast [4 x i32]* %param_ret_types8 to i8*
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 16 %8, i8* align 16 bitcast ([4 x i32]* @__const.init_func_types.param_ret_types to i8*), i64 16, i1 false)
+  %8 = bitcast [5 x i32]* %param_ret_types8 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 16 %8, i8* align 16 bitcast ([5 x i32]* @__const.init_func_types.param_ret_types.27 to i8*), i64 20, i1 false)
   %9 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_structs9 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %9, i32 0, i32 4
   %10 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_count10 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %10, i32 0, i32 5
-  %arraydecay11 = getelementptr inbounds [4 x i32], [4 x i32]* %param_ret_types8, i64 0, i64 0
-  %call12 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs9, i32* %func_type_count10, i32 3, i32 1, i32* %arraydecay11)
+  %arraydecay11 = getelementptr inbounds [5 x i32], [5 x i32]* %param_ret_types8, i64 0, i64 0
+  %call12 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs9, i32* %func_type_count10, i32 4, i32 1, i32* %arraydecay11)
   %11 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types13 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %11, i32 0, i32 6
-  %arrayidx14 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types13, i64 0, i64 2
+  %arrayidx14 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types13, i64 0, i64 2
   store i32 %call12, i32* %arrayidx14, align 4
   %12 = bitcast [5 x i32]* %param_ret_types15 to i8*
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 16 %12, i8* align 16 bitcast ([5 x i32]* @__const.init_func_types.param_ret_types.27 to i8*), i64 20, i1 false)
+  call void @llvm.memset.p0i8.i64(i8* align 16 %12, i8 0, i64 20, i1 false)
   %13 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_structs16 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %13, i32 0, i32 4
   %14 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
@@ -44466,67 +44371,67 @@ entry:
   %call19 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs16, i32* %func_type_count17, i32 4, i32 1, i32* %arraydecay18)
   %15 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types20 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %15, i32 0, i32 6
-  %arrayidx21 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types20, i64 0, i64 3
+  %arrayidx21 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types20, i64 0, i64 3
   store i32 %call19, i32* %arrayidx21, align 4
-  %16 = bitcast [5 x i32]* %param_ret_types22 to i8*
-  call void @llvm.memset.p0i8.i64(i8* align 16 %16, i8 0, i64 20, i1 false)
+  %16 = bitcast [2 x i32]* %param_ret_types22 to i8*
+  call void @llvm.memset.p0i8.i64(i8* align 4 %16, i8 0, i64 8, i1 false)
   %17 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_structs23 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %17, i32 0, i32 4
   %18 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_count24 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %18, i32 0, i32 5
-  %arraydecay25 = getelementptr inbounds [5 x i32], [5 x i32]* %param_ret_types22, i64 0, i64 0
-  %call26 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs23, i32* %func_type_count24, i32 4, i32 1, i32* %arraydecay25)
+  %arraydecay25 = getelementptr inbounds [2 x i32], [2 x i32]* %param_ret_types22, i64 0, i64 0
+  %call26 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs23, i32* %func_type_count24, i32 1, i32 1, i32* %arraydecay25)
   %19 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types27 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %19, i32 0, i32 6
-  %arrayidx28 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types27, i64 0, i64 4
+  %arrayidx28 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types27, i64 0, i64 4
   store i32 %call26, i32* %arrayidx28, align 4
-  %20 = bitcast [2 x i32]* %param_ret_types29 to i8*
-  call void @llvm.memset.p0i8.i64(i8* align 4 %20, i8 0, i64 8, i1 false)
+  %20 = bitcast [3 x i32]* %param_ret_types29 to i8*
+  call void @llvm.memset.p0i8.i64(i8* align 4 %20, i8 0, i64 12, i1 false)
   %21 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_structs30 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %21, i32 0, i32 4
   %22 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_count31 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %22, i32 0, i32 5
-  %arraydecay32 = getelementptr inbounds [2 x i32], [2 x i32]* %param_ret_types29, i64 0, i64 0
-  %call33 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs30, i32* %func_type_count31, i32 1, i32 1, i32* %arraydecay32)
+  %arraydecay32 = getelementptr inbounds [3 x i32], [3 x i32]* %param_ret_types29, i64 0, i64 0
+  %call33 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs30, i32* %func_type_count31, i32 2, i32 1, i32* %arraydecay32)
   %23 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types34 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %23, i32 0, i32 6
-  %arrayidx35 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types34, i64 0, i64 5
+  %arrayidx35 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types34, i64 0, i64 5
   store i32 %call33, i32* %arrayidx35, align 4
-  %24 = bitcast [3 x i32]* %param_ret_types36 to i8*
-  call void @llvm.memset.p0i8.i64(i8* align 4 %24, i8 0, i64 12, i1 false)
+  %24 = bitcast [1 x i32]* %param_ret_types36 to i8*
+  call void @llvm.memset.p0i8.i64(i8* align 4 %24, i8 0, i64 4, i1 false)
   %25 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_structs37 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %25, i32 0, i32 4
   %26 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_count38 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %26, i32 0, i32 5
-  %arraydecay39 = getelementptr inbounds [3 x i32], [3 x i32]* %param_ret_types36, i64 0, i64 0
-  %call40 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs37, i32* %func_type_count38, i32 2, i32 1, i32* %arraydecay39)
+  %arraydecay39 = getelementptr inbounds [1 x i32], [1 x i32]* %param_ret_types36, i64 0, i64 0
+  %call40 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs37, i32* %func_type_count38, i32 0, i32 0, i32* %arraydecay39)
   %27 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types41 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %27, i32 0, i32 6
-  %arrayidx42 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types41, i64 0, i64 6
+  %arrayidx42 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types41, i64 0, i64 6
   store i32 %call40, i32* %arrayidx42, align 4
-  %28 = bitcast [1 x i32]* %param_ret_types43 to i8*
-  call void @llvm.memset.p0i8.i64(i8* align 4 %28, i8 0, i64 4, i1 false)
+  %28 = bitcast [3 x i32]* %param_ret_types43 to i8*
+  call void @llvm.memset.p0i8.i64(i8* align 4 %28, i8 0, i64 12, i1 false)
   %29 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_structs44 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %29, i32 0, i32 4
   %30 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_count45 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %30, i32 0, i32 5
-  %arraydecay46 = getelementptr inbounds [1 x i32], [1 x i32]* %param_ret_types43, i64 0, i64 0
-  %call47 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs44, i32* %func_type_count45, i32 0, i32 0, i32* %arraydecay46)
+  %arraydecay46 = getelementptr inbounds [3 x i32], [3 x i32]* %param_ret_types43, i64 0, i64 0
+  %call47 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs44, i32* %func_type_count45, i32 3, i32 0, i32* %arraydecay46)
   %31 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types48 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %31, i32 0, i32 6
-  %arrayidx49 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types48, i64 0, i64 7
+  %arrayidx49 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types48, i64 0, i64 7
   store i32 %call47, i32* %arrayidx49, align 4
-  %32 = bitcast [4 x i32]* %param_ret_types50 to i8*
-  call void @llvm.memset.p0i8.i64(i8* align 16 %32, i8 0, i64 16, i1 false)
+  %32 = bitcast [1 x i32]* %param_ret_types50 to i8*
+  call void @llvm.memset.p0i8.i64(i8* align 4 %32, i8 0, i64 4, i1 false)
   %33 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_structs51 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %33, i32 0, i32 4
   %34 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_count52 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %34, i32 0, i32 5
-  %arraydecay53 = getelementptr inbounds [4 x i32], [4 x i32]* %param_ret_types50, i64 0, i64 0
-  %call54 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs51, i32* %func_type_count52, i32 4, i32 0, i32* %arraydecay53)
+  %arraydecay53 = getelementptr inbounds [1 x i32], [1 x i32]* %param_ret_types50, i64 0, i64 0
+  %call54 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs51, i32* %func_type_count52, i32 1, i32 0, i32* %arraydecay53)
   %35 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types55 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %35, i32 0, i32 6
-  %arrayidx56 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types55, i64 0, i64 8
+  %arrayidx56 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types55, i64 0, i64 8
   store i32 %call54, i32* %arrayidx56, align 4
   %36 = bitcast [2 x i32]* %param_ret_types57 to i8*
   call void @llvm.memset.p0i8.i64(i8* align 4 %36, i8 0, i64 8, i1 false)
@@ -44538,7 +44443,7 @@ entry:
   %call61 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs58, i32* %func_type_count59, i32 2, i32 0, i32* %arraydecay60)
   %39 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types62 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %39, i32 0, i32 6
-  %arrayidx63 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types62, i64 0, i64 9
+  %arrayidx63 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types62, i64 0, i64 9
   store i32 %call61, i32* %arrayidx63, align 4
   %40 = bitcast [1 x i32]* %param_ret_types64 to i8*
   call void @llvm.memset.p0i8.i64(i8* align 4 %40, i8 0, i64 4, i1 false)
@@ -44550,7 +44455,7 @@ entry:
   %call68 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs65, i32* %func_type_count66, i32 0, i32 1, i32* %arraydecay67)
   %43 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types69 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %43, i32 0, i32 6
-  %arrayidx70 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types69, i64 0, i64 10
+  %arrayidx70 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types69, i64 0, i64 10
   store i32 %call68, i32* %arrayidx70, align 4
   %44 = bitcast [6 x i32]* %param_ret_types71 to i8*
   call void @llvm.memset.p0i8.i64(i8* align 16 %44, i8 0, i64 24, i1 false)
@@ -44562,32 +44467,20 @@ entry:
   %call75 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs72, i32* %func_type_count73, i32 5, i32 1, i32* %arraydecay74)
   %47 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types76 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %47, i32 0, i32 6
-  %arrayidx77 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types76, i64 0, i64 11
+  %arrayidx77 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types76, i64 0, i64 11
   store i32 %call75, i32* %arrayidx77, align 4
   %48 = bitcast [3 x i32]* %param_ret_types78 to i8*
-  call void @llvm.memset.p0i8.i64(i8* align 4 %48, i8 0, i64 12, i1 false)
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %48, i8* align 4 bitcast ([3 x i32]* @__const.init_func_types.param_ret_types.28 to i8*), i64 12, i1 false)
   %49 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_structs79 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %49, i32 0, i32 4
   %50 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_type_count80 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %50, i32 0, i32 5
   %arraydecay81 = getelementptr inbounds [3 x i32], [3 x i32]* %param_ret_types78, i64 0, i64 0
-  %call82 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs79, i32* %func_type_count80, i32 3, i32 0, i32* %arraydecay81)
+  %call82 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs79, i32* %func_type_count80, i32 2, i32 1, i32* %arraydecay81)
   %51 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types83 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %51, i32 0, i32 6
-  %arrayidx84 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types83, i64 0, i64 12
+  %arrayidx84 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types83, i64 0, i64 12
   store i32 %call82, i32* %arrayidx84, align 4
-  %52 = bitcast [3 x i32]* %param_ret_types85 to i8*
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %52, i8* align 4 bitcast ([3 x i32]* @__const.init_func_types.param_ret_types.28 to i8*), i64 12, i1 false)
-  %53 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %func_type_structs86 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %53, i32 0, i32 4
-  %54 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %func_type_count87 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %54, i32 0, i32 5
-  %arraydecay88 = getelementptr inbounds [3 x i32], [3 x i32]* %param_ret_types85, i64 0, i64 0
-  %call89 = call i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t** %func_type_structs86, i32* %func_type_count87, i32 2, i32 1, i32* %arraydecay88)
-  %55 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
-  %func_types90 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %55, i32 0, i32 6
-  %arrayidx91 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types90, i64 0, i64 13
-  store i32 %call89, i32* %arrayidx91, align 4
   ret void
 }
 
@@ -44598,67 +44491,67 @@ entry:
   store %struct.wasm2c_sandbox_t* %sbx, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  store i32 70880, i32* %w2c_g0, align 4
+  store i32 70912, i32* %w2c_g0, align 8
   %1 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___heap_base = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %1, i32 0, i32 8
-  store i32 70880, i32* %w2c___heap_base, align 8
+  store i32 70912, i32* %w2c___heap_base, align 4
   %2 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_errno = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %2, i32 0, i32 9
-  store i32 4240, i32* %w2c_errno, align 4
+  store i32 4272, i32* %w2c_errno, align 8
   %3 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___progname = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %3, i32 0, i32 10
-  store i32 5296, i32* %w2c___progname, align 8
+  store i32 5328, i32* %w2c___progname, align 4
   %4 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___progname_full = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %4, i32 0, i32 11
-  store i32 5300, i32* %w2c___progname_full, align 4
+  store i32 5332, i32* %w2c___progname_full, align 8
   %5 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___libc = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %5, i32 0, i32 12
-  store i32 5304, i32* %w2c___libc, align 8
+  store i32 5336, i32* %w2c___libc, align 4
   %6 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___hwcap = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %6, i32 0, i32 13
-  store i32 5332, i32* %w2c___hwcap, align 4
+  store i32 5364, i32* %w2c___hwcap, align 8
   %7 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_program_invocation_short_name = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %7, i32 0, i32 14
-  store i32 5296, i32* %w2c_program_invocation_short_name, align 8
+  store i32 5328, i32* %w2c_program_invocation_short_name, align 4
   %8 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_program_invocation_name = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %8, i32 0, i32 15
-  store i32 5300, i32* %w2c_program_invocation_name, align 4
+  store i32 5332, i32* %w2c_program_invocation_name, align 8
   %9 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___stdin_used = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %9, i32 0, i32 16
-  store i32 5292, i32* %w2c___stdin_used, align 8
+  store i32 5324, i32* %w2c___stdin_used, align 4
   %10 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___stdout_FILE = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %10, i32 0, i32 17
-  store i32 3496, i32* %w2c___stdout_FILE, align 4
+  store i32 3528, i32* %w2c___stdout_FILE, align 8
   %11 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___stderr_FILE = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %11, i32 0, i32 18
-  store i32 3616, i32* %w2c___stderr_FILE, align 8
+  store i32 3648, i32* %w2c___stderr_FILE, align 4
   %12 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_stderr = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %12, i32 0, i32 19
-  store i32 2796, i32* %w2c_stderr, align 4
+  store i32 2828, i32* %w2c_stderr, align 8
   %13 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___stderr_used = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %13, i32 0, i32 20
-  store i32 3728, i32* %w2c___stderr_used, align 8
+  store i32 3760, i32* %w2c___stderr_used, align 4
   %14 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___stdout_used = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %14, i32 0, i32 21
-  store i32 3608, i32* %w2c___stdout_used, align 4
+  store i32 3640, i32* %w2c___stdout_used, align 8
   %15 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_stdout = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %15, i32 0, i32 22
-  store i32 1084, i32* %w2c_stdout, align 8
+  store i32 1112, i32* %w2c_stdout, align 4
   %16 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___dso_handle = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %16, i32 0, i32 23
-  store i32 1024, i32* %w2c___dso_handle, align 4
+  store i32 1024, i32* %w2c___dso_handle, align 8
   %17 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___data_end = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %17, i32 0, i32 24
-  store i32 5344, i32* %w2c___data_end, align 8
+  store i32 5376, i32* %w2c___data_end, align 4
   %18 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___global_base = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %18, i32 0, i32 25
-  store i32 1024, i32* %w2c___global_base, align 4
+  store i32 1024, i32* %w2c___global_base, align 8
   %19 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___memory_base = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %19, i32 0, i32 26
-  store i32 0, i32* %w2c___memory_base, align 8
+  store i32 0, i32* %w2c___memory_base, align 4
   %20 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c___table_base = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %20, i32 0, i32 27
-  store i32 1, i32* %w2c___table_base, align 4
+  store i32 1, i32* %w2c___table_base, align 8
   ret void
 }
 
@@ -44690,7 +44583,7 @@ entry:
   %func_type = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %.compoundliteral, i32 0, i32 1
   %4 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %4, i32 0, i32 6
-  %arrayidx2 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types, i64 0, i64 5
+  %arrayidx2 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types, i64 0, i64 4
   %5 = load i32, i32* %arrayidx2, align 4
   store i32 %5, i32* %func_type, align 4
   %func = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %.compoundliteral, i32 0, i32 2
@@ -44711,7 +44604,7 @@ entry:
   %func_type10 = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %.compoundliteral8, i32 0, i32 1
   %11 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types11 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %11, i32 0, i32 6
-  %arrayidx12 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types11, i64 0, i64 1
+  %arrayidx12 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types11, i64 0, i64 0
   %12 = load i32, i32* %arrayidx12, align 4
   store i32 %12, i32* %func_type10, align 4
   %func13 = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %.compoundliteral8, i32 0, i32 2
@@ -44732,7 +44625,7 @@ entry:
   %func_type21 = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %.compoundliteral19, i32 0, i32 1
   %18 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types22 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %18, i32 0, i32 6
-  %arrayidx23 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types22, i64 0, i64 2
+  %arrayidx23 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types22, i64 0, i64 1
   %19 = load i32, i32* %arrayidx23, align 4
   store i32 %19, i32* %func_type21, align 4
   %func24 = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %.compoundliteral19, i32 0, i32 2
@@ -44753,7 +44646,7 @@ entry:
   %func_type32 = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %.compoundliteral30, i32 0, i32 1
   %25 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %func_types33 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %25, i32 0, i32 6
-  %arrayidx34 = getelementptr inbounds [14 x i32], [14 x i32]* %func_types33, i64 0, i64 1
+  %arrayidx34 = getelementptr inbounds [13 x i32], [13 x i32]* %func_types33, i64 0, i64 0
   %26 = load i32, i32* %arrayidx34, align 4
   store i32 %26, i32* %func_type32, align 4
   %func35 = getelementptr inbounds %struct.wasm_rt_elem_t, %struct.wasm_rt_elem_t* %.compoundliteral30, i32 0, i32 2
@@ -44798,8 +44691,7 @@ entry:
 ; Function Attrs: argmemonly nofree nosync nounwind willreturn writeonly
 declare void @llvm.memset.p0i8.i64(i8* nocapture writeonly, i8, i64, i1 immarg) #8
 
-; Function Attrs: tainted
-declare dso_local i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t**, i32*, i32, i32, i32*) #5
+declare dso_local i32 @wasm_rt_register_func_type(%struct.wasm_func_type_t**, i32*, i32, i32, i32*) #4
 
 declare dso_local void @wasm_rt_allocate_table(%struct.wasm_rt_table_t*, i32, i32) #4
 
@@ -44961,8 +44853,8 @@ entry:
   ret i64 %9
 }
 
-; Function Attrs: noinline nounwind optnone uwtable
-define internal i32 @w2c___stdio_write(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1, i32 %w2c_p2) #0 {
+; Function Attrs: noinline nounwind optnone tainted uwtable
+define internal i32 @w2c___stdio_write(%struct.wasm2c_sandbox_t* %sbx, i32 %w2c_p0, i32 %w2c_p1, i32 %w2c_p2) #1 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   %w2c_p0.addr = alloca i32, align 4
@@ -44995,7 +44887,7 @@ entry:
   store i32 0, i32* %w2c_l9, align 4
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  %1 = load i32, i32* %w2c_g0, align 4
+  %1 = load i32, i32* %w2c_g0, align 8
   store i32 %1, i32* %w2c_i0, align 4
   store i32 16, i32* %w2c_i1, align 4
   %2 = load i32, i32* %w2c_i1, align 4
@@ -45007,7 +44899,7 @@ entry:
   %5 = load i32, i32* %w2c_i0, align 4
   %6 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g01 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %6, i32 0, i32 7
-  store i32 %5, i32* %w2c_g01, align 4
+  store i32 %5, i32* %w2c_g01, align 8
   %7 = load i32, i32* %w2c_l3, align 4
   store i32 %7, i32* %w2c_i0, align 4
   %8 = load i32, i32* %w2c_p2.addr, align 4
@@ -45504,7 +45396,7 @@ w2c_B0:                                           ; preds = %w2c_B1, %if.end45, 
   %195 = load i32, i32* %w2c_i0, align 4
   %196 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0115 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %196, i32 0, i32 7
-  store i32 %195, i32* %w2c_g0115, align 4
+  store i32 %195, i32* %w2c_g0115, align 8
   %197 = load i32, i32* %w2c_l6, align 4
   store i32 %197, i32* %w2c_i0, align 4
   %198 = load i32, i32* %w2c_i0, align 4
@@ -45527,7 +45419,7 @@ entry:
   store i32 0, i32* %w2c_l2, align 4
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  %1 = load i32, i32* %w2c_g0, align 4
+  %1 = load i32, i32* %w2c_g0, align 8
   store i32 %1, i32* %w2c_i0, align 4
   store i32 32, i32* %w2c_i1, align 4
   %2 = load i32, i32* %w2c_i1, align 4
@@ -45539,7 +45431,7 @@ entry:
   %5 = load i32, i32* %w2c_i0, align 4
   %6 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g01 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %6, i32 0, i32 7
-  store i32 %5, i32* %w2c_g01, align 4
+  store i32 %5, i32* %w2c_g01, align 8
   %7 = load i32, i32* %w2c_p0.addr, align 4
   store i32 %7, i32* %w2c_i0, align 4
   %8 = load i32, i32* %w2c_l1, align 4
@@ -45629,7 +45521,7 @@ w2c_B1:                                           ; preds = %if.then13, %if.then
   %w2c_memory15 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %33, i32 0, i32 1
   %34 = load i32, i32* %w2c_i0, align 4
   %conv16 = zext i32 %34 to i64
-  %add17 = add i64 %conv16, 4240
+  %add17 = add i64 %conv16, 4272
   %35 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory15, i64 %add17, i32 %35, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.31, i64 0, i64 0))
   br label %w2c_B0
@@ -45645,7 +45537,7 @@ w2c_B0:                                           ; preds = %w2c_B1, %if.end14
   %39 = load i32, i32* %w2c_i0, align 4
   %40 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g019 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %40, i32 0, i32 7
-  store i32 %39, i32* %w2c_g019, align 4
+  store i32 %39, i32* %w2c_g019, align 8
   %41 = load i32, i32* %w2c_l2, align 4
   store i32 %41, i32* %w2c_i0, align 4
   %42 = load i32, i32* %w2c_i0, align 4
@@ -45676,7 +45568,7 @@ entry:
   store i32 0, i32* %w2c_l3, align 4
   %0 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g0 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %0, i32 0, i32 7
-  %1 = load i32, i32* %w2c_g0, align 4
+  %1 = load i32, i32* %w2c_g0, align 8
   store i32 %1, i32* %w2c_i0, align 4
   store i32 16, i32* %w2c_i1, align 4
   %2 = load i32, i32* %w2c_i1, align 4
@@ -45688,7 +45580,7 @@ entry:
   %5 = load i32, i32* %w2c_i0, align 4
   %6 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g01 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %6, i32 0, i32 7
-  store i32 %5, i32* %w2c_g01, align 4
+  store i32 %5, i32* %w2c_g01, align 8
   %7 = load i32, i32* %w2c_p0.addr, align 4
   store i32 %7, i32* %w2c_i0, align 4
   %8 = load i64, i64* %w2c_p1.addr, align 8
@@ -45761,7 +45653,7 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   %w2c_memory = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %31, i32 0, i32 1
   %32 = load i32, i32* %w2c_i0, align 4
   %conv4 = zext i32 %32 to i64
-  %add5 = add i64 %conv4, 4240
+  %add5 = add i64 %conv4, 4272
   %33 = load i32, i32* %w2c_i1, align 4
   call void @i32_store(%struct.wasm_rt_memory_t* %w2c_memory, i64 %add5, i32 %33, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.33, i64 0, i64 0))
   store i64 -1, i64* %w2c_j0, align 8
@@ -45794,7 +45686,7 @@ w2c_B0:                                           ; preds = %w2c_B1, %cond.end
   %42 = load i32, i32* %w2c_i0, align 4
   %43 = load %struct.wasm2c_sandbox_t*, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
   %w2c_g011 = getelementptr inbounds %struct.wasm2c_sandbox_t, %struct.wasm2c_sandbox_t* %43, i32 0, i32 7
-  store i32 %42, i32* %w2c_g011, align 4
+  store i32 %42, i32* %w2c_g011, align 8
   %44 = load i64, i64* %w2c_p1.addr, align 8
   store i64 %44, i64* %w2c_j0, align 8
   %45 = load i64, i64* %w2c_j0, align 8
@@ -45803,8 +45695,8 @@ w2c_B0:                                           ; preds = %w2c_B1, %cond.end
 
 declare dso_local i32 @Z_wasi_snapshot_preview1Z_fd_seekZ_iijii(i8*, i32, i64, i32, i32) #4
 
-; Function Attrs: noinline nounwind optnone uwtable
-define internal void @cleanup_memory(%struct.wasm2c_sandbox_t* %sbx) #0 {
+; Function Attrs: noinline nounwind optnone tainted uwtable
+define internal void @cleanup_memory(%struct.wasm2c_sandbox_t* %sbx) #1 {
 entry:
   %sbx.addr = alloca %struct.wasm2c_sandbox_t*, align 8
   store %struct.wasm2c_sandbox_t* %sbx, %struct.wasm2c_sandbox_t** %sbx.addr, align 8
@@ -45849,8 +45741,8 @@ declare dso_local void @wasm_rt_deallocate_table(%struct.wasm_rt_table_t*) #4
 ; Function Attrs: nounwind readonly
 declare dso_local i32 @strcmp(i8*, i8*) #9
 
-; Function Attrs: noinline nounwind optnone tainted uwtable
-define internal %struct.wasm_rt_table_t* @get_wasm2c_callback_table(i8* %sbx_ptr) #1 {
+; Function Attrs: noinline nounwind optnone uwtable
+define internal %struct.wasm_rt_table_t* @get_wasm2c_callback_table(i8* %sbx_ptr) #0 {
 entry:
   %sbx_ptr.addr = alloca i8*, align 8
   %sbx = alloca %struct.wasm2c_sandbox_t*, align 8
@@ -45867,8 +45759,8 @@ declare dso_local void @wasm_rt_expand_table(%struct.wasm_rt_table_t*) #4
 
 attributes #0 = { noinline nounwind optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #1 = { noinline nounwind optnone uwtable "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #2 = { noreturn "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #3 = { nofree nosync nounwind readnone speculatable willreturn }
+attributes #2 = { nofree nosync nounwind readnone speculatable willreturn }
+attributes #3 = { noreturn "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #4 = { "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #5 = { "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #6 = { argmemonly nofree nosync nounwind willreturn }

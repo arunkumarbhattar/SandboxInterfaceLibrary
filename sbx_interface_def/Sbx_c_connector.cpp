@@ -44,6 +44,24 @@ extern "C" {
         return SbxInterface_Instance->fetch_sandbox_heap_address();
     }
 
+    void* c_malloc(char* pointer_name, size_t size)
+    {
+        sbx_init();
+        return SbxInterface_Instance->sbx_malloc(pointer_name, size);
+    }
+
+    void* c_realloc(char* pointer_name, size_t size)
+    {
+        sbx_init();
+        return SbxInterface_Instance->sbx_realloc(pointer_name, size);
+    }
+
+    void c_free(char* pointer_name)
+    {
+        sbx_init();
+        return SbxInterface_Instance->sbx_free(pointer_name);
+    }
+
 #ifdef __cplusplus
 };
 #endif
