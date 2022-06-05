@@ -18,7 +18,12 @@ extern "C" {
         }
     }
 
-    bool c_isPointerToTaintedMem(void* pointer){
+    bool c_isTaintedPointerToTaintedMem(void* pointer){
+        sbx_init();
+        return SbxInterface_Instance->isPointerToTaintedMem(pointer);
+    }
+
+    bool c_isPointerToTaintedMem(void* pointer) {
         sbx_init();
         return SbxInterface_Instance->isPointerToTaintedMem(pointer);
     }
@@ -47,13 +52,14 @@ extern "C" {
     void* c_malloc(char* pointer_name, size_t size)
     {
         sbx_init();
-        return SbxInterface_Instance->sbx_malloc(pointer_name, size);
+        void* temp = SbxInterface_Instance->sbx_malloc(pointer_name, size);
+        return temp;
     }
 
     void* c_realloc(char* pointer_name, size_t size)
     {
         sbx_init();
-        return SbxInterface_Instance->sbx_realloc(pointer_name, size);
+        return (void*)SbxInterface_Instance->sbx_realloc(pointer_name, size);
     }
 
     void c_free(char* pointer_name)

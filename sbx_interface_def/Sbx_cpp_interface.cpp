@@ -1,6 +1,6 @@
 #include "Sbx_cpp_interface.h"
 
-bool SbxInterface::isPointerToTaintedMem(void* pointer)
+bool SbxInterface::isPointerToTaintedMem(const void* const pointer)
 {
     return sandbox.get_sandbox_impl()->impl_is_pointer_in_sandbox_memory(pointer);
 }
@@ -10,7 +10,7 @@ wasm2c_sandbox_t* SbxInterface::fetch_sandbox_address()
     return this->sandbox.get_sandbox_impl()->sbb_nc;
 }
 
-unsigned int SbxInterface::fetch_pointer_offset(char* pointer_name)
+unsigned int SbxInterface::fetch_pointer_offset(const char* const pointer_name)
 {
     if(pointer_symbol_lookup.find(pointer_name) == pointer_symbol_lookup.end())
         return 0;
@@ -18,9 +18,15 @@ unsigned int SbxInterface::fetch_pointer_offset(char* pointer_name)
         return pointer_symbol_lookup[pointer_name];
 }
 
-void SbxInterface::update_pointer_offset(char* pointer_name, unsigned long offset)
+void SbxInterface::update_pointer_offset(const char* const pointer_name, unsigned long offset)
 {
-    pointer_symbol_lookup[pointer_name] = offset;
+    if(pointer_symbol_lookup.find(pointer_name) != pointer_symbol_lookup.end()) {
+        pointer_symbol_lookup[pointer_name] = offset;
+    }
+    else{
+        string temp(pointer_name);
+        pointer_symbol_lookup.insert(make_pair(temp, offset));
+    }
 }
 
 unsigned long SbxInterface::fetch_sandbox_heap_address()
@@ -28,19 +34,19 @@ unsigned long SbxInterface::fetch_sandbox_heap_address()
     return sandbox.get_sandbox_impl()->heap_base;
 }
 
-void* SbxInterface::sbx_malloc(char* pointer_name, size_t size)
+void* SbxInterface::sbx_malloc(const char* const pointer_name, size_t size)
 {
     unsigned int pointer_offset = w2c_malloc(fetch_sandbox_address(), size);
     update_pointer_offset(pointer_name, pointer_offset);
     return (void*)(fetch_sandbox_heap_address() + pointer_offset);
 }
 
-void SbxInterface::sbx_free(char* pointer_name)
+void SbxInterface::sbx_free(const char* const pointer_name)
 {
     return w2c_free(fetch_sandbox_address(), fetch_pointer_offset(pointer_name));
 }
 
-void* SbxInterface::sbx_realloc(char* pointer_name, size_t size)
+void* SbxInterface::sbx_realloc(const char* const pointer_name, size_t size)
 {
     unsigned int pointer_offset = w2c_realloc(fetch_sandbox_address(), fetch_pointer_offset(pointer_name), size);
     update_pointer_offset(pointer_name, pointer_offset);
