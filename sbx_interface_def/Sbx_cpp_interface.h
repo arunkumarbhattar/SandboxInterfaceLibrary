@@ -50,19 +50,19 @@ public:
         sandbox.create_sandbox();
     }
 
-    bool isPointerToTaintedMem(void* pointer);
+    bool isPointerToTaintedMem(const void* const pointer);
     wasm2c_sandbox_t* fetch_sandbox_address();
-    unsigned int fetch_pointer_offset(char* pointer_name);
+    unsigned int fetch_pointer_offset(const char* const pointer_name);
 
-    void update_pointer_offset(char *pointer_name, unsigned long offset);
+    void update_pointer_offset(const char * const pointer_name, unsigned long offset);
 
     unsigned long fetch_sandbox_heap_address();
 
-    void *sbx_malloc(char* pointer_name, size_t size);
+    void *sbx_malloc(const char* const pointer_name, size_t size);
 
-    void sbx_free(char *pointer_name);
+    void sbx_free(const char * const pointer_name);
 
-    void *sbx_realloc(char *pointer_name, size_t size);
+    void *sbx_realloc(const char * const pointer_name, size_t size);
 };
 
 #endif //SIMPLE_LIBRARY_EXAMPLE_SBX_CPP_INTERFACE_H

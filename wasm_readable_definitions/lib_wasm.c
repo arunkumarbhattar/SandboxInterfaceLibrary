@@ -454,6 +454,7 @@ static void cleanup_func_types(wasm2c_sandbox_t* const sbx) {
 static void w2c___wasm_call_ctors(wasm2c_sandbox_t* const);
 FUNC_EXPORT u32 w2c_parse_image_header(wasm2c_sandbox_t* const, u32, u32);
 FUNC_EXPORT void w2c_parse_image_body(wasm2c_sandbox_t* const, u32, u32, u32);
+FUNC_EXPORT u32 w2c_tainted_sort(wasm2c_sandbox_t* const, u32, u32);
 static u32 w2c_main(wasm2c_sandbox_t* const, u32, u32);
 FUNC_EXPORT u32 w2c_malloc(wasm2c_sandbox_t* const, u32);
 FUNC_EXPORT u32 w2c_dlmalloc(wasm2c_sandbox_t* const, u32);
@@ -521,6 +522,13 @@ FUNC_EXPORT void w2centry_w2c_parse_image_body(wasm2c_sandbox_t* const sbx, u32 
   ENTRY_PROLOGUE;
   w2c_parse_image_body(sbx, p0, p1, p2);
   ENTRY_EPILOGUE;
+}
+
+FUNC_EXPORT u32 w2centry_w2c_tainted_sort(wasm2c_sandbox_t* const sbx, u32 p0, u32 p1) {
+  ENTRY_PROLOGUE;
+  u32 ret = w2c_tainted_sort(sbx, p0, p1);
+  ENTRY_EPILOGUE;
+  return ret;
 }
 
 static u32 w2centry_w2c_main(wasm2c_sandbox_t* const sbx, u32 p0, u32 p1) {
@@ -853,24 +861,24 @@ FUNC_EXPORT f64 w2centry_w2c_frexp(wasm2c_sandbox_t* const sbx, f64 p0, u32 p1) 
 #endif
 
 static void init_globals(wasm2c_sandbox_t* const sbx) {
-  sbx->w2c_g0 = 70912u;
-  sbx->w2c___heap_base = 70912u;
-  sbx->w2c_errno = 4272u;
-  sbx->w2c___progname = 5328u;
-  sbx->w2c___progname_full = 5332u;
-  sbx->w2c___libc = 5336u;
-  sbx->w2c___hwcap = 5364u;
-  sbx->w2c_program_invocation_short_name = 5328u;
-  sbx->w2c_program_invocation_name = 5332u;
-  sbx->w2c___stdin_used = 5324u;
-  sbx->w2c___stdout_FILE = 3528u;
-  sbx->w2c___stderr_FILE = 3648u;
-  sbx->w2c_stderr = 2828u;
-  sbx->w2c___stderr_used = 3760u;
-  sbx->w2c___stdout_used = 3640u;
-  sbx->w2c_stdout = 1112u;
+  sbx->w2c_g0 = 70944u;
+  sbx->w2c___heap_base = 70944u;
+  sbx->w2c_errno = 4304u;
+  sbx->w2c___progname = 5360u;
+  sbx->w2c___progname_full = 5364u;
+  sbx->w2c___libc = 5368u;
+  sbx->w2c___hwcap = 5396u;
+  sbx->w2c_program_invocation_short_name = 5360u;
+  sbx->w2c_program_invocation_name = 5364u;
+  sbx->w2c___stdin_used = 5356u;
+  sbx->w2c___stdout_FILE = 3560u;
+  sbx->w2c___stderr_FILE = 3680u;
+  sbx->w2c_stderr = 2860u;
+  sbx->w2c___stderr_used = 3792u;
+  sbx->w2c___stdout_used = 3672u;
+  sbx->w2c_stdout = 1140u;
   sbx->w2c___dso_handle = 1024u;
-  sbx->w2c___data_end = 5376u;
+  sbx->w2c___data_end = 5408u;
   sbx->w2c___global_base = 1024u;
   sbx->w2c___memory_base = 0u;
   sbx->w2c___table_base = 1u;
@@ -1133,6 +1141,366 @@ FUNC_EXPORT void w2c_parse_image_body(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u
   FUNC_EPILOGUE;
 }
 
+FUNC_EXPORT u32 w2c_tainted_sort(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1) {
+  u32 w2c_l2 = 0, w2c_l3 = 0, w2c_l4 = 0, w2c_l5 = 0, w2c_l6 = 0, w2c_l7 = 0, w2c_l8 = 0, w2c_l9 = 0, 
+      w2c_l10 = 0, w2c_l11 = 0, w2c_l12 = 0, w2c_l13 = 0, w2c_l14 = 0, w2c_l15 = 0, w2c_l16 = 0, w2c_l17 = 0, 
+      w2c_l18 = 0, w2c_l19 = 0, w2c_l20 = 0, w2c_l21 = 0, w2c_l22 = 0, w2c_l23 = 0, w2c_l24 = 0, w2c_l25 = 0, 
+      w2c_l26 = 0, w2c_l27 = 0, w2c_l28 = 0, w2c_l29 = 0, w2c_l30 = 0, w2c_l31 = 0, w2c_l32 = 0, w2c_l33 = 0, 
+      w2c_l34 = 0, w2c_l35 = 0, w2c_l36 = 0, w2c_l37 = 0, w2c_l38 = 0, w2c_l39 = 0, w2c_l40 = 0, w2c_l41 = 0, 
+      w2c_l42 = 0, w2c_l43 = 0, w2c_l44 = 0, w2c_l45 = 0, w2c_l46 = 0, w2c_l47 = 0, w2c_l48 = 0, w2c_l49 = 0, 
+      w2c_l50 = 0, w2c_l51 = 0, w2c_l52 = 0, w2c_l53 = 0, w2c_l54 = 0, w2c_l55 = 0, w2c_l56 = 0, w2c_l57 = 0, 
+      w2c_l58 = 0, w2c_l59 = 0, w2c_l60 = 0, w2c_l61 = 0, w2c_l62 = 0, w2c_l63 = 0, w2c_l64 = 0, w2c_l65 = 0, 
+      w2c_l66 = 0, w2c_l67 = 0, w2c_l68 = 0, w2c_l69 = 0, w2c_l70 = 0, w2c_l71 = 0, w2c_l72 = 0, w2c_l73 = 0, 
+      w2c_l74 = 0, w2c_l75 = 0, w2c_l76 = 0, w2c_l77 = 0, w2c_l78 = 0, w2c_l79 = 0, w2c_l80 = 0, w2c_l81 = 0, 
+      w2c_l82 = 0, w2c_l83 = 0, w2c_l84 = 0, w2c_l85 = 0, w2c_l86 = 0, w2c_l87 = 0, w2c_l88 = 0, w2c_l89 = 0, 
+      w2c_l90 = 0, w2c_l91 = 0;
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = sbx->w2c_g0;
+  w2c_l2 = w2c_i0;
+  w2c_i0 = 32u;
+  w2c_l3 = w2c_i0;
+  w2c_i0 = w2c_l2;
+  w2c_i1 = w2c_l3;
+  w2c_i0 -= w2c_i1;
+  w2c_l4 = w2c_i0;
+  w2c_i0 = w2c_l4;
+  sbx->w2c_g0 = w2c_i0;
+  w2c_i0 = 0u;
+  w2c_l5 = w2c_i0;
+  w2c_i0 = w2c_l4;
+  w2c_i1 = w2c_p0;
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 28, w2c_i1, "w2c_tainted_sort");
+  w2c_i0 = w2c_l4;
+  w2c_i1 = w2c_p1;
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 24, w2c_i1, "w2c_tainted_sort");
+  w2c_i0 = w2c_l4;
+  w2c_i1 = w2c_l5;
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 8, w2c_i1, "w2c_tainted_sort");
+  w2c_i0 = w2c_l4;
+  w2c_i1 = w2c_l5;
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 20, w2c_i1, "w2c_tainted_sort");
+  w2c_L1: 
+    w2c_i0 = w2c_l4;
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 20u, "w2c_tainted_sort");
+    w2c_l6 = w2c_i0;
+    w2c_i0 = w2c_l4;
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 28u, "w2c_tainted_sort");
+    w2c_l7 = w2c_i0;
+    w2c_i0 = w2c_l6;
+    w2c_l8 = w2c_i0;
+    w2c_i0 = w2c_l7;
+    w2c_l9 = w2c_i0;
+    w2c_i0 = w2c_l8;
+    w2c_i1 = w2c_l9;
+    w2c_i0 = (u32)((s32)w2c_i0 < (s32)w2c_i1);
+    w2c_l10 = w2c_i0;
+    w2c_i0 = 1u;
+    w2c_l11 = w2c_i0;
+    w2c_i0 = w2c_l10;
+    w2c_i1 = w2c_l11;
+    w2c_i0 &= w2c_i1;
+    w2c_l12 = w2c_i0;
+    w2c_i0 = w2c_l12;
+    w2c_i0 = !(w2c_i0);
+    if (w2c_i0) {goto w2c_B0;}
+    w2c_i0 = w2c_l4;
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 20u, "w2c_tainted_sort");
+    w2c_l13 = w2c_i0;
+    w2c_i0 = 1u;
+    w2c_l14 = w2c_i0;
+    w2c_i0 = w2c_l13;
+    w2c_i1 = w2c_l14;
+    w2c_i0 += w2c_i1;
+    w2c_l15 = w2c_i0;
+    w2c_i0 = w2c_l4;
+    w2c_i1 = w2c_l15;
+    i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 16, w2c_i1, "w2c_tainted_sort");
+    w2c_L3: 
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 16u, "w2c_tainted_sort");
+      w2c_l16 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 28u, "w2c_tainted_sort");
+      w2c_l17 = w2c_i0;
+      w2c_i0 = w2c_l16;
+      w2c_l18 = w2c_i0;
+      w2c_i0 = w2c_l17;
+      w2c_l19 = w2c_i0;
+      w2c_i0 = w2c_l18;
+      w2c_i1 = w2c_l19;
+      w2c_i0 = (u32)((s32)w2c_i0 < (s32)w2c_i1);
+      w2c_l20 = w2c_i0;
+      w2c_i0 = 1u;
+      w2c_l21 = w2c_i0;
+      w2c_i0 = w2c_l20;
+      w2c_i1 = w2c_l21;
+      w2c_i0 &= w2c_i1;
+      w2c_l22 = w2c_i0;
+      w2c_i0 = w2c_l22;
+      w2c_i0 = !(w2c_i0);
+      if (w2c_i0) {goto w2c_B2;}
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 24u, "w2c_tainted_sort");
+      w2c_l23 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 16u, "w2c_tainted_sort");
+      w2c_l24 = w2c_i0;
+      w2c_i0 = 2u;
+      w2c_l25 = w2c_i0;
+      w2c_i0 = w2c_l24;
+      w2c_i1 = w2c_l25;
+      w2c_i0 <<= (w2c_i1 & 31);
+      w2c_l26 = w2c_i0;
+      w2c_i0 = w2c_l23;
+      w2c_i1 = w2c_l26;
+      w2c_i0 += w2c_i1;
+      w2c_l27 = w2c_i0;
+      w2c_i0 = w2c_l27;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_tainted_sort");
+      w2c_l28 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 24u, "w2c_tainted_sort");
+      w2c_l29 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 20u, "w2c_tainted_sort");
+      w2c_l30 = w2c_i0;
+      w2c_i0 = 2u;
+      w2c_l31 = w2c_i0;
+      w2c_i0 = w2c_l30;
+      w2c_i1 = w2c_l31;
+      w2c_i0 <<= (w2c_i1 & 31);
+      w2c_l32 = w2c_i0;
+      w2c_i0 = w2c_l29;
+      w2c_i1 = w2c_l32;
+      w2c_i0 += w2c_i1;
+      w2c_l33 = w2c_i0;
+      w2c_i0 = w2c_l33;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_tainted_sort");
+      w2c_l34 = w2c_i0;
+      w2c_i0 = w2c_l28;
+      w2c_l35 = w2c_i0;
+      w2c_i0 = w2c_l34;
+      w2c_l36 = w2c_i0;
+      w2c_i0 = w2c_l35;
+      w2c_i1 = w2c_l36;
+      w2c_i0 = (u32)((s32)w2c_i0 < (s32)w2c_i1);
+      w2c_l37 = w2c_i0;
+      w2c_i0 = 1u;
+      w2c_l38 = w2c_i0;
+      w2c_i0 = w2c_l37;
+      w2c_i1 = w2c_l38;
+      w2c_i0 &= w2c_i1;
+      w2c_l39 = w2c_i0;
+      w2c_i0 = w2c_l39;
+      w2c_i0 = !(w2c_i0);
+      if (w2c_i0) {goto w2c_B4;}
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 24u, "w2c_tainted_sort");
+      w2c_l40 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 20u, "w2c_tainted_sort");
+      w2c_l41 = w2c_i0;
+      w2c_i0 = 2u;
+      w2c_l42 = w2c_i0;
+      w2c_i0 = w2c_l41;
+      w2c_i1 = w2c_l42;
+      w2c_i0 <<= (w2c_i1 & 31);
+      w2c_l43 = w2c_i0;
+      w2c_i0 = w2c_l40;
+      w2c_i1 = w2c_l43;
+      w2c_i0 += w2c_i1;
+      w2c_l44 = w2c_i0;
+      w2c_i0 = w2c_l44;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_tainted_sort");
+      w2c_l45 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i1 = w2c_l45;
+      i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 12, w2c_i1, "w2c_tainted_sort");
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 24u, "w2c_tainted_sort");
+      w2c_l46 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 16u, "w2c_tainted_sort");
+      w2c_l47 = w2c_i0;
+      w2c_i0 = 2u;
+      w2c_l48 = w2c_i0;
+      w2c_i0 = w2c_l47;
+      w2c_i1 = w2c_l48;
+      w2c_i0 <<= (w2c_i1 & 31);
+      w2c_l49 = w2c_i0;
+      w2c_i0 = w2c_l46;
+      w2c_i1 = w2c_l49;
+      w2c_i0 += w2c_i1;
+      w2c_l50 = w2c_i0;
+      w2c_i0 = w2c_l50;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_tainted_sort");
+      w2c_l51 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 24u, "w2c_tainted_sort");
+      w2c_l52 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 20u, "w2c_tainted_sort");
+      w2c_l53 = w2c_i0;
+      w2c_i0 = 2u;
+      w2c_l54 = w2c_i0;
+      w2c_i0 = w2c_l53;
+      w2c_i1 = w2c_l54;
+      w2c_i0 <<= (w2c_i1 & 31);
+      w2c_l55 = w2c_i0;
+      w2c_i0 = w2c_l52;
+      w2c_i1 = w2c_l55;
+      w2c_i0 += w2c_i1;
+      w2c_l56 = w2c_i0;
+      w2c_i0 = w2c_l56;
+      w2c_i1 = w2c_l51;
+      i32_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_i1, "w2c_tainted_sort");
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 12u, "w2c_tainted_sort");
+      w2c_l57 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 24u, "w2c_tainted_sort");
+      w2c_l58 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 16u, "w2c_tainted_sort");
+      w2c_l59 = w2c_i0;
+      w2c_i0 = 2u;
+      w2c_l60 = w2c_i0;
+      w2c_i0 = w2c_l59;
+      w2c_i1 = w2c_l60;
+      w2c_i0 <<= (w2c_i1 & 31);
+      w2c_l61 = w2c_i0;
+      w2c_i0 = w2c_l58;
+      w2c_i1 = w2c_l61;
+      w2c_i0 += w2c_i1;
+      w2c_l62 = w2c_i0;
+      w2c_i0 = w2c_l62;
+      w2c_i1 = w2c_l57;
+      i32_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_i1, "w2c_tainted_sort");
+      w2c_B4:;
+      w2c_i0 = w2c_l4;
+      w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 16u, "w2c_tainted_sort");
+      w2c_l63 = w2c_i0;
+      w2c_i0 = 1u;
+      w2c_l64 = w2c_i0;
+      w2c_i0 = w2c_l63;
+      w2c_i1 = w2c_l64;
+      w2c_i0 += w2c_i1;
+      w2c_l65 = w2c_i0;
+      w2c_i0 = w2c_l4;
+      w2c_i1 = w2c_l65;
+      i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 16, w2c_i1, "w2c_tainted_sort");
+      goto w2c_L3;
+    w2c_B2:;
+    w2c_i0 = w2c_l4;
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 20u, "w2c_tainted_sort");
+    w2c_l66 = w2c_i0;
+    w2c_i0 = 1u;
+    w2c_l67 = w2c_i0;
+    w2c_i0 = w2c_l66;
+    w2c_i1 = w2c_l67;
+    w2c_i0 += w2c_i1;
+    w2c_l68 = w2c_i0;
+    w2c_i0 = w2c_l4;
+    w2c_i1 = w2c_l68;
+    i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 20, w2c_i1, "w2c_tainted_sort");
+    goto w2c_L1;
+  w2c_B0:;
+  w2c_i0 = 1110u;
+  w2c_l69 = w2c_i0;
+  w2c_i0 = 0u;
+  w2c_l70 = w2c_i0;
+  w2c_i0 = w2c_l69;
+  w2c_i1 = w2c_l70;
+  w2c_i0 = w2c_printf(sbx, w2c_i0, w2c_i1);
+  w2c_i0 = 0u;
+  w2c_l71 = w2c_i0;
+  w2c_i0 = w2c_l4;
+  w2c_i1 = w2c_l71;
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_tainted_sort");
+  w2c_L6: 
+    w2c_i0 = w2c_l4;
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4u, "w2c_tainted_sort");
+    w2c_l72 = w2c_i0;
+    w2c_i0 = w2c_l4;
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 28u, "w2c_tainted_sort");
+    w2c_l73 = w2c_i0;
+    w2c_i0 = w2c_l72;
+    w2c_l74 = w2c_i0;
+    w2c_i0 = w2c_l73;
+    w2c_l75 = w2c_i0;
+    w2c_i0 = w2c_l74;
+    w2c_i1 = w2c_l75;
+    w2c_i0 = w2c_i0 < w2c_i1;
+    w2c_l76 = w2c_i0;
+    w2c_i0 = 1u;
+    w2c_l77 = w2c_i0;
+    w2c_i0 = w2c_l76;
+    w2c_i1 = w2c_l77;
+    w2c_i0 &= w2c_i1;
+    w2c_l78 = w2c_i0;
+    w2c_i0 = w2c_l78;
+    w2c_i0 = !(w2c_i0);
+    if (w2c_i0) {goto w2c_B5;}
+    w2c_i0 = w2c_l4;
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 24u, "w2c_tainted_sort");
+    w2c_l79 = w2c_i0;
+    w2c_i0 = w2c_l4;
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4u, "w2c_tainted_sort");
+    w2c_l80 = w2c_i0;
+    w2c_i0 = 2u;
+    w2c_l81 = w2c_i0;
+    w2c_i0 = w2c_l80;
+    w2c_i1 = w2c_l81;
+    w2c_i0 <<= (w2c_i1 & 31);
+    w2c_l82 = w2c_i0;
+    w2c_i0 = w2c_l79;
+    w2c_i1 = w2c_l82;
+    w2c_i0 += w2c_i1;
+    w2c_l83 = w2c_i0;
+    w2c_i0 = w2c_l83;
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_tainted_sort");
+    w2c_l84 = w2c_i0;
+    w2c_i0 = w2c_l4;
+    w2c_i1 = w2c_l84;
+    i32_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_i1, "w2c_tainted_sort");
+    w2c_i0 = 1112u;
+    w2c_l85 = w2c_i0;
+    w2c_i0 = w2c_l85;
+    w2c_i1 = w2c_l4;
+    w2c_i0 = w2c_printf(sbx, w2c_i0, w2c_i1);
+    w2c_i0 = w2c_l4;
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4u, "w2c_tainted_sort");
+    w2c_l86 = w2c_i0;
+    w2c_i0 = 1u;
+    w2c_l87 = w2c_i0;
+    w2c_i0 = w2c_l86;
+    w2c_i1 = w2c_l87;
+    w2c_i0 += w2c_i1;
+    w2c_l88 = w2c_i0;
+    w2c_i0 = w2c_l4;
+    w2c_i1 = w2c_l88;
+    i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_tainted_sort");
+    goto w2c_L6;
+  w2c_B5:;
+  w2c_i0 = w2c_l4;
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 24u, "w2c_tainted_sort");
+  w2c_l89 = w2c_i0;
+  w2c_i0 = 32u;
+  w2c_l90 = w2c_i0;
+  w2c_i0 = w2c_l4;
+  w2c_i1 = w2c_l90;
+  w2c_i0 += w2c_i1;
+  w2c_l91 = w2c_i0;
+  w2c_i0 = w2c_l91;
+  sbx->w2c_g0 = w2c_i0;
+  w2c_i0 = w2c_l89;
+  goto w2c_Bfunc;
+  w2c_Bfunc:;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
 static u32 w2c_main(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1) {
   u32 w2c_l2 = 0, w2c_l3 = 0, w2c_l4 = 0, w2c_l5 = 0;
   FUNC_PROLOGUE;
@@ -1185,11 +1553,11 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l1 = w2c_i0;
   sbx->w2c_g0 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832u, "w2c_dlmalloc");
   if (w2c_i0) {goto w2c_B0;}
   w2c_i0 = 0u;
   w2c_i0 = w2c_sbrk(sbx, w2c_i0);
-  w2c_i1 = 70912u;
+  w2c_i1 = 70944u;
   w2c_i0 -= w2c_i1;
   w2c_l2 = w2c_i0;
   w2c_i1 = 89u;
@@ -1198,15 +1566,15 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = 0u;
   w2c_l3 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4248u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4280u, "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
   if (w2c_i0) {goto w2c_B1;}
   w2c_i0 = 0u;
   w2c_j1 = 18446744073709551615ull;
-  i64_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4260, w2c_j1, "w2c_dlmalloc");
+  i64_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4292, w2c_j1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_j1 = 281474976776192ull;
-  i64_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4252, w2c_j1, "w2c_dlmalloc");
+  i64_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4284, w2c_j1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l1;
   w2c_i2 = 8u;
@@ -1216,40 +1584,40 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i2 = 1431655768u;
   w2c_i1 ^= w2c_i2;
   w2c_l4 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4248, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4280, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4268, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4300, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4220, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4252, w2c_i1, "w2c_dlmalloc");
   w2c_B1:;
   w2c_i0 = 0u;
   w2c_i1 = w2c_l2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4228, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4260, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
-  w2c_i1 = 70912u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4224, w2c_i1, "w2c_dlmalloc");
+  w2c_i1 = 70944u;
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4256, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
-  w2c_i1 = 70912u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792, w2c_i1, "w2c_dlmalloc");
+  w2c_i1 = 70944u;
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l4;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3844, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 4294967295u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3840, w2c_i1, "w2c_dlmalloc");
   w2c_L2: 
     w2c_i0 = w2c_l3;
-    w2c_i1 = 3824u;
+    w2c_i1 = 3856u;
     w2c_i0 += w2c_i1;
     w2c_i1 = w2c_l3;
-    w2c_i2 = 3816u;
+    w2c_i2 = 3848u;
     w2c_i1 += w2c_i2;
     w2c_l4 = w2c_i1;
     i32_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_i1, "w2c_dlmalloc");
     w2c_i0 = w2c_l3;
-    w2c_i1 = 3828u;
+    w2c_i1 = 3860u;
     w2c_i0 += w2c_i1;
     w2c_i1 = w2c_l4;
     i32_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_i1, "w2c_dlmalloc");
@@ -1261,17 +1629,17 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
     w2c_i0 = w2c_i0 != w2c_i1;
     if (w2c_i0) {goto w2c_L2;}
   w2c_i0 = 0u;
-  w2c_i1 = 70920u;
+  w2c_i1 = 70952u;
   w2c_i0 -= w2c_i1;
   w2c_i1 = 15u;
   w2c_i0 &= w2c_i1;
   w2c_i1 = 0u;
-  w2c_i2 = 70920u;
+  w2c_i2 = 70952u;
   w2c_i3 = 15u;
   w2c_i2 &= w2c_i3;
   w2c_i0 = w2c_i2 ? w2c_i0 : w2c_i1;
   w2c_l3 = w2c_i0;
-  w2c_i1 = 70916u;
+  w2c_i1 = 70948u;
   w2c_i0 += w2c_i1;
   w2c_i1 = w2c_l2;
   w2c_i2 = w2c_l3;
@@ -1284,18 +1652,18 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4264u, "w2c_dlmalloc");
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3804, w2c_i1, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4296u, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3836, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l3;
-  w2c_i2 = 70912u;
+  w2c_i2 = 70944u;
   w2c_i1 += w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l4;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l2;
-  w2c_i1 = 70860u;
+  w2c_i1 = 70892u;
   w2c_i0 += w2c_i1;
   w2c_i1 = 56u;
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_i1, "w2c_dlmalloc");
@@ -1305,7 +1673,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_i0 > w2c_i1;
   if (w2c_i0) {goto w2c_B14;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808u, "w2c_dlmalloc");
   w2c_l5 = w2c_i0;
   w2c_i1 = 16u;
   w2c_i2 = w2c_p0;
@@ -1338,7 +1706,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = 3u;
   w2c_i0 <<= (w2c_i1 & 31);
   w2c_l6 = w2c_i0;
-  w2c_i1 = 3824u;
+  w2c_i1 = 3856u;
   w2c_i0 += w2c_i1;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
@@ -1349,7 +1717,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 8u, "w2c_dlmalloc");
   w2c_p0 = w2c_i0;
   w2c_i1 = w2c_l6;
-  w2c_i2 = 3816u;
+  w2c_i2 = 3848u;
   w2c_i1 += w2c_i2;
   w2c_l6 = w2c_i1;
   w2c_i0 = w2c_i0 != w2c_i1;
@@ -1360,11 +1728,11 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i3 = w2c_l2;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlmalloc");
   goto w2c_B16;
   w2c_B17:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_dlmalloc");
   w2c_i1 = w2c_p0;
   w2c_i0 = w2c_i0 > w2c_i1;
   w2c_i0 = w2c_l6;
@@ -1395,7 +1763,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_B15:;
   w2c_i0 = w2c_l2;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3784u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3816u, "w2c_dlmalloc");
   w2c_l7 = w2c_i1;
   w2c_i0 = w2c_i0 <= w2c_i1;
   if (w2c_i0) {goto w2c_B13;}
@@ -1475,14 +1843,14 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = 3u;
   w2c_i0 <<= (w2c_i1 & 31);
   w2c_l6 = w2c_i0;
-  w2c_i1 = 3824u;
+  w2c_i1 = 3856u;
   w2c_i0 += w2c_i1;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 8u, "w2c_dlmalloc");
   w2c_l3 = w2c_i0;
   w2c_i1 = w2c_l6;
-  w2c_i2 = 3816u;
+  w2c_i2 = 3848u;
   w2c_i1 += w2c_i2;
   w2c_l6 = w2c_i1;
   w2c_i0 = w2c_i0 != w2c_i1;
@@ -1494,11 +1862,11 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
   w2c_l5 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlmalloc");
   goto w2c_B19;
   w2c_B20:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_dlmalloc");
   w2c_i1 = w2c_l3;
   w2c_i0 = w2c_i0 > w2c_i1;
   w2c_i0 = w2c_l6;
@@ -1545,11 +1913,11 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l8 = w2c_i0;
   w2c_i1 = 3u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 3816u;
+  w2c_i1 = 3848u;
   w2c_i0 += w2c_i1;
   w2c_l2 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828u, "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
   w2c_i0 = w2c_l5;
   w2c_i1 = 1u;
@@ -1562,7 +1930,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l5;
   w2c_i2 = w2c_l8;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l2;
   w2c_l8 = w2c_i0;
   goto w2c_B22;
@@ -1586,14 +1954,14 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_B21:;
   w2c_i0 = 0u;
   w2c_i1 = w2c_l6;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dlmalloc");
   goto w2c_B3;
   w2c_B18:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812u, "w2c_dlmalloc");
   w2c_l9 = w2c_i0;
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B13;}
@@ -1656,7 +2024,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 += w2c_i1;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_dlmalloc");
   w2c_l6 = w2c_i0;
@@ -1714,7 +2082,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_i0 == w2c_i1;
   if (w2c_i0) {goto w2c_B27;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_dlmalloc");
   w2c_i1 = w2c_l6;
   w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 8u, "w2c_dlmalloc");
   w2c_l3 = w2c_i1;
@@ -1788,7 +2156,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 &= w2c_i1;
   w2c_l2 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812u, "w2c_dlmalloc");
   w2c_l7 = w2c_i0;
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B13;}
@@ -1866,7 +2234,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_l11;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
@@ -2028,7 +2396,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 += w2c_i1;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_dlmalloc");
   w2c_l3 = w2c_i0;
@@ -2078,7 +2446,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   if (w2c_i0) {goto w2c_B13;}
   w2c_i0 = w2c_p0;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3784u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3816u, "w2c_dlmalloc");
   w2c_i2 = w2c_l2;
   w2c_i1 -= w2c_i2;
   w2c_i0 = w2c_i0 >= w2c_i1;
@@ -2093,7 +2461,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_i0 == w2c_i1;
   if (w2c_i0) {goto w2c_B41;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_dlmalloc");
   w2c_i1 = w2c_l8;
   w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 8u, "w2c_dlmalloc");
   w2c_l3 = w2c_i1;
@@ -2154,13 +2522,13 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   goto w2c_B5;
   w2c_B13:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816u, "w2c_dlmalloc");
   w2c_l3 = w2c_i0;
   w2c_i1 = w2c_l2;
   w2c_i0 = w2c_i0 < w2c_i1;
   if (w2c_i0) {goto w2c_B45;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828u, "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
   w2c_i0 = w2c_l3;
   w2c_i1 = w2c_l2;
@@ -2179,10 +2547,10 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l6;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l4;
   w2c_i1 = w2c_l3;
   w2c_i0 += w2c_i1;
@@ -2211,10 +2579,10 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dlmalloc");
   w2c_B46:;
   w2c_i0 = w2c_l4;
   w2c_i1 = 8u;
@@ -2223,13 +2591,13 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   goto w2c_B3;
   w2c_B45:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820u, "w2c_dlmalloc");
   w2c_l6 = w2c_i0;
   w2c_i1 = w2c_l2;
   w2c_i0 = w2c_i0 <= w2c_i1;
   if (w2c_i0) {goto w2c_B48;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832u, "w2c_dlmalloc");
   w2c_l3 = w2c_i0;
   w2c_i1 = w2c_l2;
   w2c_i0 += w2c_i1;
@@ -2243,10 +2611,10 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l4;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l3;
   w2c_i1 = w2c_l2;
   w2c_i2 = 3u;
@@ -2259,20 +2627,20 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   goto w2c_B3;
   w2c_B48:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4248u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4280u, "w2c_dlmalloc");
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B50;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4256u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4288u, "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
   goto w2c_B49;
   w2c_B50:;
   w2c_i0 = 0u;
   w2c_j1 = 18446744073709551615ull;
-  i64_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4260, w2c_j1, "w2c_dlmalloc");
+  i64_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4292, w2c_j1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_j1 = 281474976776192ull;
-  i64_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4252, w2c_j1, "w2c_dlmalloc");
+  i64_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4284, w2c_j1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l1;
   w2c_i2 = 12u;
@@ -2281,13 +2649,13 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 &= w2c_i2;
   w2c_i2 = 1431655768u;
   w2c_i1 ^= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4248, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4280, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4268, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4300, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4220, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4252, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 65536u;
   w2c_l4 = w2c_i0;
   w2c_B49:;
@@ -2311,16 +2679,16 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   if (w2c_i0) {goto w2c_B51;}
   w2c_i0 = 0u;
   w2c_i1 = 48u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_dlmalloc");
   goto w2c_B3;
   w2c_B51:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4216u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4248u, "w2c_dlmalloc");
   w2c_l3 = w2c_i0;
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B52;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4208u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4240u, "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
   w2c_i1 = w2c_l8;
   w2c_i0 += w2c_i1;
@@ -2337,20 +2705,20 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l3 = w2c_i0;
   w2c_i0 = 0u;
   w2c_i1 = 48u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_dlmalloc");
   goto w2c_B3;
   w2c_B52:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load8_u(&(sbx->w2c_memory), (u64)(w2c_i0) + 4220u, "w2c_dlmalloc");
+  w2c_i0 = i32_load8_u(&(sbx->w2c_memory), (u64)(w2c_i0) + 4252u, "w2c_dlmalloc");
   w2c_i1 = 4u;
   w2c_i0 &= w2c_i1;
   if (w2c_i0) {goto w2c_B8;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832u, "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B56;}
-  w2c_i0 = 4224u;
+  w2c_i0 = 4256u;
   w2c_l3 = w2c_i0;
   w2c_L57: 
     w2c_i0 = w2c_l3;
@@ -2381,7 +2749,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_l8;
   w2c_l5 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4252u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4284u, "w2c_dlmalloc");
   w2c_l3 = w2c_i0;
   w2c_i1 = 4294967295u;
   w2c_i0 += w2c_i1;
@@ -2412,12 +2780,12 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_i0 > w2c_i1;
   if (w2c_i0) {goto w2c_B9;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4216u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4248u, "w2c_dlmalloc");
   w2c_l3 = w2c_i0;
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B60;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4208u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4240u, "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
   w2c_i1 = w2c_l5;
   w2c_i0 += w2c_i1;
@@ -2474,7 +2842,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l5;
   w2c_i0 -= w2c_i1;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4256u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4288u, "w2c_dlmalloc");
   w2c_l4 = w2c_i1;
   w2c_i0 += w2c_i1;
   w2c_i1 = 0u;
@@ -2531,10 +2899,10 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_B9:;
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4220u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4252u, "w2c_dlmalloc");
   w2c_i2 = 4u;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4220, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4252, w2c_i1, "w2c_dlmalloc");
   w2c_B8:;
   w2c_i0 = w2c_l8;
   w2c_i1 = 2147483646u;
@@ -2568,26 +2936,26 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_B7:;
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4208u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4240u, "w2c_dlmalloc");
   w2c_i2 = w2c_l5;
   w2c_i1 += w2c_i2;
   w2c_l3 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4208, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4240, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l3;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4212u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4244u, "w2c_dlmalloc");
   w2c_i0 = w2c_i0 <= w2c_i1;
   if (w2c_i0) {goto w2c_B64;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_l3;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4212, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4244, w2c_i1, "w2c_dlmalloc");
   w2c_B64:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832u, "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B68;}
-  w2c_i0 = 4224u;
+  w2c_i0 = 4256u;
   w2c_l3 = w2c_i0;
   w2c_L69: 
     w2c_i0 = w2c_l6;
@@ -2607,7 +2975,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
     goto w2c_B66;
   w2c_B68:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_dlmalloc");
   w2c_l3 = w2c_i0;
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B71;}
@@ -2618,37 +2986,37 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_B71:;
   w2c_i0 = 0u;
   w2c_i1 = w2c_l6;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824, w2c_i1, "w2c_dlmalloc");
   w2c_B70:;
   w2c_i0 = 0u;
   w2c_l3 = w2c_i0;
   w2c_i0 = 0u;
   w2c_i1 = w2c_l5;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4228, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4260, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l6;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4224, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4256, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 4294967295u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3840, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4248u, "w2c_dlmalloc");
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4280u, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3844, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4236, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4268, w2c_i1, "w2c_dlmalloc");
   w2c_L72: 
     w2c_i0 = w2c_l3;
-    w2c_i1 = 3824u;
+    w2c_i1 = 3856u;
     w2c_i0 += w2c_i1;
     w2c_i1 = w2c_l3;
-    w2c_i2 = 3816u;
+    w2c_i2 = 3848u;
     w2c_i1 += w2c_i2;
     w2c_l4 = w2c_i1;
     i32_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_i1, "w2c_dlmalloc");
     w2c_i0 = w2c_l3;
-    w2c_i1 = 3828u;
+    w2c_i1 = 3860u;
     w2c_i0 += w2c_i1;
     w2c_i1 = w2c_l4;
     i32_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_i1, "w2c_dlmalloc");
@@ -2687,14 +3055,14 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4264u, "w2c_dlmalloc");
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3804, w2c_i1, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4296u, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3836, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l3;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l4;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l6;
   w2c_i1 = w2c_p0;
   w2c_i0 += w2c_i1;
@@ -2732,7 +3100,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 += w2c_i1;
   w2c_l6 = w2c_i0;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3788u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3820u, "w2c_dlmalloc");
   w2c_i2 = w2c_l5;
   w2c_i1 += w2c_i2;
   w2c_l11 = w2c_i1;
@@ -2749,14 +3117,14 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4264u, "w2c_dlmalloc");
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3804, w2c_i1, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4296u, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3836, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l6;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l4;
   w2c_i1 = w2c_l11;
   w2c_i0 += w2c_i1;
@@ -2766,13 +3134,13 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_B66:;
   w2c_i0 = w2c_l6;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3792u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3824u, "w2c_dlmalloc");
   w2c_l8 = w2c_i1;
   w2c_i0 = w2c_i0 >= w2c_i1;
   if (w2c_i0) {goto w2c_B73;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_l6;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l6;
   w2c_l8 = w2c_i0;
   w2c_B73:;
@@ -2780,7 +3148,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l5;
   w2c_i0 += w2c_i1;
   w2c_p0 = w2c_i0;
-  w2c_i0 = 4224u;
+  w2c_i0 = 4256u;
   w2c_l3 = w2c_i0;
   w2c_L81: 
     w2c_i0 = w2c_l3;
@@ -2801,7 +3169,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B78;}
   w2c_B79:;
-  w2c_i0 = 4224u;
+  w2c_i0 = 4256u;
   w2c_l3 = w2c_i0;
   w2c_L82: 
     w2c_i0 = w2c_l3;
@@ -2882,14 +3250,14 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   if (w2c_i0) {goto w2c_B84;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3788u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3820u, "w2c_dlmalloc");
   w2c_i2 = w2c_l3;
   w2c_i1 += w2c_i2;
   w2c_l3 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_p0;
   w2c_i1 = w2c_l3;
   w2c_i2 = 1u;
@@ -2898,20 +3266,20 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   goto w2c_B75;
   w2c_B84:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828u, "w2c_dlmalloc");
   w2c_i1 = w2c_l6;
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B85;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3784u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3816u, "w2c_dlmalloc");
   w2c_i2 = w2c_l3;
   w2c_i1 += w2c_i2;
   w2c_l3 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_p0;
   w2c_i1 = w2c_l3;
   w2c_i2 = 1u;
@@ -2952,7 +3320,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l9 = w2c_i1;
   w2c_i2 = 3u;
   w2c_i1 <<= (w2c_i2 & 31);
-  w2c_i2 = 3816u;
+  w2c_i2 = 3848u;
   w2c_i1 += w2c_i2;
   w2c_l4 = w2c_i1;
   w2c_i0 = w2c_i0 == w2c_i1;
@@ -2967,12 +3335,12 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   if (w2c_i0) {goto w2c_B90;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3776u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3808u, "w2c_dlmalloc");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l9;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlmalloc");
   goto w2c_B87;
   w2c_B90:;
   w2c_i0 = w2c_l2;
@@ -3068,7 +3436,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l2 = w2c_i0;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_l4 = w2c_i0;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_dlmalloc");
@@ -3082,12 +3450,12 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   if (w2c_i0) {goto w2c_B97;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3780u, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3812u, "w2c_dlmalloc");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l2;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlmalloc");
   goto w2c_B87;
   w2c_B98:;
   w2c_i0 = w2c_l9;
@@ -3169,11 +3537,11 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l4 = w2c_i0;
   w2c_i1 = 3u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 3816u;
+  w2c_i1 = 3848u;
   w2c_i0 += w2c_i1;
   w2c_l3 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808u, "w2c_dlmalloc");
   w2c_l2 = w2c_i0;
   w2c_i1 = 1u;
   w2c_i2 = w2c_l4;
@@ -3185,7 +3553,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l2;
   w2c_i2 = w2c_l4;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l3;
   w2c_l4 = w2c_i0;
   goto w2c_B101;
@@ -3284,11 +3652,11 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_l4;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_l2 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812u, "w2c_dlmalloc");
   w2c_l6 = w2c_i0;
   w2c_i1 = 1u;
   w2c_i2 = w2c_l4;
@@ -3303,7 +3671,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l6;
   w2c_i2 = w2c_l8;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_p0;
   w2c_i1 = w2c_l2;
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 24, w2c_i1, "w2c_dlmalloc");
@@ -3433,38 +3801,38 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4264u, "w2c_dlmalloc");
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3804, w2c_i1, "w2c_dlmalloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4296u, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3836, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l3;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l11;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l8;
   w2c_i1 = 16u;
   w2c_i0 += w2c_i1;
   w2c_i1 = 0u;
-  w2c_j1 = i64_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4232u, "w2c_dlmalloc");
+  w2c_j1 = i64_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4264u, "w2c_dlmalloc");
   i64_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_j1, "w2c_dlmalloc");
   w2c_i0 = w2c_l8;
   w2c_i1 = 0u;
-  w2c_j1 = i64_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4224u, "w2c_dlmalloc");
+  w2c_j1 = i64_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4256u, "w2c_dlmalloc");
   i64_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 8, w2c_j1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l8;
   w2c_i2 = 8u;
   w2c_i1 += w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4232, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4264, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l5;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4228, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4260, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l6;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4224, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4256, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4236, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4268, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l8;
   w2c_i1 = 36u;
   w2c_i0 += w2c_i1;
@@ -3511,11 +3879,11 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_p0 = w2c_i0;
   w2c_i1 = 3u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 3816u;
+  w2c_i1 = 3848u;
   w2c_i0 += w2c_i1;
   w2c_l3 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808u, "w2c_dlmalloc");
   w2c_l6 = w2c_i0;
   w2c_i1 = 1u;
   w2c_i2 = w2c_p0;
@@ -3527,7 +3895,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l6;
   w2c_i2 = w2c_p0;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l3;
   w2c_p0 = w2c_i0;
   goto w2c_B108;
@@ -3628,11 +3996,11 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_l3;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_p0 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812u, "w2c_dlmalloc");
   w2c_l6 = w2c_i0;
   w2c_i1 = 1u;
   w2c_i2 = w2c_l3;
@@ -3647,7 +4015,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l6;
   w2c_i2 = w2c_l8;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l4;
   w2c_i1 = 24u;
   w2c_i0 += w2c_i1;
@@ -3768,13 +4136,13 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 12, w2c_i1, "w2c_dlmalloc");
   w2c_B65:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820u, "w2c_dlmalloc");
   w2c_l3 = w2c_i0;
   w2c_i1 = w2c_l2;
   w2c_i0 = w2c_i0 <= w2c_i1;
   if (w2c_i0) {goto w2c_B6;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832u, "w2c_dlmalloc");
   w2c_l4 = w2c_i0;
   w2c_i1 = w2c_l2;
   w2c_i0 += w2c_i1;
@@ -3788,10 +4156,10 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l3;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l4;
   w2c_i1 = w2c_l2;
   w2c_i2 = 3u;
@@ -3807,7 +4175,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l3 = w2c_i0;
   w2c_i0 = 0u;
   w2c_i1 = 48u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_dlmalloc");
   goto w2c_B3;
   w2c_B5:;
   w2c_i0 = w2c_l11;
@@ -3819,7 +4187,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l4 = w2c_i1;
   w2c_i2 = 2u;
   w2c_i1 <<= (w2c_i2 & 31);
-  w2c_i2 = 4080u;
+  w2c_i2 = 4112u;
   w2c_i1 += w2c_i2;
   w2c_l3 = w2c_i1;
   w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1), "w2c_dlmalloc");
@@ -3837,7 +4205,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
   w2c_l7 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlmalloc");
   goto w2c_B113;
   w2c_B115:;
   w2c_i0 = w2c_l11;
@@ -3937,11 +4305,11 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l4 = w2c_i0;
   w2c_i1 = 3u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 3816u;
+  w2c_i1 = 3848u;
   w2c_i0 += w2c_i1;
   w2c_l3 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808u, "w2c_dlmalloc");
   w2c_p0 = w2c_i0;
   w2c_i1 = 1u;
   w2c_i2 = w2c_l4;
@@ -3953,7 +4321,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_p0;
   w2c_i2 = w2c_l4;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l3;
   w2c_l4 = w2c_i0;
   goto w2c_B120;
@@ -4053,7 +4421,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_l3;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_l4 = w2c_i0;
   w2c_i0 = w2c_l7;
@@ -4070,7 +4438,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l7;
   w2c_i2 = w2c_l2;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l6;
   w2c_i1 = w2c_l4;
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 24, w2c_i1, "w2c_dlmalloc");
@@ -4174,7 +4542,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_p0 = w2c_i1;
   w2c_i2 = 2u;
   w2c_i1 <<= (w2c_i2 & 31);
-  w2c_i2 = 4080u;
+  w2c_i2 = 4112u;
   w2c_i1 += w2c_i2;
   w2c_l3 = w2c_i1;
   w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1), "w2c_dlmalloc");
@@ -4191,7 +4559,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i3 = w2c_p0;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlmalloc");
   goto w2c_B127;
   w2c_B129:;
   w2c_i0 = w2c_l10;
@@ -4290,11 +4658,11 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l8 = w2c_i0;
   w2c_i1 = 3u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 3816u;
+  w2c_i1 = 3848u;
   w2c_i0 += w2c_i1;
   w2c_l2 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796u, "w2c_dlmalloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828u, "w2c_dlmalloc");
   w2c_l3 = w2c_i0;
   w2c_i0 = 1u;
   w2c_i1 = w2c_l8;
@@ -4307,7 +4675,7 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l8;
   w2c_i2 = w2c_l5;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = w2c_l2;
   w2c_l8 = w2c_i0;
   goto w2c_B134;
@@ -4331,10 +4699,10 @@ FUNC_EXPORT u32 w2c_dlmalloc_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_B133:;
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828, w2c_i1, "w2c_dlmalloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l4;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dlmalloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dlmalloc");
   w2c_B131:;
   w2c_i0 = w2c_l6;
   w2c_i1 = 8u;
@@ -4403,7 +4771,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 -= w2c_i1;
   w2c_l1 = w2c_i0;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3792u, "w2c_dlfree");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3824u, "w2c_dlfree");
   w2c_l4 = w2c_i1;
   w2c_i0 = w2c_i0 < w2c_i1;
   if (w2c_i0) {goto w2c_B0;}
@@ -4412,7 +4780,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 += w2c_i1;
   w2c_p0 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796u, "w2c_dlfree");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828u, "w2c_dlfree");
   w2c_i1 = w2c_l1;
   w2c_i0 = w2c_i0 == w2c_i1;
   if (w2c_i0) {goto w2c_B2;}
@@ -4432,7 +4800,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l7 = w2c_i1;
   w2c_i2 = 3u;
   w2c_i1 <<= (w2c_i2 & 31);
-  w2c_i2 = 3816u;
+  w2c_i2 = 3848u;
   w2c_i1 += w2c_i2;
   w2c_l2 = w2c_i1;
   w2c_i0 = w2c_i0 == w2c_i1;
@@ -4447,12 +4815,12 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   if (w2c_i0) {goto w2c_B5;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3776u, "w2c_dlfree");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3808u, "w2c_dlfree");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l7;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlfree");
   goto w2c_B1;
   w2c_B5:;
   w2c_i0 = w2c_l5;
@@ -4548,7 +4916,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l4 = w2c_i0;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_l2 = w2c_i0;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_dlfree");
@@ -4562,12 +4930,12 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   if (w2c_i0) {goto w2c_B12;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3780u, "w2c_dlfree");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3812u, "w2c_dlfree");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l4;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlfree");
   goto w2c_B1;
   w2c_B13:;
   w2c_i0 = w2c_l7;
@@ -4630,7 +4998,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dlfree");
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dlfree");
   w2c_i0 = w2c_l1;
   w2c_i1 = w2c_p0;
   w2c_i0 += w2c_i1;
@@ -4659,20 +5027,20 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 &= w2c_i1;
   if (w2c_i0) {goto w2c_B16;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800u, "w2c_dlfree");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832u, "w2c_dlfree");
   w2c_i1 = w2c_l3;
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B17;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_l1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832, w2c_i1, "w2c_dlfree");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3788u, "w2c_dlfree");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3820u, "w2c_dlfree");
   w2c_i2 = w2c_p0;
   w2c_i1 += w2c_i2;
   w2c_p0 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820, w2c_i1, "w2c_dlfree");
   w2c_i0 = w2c_l1;
   w2c_i1 = w2c_p0;
   w2c_i2 = 1u;
@@ -4680,32 +5048,32 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dlfree");
   w2c_i0 = w2c_l1;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3796u, "w2c_dlfree");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3828u, "w2c_dlfree");
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B0;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dlfree");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828, w2c_i1, "w2c_dlfree");
   goto w2c_Bfunc;
   w2c_B17:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796u, "w2c_dlfree");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828u, "w2c_dlfree");
   w2c_i1 = w2c_l3;
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B18;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_l1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828, w2c_i1, "w2c_dlfree");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3784u, "w2c_dlfree");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3816u, "w2c_dlfree");
   w2c_i2 = w2c_p0;
   w2c_i1 += w2c_i2;
   w2c_p0 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dlfree");
   w2c_i0 = w2c_l1;
   w2c_i1 = w2c_p0;
   w2c_i2 = 1u;
@@ -4740,13 +5108,13 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l3 = w2c_i1;
   w2c_i2 = 3u;
   w2c_i1 <<= (w2c_i2 & 31);
-  w2c_i2 = 3816u;
+  w2c_i2 = 3848u;
   w2c_i1 += w2c_i2;
   w2c_l2 = w2c_i1;
   w2c_i0 = w2c_i0 == w2c_i1;
   if (w2c_i0) {goto w2c_B21;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_dlfree");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_dlfree");
   w2c_i1 = w2c_l5;
   w2c_i0 = w2c_i0 > w2c_i1;
   w2c_B21:;
@@ -4756,12 +5124,12 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   if (w2c_i0) {goto w2c_B22;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3776u, "w2c_dlfree");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3808u, "w2c_dlfree");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l3;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlfree");
   goto w2c_B19;
   w2c_B22:;
   w2c_i0 = w2c_l4;
@@ -4769,7 +5137,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_i0 == w2c_i1;
   if (w2c_i0) {goto w2c_B23;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_dlfree");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_dlfree");
   w2c_i1 = w2c_l4;
   w2c_i0 = w2c_i0 > w2c_i1;
   w2c_B23:;
@@ -4791,7 +5159,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_i0 == w2c_i1;
   if (w2c_i0) {goto w2c_B25;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_dlfree");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_dlfree");
   w2c_i1 = w2c_l3;
   w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 8u, "w2c_dlfree");
   w2c_l2 = w2c_i1;
@@ -4859,7 +5227,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l4 = w2c_i0;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_l2 = w2c_i0;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_dlfree");
@@ -4873,12 +5241,12 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   if (w2c_i0) {goto w2c_B29;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3780u, "w2c_dlfree");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3812u, "w2c_dlfree");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l4;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlfree");
   goto w2c_B19;
   w2c_B30:;
   w2c_i0 = w2c_l7;
@@ -4937,12 +5305,12 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dlfree");
   w2c_i0 = w2c_l1;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3796u, "w2c_dlfree");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3828u, "w2c_dlfree");
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B15;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dlfree");
   goto w2c_Bfunc;
   w2c_B16:;
   w2c_i0 = w2c_l3;
@@ -4971,11 +5339,11 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l2 = w2c_i0;
   w2c_i1 = 3u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 3816u;
+  w2c_i1 = 3848u;
   w2c_i0 += w2c_i1;
   w2c_p0 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776u, "w2c_dlfree");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808u, "w2c_dlfree");
   w2c_l4 = w2c_i0;
   w2c_i1 = 1u;
   w2c_i2 = w2c_l2;
@@ -4987,7 +5355,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l4;
   w2c_i2 = w2c_l2;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlfree");
   w2c_i0 = w2c_p0;
   w2c_l2 = w2c_i0;
   goto w2c_B33;
@@ -5088,11 +5456,11 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_l2;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_l4 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780u, "w2c_dlfree");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812u, "w2c_dlfree");
   w2c_l5 = w2c_i0;
   w2c_i1 = 1u;
   w2c_i2 = w2c_l2;
@@ -5107,7 +5475,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i1 = w2c_l5;
   w2c_i2 = w2c_l3;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dlfree");
   w2c_i0 = w2c_l1;
   w2c_i1 = 24u;
   w2c_i0 += w2c_i1;
@@ -5204,14 +5572,14 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_B36:;
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3808u, "w2c_dlfree");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3840u, "w2c_dlfree");
   w2c_i2 = 4294967295u;
   w2c_i1 += w2c_i2;
   w2c_l1 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3840, w2c_i1, "w2c_dlfree");
   w2c_i0 = w2c_l1;
   if (w2c_i0) {goto w2c_B0;}
-  w2c_i0 = 4232u;
+  w2c_i0 = 4264u;
   w2c_l1 = w2c_i0;
   w2c_L40: 
     w2c_i0 = w2c_l1;
@@ -5224,7 +5592,7 @@ FUNC_EXPORT void w2c_dlfree_wrapped(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
     if (w2c_i0) {goto w2c_L40;}
   w2c_i0 = 0u;
   w2c_i1 = 4294967295u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dlfree");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3840, w2c_i1, "w2c_dlfree");
   w2c_B0:;
   w2c_Bfunc:;
   FUNC_EPILOGUE;
@@ -5312,7 +5680,7 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   if (w2c_i0) {goto w2c_B1;}
   w2c_i0 = 0u;
   w2c_i1 = 48u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_realloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_realloc");
   w2c_i0 = 0u;
   goto w2c_Bfunc;
   w2c_B1:;
@@ -5340,7 +5708,7 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   w2c_i0 &= w2c_i1;
   w2c_l7 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_realloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_realloc");
   w2c_l8 = w2c_i0;
   w2c_i0 = w2c_l6;
   w2c_i1 = 4294967288u;
@@ -5378,7 +5746,7 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   w2c_i1 = w2c_l2;
   w2c_i0 -= w2c_i1;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4256u, "w2c_realloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 4288u, "w2c_realloc");
   w2c_i2 = 1u;
   w2c_i1 <<= (w2c_i2 & 31);
   w2c_i0 = w2c_i0 <= w2c_i1;
@@ -5430,12 +5798,12 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   goto w2c_Bfunc;
   w2c_B6:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800u, "w2c_realloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832u, "w2c_realloc");
   w2c_i1 = w2c_l7;
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B7;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788u, "w2c_realloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820u, "w2c_realloc");
   w2c_i1 = w2c_l9;
   w2c_i0 += w2c_i1;
   w2c_l9 = w2c_i0;
@@ -5456,13 +5824,13 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   w2c_i2 = w2c_l2;
   w2c_i1 += w2c_i2;
   w2c_p1 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800, w2c_i1, "w2c_realloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832, w2c_i1, "w2c_realloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_l9;
   w2c_i2 = w2c_l2;
   w2c_i1 -= w2c_i2;
   w2c_l2 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788, w2c_i1, "w2c_realloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820, w2c_i1, "w2c_realloc");
   w2c_i0 = w2c_p1;
   w2c_i1 = w2c_l2;
   w2c_i2 = 1u;
@@ -5472,12 +5840,12 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   goto w2c_Bfunc;
   w2c_B7:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796u, "w2c_realloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828u, "w2c_realloc");
   w2c_i1 = w2c_l7;
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B8;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784u, "w2c_realloc");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816u, "w2c_realloc");
   w2c_i1 = w2c_l9;
   w2c_i0 += w2c_i1;
   w2c_l9 = w2c_i0;
@@ -5547,10 +5915,10 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   w2c_B9:;
   w2c_i0 = 0u;
   w2c_i1 = w2c_l2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796, w2c_i1, "w2c_realloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828, w2c_i1, "w2c_realloc");
   w2c_i0 = 0u;
   w2c_i1 = w2c_p1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_realloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_realloc");
   w2c_i0 = w2c_p0;
   goto w2c_Bfunc;
   w2c_B8:;
@@ -5589,7 +5957,7 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   w2c_l3 = w2c_i1;
   w2c_i2 = 3u;
   w2c_i1 <<= (w2c_i2 & 31);
-  w2c_i2 = 3816u;
+  w2c_i2 = 3848u;
   w2c_i1 += w2c_i2;
   w2c_l7 = w2c_i1;
   w2c_i0 = w2c_i0 == w2c_i1;
@@ -5604,12 +5972,12 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   if (w2c_i0) {goto w2c_B14;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3776u, "w2c_realloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3808u, "w2c_realloc");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l3;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_realloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_realloc");
   goto w2c_B11;
   w2c_B14:;
   w2c_i0 = w2c_p1;
@@ -5705,7 +6073,7 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   w2c_l9 = w2c_i0;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_p1 = w2c_i0;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_realloc");
@@ -5719,12 +6087,12 @@ FUNC_EXPORT u32 w2c_realloc(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   if (w2c_i0) {goto w2c_B21;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3780u, "w2c_realloc");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3812u, "w2c_realloc");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l9;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_realloc");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_realloc");
   goto w2c_B11;
   w2c_B22:;
   w2c_i0 = w2c_l12;
@@ -5895,7 +6263,7 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_i0 += w2c_i1;
   w2c_p1 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796u, "w2c_dispose_chunk");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828u, "w2c_dispose_chunk");
   w2c_i1 = w2c_p0;
   w2c_i2 = w2c_l3;
   w2c_i1 -= w2c_i2;
@@ -5903,7 +6271,7 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_i0 = w2c_i0 == w2c_i1;
   if (w2c_i0) {goto w2c_B2;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_dispose_chunk");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_dispose_chunk");
   w2c_l4 = w2c_i0;
   w2c_i0 = w2c_l3;
   w2c_i1 = 255u;
@@ -5921,7 +6289,7 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_l7 = w2c_i1;
   w2c_i2 = 3u;
   w2c_i1 <<= (w2c_i2 & 31);
-  w2c_i2 = 3816u;
+  w2c_i2 = 3848u;
   w2c_i1 += w2c_i2;
   w2c_l3 = w2c_i1;
   w2c_i0 = w2c_i0 == w2c_i1;
@@ -5936,12 +6304,12 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   if (w2c_i0) {goto w2c_B5;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3776u, "w2c_dispose_chunk");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3808u, "w2c_dispose_chunk");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l7;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dispose_chunk");
   goto w2c_B1;
   w2c_B5:;
   w2c_i0 = w2c_l5;
@@ -6037,7 +6405,7 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_l5 = w2c_i0;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_l3 = w2c_i0;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_dispose_chunk");
@@ -6051,12 +6419,12 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   if (w2c_i0) {goto w2c_B12;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3780u, "w2c_dispose_chunk");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3812u, "w2c_dispose_chunk");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l5;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dispose_chunk");
   goto w2c_B1;
   w2c_B13:;
   w2c_i0 = w2c_l7;
@@ -6119,7 +6487,7 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = 0u;
   w2c_i1 = w2c_p1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = w2c_l2;
   w2c_i1 = w2c_p1;
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0), w2c_i1, "w2c_dispose_chunk");
@@ -6137,20 +6505,20 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_i0 &= w2c_i1;
   if (w2c_i0) {goto w2c_B16;}
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800u, "w2c_dispose_chunk");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832u, "w2c_dispose_chunk");
   w2c_i1 = w2c_l2;
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B17;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3800, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3832, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3788u, "w2c_dispose_chunk");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3820u, "w2c_dispose_chunk");
   w2c_i2 = w2c_p1;
   w2c_i1 += w2c_i2;
   w2c_p1 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3788, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3820, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = w2c_p0;
   w2c_i1 = w2c_p1;
   w2c_i2 = 1u;
@@ -6158,32 +6526,32 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = w2c_p0;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3796u, "w2c_dispose_chunk");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3828u, "w2c_dispose_chunk");
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B0;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828, w2c_i1, "w2c_dispose_chunk");
   goto w2c_Bfunc;
   w2c_B17:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796u, "w2c_dispose_chunk");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828u, "w2c_dispose_chunk");
   w2c_i1 = w2c_l2;
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B18;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3796, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3828, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3784u, "w2c_dispose_chunk");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3816u, "w2c_dispose_chunk");
   w2c_i2 = w2c_p1;
   w2c_i1 += w2c_i2;
   w2c_p1 = w2c_i1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = w2c_p0;
   w2c_i1 = w2c_p1;
   w2c_i2 = 1u;
@@ -6197,7 +6565,7 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   goto w2c_Bfunc;
   w2c_B18:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c_dispose_chunk");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3824u, "w2c_dispose_chunk");
   w2c_l4 = w2c_i0;
   w2c_i0 = w2c_l3;
   w2c_i1 = 4294967288u;
@@ -6221,7 +6589,7 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_l2 = w2c_i1;
   w2c_i2 = 3u;
   w2c_i1 <<= (w2c_i2 & 31);
-  w2c_i2 = 3816u;
+  w2c_i2 = 3848u;
   w2c_i1 += w2c_i2;
   w2c_l3 = w2c_i1;
   w2c_i0 = w2c_i0 == w2c_i1;
@@ -6236,12 +6604,12 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   if (w2c_i0) {goto w2c_B22;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3776u, "w2c_dispose_chunk");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3808u, "w2c_dispose_chunk");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l2;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dispose_chunk");
   goto w2c_B19;
   w2c_B22:;
   w2c_i0 = w2c_l5;
@@ -6337,7 +6705,7 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_l5 = w2c_i0;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_l3 = w2c_i0;
   w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_dispose_chunk");
@@ -6351,12 +6719,12 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   if (w2c_i0) {goto w2c_B29;}
   w2c_i0 = 0u;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3780u, "w2c_dispose_chunk");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3812u, "w2c_dispose_chunk");
   w2c_i2 = 4294967294u;
   w2c_i3 = w2c_l5;
   w2c_i2 = I32_ROTL(w2c_i2, w2c_i3);
   w2c_i1 &= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dispose_chunk");
   goto w2c_B19;
   w2c_B30:;
   w2c_i0 = w2c_l7;
@@ -6415,12 +6783,12 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = w2c_p0;
   w2c_i1 = 0u;
-  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3796u, "w2c_dispose_chunk");
+  w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 3828u, "w2c_dispose_chunk");
   w2c_i0 = w2c_i0 != w2c_i1;
   if (w2c_i0) {goto w2c_B15;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_p1;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3784, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3816, w2c_i1, "w2c_dispose_chunk");
   goto w2c_Bfunc;
   w2c_B16:;
   w2c_i0 = w2c_l2;
@@ -6449,11 +6817,11 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_l3 = w2c_i0;
   w2c_i1 = 3u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 3816u;
+  w2c_i1 = 3848u;
   w2c_i0 += w2c_i1;
   w2c_p1 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776u, "w2c_dispose_chunk");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808u, "w2c_dispose_chunk");
   w2c_l5 = w2c_i0;
   w2c_i1 = 1u;
   w2c_i2 = w2c_l3;
@@ -6465,7 +6833,7 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_i1 = w2c_l5;
   w2c_i2 = w2c_l3;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3776, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3808, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = w2c_p1;
   w2c_l3 = w2c_i0;
   goto w2c_B33;
@@ -6566,11 +6934,11 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_i0 = w2c_l3;
   w2c_i1 = 2u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 4080u;
+  w2c_i1 = 4112u;
   w2c_i0 += w2c_i1;
   w2c_l5 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780u, "w2c_dispose_chunk");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812u, "w2c_dispose_chunk");
   w2c_l6 = w2c_i0;
   w2c_i1 = 1u;
   w2c_i2 = w2c_l3;
@@ -6585,7 +6953,7 @@ FUNC_EXPORT void w2c_dispose_chunk(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 
   w2c_i1 = w2c_l6;
   w2c_i2 = w2c_l2;
   w2c_i1 |= w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3780, w2c_i1, "w2c_dispose_chunk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 3812, w2c_i1, "w2c_dispose_chunk");
   w2c_i0 = w2c_p0;
   w2c_i1 = 24u;
   w2c_i0 += w2c_i1;
@@ -6780,7 +7148,7 @@ FUNC_EXPORT u32 w2c_internal_memalign(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u
   if (w2c_i0) {goto w2c_B3;}
   w2c_i0 = 0u;
   w2c_i1 = 48u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_internal_memalign");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_internal_memalign");
   w2c_i0 = 0u;
   goto w2c_Bfunc;
   w2c_B3:;
@@ -7052,7 +7420,7 @@ FUNC_EXPORT u32 w2c_sbrk(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   if (w2c_i0) {goto w2c_B2;}
   w2c_i0 = 0u;
   w2c_i1 = 48u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_sbrk");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_sbrk");
   w2c_i0 = 4294967295u;
   goto w2c_Bfunc;
   w2c_B2:;
@@ -7080,7 +7448,7 @@ FUNC_EXPORT u32 w2c_printf(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1) 
   w2c_i0 = w2c_l2;
   w2c_i1 = w2c_p1;
   i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 12, w2c_i1, "w2c_printf");
-  w2c_i0 = 3528u;
+  w2c_i0 = 3560u;
   w2c_i1 = w2c_p0;
   w2c_i2 = w2c_p1;
   w2c_i0 = w2c_vfprintf(sbx, w2c_i0, w2c_i1, w2c_i2);
@@ -7123,7 +7491,7 @@ static u64 w2c___lseek(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u64 w2c_p1, u32 
   w2c_i4 = 76u;
   w2c_i3 = w2c_i3 == w2c_i4;
   w2c_i1 = w2c_i3 ? w2c_i1 : w2c_i2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c___lseek");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c___lseek");
   w2c_j0 = 18446744073709551615ull;
   w2c_p1 = w2c_j0;
   goto w2c_B0;
@@ -7157,7 +7525,7 @@ static u64 w2c___stdio_seek(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u64 w2c_p1,
 static u32 w2c___ofl_lock(wasm2c_sandbox_t* const sbx) {
   FUNC_PROLOGUE;
   u32 w2c_i0;
-  w2c_i0 = 5320u;
+  w2c_i0 = 5352u;
   FUNC_EPILOGUE;
   return w2c_i0;
 }
@@ -7215,7 +7583,7 @@ static void w2c___stdio_exit(wasm2c_sandbox_t* const sbx) {
     if (w2c_i0) {goto w2c_L1;}
   w2c_B0:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 5324u, "w2c___stdio_exit");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 5356u, "w2c___stdio_exit");
   w2c_l0 = w2c_i0;
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B4;}
@@ -7251,7 +7619,7 @@ static void w2c___stdio_exit(wasm2c_sandbox_t* const sbx) {
   CALL_INDIRECT_RES(w2c_j0, sbx->w2c_T0, u64 (*)(wasm2c_sandbox_t* const, u32, u64, u32), 1, w2c_i3, sbx->func_types, sbx, w2c_i0, w2c_j1, w2c_i2);
   w2c_B4:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3640u, "w2c___stdio_exit");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3672u, "w2c___stdio_exit");
   w2c_l0 = w2c_i0;
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B6;}
@@ -7287,7 +7655,7 @@ static void w2c___stdio_exit(wasm2c_sandbox_t* const sbx) {
   CALL_INDIRECT_RES(w2c_j0, sbx->w2c_T0, u64 (*)(wasm2c_sandbox_t* const, u32, u64, u32), 1, w2c_i3, sbx->func_types, sbx, w2c_i0, w2c_j1, w2c_i2);
   w2c_B6:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3760u, "w2c___stdio_exit");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 3792u, "w2c___stdio_exit");
   w2c_l0 = w2c_i0;
   w2c_i0 = !(w2c_i0);
   if (w2c_i0) {goto w2c_B8;}
@@ -7659,10 +8027,10 @@ static u32 w2c___strerror_l(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1)
   w2c_i0 = w2c_i2 ? w2c_i0 : w2c_i1;
   w2c_i1 = 1u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 2672u;
+  w2c_i1 = 2704u;
   w2c_i0 += w2c_i1;
   w2c_i0 = i32_load16_u(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c___strerror_l");
-  w2c_i1 = 1116u;
+  w2c_i1 = 1144u;
   w2c_i0 += w2c_i1;
   w2c_i1 = w2c_p1;
   w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 20u, "w2c___strerror_l");
@@ -7676,14 +8044,14 @@ FUNC_EXPORT u32 w2c_strerror(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   FUNC_PROLOGUE;
   u32 w2c_i0, w2c_i1, w2c_i2, w2c_i3;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 5360u, "w2c_strerror");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 5392u, "w2c_strerror");
   w2c_l1 = w2c_i0;
   if (w2c_i0) {goto w2c_B0;}
-  w2c_i0 = 5336u;
+  w2c_i0 = 5368u;
   w2c_l1 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i1 = 5336u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 5360, w2c_i1, "w2c_strerror");
+  w2c_i1 = 5368u;
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 5392, w2c_i1, "w2c_strerror");
   w2c_B0:;
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
@@ -7693,10 +8061,10 @@ FUNC_EXPORT u32 w2c_strerror(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_i0 = w2c_i2 ? w2c_i0 : w2c_i1;
   w2c_i1 = 1u;
   w2c_i0 <<= (w2c_i1 & 31);
-  w2c_i1 = 2672u;
+  w2c_i1 = 2704u;
   w2c_i0 += w2c_i1;
   w2c_i0 = i32_load16_u(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_strerror");
-  w2c_i1 = 1116u;
+  w2c_i1 = 1144u;
   w2c_i0 += w2c_i1;
   w2c_i1 = w2c_l1;
   w2c_i1 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i1) + 20u, "w2c_strerror");
@@ -7722,7 +8090,7 @@ FUNC_EXPORT u32 w2c_writev(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1, 
   if (w2c_i0) {goto w2c_B1;}
   w2c_i0 = 0u;
   w2c_i1 = 28u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_writev");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_writev");
   goto w2c_B0;
   w2c_B1:;
   w2c_i0 = w2c_p0;
@@ -7737,7 +8105,7 @@ FUNC_EXPORT u32 w2c_writev(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1, 
   if (w2c_i0) {goto w2c_B2;}
   w2c_i0 = 0u;
   w2c_i1 = w2c_p2;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_writev");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_writev");
   w2c_i0 = 4294967295u;
   w2c_l4 = w2c_i0;
   goto w2c_B0;
@@ -8868,7 +9236,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
       w2c_i0 *= w2c_i1;
       w2c_i1 = w2c_l17;
       w2c_i0 += w2c_i1;
-      w2c_i1 = 2864u;
+      w2c_i1 = 2896u;
       w2c_i0 += w2c_i1;
       w2c_i0 = i32_load8_u(&(sbx->w2c_memory), (u64)(w2c_i0), "w2c_printf_core");
       w2c_l17 = w2c_i0;
@@ -8891,7 +9259,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_B8:;
     w2c_i0 = 0u;
     w2c_i1 = 28u;
-    i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_printf_core");
+    i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_printf_core");
     goto w2c_B1;
     w2c_B7:;
     w2c_i0 = w2c_l23;
@@ -9026,7 +9394,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_B76:;
     w2c_i0 = 0u;
     w2c_l30 = w2c_i0;
-    w2c_i0 = 2832u;
+    w2c_i0 = 2864u;
     w2c_l31 = w2c_i0;
     w2c_i0 = w2c_l5;
     w2c_j0 = i64_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 56u, "w2c_printf_core");
@@ -9110,7 +9478,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_B73:;
     w2c_i0 = 0u;
     w2c_l30 = w2c_i0;
-    w2c_i0 = 2832u;
+    w2c_i0 = 2864u;
     w2c_l31 = w2c_i0;
     w2c_i0 = w2c_l5;
     w2c_j0 = i64_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 56u, "w2c_printf_core");
@@ -9137,7 +9505,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
       w2c_i1 = (u32)(w2c_j1);
       w2c_i2 = 15u;
       w2c_i1 &= w2c_i2;
-      w2c_i2 = 3472u;
+      w2c_i2 = 3504u;
       w2c_i1 += w2c_i2;
       w2c_i1 = i32_load8_u(&(sbx->w2c_memory), (u64)(w2c_i1), "w2c_printf_core");
       w2c_i2 = w2c_l17;
@@ -9162,7 +9530,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_i0 = w2c_l29;
     w2c_i1 = 4u;
     w2c_i0 = (u32)((s32)w2c_i0 >> (w2c_i1 & 31));
-    w2c_i1 = 2832u;
+    w2c_i1 = 2864u;
     w2c_i0 += w2c_i1;
     w2c_l31 = w2c_i0;
     w2c_i0 = 2u;
@@ -9200,7 +9568,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_B86:;
     w2c_i0 = 0u;
     w2c_l30 = w2c_i0;
-    w2c_i0 = 2832u;
+    w2c_i0 = 2864u;
     w2c_l31 = w2c_i0;
     w2c_i0 = w2c_l23;
     w2c_i1 = 8u;
@@ -9235,7 +9603,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     i64_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 56, w2c_j1, "w2c_printf_core");
     w2c_i0 = 1u;
     w2c_l30 = w2c_i0;
-    w2c_i0 = 2832u;
+    w2c_i0 = 2864u;
     w2c_l31 = w2c_i0;
     goto w2c_B70;
     w2c_B88:;
@@ -9246,12 +9614,12 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     if (w2c_i0) {goto w2c_B89;}
     w2c_i0 = 1u;
     w2c_l30 = w2c_i0;
-    w2c_i0 = 2833u;
+    w2c_i0 = 2865u;
     w2c_l31 = w2c_i0;
     goto w2c_B70;
     w2c_B89:;
-    w2c_i0 = 2834u;
-    w2c_i1 = 2832u;
+    w2c_i0 = 2866u;
+    w2c_i1 = 2864u;
     w2c_i2 = w2c_l23;
     w2c_i3 = 1u;
     w2c_i2 &= w2c_i3;
@@ -9382,7 +9750,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     i64_store8(&(sbx->w2c_memory), (u64)(w2c_i0) + 55, w2c_j1, "w2c_printf_core");
     w2c_i0 = 0u;
     w2c_l30 = w2c_i0;
-    w2c_i0 = 2832u;
+    w2c_i0 = 2864u;
     w2c_l31 = w2c_i0;
     w2c_i0 = 1u;
     w2c_l27 = w2c_i0;
@@ -9393,7 +9761,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     goto w2c_B58;
     w2c_B67:;
     w2c_i0 = 0u;
-    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272u, "w2c_printf_core");
+    w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304u, "w2c_printf_core");
     w2c_i0 = w2c_strerror(sbx, w2c_i0);
     w2c_l18 = w2c_i0;
     goto w2c_B65;
@@ -9401,7 +9769,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_i0 = w2c_l5;
     w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 56u, "w2c_printf_core");
     w2c_l17 = w2c_i0;
-    w2c_i1 = 2842u;
+    w2c_i1 = 2874u;
     w2c_i2 = w2c_l17;
     w2c_i0 = w2c_i2 ? w2c_i0 : w2c_i1;
     w2c_l18 = w2c_i0;
@@ -9420,7 +9788,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_l27 = w2c_i1;
     w2c_i0 += w2c_i1;
     w2c_l17 = w2c_i0;
-    w2c_i0 = 2832u;
+    w2c_i0 = 2864u;
     w2c_l31 = w2c_i0;
     w2c_i0 = w2c_l21;
     w2c_i1 = 4294967295u;
@@ -9728,7 +10096,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_l35 = w2c_i0;
     w2c_i0 = 0u;
     w2c_l36 = w2c_i0;
-    w2c_i0 = 3488u;
+    w2c_i0 = 3520u;
     w2c_l37 = w2c_i0;
     goto w2c_B111;
     w2c_B112:;
@@ -9741,12 +10109,12 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_l35 = w2c_i0;
     w2c_i0 = 0u;
     w2c_l36 = w2c_i0;
-    w2c_i0 = 3491u;
+    w2c_i0 = 3523u;
     w2c_l37 = w2c_i0;
     goto w2c_B111;
     w2c_B113:;
-    w2c_i0 = 3494u;
-    w2c_i1 = 3489u;
+    w2c_i0 = 3526u;
+    w2c_i1 = 3521u;
     w2c_i2 = w2c_l23;
     w2c_i3 = 1u;
     w2c_i2 &= w2c_i3;
@@ -9855,15 +10223,15 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_i1 = 32u;
     w2c_i0 &= w2c_i1;
     if (w2c_i0) {goto w2c_B120;}
-    w2c_i0 = 3515u;
-    w2c_i1 = 3519u;
+    w2c_i0 = 3547u;
+    w2c_i1 = 3551u;
     w2c_i2 = w2c_l29;
     w2c_i3 = 32u;
     w2c_i2 &= w2c_i3;
     w2c_l17 = w2c_i2;
     w2c_i0 = w2c_i2 ? w2c_i0 : w2c_i1;
-    w2c_i1 = 3507u;
-    w2c_i2 = 3511u;
+    w2c_i1 = 3539u;
+    w2c_i2 = 3543u;
     w2c_i3 = w2c_l17;
     w2c_i1 = w2c_i3 ? w2c_i1 : w2c_i2;
     w2c_d2 = w2c_l34;
@@ -11182,7 +11550,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_i1 = 32u;
     w2c_i0 &= w2c_i1;
     if (w2c_i0) {goto w2c_B188;}
-    w2c_i0 = 3523u;
+    w2c_i0 = 3555u;
     w2c_i1 = 1u;
     w2c_i2 = w2c_p0;
     w2c_i0 = w2c___fwritex(sbx, w2c_i0, w2c_i1, w2c_i2);
@@ -11363,7 +11731,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
     w2c_B59:;
     w2c_i0 = 0u;
     w2c_l30 = w2c_i0;
-    w2c_i0 = 2832u;
+    w2c_i0 = 2864u;
     w2c_l31 = w2c_i0;
     w2c_i0 = w2c_l14;
     w2c_l17 = w2c_i0;
@@ -11830,7 +12198,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
       w2c_i1 = 32u;
       w2c_i0 &= w2c_i1;
       if (w2c_i0) {goto w2c_B223;}
-      w2c_i0 = 3523u;
+      w2c_i0 = 3555u;
       w2c_i1 = 1u;
       w2c_i2 = w2c_p0;
       w2c_i0 = w2c___fwritex(sbx, w2c_i0, w2c_i1, w2c_i2);
@@ -12204,7 +12572,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
       w2c_B244:;
       w2c_i0 = w2c_l17;
       w2c_i1 = w2c_l19;
-      w2c_i2 = 3472u;
+      w2c_i2 = 3504u;
       w2c_i1 += w2c_i2;
       w2c_i1 = i32_load8_u(&(sbx->w2c_memory), (u64)(w2c_i1), "w2c_printf_core");
       w2c_i2 = w2c_l22;
@@ -12615,7 +12983,7 @@ FUNC_EXPORT u32 w2c_printf_core(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c
   w2c_B2:;
   w2c_i0 = 0u;
   w2c_i1 = 61u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_printf_core");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_printf_core");
   w2c_B1:;
   w2c_i0 = 4294967295u;
   w2c_l16 = w2c_i0;
@@ -12908,8 +13276,8 @@ FUNC_EXPORT void w2c_pop_arg(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1
 FUNC_EXPORT void w2c_long_double_not_supported(wasm2c_sandbox_t* const sbx) {
   FUNC_PROLOGUE;
   u32 w2c_i0, w2c_i1;
-  w2c_i0 = 3328u;
-  w2c_i1 = 3648u;
+  w2c_i0 = 3360u;
+  w2c_i1 = 3680u;
   w2c_i0 = w2c_fputs(sbx, w2c_i0, w2c_i1);
   w2c_abort(sbx);
   UNREACHABLE;
@@ -12928,7 +13296,7 @@ FUNC_EXPORT u32 w2c_close(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_B0:;
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_close");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_close");
   w2c_i0 = 4294967295u;
   w2c_Bfunc:;
   FUNC_EPILOGUE;
@@ -12981,7 +13349,7 @@ static u32 w2c___isatty(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   w2c_l2 = w2c_i0;
   w2c_i0 = 0u;
   w2c_i1 = w2c_p0;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c___isatty");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c___isatty");
   w2c_B0:;
   w2c_i0 = w2c_l1;
   w2c_i1 = 32u;
@@ -14193,14 +14561,14 @@ static u32 w2c___lctrans_cur(wasm2c_sandbox_t* const sbx, u32 w2c_p0) {
   FUNC_PROLOGUE;
   u32 w2c_i0, w2c_i1;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 5360u, "w2c___lctrans_cur");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 5392u, "w2c___lctrans_cur");
   w2c_l1 = w2c_i0;
   if (w2c_i0) {goto w2c_B0;}
-  w2c_i0 = 5336u;
+  w2c_i0 = 5368u;
   w2c_l1 = w2c_i0;
   w2c_i0 = 0u;
-  w2c_i1 = 5336u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 5360, w2c_i1, "w2c___lctrans_cur");
+  w2c_i1 = 5368u;
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 5392, w2c_i1, "w2c___lctrans_cur");
   w2c_B0:;
   w2c_i0 = w2c_p0;
   w2c_i1 = w2c_l1;
@@ -14247,7 +14615,7 @@ FUNC_EXPORT u32 w2c_wcrtomb(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1,
   goto w2c_Bfunc;
   w2c_B1:;
   w2c_i0 = 0u;
-  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 5336u, "w2c_wcrtomb");
+  w2c_i0 = i32_load(&(sbx->w2c_memory), (u64)(w2c_i0) + 5368u, "w2c_wcrtomb");
   if (w2c_i0) {goto w2c_B3;}
   w2c_i0 = w2c_p1;
   w2c_i1 = 4294967168u;
@@ -14257,7 +14625,7 @@ FUNC_EXPORT u32 w2c_wcrtomb(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1,
   if (w2c_i0) {goto w2c_B4;}
   w2c_i0 = 0u;
   w2c_i1 = 25u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_wcrtomb");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_wcrtomb");
   goto w2c_B2;
   w2c_B4:;
   w2c_i0 = w2c_p0;
@@ -14367,7 +14735,7 @@ FUNC_EXPORT u32 w2c_wcrtomb(wasm2c_sandbox_t* const sbx, u32 w2c_p0, u32 w2c_p1,
   w2c_B8:;
   w2c_i0 = 0u;
   w2c_i1 = 25u;
-  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4272, w2c_i1, "w2c_wcrtomb");
+  i32_store(&(sbx->w2c_memory), (u64)(w2c_i0) + 4304, w2c_i1, "w2c_wcrtomb");
   w2c_B2:;
   w2c_i0 = 4294967295u;
   w2c_l3 = w2c_i0;
@@ -14451,231 +14819,234 @@ static const u8 data_segment_data_0[] = {
   0x73, 0x68, 0x20, 0x50, 0x72, 0x69, 0x6e, 0x74, 0x73, 0x20, 0x0a, 0x00, 
   0x50, 0x72, 0x69, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x20, 0x74, 0x68, 0x65, 
   0x20, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x3a, 0x20, 0x25, 0x64, 0x20, 
-  0x0a, 0x00, 0x00, 0x00, 0xc8, 0x0d, 0x00, 0x00, 0x53, 0x75, 0x63, 0x63, 
-  0x65, 0x73, 0x73, 0x00, 0x49, 0x6c, 0x6c, 0x65, 0x67, 0x61, 0x6c, 0x20, 
-  0x62, 0x79, 0x74, 0x65, 0x20, 0x73, 0x65, 0x71, 0x75, 0x65, 0x6e, 0x63, 
-  0x65, 0x00, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x20, 0x65, 0x72, 0x72, 
-  0x6f, 0x72, 0x00, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x20, 0x6e, 0x6f, 
-  0x74, 0x20, 0x72, 0x65, 0x70, 0x72, 0x65, 0x73, 0x65, 0x6e, 0x74, 0x61, 
-  0x62, 0x6c, 0x65, 0x00, 0x4e, 0x6f, 0x74, 0x20, 0x61, 0x20, 0x74, 0x74, 
-  0x79, 0x00, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 
-  0x20, 0x64, 0x65, 0x6e, 0x69, 0x65, 0x64, 0x00, 0x4f, 0x70, 0x65, 0x72, 
-  0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x70, 0x65, 
-  0x72, 0x6d, 0x69, 0x74, 0x74, 0x65, 0x64, 0x00, 0x4e, 0x6f, 0x20, 0x73, 
-  0x75, 0x63, 0x68, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x6f, 0x72, 0x20, 
-  0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x00, 0x4e, 0x6f, 
-  0x20, 0x73, 0x75, 0x63, 0x68, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 
-  0x73, 0x00, 0x46, 0x69, 0x6c, 0x65, 0x20, 0x65, 0x78, 0x69, 0x73, 0x74, 
-  0x73, 0x00, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x20, 0x74, 0x6f, 0x6f, 0x20, 
-  0x6c, 0x61, 0x72, 0x67, 0x65, 0x20, 0x66, 0x6f, 0x72, 0x20, 0x64, 0x61, 
-  0x74, 0x61, 0x20, 0x74, 0x79, 0x70, 0x65, 0x00, 0x4e, 0x6f, 0x20, 0x73, 
-  0x70, 0x61, 0x63, 0x65, 0x20, 0x6c, 0x65, 0x66, 0x74, 0x20, 0x6f, 0x6e, 
-  0x20, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x00, 0x4f, 0x75, 0x74, 0x20, 
-  0x6f, 0x66, 0x20, 0x6d, 0x65, 0x6d, 0x6f, 0x72, 0x79, 0x00, 0x52, 0x65, 
-  0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x20, 0x62, 0x75, 0x73, 0x79, 0x00, 
-  0x49, 0x6e, 0x74, 0x65, 0x72, 0x72, 0x75, 0x70, 0x74, 0x65, 0x64, 0x20, 
-  0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x20, 0x63, 0x61, 0x6c, 0x6c, 0x00, 
-  0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x20, 0x74, 0x65, 0x6d, 
-  0x70, 0x6f, 0x72, 0x61, 0x72, 0x69, 0x6c, 0x79, 0x20, 0x75, 0x6e, 0x61, 
-  0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x49, 0x6e, 0x76, 
-  0x61, 0x6c, 0x69, 0x64, 0x20, 0x73, 0x65, 0x65, 0x6b, 0x00, 0x43, 0x72, 
-  0x6f, 0x73, 0x73, 0x2d, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x20, 0x6c, 
-  0x69, 0x6e, 0x6b, 0x00, 0x52, 0x65, 0x61, 0x64, 0x2d, 0x6f, 0x6e, 0x6c, 
-  0x79, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x73, 0x79, 0x73, 0x74, 0x65, 
-  0x6d, 0x00, 0x44, 0x69, 0x72, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x20, 
-  0x6e, 0x6f, 0x74, 0x20, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x00, 0x43, 0x6f, 
-  0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x72, 0x65, 0x73, 
-  0x65, 0x74, 0x20, 0x62, 0x79, 0x20, 0x70, 0x65, 0x65, 0x72, 0x00, 0x4f, 
-  0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x74, 0x69, 0x6d, 
-  0x65, 0x64, 0x20, 0x6f, 0x75, 0x74, 0x00, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 
-  0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x72, 0x65, 0x66, 0x75, 0x73, 0x65, 
-  0x64, 0x00, 0x48, 0x6f, 0x73, 0x74, 0x20, 0x69, 0x73, 0x20, 0x75, 0x6e, 
-  0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x41, 0x64, 
-  0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x69, 0x6e, 0x20, 0x75, 0x73, 0x65, 
-  0x00, 0x42, 0x72, 0x6f, 0x6b, 0x65, 0x6e, 0x20, 0x70, 0x69, 0x70, 0x65, 
-  0x00, 0x49, 0x2f, 0x4f, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x4e, 
-  0x6f, 0x20, 0x73, 0x75, 0x63, 0x68, 0x20, 0x64, 0x65, 0x76, 0x69, 0x63, 
-  0x65, 0x20, 0x6f, 0x72, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 
-  0x00, 0x4e, 0x6f, 0x20, 0x73, 0x75, 0x63, 0x68, 0x20, 0x64, 0x65, 0x76, 
-  0x69, 0x63, 0x65, 0x00, 0x4e, 0x6f, 0x74, 0x20, 0x61, 0x20, 0x64, 0x69, 
-  0x72, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x00, 0x49, 0x73, 0x20, 0x61, 
-  0x20, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x00, 0x54, 
-  0x65, 0x78, 0x74, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x62, 0x75, 0x73, 
-  0x79, 0x00, 0x45, 0x78, 0x65, 0x63, 0x20, 0x66, 0x6f, 0x72, 0x6d, 0x61, 
-  0x74, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x49, 0x6e, 0x76, 0x61, 
-  0x6c, 0x69, 0x64, 0x20, 0x61, 0x72, 0x67, 0x75, 0x6d, 0x65, 0x6e, 0x74, 
-  0x00, 0x41, 0x72, 0x67, 0x75, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x6c, 0x69, 
-  0x73, 0x74, 0x20, 0x74, 0x6f, 0x6f, 0x20, 0x6c, 0x6f, 0x6e, 0x67, 0x00, 
-  0x53, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x69, 0x63, 0x20, 0x6c, 0x69, 0x6e, 
-  0x6b, 0x20, 0x6c, 0x6f, 0x6f, 0x70, 0x00, 0x46, 0x69, 0x6c, 0x65, 0x6e, 
-  0x61, 0x6d, 0x65, 0x20, 0x74, 0x6f, 0x6f, 0x20, 0x6c, 0x6f, 0x6e, 0x67, 
-  0x00, 0x54, 0x6f, 0x6f, 0x20, 0x6d, 0x61, 0x6e, 0x79, 0x20, 0x6f, 0x70, 
-  0x65, 0x6e, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x20, 0x69, 0x6e, 0x20, 
-  0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x00, 0x4e, 0x6f, 0x20, 0x66, 0x69, 
-  0x6c, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x6f, 
-  0x72, 0x73, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 
-  0x00, 0x42, 0x61, 0x64, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x64, 0x65, 
-  0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x6f, 0x72, 0x00, 0x4e, 0x6f, 0x20, 
-  0x63, 0x68, 0x69, 0x6c, 0x64, 0x20, 0x70, 0x72, 0x6f, 0x63, 0x65, 0x73, 
-  0x73, 0x00, 0x42, 0x61, 0x64, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 
-  0x73, 0x00, 0x46, 0x69, 0x6c, 0x65, 0x20, 0x74, 0x6f, 0x6f, 0x20, 0x6c, 
-  0x61, 0x72, 0x67, 0x65, 0x00, 0x54, 0x6f, 0x6f, 0x20, 0x6d, 0x61, 0x6e, 
-  0x79, 0x20, 0x6c, 0x69, 0x6e, 0x6b, 0x73, 0x00, 0x4e, 0x6f, 0x20, 0x6c, 
-  0x6f, 0x63, 0x6b, 0x73, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 
-  0x6c, 0x65, 0x00, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x20, 
-  0x64, 0x65, 0x61, 0x64, 0x6c, 0x6f, 0x63, 0x6b, 0x20, 0x77, 0x6f, 0x75, 
-  0x6c, 0x64, 0x20, 0x6f, 0x63, 0x63, 0x75, 0x72, 0x00, 0x53, 0x74, 0x61, 
-  0x74, 0x65, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x72, 0x65, 0x63, 0x6f, 0x76, 
-  0x65, 0x72, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x50, 0x72, 0x65, 0x76, 0x69, 
-  0x6f, 0x75, 0x73, 0x20, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x20, 0x64, 0x69, 
-  0x65, 0x64, 0x00, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 
-  0x20, 0x63, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x65, 0x64, 0x00, 0x46, 0x75, 
-  0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x69, 
-  0x6d, 0x70, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x65, 0x64, 0x00, 0x4e, 
-  0x6f, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x20, 0x6f, 0x66, 
-  0x20, 0x64, 0x65, 0x73, 0x69, 0x72, 0x65, 0x64, 0x20, 0x74, 0x79, 0x70, 
-  0x65, 0x00, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x66, 0x69, 0x65, 0x72, 
-  0x20, 0x72, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x64, 0x00, 0x4c, 0x69, 0x6e, 
-  0x6b, 0x20, 0x68, 0x61, 0x73, 0x20, 0x62, 0x65, 0x65, 0x6e, 0x20, 0x73, 
-  0x65, 0x76, 0x65, 0x72, 0x65, 0x64, 0x00, 0x50, 0x72, 0x6f, 0x74, 0x6f, 
-  0x63, 0x6f, 0x6c, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x42, 0x61, 
-  0x64, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x00, 0x4e, 0x6f, 
-  0x74, 0x20, 0x61, 0x20, 0x73, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x00, 0x44, 
-  0x65, 0x73, 0x74, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x61, 
-  0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x72, 0x65, 0x71, 0x75, 0x69, 
-  0x72, 0x65, 0x64, 0x00, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x20, 
-  0x74, 0x6f, 0x6f, 0x20, 0x6c, 0x61, 0x72, 0x67, 0x65, 0x00, 0x50, 0x72, 
-  0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x20, 0x77, 0x72, 0x6f, 0x6e, 0x67, 
-  0x20, 0x74, 0x79, 0x70, 0x65, 0x20, 0x66, 0x6f, 0x72, 0x20, 0x73, 0x6f, 
-  0x63, 0x6b, 0x65, 0x74, 0x00, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 
-  0x6c, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 
-  0x62, 0x6c, 0x65, 0x00, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 
-  0x20, 0x6e, 0x6f, 0x74, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 
-  0x65, 0x64, 0x00, 0x4e, 0x6f, 0x74, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6f, 
-  0x72, 0x74, 0x65, 0x64, 0x00, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 
-  0x20, 0x66, 0x61, 0x6d, 0x69, 0x6c, 0x79, 0x20, 0x6e, 0x6f, 0x74, 0x20, 
-  0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x20, 0x62, 0x79, 
-  0x20, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x00, 0x41, 0x64, 
-  0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x61, 0x76, 
-  0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x4e, 0x65, 0x74, 0x77, 
-  0x6f, 0x72, 0x6b, 0x20, 0x69, 0x73, 0x20, 0x64, 0x6f, 0x77, 0x6e, 0x00, 
-  0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x20, 0x75, 0x6e, 0x72, 0x65, 
-  0x61, 0x63, 0x68, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x43, 0x6f, 0x6e, 0x6e, 
-  0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x72, 0x65, 0x73, 0x65, 0x74, 
-  0x20, 0x62, 0x79, 0x20, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x00, 
-  0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x61, 
-  0x62, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x00, 0x4e, 0x6f, 0x20, 0x62, 0x75, 
-  0x66, 0x66, 0x65, 0x72, 0x20, 0x73, 0x70, 0x61, 0x63, 0x65, 0x20, 0x61, 
-  0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x53, 0x6f, 0x63, 
-  0x6b, 0x65, 0x74, 0x20, 0x69, 0x73, 0x20, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 
-  0x63, 0x74, 0x65, 0x64, 0x00, 0x53, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x20, 
-  0x6e, 0x6f, 0x74, 0x20, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x65, 
-  0x64, 0x00, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 
-  0x61, 0x6c, 0x72, 0x65, 0x61, 0x64, 0x79, 0x20, 0x69, 0x6e, 0x20, 0x70, 
-  0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x00, 0x4f, 0x70, 0x65, 0x72, 
-  0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x69, 0x6e, 0x20, 0x70, 0x72, 0x6f, 
-  0x67, 0x72, 0x65, 0x73, 0x73, 0x00, 0x53, 0x74, 0x61, 0x6c, 0x65, 0x20, 
-  0x66, 0x69, 0x6c, 0x65, 0x20, 0x68, 0x61, 0x6e, 0x64, 0x6c, 0x65, 0x00, 
-  0x51, 0x75, 0x6f, 0x74, 0x61, 0x20, 0x65, 0x78, 0x63, 0x65, 0x65, 0x64, 
-  0x65, 0x64, 0x00, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x68, 0x6f, 0x70, 0x20, 
-  0x61, 0x74, 0x74, 0x65, 0x6d, 0x70, 0x74, 0x65, 0x64, 0x00, 0x43, 0x61, 
-  0x70, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x69, 0x65, 0x73, 0x20, 0x69, 
-  0x6e, 0x73, 0x75, 0x66, 0x66, 0x69, 0x63, 0x69, 0x65, 0x6e, 0x74, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x75, 0x02, 0x4e, 0x00, 0xd6, 0x01, 
-  0xe2, 0x04, 0xb9, 0x04, 0x18, 0x01, 0x8e, 0x05, 0xed, 0x02, 0x16, 0x04, 
-  0xf2, 0x00, 0x97, 0x03, 0x01, 0x03, 0x38, 0x05, 0xaf, 0x01, 0x82, 0x01, 
-  0x4f, 0x03, 0x2f, 0x04, 0x1e, 0x00, 0xd4, 0x05, 0xa2, 0x00, 0x12, 0x03, 
-  0x1e, 0x03, 0xc2, 0x01, 0xde, 0x03, 0x08, 0x00, 0xac, 0x05, 0x00, 0x01, 
-  0x64, 0x02, 0xf1, 0x01, 0x65, 0x05, 0x34, 0x02, 0x8c, 0x02, 0xcf, 0x02, 
-  0x2d, 0x03, 0x4c, 0x04, 0xe3, 0x05, 0x9f, 0x02, 0xf8, 0x04, 0x1c, 0x05, 
-  0x08, 0x05, 0xb1, 0x02, 0x4b, 0x05, 0x15, 0x02, 0x78, 0x00, 0x52, 0x02, 
-  0x3c, 0x03, 0xf1, 0x03, 0xe4, 0x00, 0xc3, 0x03, 0x7d, 0x04, 0xcc, 0x00, 
-  0xaa, 0x03, 0x79, 0x05, 0x24, 0x02, 0x6e, 0x01, 0x6d, 0x03, 0x22, 0x04, 
-  0xab, 0x04, 0x44, 0x00, 0xfb, 0x01, 0xae, 0x00, 0x83, 0x03, 0x60, 0x00, 
-  0xe5, 0x01, 0x07, 0x04, 0x94, 0x04, 0x5e, 0x04, 0x2b, 0x00, 0x58, 0x01, 
-  0x39, 0x01, 0x92, 0x00, 0xc2, 0x05, 0x9b, 0x01, 0x43, 0x02, 0x46, 0x01, 
-  0xf6, 0x05, 0x00, 0x00, 0x40, 0x0e, 0x00, 0x00, 0x2d, 0x2b, 0x20, 0x20, 
-  0x20, 0x30, 0x58, 0x30, 0x78, 0x00, 0x28, 0x6e, 0x75, 0x6c, 0x6c, 0x29, 
+  0x0a, 0x00, 0x0a, 0x00, 0x50, 0x72, 0x69, 0x6e, 0x74, 0x69, 0x6e, 0x67, 
+  0x20, 0x74, 0x68, 0x65, 0x20, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x20, 
+  0x25, 0x64, 0x20, 0x0a, 0x00, 0x00, 0x00, 0x00, 0xe8, 0x0d, 0x00, 0x00, 
+  0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x00, 0x49, 0x6c, 0x6c, 0x65, 
+  0x67, 0x61, 0x6c, 0x20, 0x62, 0x79, 0x74, 0x65, 0x20, 0x73, 0x65, 0x71, 
+  0x75, 0x65, 0x6e, 0x63, 0x65, 0x00, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 
+  0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 0x52, 0x65, 0x73, 0x75, 0x6c, 
+  0x74, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x72, 0x65, 0x70, 0x72, 0x65, 0x73, 
+  0x65, 0x6e, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x4e, 0x6f, 0x74, 0x20, 
+  0x61, 0x20, 0x74, 0x74, 0x79, 0x00, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 
+  0x73, 0x69, 0x6f, 0x6e, 0x20, 0x64, 0x65, 0x6e, 0x69, 0x65, 0x64, 0x00, 
+  0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x6e, 0x6f, 
+  0x74, 0x20, 0x70, 0x65, 0x72, 0x6d, 0x69, 0x74, 0x74, 0x65, 0x64, 0x00, 
+  0x4e, 0x6f, 0x20, 0x73, 0x75, 0x63, 0x68, 0x20, 0x66, 0x69, 0x6c, 0x65, 
+  0x20, 0x6f, 0x72, 0x20, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x6f, 0x72, 
+  0x79, 0x00, 0x4e, 0x6f, 0x20, 0x73, 0x75, 0x63, 0x68, 0x20, 0x70, 0x72, 
+  0x6f, 0x63, 0x65, 0x73, 0x73, 0x00, 0x46, 0x69, 0x6c, 0x65, 0x20, 0x65, 
+  0x78, 0x69, 0x73, 0x74, 0x73, 0x00, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x20, 
+  0x74, 0x6f, 0x6f, 0x20, 0x6c, 0x61, 0x72, 0x67, 0x65, 0x20, 0x66, 0x6f, 
+  0x72, 0x20, 0x64, 0x61, 0x74, 0x61, 0x20, 0x74, 0x79, 0x70, 0x65, 0x00, 
+  0x4e, 0x6f, 0x20, 0x73, 0x70, 0x61, 0x63, 0x65, 0x20, 0x6c, 0x65, 0x66, 
+  0x74, 0x20, 0x6f, 0x6e, 0x20, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x00, 
+  0x4f, 0x75, 0x74, 0x20, 0x6f, 0x66, 0x20, 0x6d, 0x65, 0x6d, 0x6f, 0x72, 
+  0x79, 0x00, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x20, 0x62, 
+  0x75, 0x73, 0x79, 0x00, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x72, 0x75, 0x70, 
+  0x74, 0x65, 0x64, 0x20, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x20, 0x63, 
+  0x61, 0x6c, 0x6c, 0x00, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 
+  0x20, 0x74, 0x65, 0x6d, 0x70, 0x6f, 0x72, 0x61, 0x72, 0x69, 0x6c, 0x79, 
+  0x20, 0x75, 0x6e, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 
+  0x00, 0x49, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x73, 0x65, 0x65, 
+  0x6b, 0x00, 0x43, 0x72, 0x6f, 0x73, 0x73, 0x2d, 0x64, 0x65, 0x76, 0x69, 
+  0x63, 0x65, 0x20, 0x6c, 0x69, 0x6e, 0x6b, 0x00, 0x52, 0x65, 0x61, 0x64, 
+  0x2d, 0x6f, 0x6e, 0x6c, 0x79, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x73, 
+  0x79, 0x73, 0x74, 0x65, 0x6d, 0x00, 0x44, 0x69, 0x72, 0x65, 0x63, 0x74, 
+  0x6f, 0x72, 0x79, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x65, 0x6d, 0x70, 0x74, 
+  0x79, 0x00, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 
+  0x20, 0x72, 0x65, 0x73, 0x65, 0x74, 0x20, 0x62, 0x79, 0x20, 0x70, 0x65, 
+  0x65, 0x72, 0x00, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 
+  0x20, 0x74, 0x69, 0x6d, 0x65, 0x64, 0x20, 0x6f, 0x75, 0x74, 0x00, 0x43, 
+  0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x72, 0x65, 
+  0x66, 0x75, 0x73, 0x65, 0x64, 0x00, 0x48, 0x6f, 0x73, 0x74, 0x20, 0x69, 
+  0x73, 0x20, 0x75, 0x6e, 0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x6c, 
+  0x65, 0x00, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x69, 0x6e, 
+  0x20, 0x75, 0x73, 0x65, 0x00, 0x42, 0x72, 0x6f, 0x6b, 0x65, 0x6e, 0x20, 
+  0x70, 0x69, 0x70, 0x65, 0x00, 0x49, 0x2f, 0x4f, 0x20, 0x65, 0x72, 0x72, 
+  0x6f, 0x72, 0x00, 0x4e, 0x6f, 0x20, 0x73, 0x75, 0x63, 0x68, 0x20, 0x64, 
+  0x65, 0x76, 0x69, 0x63, 0x65, 0x20, 0x6f, 0x72, 0x20, 0x61, 0x64, 0x64, 
+  0x72, 0x65, 0x73, 0x73, 0x00, 0x4e, 0x6f, 0x20, 0x73, 0x75, 0x63, 0x68, 
+  0x20, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x00, 0x4e, 0x6f, 0x74, 0x20, 
+  0x61, 0x20, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x00, 
+  0x49, 0x73, 0x20, 0x61, 0x20, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x6f, 
+  0x72, 0x79, 0x00, 0x54, 0x65, 0x78, 0x74, 0x20, 0x66, 0x69, 0x6c, 0x65, 
+  0x20, 0x62, 0x75, 0x73, 0x79, 0x00, 0x45, 0x78, 0x65, 0x63, 0x20, 0x66, 
+  0x6f, 0x72, 0x6d, 0x61, 0x74, 0x20, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x00, 
+  0x49, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x20, 0x61, 0x72, 0x67, 0x75, 
+  0x6d, 0x65, 0x6e, 0x74, 0x00, 0x41, 0x72, 0x67, 0x75, 0x6d, 0x65, 0x6e, 
+  0x74, 0x20, 0x6c, 0x69, 0x73, 0x74, 0x20, 0x74, 0x6f, 0x6f, 0x20, 0x6c, 
+  0x6f, 0x6e, 0x67, 0x00, 0x53, 0x79, 0x6d, 0x62, 0x6f, 0x6c, 0x69, 0x63, 
+  0x20, 0x6c, 0x69, 0x6e, 0x6b, 0x20, 0x6c, 0x6f, 0x6f, 0x70, 0x00, 0x46, 
+  0x69, 0x6c, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x74, 0x6f, 0x6f, 0x20, 
+  0x6c, 0x6f, 0x6e, 0x67, 0x00, 0x54, 0x6f, 0x6f, 0x20, 0x6d, 0x61, 0x6e, 
+  0x79, 0x20, 0x6f, 0x70, 0x65, 0x6e, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x73, 
+  0x20, 0x69, 0x6e, 0x20, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x00, 0x4e, 
+  0x6f, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 
+  0x69, 0x70, 0x74, 0x6f, 0x72, 0x73, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 
+  0x61, 0x62, 0x6c, 0x65, 0x00, 0x42, 0x61, 0x64, 0x20, 0x66, 0x69, 0x6c, 
+  0x65, 0x20, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x6f, 0x72, 
+  0x00, 0x4e, 0x6f, 0x20, 0x63, 0x68, 0x69, 0x6c, 0x64, 0x20, 0x70, 0x72, 
+  0x6f, 0x63, 0x65, 0x73, 0x73, 0x00, 0x42, 0x61, 0x64, 0x20, 0x61, 0x64, 
+  0x64, 0x72, 0x65, 0x73, 0x73, 0x00, 0x46, 0x69, 0x6c, 0x65, 0x20, 0x74, 
+  0x6f, 0x6f, 0x20, 0x6c, 0x61, 0x72, 0x67, 0x65, 0x00, 0x54, 0x6f, 0x6f, 
+  0x20, 0x6d, 0x61, 0x6e, 0x79, 0x20, 0x6c, 0x69, 0x6e, 0x6b, 0x73, 0x00, 
+  0x4e, 0x6f, 0x20, 0x6c, 0x6f, 0x63, 0x6b, 0x73, 0x20, 0x61, 0x76, 0x61, 
+  0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x52, 0x65, 0x73, 0x6f, 0x75, 
+  0x72, 0x63, 0x65, 0x20, 0x64, 0x65, 0x61, 0x64, 0x6c, 0x6f, 0x63, 0x6b, 
+  0x20, 0x77, 0x6f, 0x75, 0x6c, 0x64, 0x20, 0x6f, 0x63, 0x63, 0x75, 0x72, 
+  0x00, 0x53, 0x74, 0x61, 0x74, 0x65, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x72, 
+  0x65, 0x63, 0x6f, 0x76, 0x65, 0x72, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x50, 
+  0x72, 0x65, 0x76, 0x69, 0x6f, 0x75, 0x73, 0x20, 0x6f, 0x77, 0x6e, 0x65, 
+  0x72, 0x20, 0x64, 0x69, 0x65, 0x64, 0x00, 0x4f, 0x70, 0x65, 0x72, 0x61, 
+  0x74, 0x69, 0x6f, 0x6e, 0x20, 0x63, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x65, 
+  0x64, 0x00, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x6e, 
+  0x6f, 0x74, 0x20, 0x69, 0x6d, 0x70, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 
+  0x65, 0x64, 0x00, 0x4e, 0x6f, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 
+  0x65, 0x20, 0x6f, 0x66, 0x20, 0x64, 0x65, 0x73, 0x69, 0x72, 0x65, 0x64, 
+  0x20, 0x74, 0x79, 0x70, 0x65, 0x00, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69, 
+  0x66, 0x69, 0x65, 0x72, 0x20, 0x72, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x64, 
+  0x00, 0x4c, 0x69, 0x6e, 0x6b, 0x20, 0x68, 0x61, 0x73, 0x20, 0x62, 0x65, 
+  0x65, 0x6e, 0x20, 0x73, 0x65, 0x76, 0x65, 0x72, 0x65, 0x64, 0x00, 0x50, 
+  0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x20, 0x65, 0x72, 0x72, 0x6f, 
+  0x72, 0x00, 0x42, 0x61, 0x64, 0x20, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 
+  0x65, 0x00, 0x4e, 0x6f, 0x74, 0x20, 0x61, 0x20, 0x73, 0x6f, 0x63, 0x6b, 
+  0x65, 0x74, 0x00, 0x44, 0x65, 0x73, 0x74, 0x69, 0x6e, 0x61, 0x74, 0x69, 
+  0x6f, 0x6e, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x72, 
+  0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x64, 0x00, 0x4d, 0x65, 0x73, 0x73, 
+  0x61, 0x67, 0x65, 0x20, 0x74, 0x6f, 0x6f, 0x20, 0x6c, 0x61, 0x72, 0x67, 
+  0x65, 0x00, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x20, 0x77, 
+  0x72, 0x6f, 0x6e, 0x67, 0x20, 0x74, 0x79, 0x70, 0x65, 0x20, 0x66, 0x6f, 
+  0x72, 0x20, 0x73, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x00, 0x50, 0x72, 0x6f, 
+  0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x61, 0x76, 
+  0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 0x50, 0x72, 0x6f, 0x74, 
+  0x6f, 0x63, 0x6f, 0x6c, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x73, 0x75, 0x70, 
+  0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x00, 0x4e, 0x6f, 0x74, 0x20, 0x73, 
+  0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x00, 0x41, 0x64, 0x64, 
+  0x72, 0x65, 0x73, 0x73, 0x20, 0x66, 0x61, 0x6d, 0x69, 0x6c, 0x79, 0x20, 
+  0x6e, 0x6f, 0x74, 0x20, 0x73, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 
+  0x64, 0x20, 0x62, 0x79, 0x20, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 
+  0x6c, 0x00, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x6e, 0x6f, 
+  0x74, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x00, 
+  0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x20, 0x69, 0x73, 0x20, 0x64, 
+  0x6f, 0x77, 0x6e, 0x00, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x20, 
+  0x75, 0x6e, 0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x6c, 0x65, 0x00, 
+  0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x72, 
+  0x65, 0x73, 0x65, 0x74, 0x20, 0x62, 0x79, 0x20, 0x6e, 0x65, 0x74, 0x77, 
+  0x6f, 0x72, 0x6b, 0x00, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 
+  0x6f, 0x6e, 0x20, 0x61, 0x62, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x00, 0x4e, 
+  0x6f, 0x20, 0x62, 0x75, 0x66, 0x66, 0x65, 0x72, 0x20, 0x73, 0x70, 0x61, 
+  0x63, 0x65, 0x20, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 
+  0x00, 0x53, 0x6f, 0x63, 0x6b, 0x65, 0x74, 0x20, 0x69, 0x73, 0x20, 0x63, 
+  0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x65, 0x64, 0x00, 0x53, 0x6f, 0x63, 
+  0x6b, 0x65, 0x74, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x63, 0x6f, 0x6e, 0x6e, 
+  0x65, 0x63, 0x74, 0x65, 0x64, 0x00, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 
+  0x69, 0x6f, 0x6e, 0x20, 0x61, 0x6c, 0x72, 0x65, 0x61, 0x64, 0x79, 0x20, 
+  0x69, 0x6e, 0x20, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x00, 
+  0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x20, 0x69, 0x6e, 
+  0x20, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x00, 0x53, 0x74, 
+  0x61, 0x6c, 0x65, 0x20, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x68, 0x61, 0x6e, 
+  0x64, 0x6c, 0x65, 0x00, 0x51, 0x75, 0x6f, 0x74, 0x61, 0x20, 0x65, 0x78, 
+  0x63, 0x65, 0x65, 0x64, 0x65, 0x64, 0x00, 0x4d, 0x75, 0x6c, 0x74, 0x69, 
+  0x68, 0x6f, 0x70, 0x20, 0x61, 0x74, 0x74, 0x65, 0x6d, 0x70, 0x74, 0x65, 
+  0x64, 0x00, 0x43, 0x61, 0x70, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x69, 
+  0x65, 0x73, 0x20, 0x69, 0x6e, 0x73, 0x75, 0x66, 0x66, 0x69, 0x63, 0x69, 
+  0x65, 0x6e, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x75, 0x02, 0x4e, 0x00, 0xd6, 0x01, 0xe2, 0x04, 0xb9, 0x04, 
+  0x18, 0x01, 0x8e, 0x05, 0xed, 0x02, 0x16, 0x04, 0xf2, 0x00, 0x97, 0x03, 
+  0x01, 0x03, 0x38, 0x05, 0xaf, 0x01, 0x82, 0x01, 0x4f, 0x03, 0x2f, 0x04, 
+  0x1e, 0x00, 0xd4, 0x05, 0xa2, 0x00, 0x12, 0x03, 0x1e, 0x03, 0xc2, 0x01, 
+  0xde, 0x03, 0x08, 0x00, 0xac, 0x05, 0x00, 0x01, 0x64, 0x02, 0xf1, 0x01, 
+  0x65, 0x05, 0x34, 0x02, 0x8c, 0x02, 0xcf, 0x02, 0x2d, 0x03, 0x4c, 0x04, 
+  0xe3, 0x05, 0x9f, 0x02, 0xf8, 0x04, 0x1c, 0x05, 0x08, 0x05, 0xb1, 0x02, 
+  0x4b, 0x05, 0x15, 0x02, 0x78, 0x00, 0x52, 0x02, 0x3c, 0x03, 0xf1, 0x03, 
+  0xe4, 0x00, 0xc3, 0x03, 0x7d, 0x04, 0xcc, 0x00, 0xaa, 0x03, 0x79, 0x05, 
+  0x24, 0x02, 0x6e, 0x01, 0x6d, 0x03, 0x22, 0x04, 0xab, 0x04, 0x44, 0x00, 
+  0xfb, 0x01, 0xae, 0x00, 0x83, 0x03, 0x60, 0x00, 0xe5, 0x01, 0x07, 0x04, 
+  0x94, 0x04, 0x5e, 0x04, 0x2b, 0x00, 0x58, 0x01, 0x39, 0x01, 0x92, 0x00, 
+  0xc2, 0x05, 0x9b, 0x01, 0x43, 0x02, 0x46, 0x01, 0xf6, 0x05, 0x00, 0x00, 
+  0x60, 0x0e, 0x00, 0x00, 0x2d, 0x2b, 0x20, 0x20, 0x20, 0x30, 0x58, 0x30, 
+  0x78, 0x00, 0x28, 0x6e, 0x75, 0x6c, 0x6c, 0x29, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x19, 0x00, 0x0a, 0x00, 0x19, 0x19, 0x19, 0x00, 
-  0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 
-  0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x19, 0x00, 0x11, 0x0a, 0x19, 0x19, 0x19, 0x03, 0x0a, 0x07, 0x00, 0x01, 
-  0x1b, 0x09, 0x0b, 0x18, 0x00, 0x00, 0x09, 0x06, 0x0b, 0x00, 0x00, 0x0b, 
-  0x00, 0x06, 0x19, 0x00, 0x00, 0x00, 0x19, 0x19, 0x19, 0x00, 0x00, 0x00, 
+  0x19, 0x00, 0x0a, 0x00, 0x19, 0x19, 0x19, 0x00, 0x00, 0x00, 0x00, 0x05, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x0b, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x00, 0x11, 0x0a, 
+  0x19, 0x19, 0x19, 0x03, 0x0a, 0x07, 0x00, 0x01, 0x1b, 0x09, 0x0b, 0x18, 
+  0x00, 0x00, 0x09, 0x06, 0x0b, 0x00, 0x00, 0x0b, 0x00, 0x06, 0x19, 0x00, 
+  0x00, 0x00, 0x19, 0x19, 0x19, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x00, 0x0a, 0x0d, 0x19, 0x19, 
+  0x19, 0x00, 0x0d, 0x00, 0x00, 0x02, 0x00, 0x09, 0x0e, 0x00, 0x00, 0x00, 
+  0x09, 0x00, 0x0e, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x00, 
-  0x0a, 0x0d, 0x19, 0x19, 0x19, 0x00, 0x0d, 0x00, 0x00, 0x02, 0x00, 0x09, 
-  0x0e, 0x00, 0x00, 0x00, 0x09, 0x00, 0x0e, 0x00, 0x00, 0x0e, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 
+  0x13, 0x00, 0x00, 0x00, 0x00, 0x09, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x0c, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x13, 
-  0x00, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 0x09, 0x0c, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x04, 0x0f, 0x00, 
+  0x00, 0x00, 0x00, 0x09, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 
+  0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x00, 
-  0x00, 0x04, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x09, 0x10, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x10, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x00, 
-  0x11, 0x00, 0x00, 0x00, 0x00, 0x09, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x12, 0x00, 0x00, 0x12, 0x00, 0x00, 0x1a, 0x00, 0x00, 0x00, 0x1a, 0x1a, 
-  0x1a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 
+  0x00, 0x09, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x12, 
   0x00, 0x00, 0x1a, 0x00, 0x00, 0x00, 0x1a, 0x1a, 0x1a, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1a, 0x00, 
+  0x00, 0x00, 0x1a, 0x1a, 0x1a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 
-  0x00, 0x09, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x14, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 
+  0x00, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x00, 0x09, 0x14, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x15, 0x00, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x00, 0x09, 
-  0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x16, 0x00, 0x00, 
-  0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x20, 0x66, 0x6f, 0x72, 0x20, 
-  0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x20, 0x6c, 
-  0x6f, 0x6e, 0x67, 0x20, 0x64, 0x6f, 0x75, 0x62, 0x6c, 0x65, 0x20, 0x76, 
-  0x61, 0x6c, 0x75, 0x65, 0x73, 0x20, 0x69, 0x73, 0x20, 0x63, 0x75, 0x72, 
-  0x72, 0x65, 0x6e, 0x74, 0x6c, 0x79, 0x20, 0x64, 0x69, 0x73, 0x61, 0x62, 
-  0x6c, 0x65, 0x64, 0x2e, 0x0a, 0x54, 0x6f, 0x20, 0x65, 0x6e, 0x61, 0x62, 
-  0x6c, 0x65, 0x20, 0x69, 0x74, 0x2c, 0x20, 0x61, 0x64, 0x64, 0x20, 0x2d, 
-  0x6c, 0x63, 0x2d, 0x70, 0x72, 0x69, 0x6e, 0x74, 0x73, 0x63, 0x61, 0x6e, 
-  0x2d, 0x6c, 0x6f, 0x6e, 0x67, 0x2d, 0x64, 0x6f, 0x75, 0x62, 0x6c, 0x65, 
-  0x20, 0x74, 0x6f, 0x20, 0x74, 0x68, 0x65, 0x20, 0x6c, 0x69, 0x6e, 0x6b, 
-  0x20, 0x63, 0x6f, 0x6d, 0x6d, 0x61, 0x6e, 0x64, 0x2e, 0x0a, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x41, 0x42, 
-  0x43, 0x44, 0x45, 0x46, 0x2d, 0x30, 0x58, 0x2b, 0x30, 0x58, 0x20, 0x30, 
-  0x58, 0x2d, 0x30, 0x78, 0x2b, 0x30, 0x78, 0x20, 0x30, 0x78, 0x00, 0x69, 
-  0x6e, 0x66, 0x00, 0x49, 0x4e, 0x46, 0x00, 0x6e, 0x61, 0x6e, 0x00, 0x4e, 
-  0x41, 0x4e, 0x00, 0x2e, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 
+  0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x00, 0x09, 0x16, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x16, 0x00, 0x00, 0x16, 0x00, 0x00, 0x53, 0x75, 0x70, 0x70, 
+  0x6f, 0x72, 0x74, 0x20, 0x66, 0x6f, 0x72, 0x20, 0x66, 0x6f, 0x72, 0x6d, 
+  0x61, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x20, 0x6c, 0x6f, 0x6e, 0x67, 0x20, 
+  0x64, 0x6f, 0x75, 0x62, 0x6c, 0x65, 0x20, 0x76, 0x61, 0x6c, 0x75, 0x65, 
+  0x73, 0x20, 0x69, 0x73, 0x20, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 
+  0x6c, 0x79, 0x20, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x2e, 
+  0x0a, 0x54, 0x6f, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x20, 0x69, 
+  0x74, 0x2c, 0x20, 0x61, 0x64, 0x64, 0x20, 0x2d, 0x6c, 0x63, 0x2d, 0x70, 
+  0x72, 0x69, 0x6e, 0x74, 0x73, 0x63, 0x61, 0x6e, 0x2d, 0x6c, 0x6f, 0x6e, 
+  0x67, 0x2d, 0x64, 0x6f, 0x75, 0x62, 0x6c, 0x65, 0x20, 0x74, 0x6f, 0x20, 
+  0x74, 0x68, 0x65, 0x20, 0x6c, 0x69, 0x6e, 0x6b, 0x20, 0x63, 0x6f, 0x6d, 
+  0x6d, 0x61, 0x6e, 0x64, 0x2e, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x31, 0x32, 0x33, 
+  0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 
+  0x2d, 0x30, 0x58, 0x2b, 0x30, 0x58, 0x20, 0x30, 0x58, 0x2d, 0x30, 0x78, 
+  0x2b, 0x30, 0x78, 0x20, 0x30, 0x78, 0x00, 0x69, 0x6e, 0x66, 0x00, 0x49, 
+  0x4e, 0x46, 0x00, 0x6e, 0x61, 0x6e, 0x00, 0x4e, 0x41, 0x4e, 0x00, 0x2e, 
+  0x00, 
 };
 
 static const u8 data_segment_data_1[] = {
   0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 
-  0x03, 0x00, 0x00, 0x00, 0xc8, 0x10, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 
+  0x03, 0x00, 0x00, 0x00, 0xe8, 0x10, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0xc8, 0x0d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0xe8, 0x0d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 
-  0x03, 0x00, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+  0x03, 0x00, 0x00, 0x00, 0x20, 0x15, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-  0x00, 0x00, 0x00, 0x00, 0x40, 0x0e, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x00, 0x60, 0x0e, 0x00, 0x00, 
 };
 
 static bool init_memory(wasm2c_sandbox_t* const sbx, uint32_t max_wasm_pages_from_rt) {
@@ -14684,8 +15055,8 @@ static bool init_memory(wasm2c_sandbox_t* const sbx, uint32_t max_wasm_pages_fro
   const bool success = wasm_rt_allocate_memory(&(sbx->w2c_memory), 2, max_pages);
   if (!success) { return false; }
   
-  LOAD_DATA(sbx->w2c_memory, 1024u, data_segment_data_0, 2501);
-  LOAD_DATA(sbx->w2c_memory, 3528u, data_segment_data_1, 236);
+  LOAD_DATA(sbx->w2c_memory, 1024u, data_segment_data_0, 2533);
+  LOAD_DATA(sbx->w2c_memory, 3560u, data_segment_data_1, 236);
   sbx->wasi_data.heap_memory = &(sbx->w2c_memory);
   return true;
 }

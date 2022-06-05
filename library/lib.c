@@ -48,3 +48,30 @@ void parse_image_body(char* in, ImageHeader* header, char* out) {
     // Simulate a write
     memset(out, 213, header->width * header->height);
 }
+
+int* tainted_sort (int n,int* ptr)
+{
+int i, j, t;
+int ret = 0;
+// Sort the numbers using pointers
+for (i = 0; i < n; i++)  {
+
+for (j = i + 1; j < n; j++) {
+
+if (*(ptr + j) < *(ptr + i)) {
+
+t = *(ptr + i);
+*(ptr + i) = *(ptr + j);
+*(ptr + j) = t;
+}
+}
+}
+printf("\n");
+// print the numbers
+for (size_t i = 0; i < n; i++)
+	printf("Printing the number %d \n", ptr[i]);
+
+return ptr;
+
+return 0;
+}

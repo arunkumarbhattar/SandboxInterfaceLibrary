@@ -12,6 +12,7 @@ extern "C" {
 #endif
 
 bool c_isPointerToTaintedMem(void* pointer);
+bool c_isTaintedPointerToTaintedMem(void* pointer);
 wasm2c_sandbox_t* c_fetch_sandbox_address();
 unsigned int c_fetch_pointer_offset(char* pointer_name);
 
