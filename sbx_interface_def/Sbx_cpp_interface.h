@@ -52,17 +52,18 @@ public:
 
     bool isPointerToTaintedMem(const void* const pointer);
     wasm2c_sandbox_t* fetch_sandbox_address();
-    unsigned int fetch_pointer_offset(const char* const pointer_name);
 
-    void update_pointer_offset(const char * const pointer_name, unsigned long offset);
+    void* fetch_pointer_from_offset(const unsigned long pointer_offset);
+
+    unsigned long fetch_pointer_offset(const void* const pointer);
 
     unsigned long fetch_sandbox_heap_address();
 
-    void *sbx_malloc(const char* const pointer_name, size_t size);
+    void *sbx_malloc(size_t size);
 
-    void sbx_free(const char * const pointer_name);
+    void sbx_free(const void* const pointer);
 
-    void *sbx_realloc(const char * const pointer_name, size_t size);
+    void *sbx_realloc(const void* const pointer, size_t size);
 };
 
 #endif //SIMPLE_LIBRARY_EXAMPLE_SBX_CPP_INTERFACE_H

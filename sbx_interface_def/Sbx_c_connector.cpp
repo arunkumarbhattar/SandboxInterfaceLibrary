@@ -18,14 +18,14 @@ extern "C" {
         }
     }
 
-    bool c_isTaintedPointerToTaintedMem(void* pointer){
+    int c_isTaintedPointerToTaintedMem(void* pointer){
         sbx_init();
-        return SbxInterface_Instance->isPointerToTaintedMem(pointer);
+        return SbxInterface_Instance->isPointerToTaintedMem(pointer) ? 1 : 0;
     }
 
-    bool c_isPointerToTaintedMem(void* pointer) {
+    int  c_isPointerToTaintedMem(void* pointer) {
         sbx_init();
-        return SbxInterface_Instance->isPointerToTaintedMem(pointer);
+        return SbxInterface_Instance->isPointerToTaintedMem(pointer) ? 1 : 0;
     }
 
     wasm2c_sandbox_t* c_fetch_sandbox_address(){
@@ -33,15 +33,14 @@ extern "C" {
         return SbxInterface_Instance->fetch_sandbox_address();
     }
 
-
-    unsigned int c_fetch_pointer_offset(char* pointer_name){
+    void* c_fetch_pointer_from_offset(const unsigned long pointer_offset){
         sbx_init();
-        return SbxInterface_Instance->fetch_pointer_offset(pointer_name);
+        return SbxInterface_Instance->fetch_pointer_from_offset(pointer_offset);
     }
 
-    void c_update_pointer_offset(char *pointer_name, unsigned long offset){
+    unsigned int c_fetch_pointer_offset(void* pointer){
         sbx_init();
-        return SbxInterface_Instance->update_pointer_offset(pointer_name, offset);
+        return SbxInterface_Instance->fetch_pointer_offset(pointer);
     }
 
     unsigned long c_fetch_sandbox_heap_address(){
@@ -49,23 +48,22 @@ extern "C" {
         return SbxInterface_Instance->fetch_sandbox_heap_address();
     }
 
-    void* c_malloc(char* pointer_name, size_t size)
+    void* c_malloc(size_t size)
     {
         sbx_init();
-        void* temp = SbxInterface_Instance->sbx_malloc(pointer_name, size);
-        return temp;
+        return (void*)SbxInterface_Instance->sbx_malloc(size);
     }
 
-    void* c_realloc(char* pointer_name, size_t size)
+    void* c_realloc(void* pointer, size_t size)
     {
         sbx_init();
-        return (void*)SbxInterface_Instance->sbx_realloc(pointer_name, size);
+        return (void*)SbxInterface_Instance->sbx_realloc(pointer, size);
     }
 
-    void c_free(char* pointer_name)
+    void c_free(void* pointer)
     {
         sbx_init();
-        return SbxInterface_Instance->sbx_free(pointer_name);
+        return SbxInterface_Instance->sbx_free(pointer);
     }
 
 #ifdef __cplusplus

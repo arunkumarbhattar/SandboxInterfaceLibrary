@@ -10,23 +10,14 @@ wasm2c_sandbox_t* SbxInterface::fetch_sandbox_address()
     return this->sandbox.get_sandbox_impl()->sbb_nc;
 }
 
-unsigned int SbxInterface::fetch_pointer_offset(const char* const pointer_name)
+unsigned long SbxInterface::fetch_pointer_offset(const void *const pointer)
 {
-    if(pointer_symbol_lookup.find(pointer_name) == pointer_symbol_lookup.end())
-        return 0;
-    else
-        return pointer_symbol_lookup[pointer_name];
+    return reinterpret_cast<unsigned long>(pointer) - this->fetch_sandbox_heap_address();
 }
 
-void SbxInterface::update_pointer_offset(const char* const pointer_name, unsigned long offset)
+void* SbxInterface::fetch_pointer_from_offset(const unsigned long pointer_offset)
 {
-    if(pointer_symbol_lookup.find(pointer_name) != pointer_symbol_lookup.end()) {
-        pointer_symbol_lookup[pointer_name] = offset;
-    }
-    else{
-        string temp(pointer_name);
-        pointer_symbol_lookup.insert(make_pair(temp, offset));
-    }
+    return reinterpret_cast<void*>(pointer_offset + this->fetch_sandbox_heap_address());
 }
 
 unsigned long SbxInterface::fetch_sandbox_heap_address()
@@ -34,28 +25,23 @@ unsigned long SbxInterface::fetch_sandbox_heap_address()
     return sandbox.get_sandbox_impl()->heap_base;
 }
 
-void* SbxInterface::sbx_malloc(const char* const pointer_name, size_t size)
+void* SbxInterface::sbx_malloc(size_t size)
 {
-    unsigned int pointer_offset = w2c_malloc(fetch_sandbox_address(), size);
-    update_pointer_offset(pointer_name, pointer_offset);
-    return (void*)(fetch_sandbox_heap_address() + pointer_offset);
+    return this->fetch_pointer_from_offset(w2c_malloc(fetch_sandbox_address(), size));
 }
 
-void SbxInterface::sbx_free(const char* const pointer_name)
+void SbxInterface::sbx_free(const void* const pointer)
 {
-    return w2c_free(fetch_sandbox_address(), fetch_pointer_offset(pointer_name));
+    return w2c_free(fetch_sandbox_address(), fetch_pointer_offset(pointer));
 }
 
-void* SbxInterface::sbx_realloc(const char* const pointer_name, size_t size)
+void* SbxInterface::sbx_realloc(const void* const pointer, size_t size)
 {
-    unsigned int pointer_offset = w2c_realloc(fetch_sandbox_address(), fetch_pointer_offset(pointer_name), size);
-    update_pointer_offset(pointer_name, pointer_offset);
-    return (void*)(fetch_sandbox_heap_address() + pointer_offset);
+    return this->fetch_pointer_from_offset(w2c_realloc(fetch_sandbox_address(), fetch_pointer_offset(pointer), size));
 }
-
 
 // Uncomment the main function only if you want to test the Sbx Interface Functions -->
-/*
+
 int main(int argc, char const *argv[])
 {
     SbxInterface Sb;
@@ -68,12 +54,10 @@ int main(int argc, char const *argv[])
 
 
     auto tainted_input_stream_offset = w2c_malloc(tmp,100);
-    Sb.update_pointer_offset("tainted_input_stream_offset", tainted_input_stream_offset);
-    auto tainted_input_stream = reinterpret_cast<char*>(Sb.fetch_sandbox_heap_address() + tainted_input_stream_offset);
+    auto tainted_input_stream = reinterpret_cast<char*>(Sb.fetch_pointer_from_offset(tainted_input_stream_offset));
 
     auto tainted_input_stream_personal_offset = w2c_malloc(tmp, 100*sizeof(int));
-    Sb.update_pointer_offset("tainted_input_stream_personal_offset", tainted_input_stream_personal_offset);
-    auto tainted_input_stream_personal = reinterpret_cast<char*>(Sb.fetch_sandbox_heap_address() + tainted_input_stream_personal_offset);
+    auto tainted_input_stream_personal = reinterpret_cast<char*>(Sb.fetch_pointer_from_offset(tainted_input_stream_personal_offset));
 
     auto non_tainted_memory = (char*) malloc(100*sizeof(char));
     bool is = Sb.isPointerToTaintedMem(tainted_input_stream_personal);
@@ -86,13 +70,12 @@ int main(int argc, char const *argv[])
     sprintf(address, "%" PRIuPTR, (uintptr_t)&detonation_codes);
 
     auto tainted_address_offset = w2c_malloc(tmp, 100);
-    auto tainted_address = reinterpret_cast<char*>(Sb.fetch_sandbox_heap_address() + tainted_address_offset);
+    auto tainted_address = reinterpret_cast<char*>(Sb.fetch_pointer_from_offset(tainted_address_offset));
     // You dont even require rlbox::malloc -->
     memcpy(tainted_address , address, 100u);
 
-    auto header_offset = w2c_parse_image_header(tmp, Sb.fetch_pointer_offset("tainted_input_stream"), Sb.fetch_pointer_offset("tainted_address_offset"));
-    Sb.update_pointer_offset("header_offset", header_offset);
-    auto header = reinterpret_cast<ImageHeader *>(Sb.fetch_sandbox_heap_address() + header_offset);
+    auto header_offset = w2c_parse_image_header(tmp, Sb.fetch_pointer_offset(tainted_input_stream), Sb.fetch_pointer_offset(tainted_address));
+    auto header = reinterpret_cast<ImageHeader *>(Sb.fetch_pointer_from_offset(header_offset));
     unsigned int status_code = header->status_code;
 
     // Again width and height are used multiple times in the below code, so let's copy it a local variable first
@@ -101,9 +84,8 @@ int main(int argc, char const *argv[])
 
     auto output_size = (height * width);
     auto tainted_output_stream_offset = w2c_malloc(tmp, output_size);
-    Sb.update_pointer_offset("tainted_output_stream_offset", tainted_output_stream_offset);
-    auto tainted_output_stream = reinterpret_cast<char*>(Sb.fetch_sandbox_heap_address() + tainted_output_stream_offset);
-    w2c_parse_image_body(tmp, Sb.fetch_pointer_offset("tainted_input_stream_offset"), Sb.fetch_pointer_offset("header_offset"), Sb.fetch_pointer_offset("tainted_output_stream_offset"));
+    auto tainted_output_stream = reinterpret_cast<char*>(Sb.fetch_pointer_from_offset(tainted_output_stream_offset));
+    w2c_parse_image_body(tmp, Sb.fetch_pointer_offset(tainted_input_stream), Sb.fetch_pointer_offset(header), Sb.fetch_pointer_offset(tainted_output_stream));
 
     std::cout << "Image pixels: " << std::endl;
 
@@ -118,11 +100,10 @@ int main(int argc, char const *argv[])
     std::cout << "\n";
 
     delete[] input_stream;
-    w2c_free(tmp, Sb.fetch_pointer_offset("tainted_input_stream_offset"));
-    w2c_free(tmp, Sb.fetch_pointer_offset("tainted_input_stream_offset"));
-    w2c_free(tmp, Sb.fetch_pointer_offset("tainted_output_stream_offset"));
+    w2c_free(tmp, Sb.fetch_pointer_offset(tainted_input_stream));
+    w2c_free(tmp, Sb.fetch_pointer_offset(tainted_input_stream));
+    w2c_free(tmp, Sb.fetch_pointer_offset(tainted_output_stream));
     Sb.sandbox.destroy_sandbox();
 
     return 0;
 }
-*/

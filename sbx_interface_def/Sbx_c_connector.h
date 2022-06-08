@@ -11,20 +11,23 @@
 extern "C" {
 #endif
 
-bool c_isPointerToTaintedMem(void* pointer);
-bool c_isTaintedPointerToTaintedMem(void* pointer);
-wasm2c_sandbox_t* c_fetch_sandbox_address();
-unsigned int c_fetch_pointer_offset(char* pointer_name);
+int c_isPointerToTaintedMem(void* pointer);
 
-void c_update_pointer_offset(char *pointer_name, unsigned long offset);
+void* c_fetch_pointer_from_offset(const unsigned long pointer_offset);
+
+int c_isTaintedPointerToTaintedMem(void* pointer);
+
+wasm2c_sandbox_t* c_fetch_sandbox_address();
+
+unsigned int c_fetch_pointer_offset(void* pointer);
 
 unsigned long c_fetch_sandbox_heap_address();
 
-void* c_malloc(char* pointer_name, size_t size);
+void* c_malloc(size_t size);
 
-void* c_realloc(char* pointer_name, size_t size);
+void* c_realloc(void* pointer, size_t size);
 
-void c_free(char* pointer_name);
+void c_free(void* pointer);
 
 #ifdef __cplusplus
 };
