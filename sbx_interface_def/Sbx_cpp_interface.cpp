@@ -41,7 +41,7 @@ void* SbxInterface::sbx_realloc(const void* const pointer, size_t size)
 }
 
 // Uncomment the main function only if you want to test the Sbx Interface Functions -->
-
+/*
 int main(int argc, char const *argv[])
 {
     SbxInterface Sb;
@@ -107,3 +107,4 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+ */
