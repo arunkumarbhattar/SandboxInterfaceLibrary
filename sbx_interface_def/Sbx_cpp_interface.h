@@ -1,7 +1,6 @@
 //
 // Created by arun on 6/4/22.
 //
-#include "../library/lib.h"
 #include <assert.h>
 #include <stdlib.h>
 #include <iostream>
@@ -19,7 +18,6 @@
 #define RLBOX_SINGLE_THREADED_INVOCATIONS
 // Configure RLBox for wasm sandbox
 #include "../wasm_readable_definitions/lib_wasm.h"
-#include "../library/lib.h"
 #include "rlbox_wasm2c_sandbox.hpp"
 using sandbox_type_t = rlbox::rlbox_wasm2c_sandbox;
 
@@ -27,19 +25,6 @@ using sandbox_type_t = rlbox::rlbox_wasm2c_sandbox;
 using namespace rlbox;
 using namespace std;
 
-template<typename T>
-using tainted_img = rlbox::tainted<T, sandbox_type_t>;
-
-// Define and load any structs needed by the application
-#define sandbox_fields_reflection_exampleapp_class_ImageHeader(f, g, ...)  \
-  f(unsigned int, status_code, FIELD_NORMAL, ##__VA_ARGS__) g()            \
-  f(unsigned int, width, FIELD_NORMAL, ##__VA_ARGS__) g()                  \
-  f(unsigned int, height, FIELD_NORMAL, ##__VA_ARGS__) g()
-
-#define sandbox_fields_reflection_exampleapp_allClasses(f, ...)            \
-  f(ImageHeader, exampleapp, ##__VA_ARGS__)
-
-rlbox_load_structs_from_library(exampleapp);
 
 class SbxInterface{
 public:

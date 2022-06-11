@@ -6,7 +6,7 @@
 #define SIMPLE_LIBRARY_EXAMPLE_SBX_C_CONNECTOR_H
 
 //required by the definition for struct wasm2c_sandbox_t
-#include "../wasm_readable_definitions/lib_wasm.h"
+//#include "../wasm_readable_definitions/lib_wasm.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -17,7 +17,7 @@ void* c_fetch_pointer_from_offset(const unsigned long pointer_offset);
 
 int c_isTaintedPointerToTaintedMem(void* pointer);
 
-wasm2c_sandbox_t* c_fetch_sandbox_address();
+void* c_fetch_sandbox_address();
 
 unsigned int c_fetch_pointer_offset(void* pointer);
 

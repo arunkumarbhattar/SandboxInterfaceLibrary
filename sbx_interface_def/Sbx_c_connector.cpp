@@ -2,7 +2,7 @@
 // Created by arun on 6/4/22.
 //
 
-#include "Sbx_c_connector.h"
+//#include "Sbx_c_connector.h"
 #include "Sbx_cpp_interface.h"
 #include <cstdlib>
 
@@ -28,7 +28,7 @@ extern "C" {
         return SbxInterface_Instance->isPointerToTaintedMem(pointer) ? 1 : 0;
     }
 
-    wasm2c_sandbox_t* c_fetch_sandbox_address(){
+    void* c_fetch_sandbox_address(){
         sbx_init();
         return SbxInterface_Instance->fetch_sandbox_address();
     }
