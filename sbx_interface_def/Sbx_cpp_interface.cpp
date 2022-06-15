@@ -1,5 +1,5 @@
 #include "Sbx_cpp_interface.h"
-
+#include "wasm-rt.h"
 bool SbxInterface::isPointerToTaintedMem(const void* const pointer)
 {
     return sandbox.get_sandbox_impl()->impl_is_pointer_in_sandbox_memory(pointer);
@@ -38,6 +38,17 @@ void SbxInterface::sbx_free(const void* const pointer)
 void* SbxInterface::sbx_realloc(const void* const pointer, size_t size)
 {
     return this->fetch_pointer_from_offset(w2c_realloc(fetch_sandbox_address(), fetch_pointer_offset(pointer), size));
+}
+
+unsigned long SbxInterface::sbx_fetch_function_pointer_offset(const char* const func_name)
+{
+    fetch_pointer_offset(this->sbx_fetch_function_pointer(func_name));
+}
+
+void* SbxInterface::sbx_fetch_function_pointer(const char* const func_name)
+{
+    auto wasm_static_functions_struct = WASM_CURR_ADD_PREFIX(get_wasm2c_sandbox_info);
+    return wasm_static_functions_struct().lookup_wasm2c_nonfunc_export(fetch_sandbox_address(),func_name);
 }
 
 // Uncomment the main function only if you want to test the Sbx Interface Functions -->

@@ -66,6 +66,16 @@ extern "C" {
         return SbxInterface_Instance->sbx_free(pointer);
     }
 
+    void* c_fetch_function_pointer(const char* const function_name){
+        sbx_init();
+        return SbxInterface_Instance->sbx_fetch_function_pointer(function_name);
+    }
+
+    unsigned long c_fetch_function_pointer_offset(const char* const function_name){
+        sbx_init();
+        return SbxInterface_Instance->sbx_fetch_function_pointer_offset(function_name);
+    }
+
 #ifdef __cplusplus
 };
 #endif

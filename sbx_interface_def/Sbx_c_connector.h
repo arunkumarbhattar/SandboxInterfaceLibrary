@@ -29,6 +29,10 @@ void* c_realloc(void* pointer, size_t size);
 
 void c_free(void* pointer);
 
+void* c_fetch_function_pointer(const char* const function_name);
+
+unsigned long c_fetch_function_pointer_offset(const char* const function_name);
+
 #ifdef __cplusplus
 };
 #endif

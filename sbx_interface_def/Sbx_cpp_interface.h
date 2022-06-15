@@ -49,6 +49,10 @@ public:
     void sbx_free(const void* const pointer);
 
     void *sbx_realloc(const void* const pointer, size_t size);
+
+    unsigned long sbx_fetch_function_pointer_offset(const char* const func_name);
+
+    void* sbx_fetch_function_pointer(const char *const func_name);
 };
 
 #endif //SIMPLE_LIBRARY_EXAMPLE_SBX_CPP_INTERFACE_H
