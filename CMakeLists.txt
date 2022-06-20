@@ -39,7 +39,16 @@ add_library(stdlib_headers STATIC "${CMAKE_SOURCE_DIR}/tainted_header_definition
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/assert_tainted.cpp"
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/checkcbox_extensions.cpp"
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/errno_tainted.cpp"
-
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/fenv_tainted.cpp"
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/inttypes_tainted_internal.cpp"
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/math_tainted.cpp"
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/signal_tainted.cpp"
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/stdio_tainted.cpp"
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/stdlib_tainted.cpp"
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/string_tainted.cpp"
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/threads_tainted.cpp"
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/time_tainted.cpp"
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/unistd_tainted.cpp"
         )
 
 
