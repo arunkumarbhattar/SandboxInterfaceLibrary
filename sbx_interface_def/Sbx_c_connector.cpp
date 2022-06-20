@@ -5,7 +5,7 @@
 //#include "Sbx_c_connector.h"
 #include "Sbx_cpp_interface.h"
 #include <cstdlib>
-
+#include <stdarg.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -16,6 +16,32 @@ extern "C" {
         if(SbxInterface_Instance == NULL){
             SbxInterface_Instance = new SbxInterface();
         }
+    }
+
+    char *t_strcpy(char *dest,
+               const char * src) {
+        return strcpy(dest,src);
+    }
+
+    int __t_sprintf_chkcbx(char *buffer,
+                       int flag,
+                       size_t obj_size,
+                       const char *format,
+                       ...){
+    va_list args;
+    va_start(args, format);
+
+    auto ret = vsprintf(buffer, format, args);
+    va_end(args);
+    return ret;
+    }
+
+    int sample(int a, ...)
+    {
+        va_list args;
+        va_start(args, a);
+        va_end(args);
+        return a +10;
     }
 
     int c_isTaintedPointerToTaintedMem(void* pointer){

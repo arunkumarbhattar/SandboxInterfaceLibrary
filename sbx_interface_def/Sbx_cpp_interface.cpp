@@ -93,6 +93,14 @@ int main(int argc, char const *argv[])
     unsigned int height = header->height;
     unsigned int width = header->width;
 
+
+    ImageHeader ig;
+    tainted<ImageHeader , sandbox_type_t > igs;
+    ig.width = 200;
+    ig.width = 200;
+
+    tainted<char*, sandbox_type_t>tainted_input_streamw = Sb.sandbox.malloc_in_sandbox<char>(100);
+    tainted<char*, sandbox_type_t>tainted_output_streams = Sb.sandbox.malloc_in_sandbox<char>(100230);
     auto output_size = (height * width);
     auto tainted_output_stream_offset = w2c_malloc(tmp, output_size);
     auto tainted_output_stream = reinterpret_cast<char*>(Sb.fetch_pointer_from_offset(tainted_output_stream_offset));

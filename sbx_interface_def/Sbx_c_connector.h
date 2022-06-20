@@ -23,6 +23,9 @@ unsigned int c_fetch_pointer_offset(void* pointer);
 
 unsigned long c_fetch_sandbox_heap_address();
 
+char *t_strcpy(char * restrict dest,
+             const char * restrict src);
+
 void* c_malloc(size_t size);
 
 void* c_realloc(void* pointer, size_t size);
