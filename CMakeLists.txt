@@ -33,8 +33,9 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU
     add_compile_options(-fpic -shared -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-comment)
     add_link_options(-ldl)
 endif()
-# we are gonna add all the standard interface definitions here
-add_library(stdlib_headers STATIC "${CMAKE_SOURCE_DIR}/tainted_header_definitions/_builtin_stdio_tainted.cpp"
+
+add_library(SBX_CON_LIB STATIC "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_c_connector.cpp" "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_cpp_interface.cpp"
+        "${CMAKE_SOURCE_DIR}/tainted_header_definitions/_builtin_stdio_tainted.cpp"
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/_builtin_string_tainted.cpp"
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/assert_tainted.cpp"
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/checkcbox_extensions.cpp"
@@ -50,13 +51,10 @@ add_library(stdlib_headers STATIC "${CMAKE_SOURCE_DIR}/tainted_header_definition
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/time_tainted.cpp"
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/unistd_tainted.cpp"
         )
-
-
-add_library(SBX_CON_LIB "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_c_connector.cpp" "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_cpp_interface.cpp")
 target_include_directories(SBX_CON_LIB PUBLIC "${CMAKE_SOURCE_DIR}/rlbox/"
         "${CMAKE_SOURCE_DIR}/rlbox/"
         "${CMAKE_SOURCE_DIR}/wasm_readable_definitions")
-target_link_libraries(SBX_CON_LIB stdlib_headers)
+target_link_libraries(SBX_CON_LIB)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     add_compile_options(-fpic -c -shared -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-comment)
