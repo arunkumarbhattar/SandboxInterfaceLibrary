@@ -28,7 +28,8 @@ double t_nan(const char *t);
 float t_nanf(const char *t);
 long double t_nanl(const char *t);
 
-
+bool t_isnan(double __x);
+bool t_isinf(double __x);
 #ifdef __cplusplus
 };
 #endif
