@@ -3,6 +3,7 @@
 //
 
 #include "math_tainted.h"
+#include <math.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -51,6 +52,15 @@ float t_nanf(const char *t){
 
 long double t_nanl(const char *t){
     return nanl(t);
+}
+
+
+bool t_isnan(double __x){
+    return isnan(__x);
+}
+
+bool t_isinf(double __x){
+    return isinf(__x);
 }
 
 #ifdef __cplusplus

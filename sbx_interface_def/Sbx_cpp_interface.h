@@ -50,9 +50,14 @@ public:
 
     void *sbx_realloc(const void* const pointer, size_t size);
 
-    unsigned long sbx_fetch_function_pointer_offset(const char* const func_name);
+    int c_register_callback(const void* chosen_interceptor, int no_of_args,
+                                          int does_return, int arg_types[]);
 
     void* sbx_fetch_function_pointer(const char *const func_name);
+
+    int sbx_register_callback(const void *chosen_interceptor, int no_of_args, int does_return, int *arg_types);
+
+    unsigned long sbx_fetch_function_pointer_offset(uint32_t args, uint32_t ret, int *ret_param);
 };
 
 #endif //SIMPLE_LIBRARY_EXAMPLE_SBX_CPP_INTERFACE_H

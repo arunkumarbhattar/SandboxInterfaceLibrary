@@ -34,22 +34,44 @@ void SbxInterface::sbx_free(const void* const pointer)
 {
     return w2c_free(fetch_sandbox_address(), fetch_pointer_offset(pointer));
 }
+/*
+ * registers the callback and returns the slot number --> this is gon be the function argument for ever
+ */
+int SbxInterface::sbx_register_callback(const void* chosen_interceptor, int no_of_args,
+                                         int does_return, int arg_types[]){
+    /*
+     * First argument whilst registering the callback must be the sandbox pointer
+     */
+    /*
+     * First we generate the function type index.
+     * First we register this function and then we fetch the function index -->
+     * This function index will be used as an argument
+     */
 
+    auto wasm_static_functions_struct = WASM_CURR_ADD_PREFIX(get_wasm2c_sandbox_info);
+    auto function_type_index = wasm_static_functions_struct().lookup_wasm2c_func_index(
+            this->sandbox.get_memory_location(), no_of_args, does_return,
+            reinterpret_cast<wasm_rt_type_t *>(arg_types));
+    return wasm_static_functions_struct().add_wasm2c_callback(this->sandbox.get_memory_location(),
+                                                              function_type_index,
+                                                              const_cast<void *>(chosen_interceptor),
+                                                              WASM_RT_EXTERNAL_FUNCTION);
+}
 void* SbxInterface::sbx_realloc(const void* const pointer, size_t size)
 {
     return this->fetch_pointer_from_offset(w2c_realloc(fetch_sandbox_address(), fetch_pointer_offset(pointer), size));
 }
-
-unsigned long SbxInterface::sbx_fetch_function_pointer_offset(const char* const func_name)
-{
-    fetch_pointer_offset(this->sbx_fetch_function_pointer(func_name));
-}
-
-void* SbxInterface::sbx_fetch_function_pointer(const char* const func_name)
+/*
+ * This function will never be useful
+ */
+unsigned long SbxInterface::sbx_fetch_function_pointer_offset(uint32_t args, uint32_t ret, int ret_param[])
 {
     auto wasm_static_functions_struct = WASM_CURR_ADD_PREFIX(get_wasm2c_sandbox_info);
-    return wasm_static_functions_struct().lookup_wasm2c_nonfunc_export(fetch_sandbox_address(),func_name);
+    return wasm_static_functions_struct().lookup_wasm2c_func_index(this->sandbox.get_memory_location(), args, ret,
+                                                                   reinterpret_cast<wasm_rt_type_t *>(ret_param));
+
 }
+
 
 // Uncomment the main function only if you want to test the Sbx Interface Functions -->
 /*
