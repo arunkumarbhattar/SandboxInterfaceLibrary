@@ -17,7 +17,7 @@
 #define RLBOX_USE_STATIC_CALLS() rlbox_wasm2c_sandbox_lookup_symbol
 #define RLBOX_SINGLE_THREADED_INVOCATIONS
 // Configure RLBox for wasm sandbox
-#include "../wasm_readable_definitions/lib_wasm.h"
+#include "../wasm_readable_definitions/Taintedparson_wasm.h"
 #include "rlbox_wasm2c_sandbox.hpp"
 using sandbox_type_t = rlbox::rlbox_wasm2c_sandbox;
 

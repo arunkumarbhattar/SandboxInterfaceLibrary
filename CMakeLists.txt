@@ -9,11 +9,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ldl -lpthread")
 
-add_library(img_lib STATIC "${CMAKE_SOURCE_DIR}/library/lib.c")
+add_library(img_lib STATIC "${CMAKE_SOURCE_DIR}/library/Taintedparson.c")
 target_include_directories(img_lib PUBLIC ${CMAKE_SOURCE_DIR})
 
 file(GLOB WASM_RT ${CMAKE_SOURCE_DIR}/wasmrt/*.c)
-add_library(img_lib_wasm STATIC ${WASM_RT} "${CMAKE_SOURCE_DIR}/wasm_readable_definitions/lib_wasm.c")
+add_library(img_lib_wasm STATIC ${WASM_RT} "${CMAKE_SOURCE_DIR}/wasm_readable_definitions/Taintedparson_wasm.c")
 target_include_directories(img_lib_wasm PUBLIC "${CMAKE_SOURCE_DIR}/wasm_readable_definitions"
         "${CMAKE_SOURCE_DIR}/wasmrt/")
 

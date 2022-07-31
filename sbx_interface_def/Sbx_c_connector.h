@@ -23,9 +23,6 @@ unsigned int c_fetch_pointer_offset(void* pointer);
 
 unsigned long c_fetch_sandbox_heap_address();
 
-char *t_strcpy(char * dest,
-             const char * src);
-
 void* c_malloc(size_t size);
 
 void* c_realloc(void* pointer, size_t size);
@@ -34,10 +31,10 @@ void c_free(void* pointer);
 
 void* c_fetch_function_pointer(const char* const function_name);
 
-unsigned long c_fetch_function_pointer_offset(const char* const function_name);
+unsigned long c_fetch_function_pointer_offset(u_int32_t args, u_int32_t ret, int ret_param[]);
 
-#ifdef __cplusplus
 };
+#ifdef __cplusplus
 #endif
 
 #endif //SIMPLE_LIBRARY_EXAMPLE_SBX_C_CONNECTOR_H

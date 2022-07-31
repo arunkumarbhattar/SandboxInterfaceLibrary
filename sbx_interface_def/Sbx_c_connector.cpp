@@ -4,6 +4,7 @@
 
 //#include "Sbx_c_connector.h"
 #include "Sbx_cpp_interface.h"
+#include "Sbx_c_connector.h"
 #include <cstdlib>
 #include <stdarg.h>
 #ifdef __cplusplus
@@ -17,12 +18,6 @@ extern "C" {
             SbxInterface_Instance = new SbxInterface();
         }
     }
-
-    char *t_strcpy(char *dest,
-               const char * src) {
-        return strcpy(dest,src);
-    }
-
     int __t_sprintf_chkcbx(char *buffer,
                        int flag,
                        size_t obj_size,
