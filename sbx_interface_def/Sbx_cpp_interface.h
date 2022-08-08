@@ -29,6 +29,7 @@ using namespace std;
 class SbxInterface{
 public:
 
+    wasm2c_sandbox_funcs_t wasm_static_functions_struct;
     rlbox_sandbox<sandbox_type_t> sandbox;
     unordered_map<string,unsigned long> pointer_symbol_lookup;
     SbxInterface(){
@@ -52,8 +53,6 @@ public:
 
     int c_register_callback(const void* chosen_interceptor, int no_of_args,
                                           int does_return, int arg_types[]);
-
-    void* sbx_fetch_function_pointer(const char *const func_name);
 
     int sbx_register_callback(const void *chosen_interceptor, int no_of_args, int does_return, int *arg_types);
 

@@ -69,34 +69,14 @@ extern "C" {
         return SbxInterface_Instance->fetch_sandbox_heap_address();
     }
 
-    int c_register_callback(const void* chosen_interceptor, int no_of_args,
-                                        int does_return, int arg_types[]){
+    int sbx_register_callback(const void* chosen_interceptor, int no_of_args,
+                              int does_return, int arg_types[]){
         sbx_init();
-        return SbxInterface_Instance->sbx_register_callback(chosen_interceptor, no_of_args, does_return, arg_types);
+        return SbxInterface_Instance->sbx_register_callback(chosen_interceptor,
+                                                            no_of_args,
+                                                            does_return,
+                                                            arg_types);
     }
-    void* c_malloc(size_t size)
-    {
-        sbx_init();
-        return (void*)SbxInterface_Instance->sbx_malloc(size);
-    }
-
-    void* c_realloc(void* pointer, size_t size)
-    {
-        sbx_init();
-        return (void*)SbxInterface_Instance->sbx_realloc(pointer, size);
-    }
-
-    void c_free(void* pointer)
-    {
-        sbx_init();
-        return SbxInterface_Instance->sbx_free(pointer);
-    }
-
-    void* c_fetch_function_pointer(const char* const function_name){
-        sbx_init();
-        return SbxInterface_Instance->sbx_fetch_function_pointer(function_name);
-    }
-
     unsigned long c_fetch_function_pointer_offset(uint32_t args, uint32_t ret, int ret_param[]){
         sbx_init();
         return SbxInterface_Instance->sbx_fetch_function_pointer_offset(args, ret, ret_param);

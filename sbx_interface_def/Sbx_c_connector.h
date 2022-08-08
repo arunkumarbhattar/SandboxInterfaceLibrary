@@ -29,10 +29,8 @@ void* c_realloc(void* pointer, size_t size);
 
 void c_free(void* pointer);
 
-void* c_fetch_function_pointer(const char* const function_name);
-
-unsigned long c_fetch_function_pointer_offset(u_int32_t args, u_int32_t ret, int ret_param[]);
-
+int sbx_register_callback(const void* chosen_interceptor, int no_of_args,
+                          int does_return, int arg_types[]);
 };
 #ifdef __cplusplus
 #endif

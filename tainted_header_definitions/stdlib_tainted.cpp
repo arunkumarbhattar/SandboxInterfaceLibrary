@@ -75,7 +75,7 @@ void *t_calloc(size_t nmemb, size_t size){
      * because it could take advantage of copy-on-write (COW)
      */
     void* temp;
-    temp = c_malloc(size);
+    temp = malloc(size);
     if(temp == 0)
         return (temp);
 
@@ -84,15 +84,15 @@ void *t_calloc(size_t nmemb, size_t size){
 }
 
 void t_free(void *pointer){
-    return c_free(pointer);
+    return free(pointer);
 }
 
 void *t_malloc(size_t size){
-    return c_malloc(size);
+    return malloc(size);
 }
 
 void *t_realloc(void *pointer, size_t size){
-    return c_realloc(pointer, size);
+    return realloc(pointer, size);
 }
 
 char *t_getenv(const char *n){
