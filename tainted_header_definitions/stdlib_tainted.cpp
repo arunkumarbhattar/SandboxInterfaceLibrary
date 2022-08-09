@@ -84,15 +84,15 @@ void *t_calloc(size_t nmemb, size_t size){
 }
 
 void t_free(void *pointer){
-    return free(pointer);
+    return c_free(pointer);
 }
 
 void *t_malloc(size_t size){
-    return malloc(size);
+    return c_malloc(size);
 }
 
 void *t_realloc(void *pointer, size_t size){
-    return realloc(pointer, size);
+    return c_realloc(pointer, size);
 }
 
 char *t_getenv(const char *n){

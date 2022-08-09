@@ -82,6 +82,21 @@ extern "C" {
         return SbxInterface_Instance->sbx_fetch_function_pointer_offset(args, ret, ret_param);
     }
 
+void* c_malloc(size_t size){
+    sbx_init();
+    return SbxInterface_Instance->sbx_malloc(size);
+    }
+
+void* c_realloc(void* pointer, size_t size){
+    sbx_init();
+    return SbxInterface_Instance->sbx_realloc(pointer,size);
+    }
+
+void c_free(void* pointer){
+    sbx_init();
+    return SbxInterface_Instance->sbx_free(pointer);
+    }
+
 #ifdef __cplusplus
 };
 #endif

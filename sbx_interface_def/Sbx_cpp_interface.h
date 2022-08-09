@@ -57,6 +57,10 @@ public:
     int sbx_register_callback(const void *chosen_interceptor, int no_of_args, int does_return, int *arg_types);
 
     unsigned long sbx_fetch_function_pointer_offset(uint32_t args, uint32_t ret, int *ret_param);
+
+    void *sbx_realloc(void *pointer, size_t size);
+
+    void sbx_free(void *pointer);
 };
 
 #endif //SIMPLE_LIBRARY_EXAMPLE_SBX_CPP_INTERFACE_H

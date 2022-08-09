@@ -9,6 +9,19 @@ wasm2c_sandbox_t* SbxInterface::fetch_sandbox_address()
 {
     return this->sandbox.get_sandbox_impl()->sbb_nc;
 }
+void* SbxInterface::sbx_malloc(size_t size){
+    return reinterpret_cast<void *>(w2c_malloc(this->fetch_sandbox_address(), size));
+}
+
+void* SbxInterface::sbx_realloc(void* pointer, size_t size){
+    return reinterpret_cast<void *>(w2c_realloc(this->fetch_sandbox_address(),
+                                                this->fetch_pointer_offset(pointer),
+                                                size));
+}
+
+void SbxInterface::sbx_free(void* pointer){
+    w2c_free(this->fetch_sandbox_address(),this->fetch_pointer_offset(pointer));
+}
 
 unsigned long SbxInterface::fetch_pointer_offset(const void *const pointer)
 {
