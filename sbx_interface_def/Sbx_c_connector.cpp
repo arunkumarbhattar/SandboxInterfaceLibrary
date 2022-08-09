@@ -59,7 +59,7 @@ extern "C" {
         return SbxInterface_Instance->fetch_pointer_from_offset(pointer_offset);
     }
 
-    unsigned int c_fetch_pointer_offset(void* pointer){
+    unsigned long c_fetch_pointer_offset(void* pointer){
         sbx_init();
         return SbxInterface_Instance->fetch_pointer_offset(pointer);
     }

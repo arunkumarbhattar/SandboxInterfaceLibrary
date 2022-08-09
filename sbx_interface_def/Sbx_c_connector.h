@@ -19,7 +19,7 @@ int c_isTaintedPointerToTaintedMem(void* pointer);
 
 void* c_fetch_sandbox_address();
 
-unsigned int c_fetch_pointer_offset(void* pointer);
+unsigned long c_fetch_pointer_offset(void* pointer);
 
 unsigned long c_fetch_sandbox_heap_address();
 
