@@ -17,7 +17,7 @@
 #define RLBOX_USE_STATIC_CALLS() rlbox_wasm2c_sandbox_lookup_symbol
 #define RLBOX_SINGLE_THREADED_INVOCATIONS
 // Configure RLBox for wasm sandbox
-#include "../wasm_readable_definitions/Taintedparson_wasm.h"
+#include "../wasm_readable_definitions/lib_wasm.h"
 #include "rlbox_wasm2c_sandbox.hpp"
 using sandbox_type_t = rlbox::rlbox_wasm2c_sandbox;
 
@@ -61,6 +61,10 @@ public:
     void *sbx_realloc(void *pointer, size_t size);
 
     void sbx_free(void *pointer);
+
+    int *twinTurbo(int *a, int *b);
+
+    unsigned int twinTurboTrampoline(unsigned int arg_1, unsigned int arg_2);
 };
 
 #endif //SIMPLE_LIBRARY_EXAMPLE_SBX_CPP_INTERFACE_H

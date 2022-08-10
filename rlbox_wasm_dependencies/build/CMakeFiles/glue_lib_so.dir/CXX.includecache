@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/arun/Desktop/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-src/wasm2c/wasm-rt-shadow.cpp
+wasm-rt.h
+/home/arun/Desktop/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-src/wasm2c/wasm-rt.h
+assert.h
+-
+inttypes.h
+-
+stdint.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+map
+-
+functional
+-
+
+/home/arun/Desktop/rlbox_wasm2c_sandbox/build/_deps/mod_wasm2c-src/wasm2c/wasm-rt.h
+setjmp.h
+-
+stdbool.h
+-
+stddef.h
+-
+stdint.h
+-
+

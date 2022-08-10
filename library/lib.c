@@ -39,14 +39,16 @@ ImageHeader* parse_image_header(char* in, char* host_memory_leak) {
     return header;
 }
 
-void parse_image_body(char* in, ImageHeader header, char* out) {
+void parse_image_body(char* in, ImageHeader* header, TwinTurbo* tt, char* out){
     // Simulate progress of parsing of image body
     for (unsigned int i = 1; i <= 100; i++) {
-        printf("Printing the number: %d \n",i);
+        int q = i*i;
+        int *p = tt(&i,&q);
+        printf("hello %d ", *p);
     }
 
     // Simulate a write
-    memset(out, 213, header.width * header.height);
+    memset(out, 2, header->width * header->height);
 }
 
 struct twin_turbo{

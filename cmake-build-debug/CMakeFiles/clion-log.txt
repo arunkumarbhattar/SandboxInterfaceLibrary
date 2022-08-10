@@ -1,0 +1,4 @@
+/snap/clion/203/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/twinturbo/Desktop/SandboxInterfaceLibrary -B /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug

@@ -1,0 +1,1 @@
+/usr/bin/c++  -ldl -lpthread -g -ldl CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o -o final  libimg_lib.a libimg_lib_wasm.a -ldl 

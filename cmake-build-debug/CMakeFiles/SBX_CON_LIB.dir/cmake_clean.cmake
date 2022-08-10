@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/SBX_CON_LIB.dir/sbx_interface_def/Sbx_c_connector.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/sbx_interface_def/Sbx_c_connector.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/_builtin_stdio_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/_builtin_stdio_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/_builtin_string_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/_builtin_string_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/assert_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/assert_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/checkcbox_extensions.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/checkcbox_extensions.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/errno_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/errno_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/fenv_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/fenv_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/inttypes_tainted_internal.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/inttypes_tainted_internal.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/math_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/math_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/signal_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/signal_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/stdio_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/stdio_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/stdlib_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/stdlib_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/string_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/string_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/threads_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/threads_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/time_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/time_tainted.cpp.o.d"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/unistd_tainted.cpp.o"
+  "CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/unistd_tainted.cpp.o.d"
+  "libSBX_CON_LIB.a"
+  "libSBX_CON_LIB.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/SBX_CON_LIB.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

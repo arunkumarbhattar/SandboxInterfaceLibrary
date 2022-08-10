@@ -1,0 +1,2 @@
+/usr/bin/ar qc libimg_lib_wasm.a CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/Taintedparson_wasm.c.o
+/usr/bin/ranlib libimg_lib_wasm.a

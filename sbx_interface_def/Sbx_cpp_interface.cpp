@@ -1,5 +1,7 @@
 #include "Sbx_cpp_interface.h"
-#include "wasm-rt.h"
+#include "../wasm_readable_definitions/wasm-rt.h"
+#include "../library/lib.h"
+#include "Sbx_c_connector.h"
 bool SbxInterface::isPointerToTaintedMem(const void* const pointer)
 {
     return sandbox.get_sandbox_impl()->impl_is_pointer_in_sandbox_memory(pointer);
@@ -10,11 +12,11 @@ wasm2c_sandbox_t* SbxInterface::fetch_sandbox_address()
     return this->sandbox.get_sandbox_impl()->sbb_nc;
 }
 void* SbxInterface::sbx_malloc(size_t size){
-    return reinterpret_cast<void *>(w2c_malloc(this->fetch_sandbox_address(), size));
+    return fetch_pointer_from_offset((w2c_malloc(this->fetch_sandbox_address(), size)));
 }
 
 void* SbxInterface::sbx_realloc(void* pointer, size_t size){
-    return reinterpret_cast<void *>(w2c_realloc(this->fetch_sandbox_address(),
+    return fetch_pointer_from_offset(w2c_realloc(this->fetch_sandbox_address(),
                                                 this->fetch_pointer_offset(pointer),
                                                 size));
 }
@@ -41,6 +43,27 @@ unsigned long SbxInterface::fetch_sandbox_heap_address()
 /*
  * registers the callback and returns the slot number --> this is gon be the function argument for ever
  */
+
+/*
+ * This the actual function that this trampoline handles
+ */
+int* twinTurbo(int* a, int*b)
+{
+    printf("First arg %d", *a);
+    printf("Second arg %d", *b);
+    return b;
+}
+/*
+ * Lets create a simple trampoline function -->
+ * Designed to accept two pointers and return two pointer
+ */
+unsigned int twinTurboTrampoline(unsigned int arg_1, unsigned int arg_2)
+{
+    return c_fetch_pointer_offset(twinTurbo((int*)c_fetch_pointer_from_offset(arg_1),
+                                          (int*)c_fetch_pointer_from_offset(arg_2)));
+}
+
+
 int SbxInterface::sbx_register_callback(const void* chosen_interceptor, int no_of_args,
                                          int does_return, int arg_types[]){
     /*
@@ -70,12 +93,22 @@ unsigned long SbxInterface::sbx_fetch_function_pointer_offset(uint32_t args, uin
 {
     return wasm_static_functions_struct.lookup_wasm2c_func_index(this->sandbox.get_memory_location(), args, ret,
                                                                    reinterpret_cast<wasm_rt_type_t *>(ret_param));
-
 }
 
 
 // Uncomment the main function only if you want to test the Sbx Interface Functions -->
-/*
+
+// Define and load any structs needed by the application
+#define sandbox_fields_reflection_exampleapp_class_ImageHeader(f, g, ...)  \
+  f(unsigned int, status_code, FIELD_NORMAL, ##__VA_ARGS__) g()            \
+  f(unsigned int, width, FIELD_NORMAL, ##__VA_ARGS__) g()                  \
+  f(unsigned int, height, FIELD_NORMAL, ##__VA_ARGS__) g()
+
+#define sandbox_fields_reflection_exampleapp_allClasses(f, ...)            \
+  f(ImageHeader, exampleapp, ##__VA_ARGS__)
+
+rlbox_load_structs_from_library(exampleapp);
+
 int main(int argc, char const *argv[])
 {
     SbxInterface Sb;
@@ -108,6 +141,14 @@ int main(int argc, char const *argv[])
     // You dont even require rlbox::malloc -->
     memcpy(tainted_address , address, 100u);
 
+    /*
+     * Create a function pointer
+     */
+    /*
+     * all are 0s since all are pointers
+     */
+    int ret_param_types[] = {0,0,0};
+    int func_arg = Sb.sbx_register_callback((void*)(&twinTurboTrampoline), 2, 1, ret_param_types);
     auto header_offset = w2c_parse_image_header(tmp, Sb.fetch_pointer_offset(tainted_input_stream), Sb.fetch_pointer_offset(tainted_address));
     auto header = reinterpret_cast<ImageHeader *>(Sb.fetch_pointer_from_offset(header_offset));
     unsigned int status_code = header->status_code;
@@ -127,7 +168,9 @@ int main(int argc, char const *argv[])
     auto output_size = (height * width);
     auto tainted_output_stream_offset = w2c_malloc(tmp, output_size);
     auto tainted_output_stream = reinterpret_cast<char*>(Sb.fetch_pointer_from_offset(tainted_output_stream_offset));
-    w2c_parse_image_body(tmp, Sb.fetch_pointer_offset(tainted_input_stream), Sb.fetch_pointer_offset(header), Sb.fetch_pointer_offset(tainted_output_stream));
+    w2c_parse_image_body(tmp, Sb.fetch_pointer_offset(tainted_input_stream), Sb.fetch_pointer_offset(header),
+                         func_arg,
+                         Sb.fetch_pointer_offset(tainted_output_stream));
 
     std::cout << "Image pixels: " << std::endl;
 
@@ -149,4 +192,3 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
- */
