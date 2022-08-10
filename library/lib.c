@@ -42,8 +42,8 @@ ImageHeader* parse_image_header(char* in, char* host_memory_leak) {
 void parse_image_body(char* in, ImageHeader* header, TwinTurbo* tt, char* out){
     // Simulate progress of parsing of image body
     for (unsigned int i = 1; i <= 100; i++) {
-        int q = i*i;
-        int *p = tt(&i,&q);
+        unsigned int q = i*i;
+        unsigned int *p = tt(&i,&q);
         printf("hello %d ", *p);
     }
 
