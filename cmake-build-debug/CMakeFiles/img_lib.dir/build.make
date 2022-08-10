@@ -69,28 +69,28 @@ include CMakeFiles/img_lib.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/img_lib.dir/flags.make
 
-CMakeFiles/img_lib.dir/library/Taintedparson.c.o: CMakeFiles/img_lib.dir/flags.make
-CMakeFiles/img_lib.dir/library/Taintedparson.c.o: ../library/Taintedparson.c
-CMakeFiles/img_lib.dir/library/Taintedparson.c.o: CMakeFiles/img_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/img_lib.dir/library/Taintedparson.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib.dir/library/Taintedparson.c.o -MF CMakeFiles/img_lib.dir/library/Taintedparson.c.o.d -o CMakeFiles/img_lib.dir/library/Taintedparson.c.o -c /home/twinturbo/Desktop/SandboxInterfaceLibrary/library/Taintedparson.c
+CMakeFiles/img_lib.dir/library/lib.c.o: CMakeFiles/img_lib.dir/flags.make
+CMakeFiles/img_lib.dir/library/lib.c.o: ../library/lib.c
+CMakeFiles/img_lib.dir/library/lib.c.o: CMakeFiles/img_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/img_lib.dir/library/lib.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib.dir/library/lib.c.o -MF CMakeFiles/img_lib.dir/library/lib.c.o.d -o CMakeFiles/img_lib.dir/library/lib.c.o -c /home/twinturbo/Desktop/SandboxInterfaceLibrary/library/lib.c
 
-CMakeFiles/img_lib.dir/library/Taintedparson.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/img_lib.dir/library/Taintedparson.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/twinturbo/Desktop/SandboxInterfaceLibrary/library/Taintedparson.c > CMakeFiles/img_lib.dir/library/Taintedparson.c.i
+CMakeFiles/img_lib.dir/library/lib.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/img_lib.dir/library/lib.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/twinturbo/Desktop/SandboxInterfaceLibrary/library/lib.c > CMakeFiles/img_lib.dir/library/lib.c.i
 
-CMakeFiles/img_lib.dir/library/Taintedparson.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/img_lib.dir/library/Taintedparson.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/twinturbo/Desktop/SandboxInterfaceLibrary/library/Taintedparson.c -o CMakeFiles/img_lib.dir/library/Taintedparson.c.s
+CMakeFiles/img_lib.dir/library/lib.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/img_lib.dir/library/lib.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/twinturbo/Desktop/SandboxInterfaceLibrary/library/lib.c -o CMakeFiles/img_lib.dir/library/lib.c.s
 
 # Object files for target img_lib
 img_lib_OBJECTS = \
-"CMakeFiles/img_lib.dir/library/Taintedparson.c.o"
+"CMakeFiles/img_lib.dir/library/lib.c.o"
 
 # External object files for target img_lib
 img_lib_EXTERNAL_OBJECTS =
 
-libimg_lib.a: CMakeFiles/img_lib.dir/library/Taintedparson.c.o
+libimg_lib.a: CMakeFiles/img_lib.dir/library/lib.c.o
 libimg_lib.a: CMakeFiles/img_lib.dir/build.make
 libimg_lib.a: CMakeFiles/img_lib.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libimg_lib.a"

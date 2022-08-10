@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/img_lib.dir/library/Taintedparson.c.o"
-  "CMakeFiles/img_lib.dir/library/Taintedparson.c.o.d"
+  "CMakeFiles/img_lib.dir/library/lib.c.o"
+  "CMakeFiles/img_lib.dir/library/lib.c.o.d"
   "libimg_lib.a"
   "libimg_lib.pdb"
 )

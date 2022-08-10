@@ -119,11 +119,11 @@
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/twinturbo/Desktop/SandboxInterfaceLibrary"
+					"path" : "/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt"
+					"path" : "/home/twinturbo/Desktop/SandboxInterfaceLibrary"
 				}
 			],
 			"language" : "CXX",
@@ -173,12 +173,12 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "libimg_lib.a",
+				"fragment" : "libimg_lib_wasm.a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "libimg_lib_wasm.a",
+				"fragment" : "libimg_lib.a",
 				"role" : "libraries"
 			},
 			{

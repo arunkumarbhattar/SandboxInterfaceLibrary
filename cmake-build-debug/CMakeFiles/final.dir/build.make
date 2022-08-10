@@ -108,8 +108,8 @@ final_EXTERNAL_OBJECTS =
 final: CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o
 final: CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o
 final: CMakeFiles/final.dir/build.make
-final: libimg_lib.a
 final: libimg_lib_wasm.a
+final: libimg_lib.a
 final: CMakeFiles/final.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable final"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/final.dir/link.txt --verbose=$(VERBOSE)

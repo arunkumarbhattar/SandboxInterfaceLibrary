@@ -9,11 +9,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ldl -lpthread")
 
-add_library(img_lib STATIC "${CMAKE_SOURCE_DIR}/library/Taintedparson.c")
+add_library(img_lib STATIC "${CMAKE_SOURCE_DIR}/library/lib.c")
 target_include_directories(img_lib PUBLIC ${CMAKE_SOURCE_DIR})
 
 file(GLOB WASM_RT ${CMAKE_SOURCE_DIR}/wasmrt/*.c)
-add_library(img_lib_wasm STATIC ${WASM_RT} "${CMAKE_SOURCE_DIR}/wasm_readable_definitions/Taintedparson_wasm.c")
+add_library(img_lib_wasm STATIC ${WASM_RT} "${CMAKE_SOURCE_DIR}/wasm_readable_definitions/lib_wasm.c")
 target_include_directories(img_lib_wasm PUBLIC "${CMAKE_SOURCE_DIR}/wasm_readable_definitions"
         "${CMAKE_SOURCE_DIR}/wasmrt/")
 
@@ -65,7 +65,7 @@ add_executable(final "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_c_connector.cpp"
 target_include_directories(final PUBLIC "${CMAKE_SOURCE_DIR}/rlbox/"
         "${CMAKE_SOURCE_DIR}/rlbox/"
         "${CMAKE_SOURCE_DIR}/wasm_readable_definitions")
-target_link_libraries(final img_lib img_lib_wasm dl)
+target_link_libraries(final img_lib_wasm img_lib  dl)
 #
 #add_executable(SIMPLE "${CMAKE_SOURCE_DIR}/sbx_interface_def/simple_main.c")
 #target_link_libraries(SIMPLE final)

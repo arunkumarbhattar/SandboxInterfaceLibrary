@@ -181,29 +181,29 @@ final/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/build
 .PHONY : final/fast
 
-library/Taintedparson.o: library/Taintedparson.c.o
-.PHONY : library/Taintedparson.o
+library/lib.o: library/lib.c.o
+.PHONY : library/lib.o
 
 # target to build an object file
-library/Taintedparson.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib.dir/build.make CMakeFiles/img_lib.dir/library/Taintedparson.c.o
-.PHONY : library/Taintedparson.c.o
+library/lib.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib.dir/build.make CMakeFiles/img_lib.dir/library/lib.c.o
+.PHONY : library/lib.c.o
 
-library/Taintedparson.i: library/Taintedparson.c.i
-.PHONY : library/Taintedparson.i
+library/lib.i: library/lib.c.i
+.PHONY : library/lib.i
 
 # target to preprocess a source file
-library/Taintedparson.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib.dir/build.make CMakeFiles/img_lib.dir/library/Taintedparson.c.i
-.PHONY : library/Taintedparson.c.i
+library/lib.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib.dir/build.make CMakeFiles/img_lib.dir/library/lib.c.i
+.PHONY : library/lib.c.i
 
-library/Taintedparson.s: library/Taintedparson.c.s
-.PHONY : library/Taintedparson.s
+library/lib.s: library/lib.c.s
+.PHONY : library/lib.s
 
 # target to generate assembly for a file
-library/Taintedparson.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib.dir/build.make CMakeFiles/img_lib.dir/library/Taintedparson.c.s
-.PHONY : library/Taintedparson.c.s
+library/lib.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib.dir/build.make CMakeFiles/img_lib.dir/library/lib.c.s
+.PHONY : library/lib.c.s
 
 sbx_interface_def/Sbx_c_connector.o: sbx_interface_def/Sbx_c_connector.cpp.o
 .PHONY : sbx_interface_def/Sbx_c_connector.o
@@ -622,29 +622,149 @@ tainted_header_definitions/unistd_tainted.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SBX_CON_LIB.dir/build.make CMakeFiles/SBX_CON_LIB.dir/tainted_header_definitions/unistd_tainted.cpp.s
 .PHONY : tainted_header_definitions/unistd_tainted.cpp.s
 
-wasm_readable_definitions/Taintedparson_wasm.o: wasm_readable_definitions/Taintedparson_wasm.c.o
-.PHONY : wasm_readable_definitions/Taintedparson_wasm.o
+wasm_readable_definitions/lib_wasm.o: wasm_readable_definitions/lib_wasm.c.o
+.PHONY : wasm_readable_definitions/lib_wasm.o
 
 # target to build an object file
-wasm_readable_definitions/Taintedparson_wasm.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/Taintedparson_wasm.c.o
-.PHONY : wasm_readable_definitions/Taintedparson_wasm.c.o
+wasm_readable_definitions/lib_wasm.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o
+.PHONY : wasm_readable_definitions/lib_wasm.c.o
 
-wasm_readable_definitions/Taintedparson_wasm.i: wasm_readable_definitions/Taintedparson_wasm.c.i
-.PHONY : wasm_readable_definitions/Taintedparson_wasm.i
+wasm_readable_definitions/lib_wasm.i: wasm_readable_definitions/lib_wasm.c.i
+.PHONY : wasm_readable_definitions/lib_wasm.i
 
 # target to preprocess a source file
-wasm_readable_definitions/Taintedparson_wasm.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/Taintedparson_wasm.c.i
-.PHONY : wasm_readable_definitions/Taintedparson_wasm.c.i
+wasm_readable_definitions/lib_wasm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.i
+.PHONY : wasm_readable_definitions/lib_wasm.c.i
 
-wasm_readable_definitions/Taintedparson_wasm.s: wasm_readable_definitions/Taintedparson_wasm.c.s
-.PHONY : wasm_readable_definitions/Taintedparson_wasm.s
+wasm_readable_definitions/lib_wasm.s: wasm_readable_definitions/lib_wasm.c.s
+.PHONY : wasm_readable_definitions/lib_wasm.s
 
 # target to generate assembly for a file
-wasm_readable_definitions/Taintedparson_wasm.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/Taintedparson_wasm.c.s
-.PHONY : wasm_readable_definitions/Taintedparson_wasm.c.s
+wasm_readable_definitions/lib_wasm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.s
+.PHONY : wasm_readable_definitions/lib_wasm.c.s
+
+wasmrt/wasm-rt-impl.o: wasmrt/wasm-rt-impl.c.o
+.PHONY : wasmrt/wasm-rt-impl.o
+
+# target to build an object file
+wasmrt/wasm-rt-impl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o
+.PHONY : wasmrt/wasm-rt-impl.c.o
+
+wasmrt/wasm-rt-impl.i: wasmrt/wasm-rt-impl.c.i
+.PHONY : wasmrt/wasm-rt-impl.i
+
+# target to preprocess a source file
+wasmrt/wasm-rt-impl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.i
+.PHONY : wasmrt/wasm-rt-impl.c.i
+
+wasmrt/wasm-rt-impl.s: wasmrt/wasm-rt-impl.c.s
+.PHONY : wasmrt/wasm-rt-impl.s
+
+# target to generate assembly for a file
+wasmrt/wasm-rt-impl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.s
+.PHONY : wasmrt/wasm-rt-impl.c.s
+
+wasmrt/wasm-rt-os-unix.o: wasmrt/wasm-rt-os-unix.c.o
+.PHONY : wasmrt/wasm-rt-os-unix.o
+
+# target to build an object file
+wasmrt/wasm-rt-os-unix.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o
+.PHONY : wasmrt/wasm-rt-os-unix.c.o
+
+wasmrt/wasm-rt-os-unix.i: wasmrt/wasm-rt-os-unix.c.i
+.PHONY : wasmrt/wasm-rt-os-unix.i
+
+# target to preprocess a source file
+wasmrt/wasm-rt-os-unix.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.i
+.PHONY : wasmrt/wasm-rt-os-unix.c.i
+
+wasmrt/wasm-rt-os-unix.s: wasmrt/wasm-rt-os-unix.c.s
+.PHONY : wasmrt/wasm-rt-os-unix.s
+
+# target to generate assembly for a file
+wasmrt/wasm-rt-os-unix.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.s
+.PHONY : wasmrt/wasm-rt-os-unix.c.s
+
+wasmrt/wasm-rt-os-win.o: wasmrt/wasm-rt-os-win.c.o
+.PHONY : wasmrt/wasm-rt-os-win.o
+
+# target to build an object file
+wasmrt/wasm-rt-os-win.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o
+.PHONY : wasmrt/wasm-rt-os-win.c.o
+
+wasmrt/wasm-rt-os-win.i: wasmrt/wasm-rt-os-win.c.i
+.PHONY : wasmrt/wasm-rt-os-win.i
+
+# target to preprocess a source file
+wasmrt/wasm-rt-os-win.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.i
+.PHONY : wasmrt/wasm-rt-os-win.c.i
+
+wasmrt/wasm-rt-os-win.s: wasmrt/wasm-rt-os-win.c.s
+.PHONY : wasmrt/wasm-rt-os-win.s
+
+# target to generate assembly for a file
+wasmrt/wasm-rt-os-win.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.s
+.PHONY : wasmrt/wasm-rt-os-win.c.s
+
+wasmrt/wasm-rt-runner.o: wasmrt/wasm-rt-runner.c.o
+.PHONY : wasmrt/wasm-rt-runner.o
+
+# target to build an object file
+wasmrt/wasm-rt-runner.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o
+.PHONY : wasmrt/wasm-rt-runner.c.o
+
+wasmrt/wasm-rt-runner.i: wasmrt/wasm-rt-runner.c.i
+.PHONY : wasmrt/wasm-rt-runner.i
+
+# target to preprocess a source file
+wasmrt/wasm-rt-runner.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.i
+.PHONY : wasmrt/wasm-rt-runner.c.i
+
+wasmrt/wasm-rt-runner.s: wasmrt/wasm-rt-runner.c.s
+.PHONY : wasmrt/wasm-rt-runner.s
+
+# target to generate assembly for a file
+wasmrt/wasm-rt-runner.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.s
+.PHONY : wasmrt/wasm-rt-runner.c.s
+
+wasmrt/wasm-rt-wasi.o: wasmrt/wasm-rt-wasi.c.o
+.PHONY : wasmrt/wasm-rt-wasi.o
+
+# target to build an object file
+wasmrt/wasm-rt-wasi.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o
+.PHONY : wasmrt/wasm-rt-wasi.c.o
+
+wasmrt/wasm-rt-wasi.i: wasmrt/wasm-rt-wasi.c.i
+.PHONY : wasmrt/wasm-rt-wasi.i
+
+# target to preprocess a source file
+wasmrt/wasm-rt-wasi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.i
+.PHONY : wasmrt/wasm-rt-wasi.c.i
+
+wasmrt/wasm-rt-wasi.s: wasmrt/wasm-rt-wasi.c.s
+.PHONY : wasmrt/wasm-rt-wasi.s
+
+# target to generate assembly for a file
+wasmrt/wasm-rt-wasi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/img_lib_wasm.dir/build.make CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.s
+.PHONY : wasmrt/wasm-rt-wasi.c.s
 
 # Help Target
 help:
@@ -659,9 +779,9 @@ help:
 	@echo "... final"
 	@echo "... img_lib"
 	@echo "... img_lib_wasm"
-	@echo "... library/Taintedparson.o"
-	@echo "... library/Taintedparson.i"
-	@echo "... library/Taintedparson.s"
+	@echo "... library/lib.o"
+	@echo "... library/lib.i"
+	@echo "... library/lib.s"
 	@echo "... sbx_interface_def/Sbx_c_connector.o"
 	@echo "... sbx_interface_def/Sbx_c_connector.i"
 	@echo "... sbx_interface_def/Sbx_c_connector.s"
@@ -713,9 +833,24 @@ help:
 	@echo "... tainted_header_definitions/unistd_tainted.o"
 	@echo "... tainted_header_definitions/unistd_tainted.i"
 	@echo "... tainted_header_definitions/unistd_tainted.s"
-	@echo "... wasm_readable_definitions/Taintedparson_wasm.o"
-	@echo "... wasm_readable_definitions/Taintedparson_wasm.i"
-	@echo "... wasm_readable_definitions/Taintedparson_wasm.s"
+	@echo "... wasm_readable_definitions/lib_wasm.o"
+	@echo "... wasm_readable_definitions/lib_wasm.i"
+	@echo "... wasm_readable_definitions/lib_wasm.s"
+	@echo "... wasmrt/wasm-rt-impl.o"
+	@echo "... wasmrt/wasm-rt-impl.i"
+	@echo "... wasmrt/wasm-rt-impl.s"
+	@echo "... wasmrt/wasm-rt-os-unix.o"
+	@echo "... wasmrt/wasm-rt-os-unix.i"
+	@echo "... wasmrt/wasm-rt-os-unix.s"
+	@echo "... wasmrt/wasm-rt-os-win.o"
+	@echo "... wasmrt/wasm-rt-os-win.i"
+	@echo "... wasmrt/wasm-rt-os-win.s"
+	@echo "... wasmrt/wasm-rt-runner.o"
+	@echo "... wasmrt/wasm-rt-runner.i"
+	@echo "... wasmrt/wasm-rt-runner.s"
+	@echo "... wasmrt/wasm-rt-wasi.o"
+	@echo "... wasmrt/wasm-rt-wasi.i"
+	@echo "... wasmrt/wasm-rt-wasi.s"
 .PHONY : help
 
 

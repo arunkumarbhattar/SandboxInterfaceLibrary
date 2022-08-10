@@ -220,8 +220,8 @@
 				<Compiler>
 					<Add directory="/home/twinturbo/Desktop/SandboxInterfaceLibrary/rlbox"/>
 					<Add directory="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions"/>
-					<Add directory="/home/twinturbo/Desktop/SandboxInterfaceLibrary"/>
 					<Add directory="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt"/>
+					<Add directory="/home/twinturbo/Desktop/SandboxInterfaceLibrary"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -246,8 +246,8 @@
 				<Compiler>
 					<Add directory="/home/twinturbo/Desktop/SandboxInterfaceLibrary/rlbox"/>
 					<Add directory="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions"/>
-					<Add directory="/home/twinturbo/Desktop/SandboxInterfaceLibrary"/>
 					<Add directory="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt"/>
+					<Add directory="/home/twinturbo/Desktop/SandboxInterfaceLibrary"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -284,10 +284,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/library/Taintedparson.c">
+		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/library/lib.c">
 			<Option target="img_lib"/>
 		</Unit>
-		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/library/Taintedparson.h">
+		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/library/lib.h">
 			<Option target="img_lib"/>
 		</Unit>
 		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_c_connector.cpp">
@@ -398,10 +398,28 @@
 		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/tainted_header_definitions/unistd_tainted.h">
 			<Option target="SBX_CON_LIB"/>
 		</Unit>
-		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions/Taintedparson_wasm.c">
+		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions/lib_wasm.c">
 			<Option target="img_lib_wasm"/>
 		</Unit>
-		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions/Taintedparson_wasm.h">
+		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions/lib_wasm.h">
+			<Option target="img_lib_wasm"/>
+		</Unit>
+		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-impl.c">
+			<Option target="img_lib_wasm"/>
+		</Unit>
+		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-impl.h">
+			<Option target="img_lib_wasm"/>
+		</Unit>
+		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-unix.c">
+			<Option target="img_lib_wasm"/>
+		</Unit>
+		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-win.c">
+			<Option target="img_lib_wasm"/>
+		</Unit>
+		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-runner.c">
+			<Option target="img_lib_wasm"/>
+		</Unit>
+		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-wasi.c">
 			<Option target="img_lib_wasm"/>
 		</Unit>
 		<Unit filename="/home/twinturbo/Desktop/SandboxInterfaceLibrary/CMakeLists.txt">
