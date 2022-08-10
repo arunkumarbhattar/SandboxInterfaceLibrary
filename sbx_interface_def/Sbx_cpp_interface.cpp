@@ -75,27 +75,34 @@ int SbxInterface::sbx_register_callback(const void* chosen_interceptor, int no_o
      * This function index will be used as an argument
      */
      //= WASM_CURR_ADD_PREFIX(get_wasm2c_sandbox_info);
-    auto function_type_index = wasm_static_functions_struct.lookup_wasm2c_func_index(
-            this->sandbox.get_memory_location(), no_of_args, does_return,
+     /*
+      * How is this fetched --> wasm_static_functions_struct
+      */
+
+
+    auto get_func_info =  reinterpret_cast<wasm2c_sandbox_funcs_t(*)()>(get_wasm2c_sandbox_info);
+    wasm2c_sandbox_funcs_t sandbox_info = get_func_info();
+    auto function_type_index = sandbox_info.lookup_wasm2c_func_index(
+            (void*)(this->sandbox.get_memory_location()), no_of_args, does_return,
             reinterpret_cast<wasm_rt_type_t *>(arg_types));
     /*
      * TODO: Problem here
      */
-    return wasm_static_functions_struct.add_wasm2c_callback(this->sandbox.get_memory_location(),
+    return sandbox_info.add_wasm2c_callback((void*)(this->sandbox.get_sandbox_impl()->sandbox),
                                                               function_type_index,
                                                               const_cast<void *>(chosen_interceptor),
-                                                              WASM_RT_EXTERNAL_FUNCTION);
+                                            WASM_RT_EXTERNAL_FUNCTION);
 }
 /*
  * This function will never be useful
  */
 unsigned long SbxInterface::sbx_fetch_function_pointer_offset(uint32_t args, uint32_t ret, int ret_param[])
 {
-    return wasm_static_functions_struct.lookup_wasm2c_func_index(this->sandbox.get_memory_location(), args, ret,
+    return wasm_static_functions_struct.lookup_wasm2c_func_index((void*)(this->sandbox.get_sandbox_impl()), args, ret,
                                                                    reinterpret_cast<wasm_rt_type_t *>(ret_param));
 }
 
-
+/*
 // Uncomment the main function only if you want to test the Sbx Interface Functions -->
 
 // Define and load any structs needed by the application
@@ -141,12 +148,6 @@ int main(int argc, char const *argv[])
     // You dont even require rlbox::malloc -->
     memcpy(tainted_address , address, 100u);
 
-    /*
-     * Create a function pointer
-     */
-    /*
-     * all are 0s since all are pointers
-     */
     int ret_param_types[] = {0,0,0};
     int func_arg = Sb.sbx_register_callback((void*)(&twinTurboTrampoline), 2, 1, ret_param_types);
     auto header_offset = w2c_parse_image_header(tmp, Sb.fetch_pointer_offset(tainted_input_stream), Sb.fetch_pointer_offset(tainted_address));
@@ -192,3 +193,4 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+*/

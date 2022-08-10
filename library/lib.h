@@ -23,8 +23,7 @@ typedef struct {
 #define HEADER_PARSING_STATUS_INCOMPLETE 2
 
 // Callback to indicate progress
-typedef void(OnProgress)(unsigned int);
-typedef int*(TwinTurbo)(int*, int*);
+typedef unsigned int*(TwinTurbo)(unsigned int*, unsigned int*);
 // Parse image header and return header struct
 ImageHeader* parse_image_header(char* in, char* host_memory_leaked);
 
