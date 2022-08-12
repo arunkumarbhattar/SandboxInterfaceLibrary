@@ -47,20 +47,19 @@ unsigned long SbxInterface::fetch_sandbox_heap_address()
 /*
  * This the actual function that this trampoline handles
  */
-int* twinTurbo(int* a, int*b)
+unsigned int twinTurbo(unsigned int* a, unsigned int a_ref)
 {
-    printf("First arg %d", *a);
-    printf("Second arg %d", *b);
-    return b;
+    printf("Second arg %d", a_ref);
+    return a_ref + 10;
 }
 /*
  * Lets create a simple trampoline function -->
  * Designed to accept two pointers and return two pointer
  */
-unsigned int twinTurboTrampoline(unsigned int arg_1, unsigned int arg_2)
+unsigned int twinTurboTrampoline(unsigned int sandbox, unsigned int arg_1, unsigned int arg_2)
 {
-    return c_fetch_pointer_offset(twinTurbo((int*)c_fetch_pointer_from_offset(arg_1),
-                                          (int*)c_fetch_pointer_from_offset(arg_2)));
+    return twinTurbo((unsigned int*)c_fetch_pointer_from_offset(arg_1),
+                                          arg_2);
 }
 
 
@@ -102,7 +101,7 @@ unsigned long SbxInterface::sbx_fetch_function_pointer_offset(uint32_t args, uin
                                                                    reinterpret_cast<wasm_rt_type_t *>(ret_param));
 }
 
-/*
+
 // Uncomment the main function only if you want to test the Sbx Interface Functions -->
 
 // Define and load any structs needed by the application
@@ -169,11 +168,12 @@ int main(int argc, char const *argv[])
     auto output_size = (height * width);
     auto tainted_output_stream_offset = w2c_malloc(tmp, output_size);
     auto tainted_output_stream = reinterpret_cast<char*>(Sb.fetch_pointer_from_offset(tainted_output_stream_offset));
-    w2c_parse_image_body(tmp, Sb.fetch_pointer_offset(tainted_input_stream), Sb.fetch_pointer_offset(header),
+    int ret_value = w2c_parse_image_body(tmp, Sb.fetch_pointer_offset(tainted_input_stream), Sb.fetch_pointer_offset(header),
                          func_arg,
                          Sb.fetch_pointer_offset(tainted_output_stream));
 
-    std::cout << "Image pixels: " << std::endl;
+    std::cout<<"Ret Value is: "<< ret_value<<std::endl;
+    //std::cout << "Image pixels: " << std::endl;
 
     for (auto i = 0; i < height; i++) {
         for (auto j = 0; j < width; j++) {
@@ -193,4 +193,3 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
-*/

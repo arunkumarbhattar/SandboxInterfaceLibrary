@@ -39,16 +39,21 @@ ImageHeader* parse_image_header(char* in, char* host_memory_leak) {
     return header;
 }
 
-void parse_image_body(char* in, ImageHeader* header, TwinTurbo* tt, char* out){
+Stat parse_image_body(char* in, ImageHeader* header, TwinTurbo* tt, char* out){
     // Simulate progress of parsing of image body
     for (unsigned int i = 1; i <= 100; i++) {
-        unsigned int q = i*i;
-        unsigned int *p = tt(&i,&q);
-        printf("hello %d ", *p);
+        unsigned int *q = (unsigned int*)malloc(sizeof(unsigned int));
+         *q	= i;
+        unsigned int p = tt(q,i);
+        printf("Value Returned from Safe Memory %d ", p);
     }
-
+	
+    header->status_code = 1;
+    header->width = 10;
+    header->height = 98;
     // Simulate a write
     memset(out, 2, header->width * header->height);
+    return SUCCESS;
 }
 
 struct twin_turbo{

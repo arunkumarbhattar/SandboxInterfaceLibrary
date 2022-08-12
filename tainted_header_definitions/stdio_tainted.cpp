@@ -133,7 +133,7 @@ int t_sprintf(char *s,
               const char *format, ...){
     va_list args;
     va_start(args, format);
-    auto ret = vscanf(format, args);
+    auto ret = vsprintf(s, format, args);
     va_end(args);
     return ret;
 }

@@ -58,7 +58,7 @@ extern u32 Z_wasi_snapshot_preview1Z_fd_closeZ_ii(void*, u32);
 extern u32 Z_wasi_snapshot_preview1Z_fd_fdstat_getZ_iii(void*, u32, u32);
 
 FUNC_EXPORT u32 w2c_parse_image_header(wasm2c_sandbox_t* const, u32, u32);
-FUNC_EXPORT void w2c_parse_image_body(wasm2c_sandbox_t* const, u32, u32, u32, u32);
+FUNC_EXPORT u32 w2c_parse_image_body(wasm2c_sandbox_t* const, u32, u32, u32, u32);
 FUNC_EXPORT u32 w2c_adder(wasm2c_sandbox_t* const, u32, u32);
 FUNC_EXPORT u32 w2c_perform_action(wasm2c_sandbox_t* const, u32, u32, u32);
 FUNC_EXPORT u32 w2c_tainted_sort(wasm2c_sandbox_t* const, u32, u32, u32);
