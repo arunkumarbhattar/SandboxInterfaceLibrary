@@ -41,6 +41,8 @@ public:
 
     void* fetch_pointer_from_offset(const unsigned long pointer_offset);
 
+    void* ConditionalTaintedOff2Ptr(const unsigned long pointer_offset);
+
     unsigned long fetch_pointer_offset(const void* const pointer);
 
     unsigned long fetch_sandbox_heap_address();

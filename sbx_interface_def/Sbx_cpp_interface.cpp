@@ -2,6 +2,8 @@
 #include "../wasm_readable_definitions/wasm-rt.h"
 #include "../library/lib.h"
 #include "Sbx_c_connector.h"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wint-to-void-pointer-cast"
 bool SbxInterface::isPointerToTaintedMem(const void* const pointer)
 {
     return sandbox.get_sandbox_impl()->impl_is_pointer_in_sandbox_memory(pointer);
@@ -12,17 +14,17 @@ wasm2c_sandbox_t* SbxInterface::fetch_sandbox_address()
     return this->sandbox.get_sandbox_impl()->sbb_nc;
 }
 void* SbxInterface::sbx_malloc(size_t size){
-    return fetch_pointer_from_offset((w2c_malloc(this->fetch_sandbox_address(), size)));
+    return (void*)(w2c_malloc(this->fetch_sandbox_address(), size));
 }
 
 void* SbxInterface::sbx_realloc(void* pointer, size_t size){
-    return fetch_pointer_from_offset(w2c_realloc(this->fetch_sandbox_address(),
+    return (void*)(w2c_realloc(this->fetch_sandbox_address(),
                                                 this->fetch_pointer_offset(pointer),
                                                 size));
 }
 
 void SbxInterface::sbx_free(void* pointer){
-    w2c_free(this->fetch_sandbox_address(),this->fetch_pointer_offset(pointer));
+    w2c_free(this->fetch_sandbox_address(),reinterpret_cast<unsigned long>(pointer));
 }
 
 unsigned long SbxInterface::fetch_pointer_offset(const void *const pointer)
@@ -31,9 +33,31 @@ unsigned long SbxInterface::fetch_pointer_offset(const void *const pointer)
 }
 
 void* SbxInterface::fetch_pointer_from_offset(const unsigned long pointer_offset)
-{
+{/*
+ * Sometimes we may receive a pointer itself, and Not a offset.
+ * This especially happens when the function within which this operation is being called
+ * has received a tainted pointer argument which already has a tainted pointer.
+ */
+    if (pointer_offset == 0)
+        return nullptr;
+
+    if(pointer_offset >= this->fetch_sandbox_heap_address())
+        return reinterpret_cast<void*>(pointer_offset);
+
     return reinterpret_cast<void*>(pointer_offset + this->fetch_sandbox_heap_address());
 }
+
+void* SbxInterface::ConditionalTaintedOff2Ptr(const unsigned long pointer_offset)
+{
+    if ( pointer_offset == 0)
+        return nullptr;
+
+    if (isPointerToTaintedMem(c_fetch_pointer_from_offset(pointer_offset)))
+        return c_fetch_pointer_from_offset(pointer_offset);
+    else
+        return reinterpret_cast<void*>(pointer_offset);
+}
+
 
 unsigned long SbxInterface::fetch_sandbox_heap_address()
 {
@@ -112,7 +136,7 @@ unsigned long SbxInterface::sbx_fetch_function_pointer_offset(uint32_t args, uin
 
 #define sandbox_fields_reflection_exampleapp_allClasses(f, ...)            \
   f(ImageHeader, exampleapp, ##__VA_ARGS__)
-
+/*
 rlbox_load_structs_from_library(exampleapp);
 
 int main(int argc, char const *argv[])
@@ -193,3 +217,6 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+
+#pragma clang diagnostic pop
+ */

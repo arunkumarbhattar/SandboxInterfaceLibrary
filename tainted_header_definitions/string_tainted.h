@@ -26,6 +26,9 @@ void *t_memset(void * dest,
 char *t_strcpy(char *dest,
                const char *src);
 
+char *tc_strcpy(char *dest,
+               const char *src);
+
 char *t_strncpy(char *dest,
                 const char *src,
                 size_t n);
