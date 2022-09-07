@@ -6,6 +6,8 @@
 #pragma clang diagnostic ignored "-Wint-to-void-pointer-cast"
 bool SbxInterface::isPointerToTaintedMem(const void* const pointer)
 {
+    if(pointer == nullptr)
+        return true;
     return sandbox.get_sandbox_impl()->impl_is_pointer_in_sandbox_memory(pointer);
 }
 
