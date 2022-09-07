@@ -29,6 +29,9 @@ char *t_strcpy(char *dest,
 char *tc_strcpy(char *dest,
                const char *src);
 
+char *ct_strcpy(char *dest,
+                const char *src);
+
 char *t_strncpy(char *dest,
                 const char *src,
                 size_t n);
