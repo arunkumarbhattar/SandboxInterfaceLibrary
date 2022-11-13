@@ -16,7 +16,8 @@ wasm2c_sandbox_t* SbxInterface::fetch_sandbox_address()
     return this->sandbox.get_sandbox_impl()->sbb_nc;
 }
 void* SbxInterface::sbx_malloc(size_t size){
-    return (void*)fetch_pointer_from_offset((w2c_malloc(this->fetch_sandbox_address(), size)));
+    //return (void*)fetch_pointer_from_offset((w2c_malloc(this->fetch_sandbox_address(), size)));
+    return (void*)(w2c_malloc(this->fetch_sandbox_address(), size));
 }
 
 void* SbxInterface::sbx_realloc(void* pointer, size_t size){
@@ -26,7 +27,7 @@ void* SbxInterface::sbx_realloc(void* pointer, size_t size){
 }
 
 void SbxInterface::sbx_free(void* pointer){
-    w2c_free(this->fetch_sandbox_address(),reinterpret_cast<unsigned long>(pointer));
+    w2c_free(this->fetch_sandbox_address(),reinterpret_cast<unsigned int>(TPtoO(pointer)));
 }
 
 unsigned long SbxInterface::fetch_pointer_offset(const void *const pointer)
@@ -34,7 +35,7 @@ unsigned long SbxInterface::fetch_pointer_offset(const void *const pointer)
     return reinterpret_cast<unsigned long>(pointer) - this->fetch_sandbox_heap_address();
 }
 
-void* SbxInterface::fetch_pointer_from_offset(const unsigned long pointer_offset)
+void* SbxInterface::fetch_pointer_from_offset(const unsigned int pointer_offset)
 {/*
  * Sometimes we may receive a pointer itself, and Not a offset.
  * This especially happens when the function within which this operation is being called
@@ -53,11 +54,26 @@ void* SbxInterface::ConditionalTaintedOff2Ptr(const unsigned long pointer_offset
 {
     if ( pointer_offset == 0)
         return nullptr;
+    auto HeapAddr = this->fetch_sandbox_heap_address();
+    if (pointer_offset >= HeapAddr)
+        return reinterpret_cast<void*>(pointer_offset);
 
-    if (isPointerToTaintedMem(c_fetch_pointer_from_offset(pointer_offset)))
+    auto Governor = HeapAddr & pointer_offset;
+    if (Governor > 0)
+        return reinterpret_cast<void*>(pointer_offset);
+
+    if (isPointerToTaintedMem(c_fetch_pointer_from_offset((int)pointer_offset)))
         return c_fetch_pointer_from_offset(pointer_offset);
     else
         return reinterpret_cast<void*>(pointer_offset);
+}
+
+unsigned int SbxInterface::TPtoO(const void* ptr)
+{
+    if ((unsigned long) ptr > this->fetch_sandbox_heap_address())
+        return this->fetch_pointer_offset(ptr);
+    else
+        return (unsigned long) ptr;
 }
 
 

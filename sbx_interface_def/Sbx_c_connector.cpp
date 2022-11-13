@@ -54,7 +54,7 @@ extern "C" {
         return SbxInterface_Instance->fetch_sandbox_address();
     }
 
-    void* c_fetch_pointer_from_offset(const unsigned long pointer_offset){
+    void* c_fetch_pointer_from_offset(const unsigned int pointer_offset){
         sbx_init();
         return SbxInterface_Instance->fetch_pointer_from_offset(pointer_offset);
     }
@@ -84,6 +84,11 @@ extern "C" {
     unsigned long c_fetch_function_pointer_offset(uint32_t args, uint32_t ret, int ret_param[]){
         sbx_init();
         return SbxInterface_Instance->sbx_fetch_function_pointer_offset(args, ret, ret_param);
+    }
+
+    unsigned long c_TPtoO(const void* ptr){
+        sbx_init();
+        return SbxInterface_Instance->TPtoO(ptr);
     }
 
 void* c_malloc(size_t size){

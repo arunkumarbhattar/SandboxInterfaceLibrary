@@ -39,7 +39,7 @@ public:
     bool isPointerToTaintedMem(const void* const pointer);
     wasm2c_sandbox_t* fetch_sandbox_address();
 
-    void* fetch_pointer_from_offset(const unsigned long pointer_offset);
+    void* fetch_pointer_from_offset(const unsigned int pointer_offset);
 
     void* ConditionalTaintedOff2Ptr(const unsigned long pointer_offset);
 
@@ -67,6 +67,8 @@ public:
     int *twinTurbo(int *a, int *b);
 
     unsigned int twinTurboTrampoline(unsigned int arg_1, unsigned int arg_2);
+
+    unsigned int TPtoO(const void *ptr);
 };
 
 #endif //SIMPLE_LIBRARY_EXAMPLE_SBX_CPP_INTERFACE_H

@@ -45,10 +45,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/206/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/209/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/206/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/209/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -138,8 +138,8 @@ CMakeFiles/img_lib_wasm.dir/clean:
 # Target rules for target CMakeFiles/SBX_LIB.dir
 
 # All Build rule for target.
-CMakeFiles/SBX_LIB.dir/all: CMakeFiles/img_lib_wasm.dir/all
 CMakeFiles/SBX_LIB.dir/all: CMakeFiles/img_lib.dir/all
+CMakeFiles/SBX_LIB.dir/all: CMakeFiles/img_lib_wasm.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SBX_LIB.dir/build.make CMakeFiles/SBX_LIB.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SBX_LIB.dir/build.make CMakeFiles/SBX_LIB.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=19,20 "Built target SBX_LIB"
@@ -191,8 +191,8 @@ CMakeFiles/SBX_CON_LIB.dir/clean:
 # Target rules for target CMakeFiles/final.dir
 
 # All Build rule for target.
-CMakeFiles/final.dir/all: CMakeFiles/img_lib_wasm.dir/all
 CMakeFiles/final.dir/all: CMakeFiles/img_lib.dir/all
+CMakeFiles/final.dir/all: CMakeFiles/img_lib_wasm.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=21,22,23 "Built target final"
