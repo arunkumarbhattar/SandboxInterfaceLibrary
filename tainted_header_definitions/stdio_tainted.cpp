@@ -44,10 +44,10 @@ char *t_tmpnam(char *source){
 //    return fflush(stream);
 //}
 //
-//FILE *t_fopen(const char *filename,
-//              const char * mode){
-//    return fopen(filename, mode);
-//}
+FILE *t_fopen(const char *filename,
+              const char * mode){
+    return fopen(filename, mode);
+}
 //
 //FILE *t_freopen(const char *filename,
 //                const char *mode,

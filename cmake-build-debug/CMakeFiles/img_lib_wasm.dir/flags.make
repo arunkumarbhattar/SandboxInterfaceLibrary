@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions -I/home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt
+C_INCLUDES = -I/home/arun/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions -I/home/arun/Desktop/SandboxInterfaceLibrary/wasmrt
 
 C_FLAGS = -g
 

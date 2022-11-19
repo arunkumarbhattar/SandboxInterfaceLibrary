@@ -53,10 +53,10 @@ RM = /snap/clion/209/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/twinturbo/Desktop/SandboxInterfaceLibrary
+CMAKE_SOURCE_DIR = /home/arun/Desktop/SandboxInterfaceLibrary
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug
+CMAKE_BINARY_DIR = /home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/final.dir/depend.make
@@ -72,30 +72,30 @@ include CMakeFiles/final.dir/flags.make
 CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o: CMakeFiles/final.dir/flags.make
 CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o: ../sbx_interface_def/Sbx_c_connector.cpp
 CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o: CMakeFiles/final.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o -MF CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o.d -o CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o -c /home/twinturbo/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_c_connector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o -MF CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o.d -o CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.o -c /home/arun/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_c_connector.cpp
 
 CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/twinturbo/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_c_connector.cpp > CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arun/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_c_connector.cpp > CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.i
 
 CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/twinturbo/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_c_connector.cpp -o CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arun/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_c_connector.cpp -o CMakeFiles/final.dir/sbx_interface_def/Sbx_c_connector.cpp.s
 
 CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o: CMakeFiles/final.dir/flags.make
 CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o: ../sbx_interface_def/Sbx_cpp_interface.cpp
 CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o: CMakeFiles/final.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o -MF CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o.d -o CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o -c /home/twinturbo/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_cpp_interface.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o -MF CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o.d -o CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o -c /home/arun/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_cpp_interface.cpp
 
 CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/twinturbo/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_cpp_interface.cpp > CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arun/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_cpp_interface.cpp > CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.i
 
 CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/twinturbo/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_cpp_interface.cpp -o CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arun/Desktop/SandboxInterfaceLibrary/sbx_interface_def/Sbx_cpp_interface.cpp -o CMakeFiles/final.dir/sbx_interface_def/Sbx_cpp_interface.cpp.s
 
 # Object files for target final
 final_OBJECTS = \
@@ -111,7 +111,7 @@ final: CMakeFiles/final.dir/build.make
 final: libimg_lib_wasm.a
 final: libimg_lib.a
 final: CMakeFiles/final.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable final"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable final"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/final.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -123,6 +123,6 @@ CMakeFiles/final.dir/clean:
 .PHONY : CMakeFiles/final.dir/clean
 
 CMakeFiles/final.dir/depend:
-	cd /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/twinturbo/Desktop/SandboxInterfaceLibrary /home/twinturbo/Desktop/SandboxInterfaceLibrary /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles/final.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/arun/Desktop/SandboxInterfaceLibrary /home/arun/Desktop/SandboxInterfaceLibrary /home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug /home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug /home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles/final.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/final.dir/depend
 

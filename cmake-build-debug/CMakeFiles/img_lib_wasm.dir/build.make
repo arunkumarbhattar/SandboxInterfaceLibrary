@@ -53,10 +53,10 @@ RM = /snap/clion/209/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/twinturbo/Desktop/SandboxInterfaceLibrary
+CMAKE_SOURCE_DIR = /home/arun/Desktop/SandboxInterfaceLibrary
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug
+CMAKE_BINARY_DIR = /home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/img_lib_wasm.dir/depend.make
@@ -72,86 +72,86 @@ include CMakeFiles/img_lib_wasm.dir/flags.make
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o: CMakeFiles/img_lib_wasm.dir/flags.make
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o: ../wasmrt/wasm-rt-impl.c
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o: CMakeFiles/img_lib_wasm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o -MF CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o -c /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-impl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o -MF CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.o -c /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-impl.c
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-impl.c > CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-impl.c > CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.i
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-impl.c -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-impl.c -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-impl.c.s
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o: CMakeFiles/img_lib_wasm.dir/flags.make
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o: ../wasmrt/wasm-rt-os-unix.c
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o: CMakeFiles/img_lib_wasm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o -MF CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o -c /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-unix.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o -MF CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.o -c /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-unix.c
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-unix.c > CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-unix.c > CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.i
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-unix.c -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-unix.c -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-unix.c.s
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o: CMakeFiles/img_lib_wasm.dir/flags.make
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o: ../wasmrt/wasm-rt-os-win.c
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o: CMakeFiles/img_lib_wasm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o -MF CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o -c /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-win.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o -MF CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.o -c /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-win.c
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-win.c > CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-win.c > CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.i
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-win.c -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-os-win.c -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-os-win.c.s
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o: CMakeFiles/img_lib_wasm.dir/flags.make
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o: ../wasmrt/wasm-rt-runner.c
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o: CMakeFiles/img_lib_wasm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o -MF CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o -c /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-runner.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o -MF CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.o -c /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-runner.c
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-runner.c > CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-runner.c > CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.i
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-runner.c -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-runner.c -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-runner.c.s
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o: CMakeFiles/img_lib_wasm.dir/flags.make
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o: ../wasmrt/wasm-rt-wasi.c
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o: CMakeFiles/img_lib_wasm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o -MF CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o -c /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-wasi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o -MF CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o -c /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-wasi.c
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-wasi.c > CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-wasi.c > CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.i
 
 CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-wasi.c -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arun/Desktop/SandboxInterfaceLibrary/wasmrt/wasm-rt-wasi.c -o CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.s
 
 CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o: CMakeFiles/img_lib_wasm.dir/flags.make
 CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o: ../wasm_readable_definitions/lib_wasm.c
 CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o: CMakeFiles/img_lib_wasm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o -MF CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o -c /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions/lib_wasm.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o -MF CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o.d -o CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o -c /home/arun/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions/lib_wasm.c
 
 CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions/lib_wasm.c > CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arun/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions/lib_wasm.c > CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.i
 
 CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/twinturbo/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions/lib_wasm.c -o CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arun/Desktop/SandboxInterfaceLibrary/wasm_readable_definitions/lib_wasm.c -o CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.s
 
 # Object files for target img_lib_wasm
 img_lib_wasm_OBJECTS = \
@@ -173,7 +173,7 @@ libimg_lib_wasm.a: CMakeFiles/img_lib_wasm.dir/wasmrt/wasm-rt-wasi.c.o
 libimg_lib_wasm.a: CMakeFiles/img_lib_wasm.dir/wasm_readable_definitions/lib_wasm.c.o
 libimg_lib_wasm.a: CMakeFiles/img_lib_wasm.dir/build.make
 libimg_lib_wasm.a: CMakeFiles/img_lib_wasm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libimg_lib_wasm.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libimg_lib_wasm.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/img_lib_wasm.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/img_lib_wasm.dir/link.txt --verbose=$(VERBOSE)
 
@@ -186,6 +186,6 @@ CMakeFiles/img_lib_wasm.dir/clean:
 .PHONY : CMakeFiles/img_lib_wasm.dir/clean
 
 CMakeFiles/img_lib_wasm.dir/depend:
-	cd /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/twinturbo/Desktop/SandboxInterfaceLibrary /home/twinturbo/Desktop/SandboxInterfaceLibrary /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug /home/twinturbo/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles/img_lib_wasm.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/arun/Desktop/SandboxInterfaceLibrary /home/arun/Desktop/SandboxInterfaceLibrary /home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug /home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug /home/arun/Desktop/SandboxInterfaceLibrary/cmake-build-debug/CMakeFiles/img_lib_wasm.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/img_lib_wasm.dir/depend
 

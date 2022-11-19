@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/twinturbo/Desktop/SandboxInterfaceLibrary
+C_INCLUDES = -I/home/arun/Desktop/SandboxInterfaceLibrary
 
 C_FLAGS = -g
 

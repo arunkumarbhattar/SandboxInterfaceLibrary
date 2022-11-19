@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/twinturbo/Desktop/SandboxInterfaceLibrary/library/lib.c" "CMakeFiles/img_lib.dir/library/lib.c.o" "gcc" "CMakeFiles/img_lib.dir/library/lib.c.o.d"
+  "/home/arun/Desktop/SandboxInterfaceLibrary/library/lib.c" "CMakeFiles/img_lib.dir/library/lib.c.o" "gcc" "CMakeFiles/img_lib.dir/library/lib.c.o.d"
   )
 
 # Targets to which this target links.
