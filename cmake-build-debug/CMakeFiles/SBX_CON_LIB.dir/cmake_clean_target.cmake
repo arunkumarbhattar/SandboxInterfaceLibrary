@@ -1,3 +1,0 @@
-file(REMOVE_RECURSE
-  "libSBX_CON_LIB.a"
-)

@@ -34,7 +34,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU
     add_link_options(-ldl)
 endif()
 
-add_library(SBX_CON_LIB STATIC "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_c_connector.cpp" "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_cpp_interface.cpp"
+add_library(SBX_CON_LIB STATIC "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_c_connector.h" "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_c_connector.cpp" "${CMAKE_SOURCE_DIR}/sbx_interface_def/Sbx_cpp_interface.cpp"
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/_builtin_stdio_tainted.cpp"
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/_builtin_string_tainted.cpp"
         "${CMAKE_SOURCE_DIR}/tainted_header_definitions/assert_tainted.cpp"

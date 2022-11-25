@@ -4,19 +4,26 @@
 
 #ifndef SIMPLE_LIBRARY_EXAMPLE_SBX_C_CONNECTOR_H
 #define SIMPLE_LIBRARY_EXAMPLE_SBX_C_CONNECTOR_H
-
+#include "Sbx_cpp_interface.h"
 //required by the definition for struct wasm2c_sandbox_t
 //#include "../wasm_readable_definitions/lib_wasm.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
+static SbxInterface *SbxInterface_Instance = NULL;
+inline void sbx_init(void)
+{
+    if(SbxInterface_Instance == NULL){
+        SbxInterface_Instance = new SbxInterface();
+    }
+}
 
-int c_isPointerToTaintedMem(void* pointer);
-
+inline int c_isTaintedPointerToTaintedMem(void* pointer)
+{
+    return SbxInterface_Instance->isPointerToTaintedMem(pointer) ? 1 : 0;
+}
 void* c_fetch_pointer_from_offset(const unsigned int pointer_offset);
-
-int c_isTaintedPointerToTaintedMem(void* pointer);
-
+long c_fetch_sandbox_heap_bound();
 void* c_fetch_sandbox_address();
 
 unsigned long c_fetch_pointer_offset(void* pointer);

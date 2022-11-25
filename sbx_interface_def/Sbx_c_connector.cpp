@@ -3,7 +3,7 @@
 //
 
 //#include "Sbx_c_connector.h"
-#include "Sbx_cpp_interface.h"
+
 #include "Sbx_c_connector.h"
 #include <cstdlib>
 #include <stdarg.h>
@@ -11,13 +11,8 @@
 extern "C" {
 #endif
 
-    static SbxInterface *SbxInterface_Instance = NULL;
 
-    void sbx_init() {
-        if(SbxInterface_Instance == NULL){
-            SbxInterface_Instance = new SbxInterface();
-        }
-    }
+    //void sbx_init(void)
     int __t_sprintf_chkcbx(char *buffer,
                        int flag,
                        size_t obj_size,
@@ -39,23 +34,19 @@ extern "C" {
         return a +10;
     }
 
-    int c_isTaintedPointerToTaintedMem(void* pointer){
-        sbx_init();
-        return SbxInterface_Instance->isPointerToTaintedMem(pointer) ? 1 : 0;
-    }
-
-    int  c_isPointerToTaintedMem(void* pointer) {
-        sbx_init();
-        return SbxInterface_Instance->isPointerToTaintedMem(pointer) ? 1 : 0;
-    }
-
+    //int c_isTaintedPointerToTaintedMem(void* pointer)
+    inline int c_isTaintedPointerToTaintedMem(void* pointer);
     void* c_fetch_sandbox_address(){
         sbx_init();
         return SbxInterface_Instance->fetch_sandbox_address();
     }
+    long c_fetch_sandbox_heap_bound()
+    {
+        return SbxInterface_Instance->fetch_sandbox_heap_bound();
+    }
 
     void* c_fetch_pointer_from_offset(const unsigned int pointer_offset){
-        sbx_init();
+        //sbx_init();
         return SbxInterface_Instance->fetch_pointer_from_offset(pointer_offset);
     }
 

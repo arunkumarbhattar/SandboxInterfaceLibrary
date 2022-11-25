@@ -4,13 +4,8 @@
 #include "Sbx_c_connector.h"
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wint-to-void-pointer-cast"
-bool SbxInterface::isPointerToTaintedMem(const void* const pointer)
-{
-    if(pointer == nullptr)
-        return true;
-    return sandbox.get_sandbox_impl()->impl_is_pointer_in_sandbox_memory(pointer);
-}
-
+//inline bool SbxInterface::isPointerToTaintedMem(const void* const pointer);
+//
 wasm2c_sandbox_t* SbxInterface::fetch_sandbox_address()
 {
     return this->sandbox.get_sandbox_impl()->sbb_nc;

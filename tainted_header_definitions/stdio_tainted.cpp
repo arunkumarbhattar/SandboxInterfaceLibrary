@@ -168,14 +168,14 @@ int t_snprintf(char *s,
 
 #endif
 
-//#if _FORTIFY_SOURCE == 0 || !defined(t_vfprintf)
-//#undef t_vfprintf
-//int t_vfprintf(FILE *stream,
-//               const char * format,
-//               va_list arg){
-//    return vfprintf(stream, format, arg);
-//}
-//#endif
+#if _FORTIFY_SOURCE == 0 || !defined(t_vfprintf)
+#undef t_vfprintf
+int t_vfprintf(FILE *stream,
+               const char * format,
+               va_list arg){
+    return vfprintf(stream, format, arg);
+}
+#endif
 //
 //
 //int t_vfscanf(FILE *stream,

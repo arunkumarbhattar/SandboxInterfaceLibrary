@@ -1,1 +1,0 @@
-/usr/bin/c++  -ldl -lpthread -g CMakeFiles/SBX_LIB.dir/sbx_interface_def/Sbx_cpp_interface.cpp.o -o SBX_LIB  libimg_lib.a libimg_lib_wasm.a 

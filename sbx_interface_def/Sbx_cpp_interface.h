@@ -36,7 +36,18 @@ public:
         sandbox.create_sandbox();
     }
 
-    bool isPointerToTaintedMem(const void* const pointer);
+    inline bool isPointerToTaintedMem(const void* const pointer)
+    {
+            if(pointer == nullptr)
+                return true;
+            return sandbox.get_sandbox_impl()->impl_is_pointer_in_sandbox_memory(pointer);
+    }
+
+    inline long fetch_sandbox_heap_bound()
+    {
+        return sandbox.get_sandbox_impl()->impl_get_heap_bound();
+    }
+
     wasm2c_sandbox_t* fetch_sandbox_address();
 
     void* fetch_pointer_from_offset(const unsigned int pointer_offset);

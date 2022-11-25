@@ -733,6 +733,12 @@ public:
             return p_val >= heap_base && p_val < (heap_base + length);
   }
 
+  inline long impl_get_heap_bound()
+  {
+      size_t length = impl_get_total_memory();
+      return  (heap_base + length);
+  }
+
 public:
 
   inline bool impl_is_pointer_in_app_memory(const void* p)
