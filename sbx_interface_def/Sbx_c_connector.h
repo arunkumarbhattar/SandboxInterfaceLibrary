@@ -10,18 +10,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#define NOOP_SBX 1
 static SbxInterface *SbxInterface_Instance = NULL;
-inline void sbx_init(void)
-{
-    if(SbxInterface_Instance == NULL){
-        SbxInterface_Instance = new SbxInterface();
-    }
-}
+void sbx_init(void);
 
-inline int c_isTaintedPointerToTaintedMem(void* pointer)
-{
-    return SbxInterface_Instance->isPointerToTaintedMem(pointer) ? 1 : 0;
-}
 void* c_fetch_pointer_from_offset(const unsigned int pointer_offset);
 long c_fetch_sandbox_heap_bound();
 void* c_fetch_sandbox_address();
