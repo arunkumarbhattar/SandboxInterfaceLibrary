@@ -75,7 +75,7 @@ void *t_calloc(size_t nmemb, size_t size){
      * because it could take advantage of copy-on-write (COW)
      */
     void* temp;
-    temp = malloc(size);
+    temp = c_malloc(size);
     if(temp == 0)
         return (temp);
 
